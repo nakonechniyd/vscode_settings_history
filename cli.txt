@@ -1,4 +1,4 @@
-Visual Studio Code 1.31.1
+Visual Studio Code 1.32.3
 
 Usage: code [options][paths...]
 
@@ -51,7 +51,7 @@ Troubleshooting
   --inspect-extensions <port>        Allow debugging and profiling of
                                      extensions. Check the developer tools for
                                      the connection URI.
-  --inspect-brk-search <port>        Allow debugging and profiling of
+  --inspect-brk-extensions <port>    Allow debugging and profiling of
                                      extensions with the extension host being
                                      paused after start. Check the developer
                                      tools for the connection URI.

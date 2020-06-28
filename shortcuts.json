@@ -58,7 +58,7 @@
                                          "when": "textInputFocus && !editorReadonly" },
     { "key": "ctrl+a",                "command": "editor.action.selectAll",
                                          "when": "textInputFocus" },
-    { "key": "ctrl+i",                "command": "expandLineSelection",
+    { "key": "ctrl+l",                "command": "expandLineSelection",
                                          "when": "textInputFocus" },
     { "key": "shift+tab",             "command": "outdent",
                                          "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus" },
@@ -177,8 +177,12 @@
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+shift+\\",         "command": "editor.action.jumpToBracket",
                                          "when": "editorTextFocus" },
+    { "key": "alt+f8",                "command": "editor.action.marker.next",
+                                         "when": "editorTextFocus && !editorReadonly" },
     { "key": "f8",                    "command": "editor.action.marker.nextInFiles",
                                          "when": "editorFocus && !editorReadonly" },
+    { "key": "shift+alt+f8",          "command": "editor.action.marker.prev",
+                                         "when": "editorTextFocus && !editorReadonly" },
     { "key": "shift+f8",              "command": "editor.action.marker.prevInFiles",
                                          "when": "editorFocus && !editorReadonly" },
     { "key": "alt+down",              "command": "editor.action.moveLinesDownAction",
@@ -243,13 +247,13 @@
     { "key": "escape",                "command": "editor.action.webvieweditor.hideFind",
                                          "when": "webviewFindWidgetVisible && !editorFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
     { "key": "ctrl+a",                "command": "editor.action.webvieweditor.selectAll",
-                                         "when": "!editorFocus && !inputFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
-    { "key": "ctrl+a",                "command": "editor.action.webvieweditor.selectAll",
                                          "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'" },
-    { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
-                                         "when": "!editorFocus && activeEditor == 'WebviewEditor'" },
+    { "key": "ctrl+a",                "command": "editor.action.webvieweditor.selectAll",
+                                         "when": "!editorFocus && !inputFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
     { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
                                          "when": "!editorFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
+    { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
+                                         "when": "!editorFocus && activeEditor == 'WebviewEditor'" },
     { "key": "f7",                    "command": "editor.action.wordHighlight.next",
                                          "when": "editorTextFocus && hasWordHighlights" },
     { "key": "shift+f7",              "command": "editor.action.wordHighlight.prev",
@@ -420,14 +424,8 @@
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
     { "key": "left",                  "command": "breadcrumbs.focusPrevious",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
-    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
-                                         "when": "problemsFilterFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "ctrl+enter",            "command": "breadcrumbs.revealFocused",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
-    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
-                                         "when": "problemsViewFocus" },
     { "key": "space",                 "command": "breadcrumbs.revealFocused",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
     { "key": "ctrl+enter",            "command": "breadcrumbs.revealFocusedFromTreeAside",
@@ -470,6 +468,12 @@
                                          "when": "historyNavigationEnabled && historyNavigationWidget" },
     { "key": "alt+up",                "command": "history.showPrevious",
                                          "when": "historyNavigationEnabled && historyNavigationWidget" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
+    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
+                                         "when": "problemsViewFocus" },
+    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
+                                         "when": "problemsFilterFocus" },
     { "key": "up",                    "command": "history.showPrevious",
                                          "when": "historyNavigationEnabled && historyNavigationWidget" },
     { "key": "escape",                "command": "keybindings.editor.clearSearchResults",
@@ -477,6 +481,8 @@
     { "key": "ctrl+c",                "command": "keybindings.editor.copyKeybindingEntry",
                                          "when": "inKeybindings && keybindingFocus" },
     { "key": "ctrl+k ctrl+k",         "command": "keybindings.editor.defineKeybinding",
+                                         "when": "inKeybindings && keybindingFocus" },
+    { "key": "ctrl+k ctrl+e",         "command": "keybindings.editor.defineWhenExpression",
                                          "when": "inKeybindings && keybindingFocus" },
     { "key": "down",                  "command": "keybindings.editor.focusKeybindings",
                                          "when": "inKeybindings && inKeybindingsSearch" },
@@ -538,10 +544,6 @@
                                          "when": "notificationFocus && notificationToastsVisible" },
     { "key": "up",                    "command": "notifications.focusPreviousToast",
                                          "when": "notificationFocus && notificationToastsVisible" },
-    { "key": "down",                  "command": "outline.focusDownHighlighted",
-                                         "when": "outlineFiltered && outlineFocused" },
-    { "key": "up",                    "command": "outline.focusUpHighlighted",
-                                         "when": "outlineFiltered && outlineFocused" },
     { "key": "ctrl+enter",            "command": "problems.action.openToSide",
                                          "when": "problemFocus" },
     { "key": "ctrl+.",                "command": "problems.action.showQuickFixes",
@@ -803,8 +805,6 @@
     { "key": "ctrl+numpad0",          "command": "workbench.action.zoomReset" },
     { "key": "ctrl+shift+m",          "command": "workbench.actions.view.problems" },
     { "key": "ctrl+shift+y",          "command": "workbench.debug.action.toggleRepl" },
-    { "key": "meta+l",                "command": "workbench.debug.panel.action.clearReplAction",
-                                         "when": "inDebugRepl" },
     { "key": "ctrl+k ctrl+m",         "command": "workbench.extensions.action.showRecommendedKeymapExtensions" },
     { "key": "ctrl+k c",              "command": "workbench.files.action.compareWithClipboard" },
     { "key": "ctrl+k d",              "command": "workbench.files.action.compareWithSaved" },
@@ -826,10 +826,10 @@
                                          "when": "variablesFocused" },
     { "key": "space",                 "command": "debug.toggleBreakpoint",
                                          "when": "breakpointsFocused && !inputFocus" },
-    { "key": "shift+delete",          "command": "deleteFile",
-                                         "when": "config.files.enableTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "delete",                "command": "deleteFile",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !config.files.enableTrash && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+    { "key": "shift+delete",          "command": "deleteFile",
+                                         "when": "config.files.enableTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "escape",                "command": "filesExplorer.cancelCut",
                                          "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus" },
     { "key": "ctrl+c",                "command": "filesExplorer.copy",
@@ -872,10 +872,14 @@
                                          "when": "inFilesPicker && inQuickOpen" },
     { "key": "ctrl+shift+r",          "command": "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker",
                                          "when": "inQuickOpen && inRecentFilesPicker" },
-    { "key": "ctrl+f4",               "command": "extension.node-debug.pickLoadedScript",
-                                         "when": "debugType == 'node2'" },
+    { "key": "ctrl+r",                "command": "workbench.action.reloadWindow",
+                                         "when": "isDevelopment" },
+    { "key": "ctrl+shift+i",          "command": "workbench.action.toggleDevTools",
+                                         "when": "isDevelopment" },
     { "key": "ctrl+f4",               "command": "extension.node-debug.pickLoadedScript",
                                          "when": "debugType == 'node'" },
+    { "key": "ctrl+f4",               "command": "extension.node-debug.pickLoadedScript",
+                                         "when": "debugType == 'node2'" },
     { "key": "ctrl+shift+v",          "command": "markdown.showPreview",
                                          "when": "editorLangId == 'markdown'" },
     { "key": "shift+alt+f12",         "command": "references-view.find",
@@ -950,7 +954,6 @@
     // - editor.action.addSelectionToPreviousFindMatch
     // - editor.action.clearoutput
     // - editor.action.clipboardCopyWithSyntaxHighlightingAction
-    // - editor.action.codeAction
     // - editor.action.detectIndentation
     // - editor.action.findReferences
     // - editor.action.fontZoomIn
@@ -958,18 +961,14 @@
     // - editor.action.fontZoomReset
     // - editor.action.forceRetokenize
     // - editor.action.format
-    // - editor.action.formatInspect
     // - editor.action.goToDeclaration
     // - editor.action.goToTypeDefinition
     // - editor.action.indentUsingSpaces
     // - editor.action.indentUsingTabs
     // - editor.action.indentationToSpaces
     // - editor.action.indentationToTabs
-    // - editor.action.insertSnippet
     // - editor.action.inspectTMScopes
     // - editor.action.joinLines
-    // - editor.action.marker.next
-    // - editor.action.marker.prev
     // - editor.action.measureExtHostLatency
     // - editor.action.moveCarretLeftAction
     // - editor.action.moveCarretRightAction
@@ -988,7 +987,6 @@
     // - editor.action.smartSelect.grow
     // - editor.action.sortLinesAscending
     // - editor.action.sortLinesDescending
-    // - editor.action.sourceAction
     // - editor.action.toggleMinimap
     // - editor.action.toggleRenderControlCharacter
     // - editor.action.toggleRenderWhitespace
@@ -1164,6 +1162,7 @@
     // - references-view.copyAll
     // - references-view.copyPath
     // - references-view.pickFromHistory
+    // - references-view.refind
     // - references-view.refresh
     // - references-view.remove
     // - references-view.tree.focus
@@ -1191,7 +1190,6 @@
     // - toggle.diff.ignoreTrimWhitespace
     // - toggle.diff.renderSideBySide
     // - toggleEscapeSequenceLogging
-    // - type
     // - typescript.goToProjectConfig
     // - typescript.openTsServerLog
     // - typescript.reloadProjects
@@ -1315,7 +1313,6 @@
     // - workbench.action.quickOpenView
     // - workbench.action.quickPickManyToggle
     // - workbench.action.quickSwitchWindow
-    // - workbench.action.reloadWindow
     // - workbench.action.reloadWindowWithExtensionsDisabled
     // - workbench.action.removeFromEditorHistory
     // - workbench.action.removeRootFolder
@@ -1346,7 +1343,6 @@
     // - workbench.action.tasks.disallowAutomaticRunning
     // - workbench.action.tasks.reRunTask
     // - workbench.action.tasks.restartTask
-    // - workbench.action.tasks.runTask
     // - workbench.action.tasks.showLog
     // - workbench.action.tasks.showTasks
     // - workbench.action.tasks.terminate
@@ -1381,12 +1377,10 @@
     // - workbench.action.terminal.selectToNextLine
     // - workbench.action.terminal.selectToPreviousCommand
     // - workbench.action.terminal.selectToPreviousLine
-    // - workbench.action.terminal.sendSequence
     // - workbench.action.terminal.splitInActiveWorkspace
     // - workbench.action.toggleActivityBarVisibility
     // - workbench.action.toggleAutoSave
     // - workbench.action.toggleCenteredLayout
-    // - workbench.action.toggleDevTools
     // - workbench.action.toggleEditorVisibility
     // - workbench.action.toggleMaximizedPanel
     // - workbench.action.toggleMenuBar
@@ -1405,6 +1399,7 @@
     // - workbench.debug.action.focusVariablesView
     // - workbench.debug.action.focusWatchView
     // - workbench.debug.loadedScriptsView.focus
+    // - workbench.debug.panel.action.clearReplAction
     // - workbench.debug.viewlet.action.addFunctionBreakpointAction
     // - workbench.debug.viewlet.action.disableAllBreakpoints
     // - workbench.debug.viewlet.action.enableAllBreakpoints
