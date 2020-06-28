@@ -53,9 +53,6 @@
 	// Timeout in milliseconds after which the code actions that are run on save are cancelled.
 	"editor.codeActionsOnSaveTimeout": 750,
 
-	// Enable/disable editor code insets
-	"editor.codeInsets": false,
-
 	// Controls whether the editor shows CodeLens.
 	"editor.codeLens": true,
 
@@ -76,6 +73,31 @@
 
 	// Controls the width of the cursor when `editor.cursorStyle` is set to `line`.
 	"editor.cursorWidth": 0,
+
+	// Defines a default formatter which takes precedence over all other formatter settings. Must be the identifier of an extension contributing a formatter.
+	//  - null: None
+	//  - vscode.configuration-editing: Provides capabilities (advanced IntelliSense, auto-fixing) in configuration files like settings, launch, and extension recommendation files.
+	//  - vscode.css-language-features: Provides rich language support for CSS, LESS and SCSS files.
+	//  - vscode.debug-auto-launch: Helper for auto-attach feature when node-debug extensions are not active.
+	//  - vscode.debug-server-ready: Open URI in browser if server under debugging is ready.
+	//  - vscode.emmet: Emmet support for VS Code
+	//  - vscode.extension-editing: Provides linting capabilities for authoring extensions.
+	//  - vscode.git: Git SCM Integration
+	//  - vscode.grunt: Extension to add Grunt capabilities to VS Code.
+	//  - vscode.gulp: Extension to add Gulp capabilities to VSCode.
+	//  - vscode.html-language-features: Provides rich language support for HTML and Handlebar files
+	//  - vscode.jake: Extension to add Jake capabilities to VS Code.
+	//  - vscode.json-language-features: Provides rich language support for JSON files.
+	//  - vscode.markdown-language-features: Provides rich language support for Markdown.
+	//  - vscode.merge-conflict: Highlighting and commands for inline merge conflicts.
+	//  - ms-vscode.node-debug: Node.js debugging support (versions < 8.0)
+	//  - ms-vscode.node-debug2: Node.js debugging support
+	//  - ms-vscode.references-view: Reference Search results as separate, stable view in the sidebar
+	//  - vscode.npm: Extension to add task support for npm scripts.
+	//  - vscode.php-language-features: Provides rich language support for PHP files.
+	//  - vscode.python: Provides syntax highlighting, bracket matching and folding in Python files.
+	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
+	"editor.defaultFormatter": null,
 
 	// Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
 	"editor.detectIndentation": true,
@@ -130,6 +152,12 @@
 
 	// Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.
 	"editor.glyphMargin": true,
+
+	// Controls the behavior of 'Go To' commands, like Go To Definition, when multiple target locations exist.
+	//  - peek: Show peek view of the results (default)
+	//  - gotoAndPeek: Go to the primary result and show a peek view
+	//  - goto: Go to the primary result and ignore others
+	"editor.gotoLocation.multiple": "peek",
 
 	// Controls whether the cursor should be hidden in the overview ruler.
 	"editor.hideCursorInOverviewRuler": false,
@@ -235,7 +263,7 @@
 	"editor.renderControlCharacters": false,
 
 	// Render last line number when the file ends with a newline.
-	"editor.renderFinalNewline": false,
+	"editor.renderFinalNewline": true,
 
 	// Controls whether the editor should render indent guides.
 	"editor.renderIndentGuides": true,
@@ -290,14 +318,25 @@
 	// Keep peek editors open even when double clicking their content or when hitting `Escape`.
 	"editor.stablePeek": false,
 
+	// Controls whether some suggestion types should be filtered from IntelliSense. A list of suggestion types can be found here: https://code.visualstudio.com/docs/editor/intellisense#_types-of-completions.
+	"editor.suggest.filteredTypes": {
+		"keyword": true
+	},
+
 	// Controls whether filtering and sorting suggestions accounts for small typos.
 	"editor.suggest.filterGraceful": true,
 
 	// Controls whether sorting favours words that appear close to the cursor.
 	"editor.suggest.localityBonus": false,
 
+	// Controls how many suggestions IntelliSense will show before showing a scrollbar (maximum 15).
+	"editor.suggest.maxVisibleSuggestions": 12,
+
 	// Controls whether remembered suggestion selections are shared between multiple workspaces and windows (needs `editor.suggestSelection`).
 	"editor.suggest.shareSuggestSelections": false,
+
+	// Controls whether to show or hide icons in suggestions.
+	"editor.suggest.showIcons": true,
 
 	// Control whether an active snippet prevents quick suggestions.
 	"editor.suggest.snippetsPreventQuickSuggestions": true,
@@ -369,6 +408,9 @@
 
 	// Controls the width(px) of diff decorations in gutter (added & modified).
 	"scm.diffDecorationsGutterWidth": 3,
+
+	// Controls how many providers are visible in the Source Control Provider section. Set to `0` to be able to manually resize the view.
+	"scm.providers.visible": 10,
 
 	// Controls the visibility of the activity bar in the workbench.
 	"workbench.activityBar.visible": true,
@@ -585,8 +627,7 @@
 	//  - none: Never reopen a window. Always start with an empty one.
 	"window.restoreWindows": "one",
 
-	// Controls the window title based on the active editor. Variables are substituted based on the context:
-	// - `${activeEditorShort}`: the file name (e.g. myFile.txt).
+	// Controls the window title based on the active editor. Variables are substituted based on the context:`${activeEditorShort}`: the file name (e.g. myFile.txt).
 	// - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
 	// - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
 	// - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
@@ -847,6 +888,9 @@
 	//  - on: Enable proxy support for extensions.
 	//  - override: Enable proxy support for extensions, override request options.
 	"http.proxySupport": "override",
+
+	// Controls whether CA certificates should be loaded from the OS. (On Windows and macOS a reload of the window is required after turning this off.)
+	"http.systemCertificates": true,
 
 	// Controls the dispatching logic for key presses to use either `code` (recommended) or `keyCode`.
 	"keyboard.dispatch": "code",
@@ -1268,6 +1312,9 @@
 
 	// Enable/disable TypeScript validation.
 	"typescript.validate.enable": true,
+
+	// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to disable this behavior.
+	"css.completion.triggerPropertyValueCompletion": true,
 
 	// A list of JSON file paths that define custom CSS data that loads custom properties, at directives, pseudo classes / elements.
 	"css.experimental.customData": [],
@@ -1697,7 +1744,7 @@
 	"terminal.integrated.splitCwd": "inherited",
 
 	// Whether to use ConPTY for Windows terminal process communication (requires Windows 10 build number 18309+). Winpty will be used if this is false.
-	"terminal.integrated.windowsEnableConpty": false,
+	"terminal.integrated.windowsEnableConpty": true,
 
 	// Controls whether Problems view should automatically reveal files when opening them.
 	"problems.autoReveal": true,
