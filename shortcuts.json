@@ -132,6 +132,10 @@
                                          "when": "isInDiffEditor" },
     { "key": "ctrl+f",                "command": "editor.action.extensioneditor.hidefind",
                                          "when": "extensionEditorWebviewFocus" },
+    { "key": "alt+down",              "command": "editor.action.extensioneditor.showNextFindTerm",
+                                         "when": "extensionEditorFindWidgetInputFocused" },
+    { "key": "alt+up",                "command": "editor.action.extensioneditor.showPreviousFindTerm",
+                                         "when": "extensionEditorFindWidgetInputFocused" },
     { "key": "ctrl+f",                "command": "editor.action.extensioneditor.showfind",
                                          "when": "extensionEditorWebviewFocus" },
     { "key": "ctrl+shift+i",          "command": "editor.action.formatDocument",
@@ -227,6 +231,10 @@
                                          "when": "webviewEditorFocus" },
     { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
                                          "when": "webviewEditorFocus" },
+    { "key": "alt+down",              "command": "editor.action.webvieweditor.showNextFindTerm",
+                                         "when": "webviewEditorFindWidgetInputFocused" },
+    { "key": "alt+up",                "command": "editor.action.webvieweditor.showPreviousFindTerm",
+                                         "when": "webviewEditorFindWidgetInputFocused" },
     { "key": "ctrl+k ctrl+i",         "command": "editor.debug.action.showDebugHover",
                                          "when": "editorTextFocus && inDebugMode" },
     { "key": "f9",                    "command": "editor.debug.action.toggleBreakpoint",
@@ -462,9 +470,9 @@
     { "key": "escape",                "command": "workbench.action.closeQuickOpen",
                                          "when": "inQuickOpen" },
     { "key": "ctrl+k u",              "command": "workbench.action.closeUnmodifiedEditors" },
+    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "ctrl+w",                "command": "workbench.action.closeWindow",
                                          "when": "!editorIsOpen" },
-    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "f5",                    "command": "workbench.action.debug.continue",
                                          "when": "inDebugMode" },
     { "key": "f6",                    "command": "workbench.action.debug.pause",
@@ -506,8 +514,6 @@
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
     { "key": "up",                    "command": "workbench.action.interactivePlayground.arrowUp",
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "pagedown",              "command": "workbench.action.interactivePlayground.pageDown",
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
     { "key": "pageup",                "command": "workbench.action.interactivePlayground.pageUp",
@@ -534,6 +540,8 @@
     { "key": "alt+8",                 "command": "workbench.action.openEditorAtIndex8" },
     { "key": "alt+9",                 "command": "workbench.action.openEditorAtIndex9" },
     { "key": "ctrl+k ctrl+s",         "command": "workbench.action.openGlobalKeybindings" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
     { "key": "ctrl+,",                "command": "workbench.action.openGlobalSettings" },
     { "key": "alt+0",                 "command": "workbench.action.openLastEditorInGroup" },
     { "key": "ctrl+tab",              "command": "workbench.action.openNextRecentlyUsedEditorInGroup" },
@@ -561,6 +569,10 @@
                                          "when": "terminalFocus" },
     { "key": "ctrl+delete",           "command": "workbench.action.terminal.deleteWordRight",
                                          "when": "terminalFocus" },
+    { "key": "alt+down",              "command": "workbench.action.terminal.findWidget.history.showNext",
+                                         "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible" },
+    { "key": "alt+up",                "command": "workbench.action.terminal.findWidget.history.showPrevious",
+                                         "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
                                          "when": "terminalFocus" },
     { "key": "end",                   "command": "workbench.action.terminal.hideFindWidget",
@@ -719,6 +731,7 @@
     // - editor.action.showSnippets
     // - editor.action.sortLinesAscending
     // - editor.action.sortLinesDescending
+    // - editor.action.toggleMinimap
     // - editor.action.toggleRenderControlCharacter
     // - editor.action.toggleRenderWhitespace
     // - editor.action.transformToLowercase
@@ -764,10 +777,13 @@
     // - git.clone
     // - git.commit
     // - git.commitAll
+    // - git.commitAllAmend
     // - git.commitAllSigned
     // - git.commitStaged
+    // - git.commitStagedAmend
     // - git.commitStagedSigned
     // - git.commitWithInput
+    // - git.createTag
     // - git.deleteBranch
     // - git.ignore
     // - git.init
@@ -782,12 +798,16 @@
     // - git.pullRebase
     // - git.push
     // - git.pushTo
+    // - git.pushWithTags
     // - git.refresh
     // - git.revertSelectedRanges
     // - git.showOutput
     // - git.stage
     // - git.stageAll
     // - git.stageSelectedRanges
+    // - git.stash
+    // - git.stashPop
+    // - git.stashPopLatest
     // - git.sync
     // - git.undoCommit
     // - git.unstage
@@ -814,11 +834,11 @@
     // - paste
     // - repl.action.copyAll
     // - replacePreviousChar
-    // - scm.switch
     // - selectAll
     // - selectFirstSuggestion
     // - selectLastSuggestion
     // - setContext
+    // - setSelection
     // - type
     // - update.showCurrentReleaseNotes
     // - workbench.action.acceptSelectedQuickOpenItem
@@ -959,8 +979,10 @@
     // - workbench.extensions.action.installVSIX
     // - workbench.extensions.action.listOutdatedExtensions
     // - workbench.extensions.action.openExtensionsFolder
+    // - workbench.extensions.action.showAzureExtensions
     // - workbench.extensions.action.showDisabledExtensions
     // - workbench.extensions.action.showEnabledExtensions
+    // - workbench.extensions.action.showExtensionsForLanguage
     // - workbench.extensions.action.showInstalledExtensions
     // - workbench.extensions.action.showLanguageExtensions
     // - workbench.extensions.action.showPopularExtensions
