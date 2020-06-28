@@ -1,5 +1,5 @@
 {
-	// Controls whether the diff editor shows changes in leading or trailing whitespace as diffs.
+	// When enabled, the diff editor ignores changes in leading or trailing whitespace.
 	"diffEditor.ignoreTrimWhitespace": true,
 
 	// Timeout in milliseconds after which diff computation is cancelled. Use 0 for no timeout.
@@ -73,6 +73,9 @@
 	// Controls whether the editor should render the inline color decorators and color picker.
 	"editor.colorDecorators": true,
 
+	// Enable that the selection with the mouse and keys is doing column selection.
+	"editor.columnSelection": false,
+
 	// Controls whether a space character is inserted when commenting.
 	"editor.comments.insertSpace": true,
 
@@ -109,6 +112,7 @@
 	//  - vscode.extension-editing: Provides linting capabilities for authoring extensions.
 	//  - vscode.git: Git SCM Integration
 	//  - vscode.git-ui: Git SCM UI Integration
+	//  - vscode.github-authentication: GitHub Authentication Provider
 	//  - vscode.grunt: Extension to add Grunt capabilities to VS Code.
 	//  - vscode.gulp: Extension to add Gulp capabilities to VSCode.
 	//  - vscode.html-language-features: Provides rich language support for HTML and Handlebar files
@@ -125,8 +129,11 @@
 	//  - vscode.python: Provides syntax highlighting, bracket matching and folding in Python files.
 	//  - vscode.search-result: Provides syntax highlighting and language features for tabbed search results.
 	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
-	//  - vscode.vscode-account
+	//  - vscode.vscode-account: Microsoft authentication provider
 	"editor.defaultFormatter": null,
+
+	// Controls whether the Go to Definition mouse gesture always opens the peek widget.
+	"editor.definitionLinkOpensInPeek": false,
 
 	// Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
 	"editor.detectIndentation": true,
@@ -158,7 +165,9 @@
 	// Controls whether the editor should highlight folded ranges.
 	"editor.foldingHighlight": true,
 
-	// Controls the strategy for computing folding ranges. `auto` uses a language specific folding strategy, if available. `indentation` uses the indentation based folding strategy.
+	// Controls the strategy for computing folding ranges.
+	//  - auto: Use a language-specific folding strategy if available, else the indentation-based one.
+	//  - indentation: Use the indentation-based folding strategy.
 	"editor.foldingStrategy": "auto",
 
 	// Controls the font family.
@@ -289,7 +298,7 @@
 	// Render the actual characters on a line as opposed to color blocks.
 	"editor.minimap.renderCharacters": true,
 
-	// Scale of content drawn in the minimap.
+	// Scale of content drawn in the minimap: 1, 2 or 3.
 	"editor.minimap.scale": 1,
 
 	// Controls when the minimap slider is shown.
@@ -297,6 +306,12 @@
 
 	// Controls the side where to render the minimap.
 	"editor.minimap.side": "right",
+
+	// Controls the size of the minimap.
+	//  - proportional: The minimap has the same size as the editor contents (and might scroll).
+	//  - fill: The minimap will stretch or shrink as necessary to fill the height of the editor (no scrolling).
+	//  - fit: The minimap will shrink as necessary to never be larger than the editor (no scrolling).
+	"editor.minimap.size": "proportional",
 
 	// A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
 	"editor.mouseWheelScrollSensitivity": 1,
@@ -322,6 +337,12 @@
 
 	// Controls whether a border should be drawn around the overview ruler.
 	"editor.overviewRulerBorder": true,
+
+	// Controls the amount of space between the bottom edge of the editor and the last line.
+	"editor.padding.bottom": 0,
+
+	// Controls the amount of space between the top edge of the editor and the first line.
+	"editor.padding.top": 0,
 
 	// Controls whether the parameter hints menu cycles or closes when reaching the end of the list.
 	"editor.parameterHints.cycle": false,
@@ -368,7 +389,7 @@
 	//  - boundary: Render whitespace characters except for single spaces between words.
 	//  - selection: Render whitespace characters only on selected text.
 	//  - all
-	"editor.renderWhitespace": "none",
+	"editor.renderWhitespace": "selection",
 
 	// Controls whether selections should have rounded corners.
 	"editor.roundedSelection": true,
@@ -382,6 +403,9 @@
 	// Controls whether the editor will scroll beyond the last line.
 	"editor.scrollBeyondLastLine": true,
 
+	// Scroll only along the predominant axis when scrolling both vertically and horizontally at the same time. Prevents horizontal drift when scrolling vertically on a trackpad.
+	"editor.scrollPredominantAxis": true,
+
 	// Controls whether the Linux primary clipboard should be supported.
 	"editor.selectionClipboard": true,
 
@@ -389,9 +413,11 @@
 	"editor.selectionHighlight": true,
 
 	// Controls whether the semanticHighlighting is shown for the languages that support it.
-	"editor.semanticHighlighting.enabled": false,
+	"editor.semanticHighlighting.enabled": true,
 
-	// Controls whether the fold controls on the gutter are automatically hidden.
+	// Controls when the folding controls on the gutter are shown.
+	//  - always: Always show the folding controls.
+	//  - mouseover: Only show the folding controls when the mouse is over the gutter.
 	"editor.showFoldingControls": "mouseover",
 
 	// Controls fading out of unused code.
@@ -417,11 +443,8 @@
 	// Controls whether filtering and sorting suggestions accounts for small typos.
 	"editor.suggest.filterGraceful": true,
 
-	// Controls the visibility of the status bar at the bottom of the suggest widget.
-	"editor.suggest.hideStatusBar": true,
-
 	// Controls whether unexpected text modifications while accepting completions should be highlighted, e.g `insertMode` is `replace` but the completion only supports `insert`.
-	"editor.suggest.insertHighlight": false,
+	"editor.suggest.insertHighlight": true,
 
 	// Controls whether words are overwritten when accepting completions. Note that this depends on extensions opting into this feature.
 	//  - insert: Insert suggestion without overwriting text right of the cursor.
@@ -518,8 +541,11 @@
 	// When enabled IntelliSense shows `text`-suggestions.
 	"editor.suggest.showWords": true,
 
-	// Control whether an active snippet prevents quick suggestions.
+	// Controls whether an active snippet prevents quick suggestions.
 	"editor.suggest.snippetsPreventQuickSuggestions": true,
+
+	// Controls the visibility of the status bar at the bottom of the suggest widget.
+	"editor.suggest.statusBar.visible": false,
 
 	// Font size for the suggest widget. When set to `0`, the value of `editor.fontSize` is used.
 	"editor.suggestFontSize": 0,
@@ -553,6 +579,9 @@
 
 	// Remove trailing auto inserted whitespace.
 	"editor.trimAutoWhitespace": true,
+
+	// Controls whether clicking on the empty content after a folded line will unfold the line.
+	"editor.unfoldOnClickAfterEndOfLine": false,
 
 	// Inserting and deleting whitespace follows tab stops.
 	"editor.useTabStops": true,
@@ -713,6 +742,11 @@
 	//  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
 	"workbench.editor.tabSizing": "fit",
 
+	// Controls the format of the label for an untitled editor.
+	//  - content: The name of the untitled file is derived from the contents of its first line unless it has an associated file path. It will fallback to the name in case the line is empty or contains no word characters.
+	//  - name: The name of the untitled file is not derived from the contents of the file.
+	"workbench.editor.untitled.labelFormat": "content",
+
 	// Fetches experiments to run from a Microsoft online service.
 	"workbench.enableExperiments": true,
 
@@ -745,7 +779,7 @@
 	// Controls how to open items in trees and lists using the mouse (if supported). For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. 
 	"workbench.list.openMode": "singleClick",
 
-	// Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom or on the right of the workbench.
+	// Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom, right, or left of the workbench.
 	"workbench.panel.defaultLocation": "bottom",
 
 	// Specifies the preferred color theme for dark OS appearance when 'window.autoDetectColorScheme' is enabled.
@@ -777,7 +811,7 @@
 	// Controls whether to use the split JSON editor when editing settings as JSON.
 	"workbench.settings.useSplitJSON": false,
 
-	// Controls the location of the sidebar. It can either show on the left or right of the workbench.
+	// Controls the location of the sidebar and activity bar. They can either show on the left or right of the workbench.
 	"workbench.sideBar.location": "left",
 
 	// Controls which editor is shown at startup, if none are restored from the previous session.
@@ -808,7 +842,7 @@
 	"workbench.view.alwaysShowHeaderActions": false,
 
 	// Controls whether specific views will have a context menu entry allowing them to be moved to a new container. Currently, this setting only affects the outline view and views contributed by extensions.
-	"workbench.view.experimental.allowMovingToNewContainer": false,
+	"workbench.view.experimental.allowMovingToNewContainer": true,
 
 	// Controls whether closing the last editor should also close the window. This setting only applies for windows that do not show folders.
 	"window.closeWhenEmpty": false,
@@ -1092,9 +1126,6 @@
 	//  - alwaysExpand
 	"search.collapseResults": "alwaysExpand",
 
-	// Experimental: When enabled, allows opening workspace search results in an editor.
-	"search.enableSearchEditorPreview": false,
-
 	// Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the `files.exclude` setting. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
 	"search.exclude": {
 		"**/node_modules": true,
@@ -1118,13 +1149,11 @@
 	// Whether to include results from a global symbol search in the file results for Quick Open.
 	"search.quickOpen.includeSymbols": false,
 
-	// Configure effect of double clicking a result in a Search Editor.
-	// 
-	//  `search.enableSearchEditorPreview` must be enabled for this setting to have an effect.
+	// Configure effect of double clicking a result in a search editor.
 	//  - selectWord: Double clicking selects the word under the cursor.
 	//  - goToLocation: Double clicking opens the result in the active editor group.
 	//  - openLocationToSide: Double clicking opens the result in the editor group to the side, creating one if it does not yet exist.
-	"search.searchEditorPreview.doubleClickBehaviour": "goToLocation",
+	"search.searchEditor.doubleClickBehaviour": "goToLocation",
 
 	// Search all files as you type.
 	"search.searchOnType": true,
@@ -1214,6 +1243,9 @@
 	// Controls the font size in pixels in the debug console.
 	"debug.console.fontSize": 14,
 
+	// Controls if the debug console should suggest previously typed input.
+	"debug.console.historySuggestions": true,
+
 	// Controls the line height in pixels in the debug console. Use 0 to compute the line height from the font size.
 	"debug.console.lineHeight": 0,
 
@@ -1236,6 +1268,7 @@
 	//  - debugAnyway: Ignore task errors and start debugging.
 	//  - showErrors: Show the Problems view and do not start debugging.
 	//  - prompt: Prompt user.
+	//  - abort: Cancel debugging.
 	"debug.onTaskErrors": "prompt",
 
 	// Controls when the debug view should open.
@@ -1647,6 +1680,9 @@
 	// See the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.
 	"typescript.tsdk": null,
 
+	// (Experimental) Enables project wide error reporting.
+	"typescript.tsserver.experimental.enableProjectDiagnostics": false,
+
 	// Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 	"typescript.tsserver.log": "off",
 
@@ -1661,6 +1697,9 @@
 
 	// Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols. Requires using TypeScript 3.4.0 or newer in the workspace.
 	"typescript.tsserver.useSeparateSyntaxServer": true,
+
+	// Configure which watching strategies should be used to keep track of files and directories. Requires using TypeScript 3.8+ in the workspace.
+	"typescript.tsserver.watchOptions": {},
 
 	// Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Requires using TypeScript 2.9 or newer in the workspace.
 	//  - prompt: Prompt on each rename.
@@ -2095,9 +2134,6 @@
 	// Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows. Set to `null` to delete the environment variable.
 	"terminal.integrated.env.windows": {},
 
-	// An experimental setting that will refresh the terminal renderer when the system is resumed.
-	"terminal.integrated.experimentalRefreshOnResume": false,
-
 	// An experimental setting that will use the terminal title event for the dropdown title. This setting will only apply to new terminals.
 	"terminal.integrated.experimentalUseTitleEvent": false,
 
@@ -2188,10 +2224,15 @@
 	//  - inherited: On macOS and Linux, a new split terminal will use the working directory of the parent terminal. On Windows, this behaves the same as initial.
 	"terminal.integrated.splitCwd": "inherited",
 
+	// Controls what version of unicode to use when evaluating the width of characters in the terminal. If you experience emoji or other wide characters not taking up the right amount of space or backspace either deleting too much or too little then you may want to try tweaking this setting.
+	//  - 6: Version 6 of unicode, this is an older version which should work better on older systems.
+	//  - 11: Version 11 of unicode, this version provides better support on modern systems that use modern versions of unicode.
+	"terminal.integrated.unicodeVersion": "11",
+
 	// Whether to use ConPTY for Windows terminal process communication (requires Windows 10 build number 18309+). Winpty will be used if this is false.
 	"terminal.integrated.windowsEnableConpty": true,
 
-	// Controls enablement of `provideTasks` for all task provider extension. If the Tasks: Run Task command is slow, disabling auto detect for task providers may help. Individual extensions my provide settings to disabled auto detection.
+	// Controls enablement of `provideTasks` for all task provider extension. If the Tasks: Run Task command is slow, disabling auto detect for task providers may help. Individual extensions may also provide settings that disable auto detection.
 	"task.autoDetect": "on",
 
 	// Configures whether to show the problem matcher prompt when running a task. Set to `true` to never prompt, or use a dictionary of task types to turn off prompting only for specific task types.
@@ -2417,6 +2458,9 @@
 	// When enabled outline shows `variable`-symbols.
 	"outline.showVariables": true,
 
+	// Experimental: An array of Timeline sources that should be excluded from the Timeline view
+	"timeline.excludeSources": null,
+
 	// Experimental: When enabled, shows a Timeline view in the Explorer sidebar.
 	"timeline.showView": false,
 
@@ -2501,14 +2545,6 @@
 		"editor.autoIndent": "advanced"
 	},
 
-	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
-	"workbench.settings.enableNaturalLanguageSearch": true,
-
-	// Controls the behavior of the settings editor Table of Contents while searching.
-	//  - hide: Hide the Table of Contents while searching.
-	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
-	"workbench.settings.settingsSearchTocBehavior": "filter",
-
 	// When enabled extensions are downloaded locally and installed on remote.
 	"remote.downloadExtensionsLocally": false,
 
@@ -2521,6 +2557,14 @@
 
 	// Restores the ports you forwarded in a workspace.
 	"remote.restoreForwardedPorts": false,
+
+	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
+	"workbench.settings.enableNaturalLanguageSearch": true,
+
+	// Controls the behavior of the settings editor Table of Contents while searching.
+	//  - hide: Hide the Table of Contents while searching.
+	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
+	"workbench.settings.settingsSearchTocBehavior": "filter",
 
 	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
 	//  - disabled: Auto attach is disabled and not shown in status bar.
@@ -2655,7 +2699,7 @@
 	// Controls whether the Git Sync command appears in the status bar.
 	"git.enableStatusBarSync": true,
 
-	// Fetch all branches when pulling or just the current one.
+	// When enabled, fetch all branches when pulling. Otherwise, fetch just the current one.
 	"git.fetchOnPull": false,
 
 	// List of git repositories to ignore.
