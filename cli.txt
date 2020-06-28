@@ -1,4 +1,4 @@
-Visual Studio Code 1.7.2
+Visual Studio Code 1.8.1
 
 Usage: code [options] [paths...]
 
@@ -18,7 +18,7 @@ Options:
   --verbose                   Print verbose output (implies --wait).
   -w, --wait                  Wait for the window to be closed before
                               returning.
-  --extensionHomePath         Set the root path for extensions.
+  --extensions-dir <dir>      Set the root path for extensions.
   --list-extensions           List the installed extensions.
   --show-versions             Show versions of installed extensions, when using
                               --list-extension.
