@@ -1,5 +1,8 @@
 # vscode default settings
 
+## collect from version 1.37:
+- Telemetry
+
 ## collect from version 1.5:
 - VSCode CLI
 - Default Settings
