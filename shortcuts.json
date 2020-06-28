@@ -114,7 +114,7 @@
     { "key": "ctrl+shift+a",          "command": "editor.action.blockComment",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+f2",               "command": "editor.action.changeAll",
-                                         "when": "editorTextFocus && !editorReadonly" },
+                                         "when": "editorTextFocus && editorTextFocus && !editorReadonly" },
     { "key": "ctrl+c",                "command": "editor.action.clipboardCopyAction",
                                          "when": "textInputFocus" },
     { "key": "ctrl+x",                "command": "editor.action.clipboardCutAction",
@@ -354,10 +354,10 @@
                                          "when": "editorFocus && findWidgetVisible" },
     { "key": "ctrl+alt+enter",        "command": "editor.action.replaceAll",
                                          "when": "editorFocus && findWidgetVisible" },
-    { "key": "enter",                 "command": "editor.action.replaceOne",
-                                         "when": "editorFocus && findWidgetVisible && replaceInputFocussed" },
     { "key": "ctrl+shift+1",          "command": "editor.action.replaceOne",
                                          "when": "editorFocus && findWidgetVisible" },
+    { "key": "enter",                 "command": "editor.action.replaceOne",
+                                         "when": "editorFocus && findWidgetVisible && replaceInputFocussed" },
     { "key": "alt+enter",             "command": "editor.action.selectAllMatches",
                                          "when": "editorFocus && findWidgetVisible" },
     { "key": "alt+c",                 "command": "toggleFindCaseSensitive",
@@ -404,7 +404,7 @@
                                          "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible" },
     { "key": "tab",                   "command": "acceptSelectedSuggestion",
                                          "when": "suggestWidgetVisible && textInputFocus" },
-    { "key": "enter",                 "command": "acceptSelectedSuggestionOnEnter",
+    { "key": "enter",                 "command": "acceptSelectedSuggestion",
                                          "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus" },
     { "key": "shift+escape",          "command": "hideSuggestWidget",
                                          "when": "suggestWidgetVisible && textInputFocus" },
@@ -490,8 +490,12 @@
                                          "when": "watchExpressionsFocused && !expressionSelected" },
     { "key": "shift+f9",              "command": "editor.debug.action.toggleInlineBreakpoint",
                                          "when": "editorTextFocus" },
+    { "key": "shift+enter",           "command": "editor.refocusCallHierarchy",
+                                         "when": "callHierarchyVisible" },
     { "key": "shift+alt+h",           "command": "editor.showCallHierarchy",
-                                         "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor" },
+                                         "when": "editorHasCallHierarchyProvider && editorTextFocus && !callHierarchyVisible && !inReferenceSearchEditor" },
+    { "key": "shift+alt+h",           "command": "editor.toggleCallHierarchy",
+                                         "when": "callHierarchyVisible" },
     { "key": "ctrl+enter",            "command": "explorer.openToSide",
                                          "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus" },
     { "key": "shift+alt+f",           "command": "filesExplorer.findInFolder",
@@ -545,6 +549,14 @@
     { "key": "pageup",                "command": "list.focusPageUp",
                                          "when": "listFocus && !inputFocus" },
     { "key": "up",                    "command": "list.focusUp",
+                                         "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+down",             "command": "list.scrollDown",
+                                         "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+left",             "command": "list.scrollLeft",
+                                         "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+right",            "command": "list.scrollRight",
+                                         "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+up",               "command": "list.scrollUp",
                                          "when": "listFocus && !inputFocus" },
     { "key": "enter",                 "command": "list.select",
                                          "when": "listFocus && !inputFocus" },
@@ -636,8 +648,7 @@
     { "key": "ctrl+k ctrl+w",         "command": "workbench.action.closeAllEditors" },
     { "key": "ctrl+k ctrl+shift+w",   "command": "workbench.action.closeAllGroups" },
     { "key": "ctrl+k w",              "command": "workbench.action.closeEditorsInGroup" },
-    { "key": "ctrl+k f",              "command": "workbench.action.closeFolder",
-                                         "when": "supportsWorkspaces" },
+    { "key": "ctrl+k f",              "command": "workbench.action.closeFolder" },
     { "key": "ctrl+w",                "command": "workbench.action.closeGroup",
                                          "when": "activeEditorGroupEmpty && multipleEditorGroups" },
     { "key": "shift+escape",          "command": "workbench.action.closeQuickOpen",
@@ -770,15 +781,15 @@
     { "key": "shift+enter",           "command": "workbench.action.terminal.findNext",
                                          "when": "terminalFindWidgetFocused" },
     { "key": "f3",                    "command": "workbench.action.terminal.findNext",
-                                         "when": "terminalFindWidgetFocused" },
-    { "key": "f3",                    "command": "workbench.action.terminal.findNextTerminalFocus",
                                          "when": "terminalFocus" },
+    { "key": "f3",                    "command": "workbench.action.terminal.findNext",
+                                         "when": "terminalFindWidgetFocused" },
     { "key": "enter",                 "command": "workbench.action.terminal.findPrevious",
                                          "when": "terminalFindWidgetFocused" },
     { "key": "shift+f3",              "command": "workbench.action.terminal.findPrevious",
-                                         "when": "terminalFindWidgetFocused" },
-    { "key": "shift+f3",              "command": "workbench.action.terminal.findPreviousTerminalFocus",
                                          "when": "terminalFocus" },
+    { "key": "shift+f3",              "command": "workbench.action.terminal.findPrevious",
+                                         "when": "terminalFindWidgetFocused" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
                                          "when": "terminalFocus" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
@@ -830,15 +841,15 @@
                                          "when": "terminalFocus" },
     { "key": "alt+c",                 "command": "workbench.action.terminal.toggleFindCaseSensitive",
                                          "when": "terminalFindWidgetFocused" },
-    { "key": "alt+c",                 "command": "workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
+    { "key": "alt+c",                 "command": "workbench.action.terminal.toggleFindCaseSensitive",
                                          "when": "terminalFocus" },
     { "key": "alt+r",                 "command": "workbench.action.terminal.toggleFindRegex",
                                          "when": "terminalFindWidgetFocused" },
-    { "key": "alt+r",                 "command": "workbench.action.terminal.toggleFindRegexTerminalFocus",
+    { "key": "alt+r",                 "command": "workbench.action.terminal.toggleFindRegex",
                                          "when": "terminalFocus" },
     { "key": "alt+w",                 "command": "workbench.action.terminal.toggleFindWholeWord",
                                          "when": "terminalFindWidgetFocused" },
-    { "key": "alt+w",                 "command": "workbench.action.terminal.toggleFindWholeWordTerminalFocus",
+    { "key": "alt+w",                 "command": "workbench.action.terminal.toggleFindWholeWord",
                                          "when": "terminalFocus" },
     { "key": "ctrl+`",                "command": "workbench.action.terminal.toggleTerminal" },
     { "key": "shift+alt+0",           "command": "workbench.action.toggleEditorGroupLayout" },
@@ -954,6 +965,7 @@
     
     
     // Here are other available commands: 
+    // - acceptSelectedSuggestionOnEnter
     // - acceptSnippet
     // - actions.findWithSelection
     // - addRootFolder
@@ -973,6 +985,7 @@
     // - cursorColumnSelectUp
     // - cursorLineEnd
     // - cursorLineStart
+    // - cursorRedo
     // - cursorWordEndLeft
     // - cursorWordEndLeftSelect
     // - cursorWordLeft
@@ -1016,6 +1029,7 @@
     // - editor.action.clearoutput
     // - editor.action.clipboardCopyWithSyntaxHighlightingAction
     // - editor.action.detectIndentation
+    // - editor.action.duplicateSelection
     // - editor.action.findReferences
     // - editor.action.fixAll
     // - editor.action.fontZoomIn
@@ -1046,7 +1060,7 @@
     // - editor.action.reindentlines
     // - editor.action.reindentselectedlines
     // - editor.action.revealDeclaration
-    // - editor.action.selectToBracket
+    // - editor.action.showDefinitionPreviewHover
     // - editor.action.showSnippets
     // - editor.action.smartSelect.grow
     // - editor.action.sortLinesAscending
@@ -1122,6 +1136,8 @@
     // - git.checkout
     // - git.clean
     // - git.cleanAll
+    // - git.cleanAllTracked
+    // - git.cleanAllUntracked
     // - git.clone
     // - git.close
     // - git.commit
@@ -1134,6 +1150,7 @@
     // - git.commitStagedSigned
     // - git.createTag
     // - git.deleteBranch
+    // - git.deleteTag
     // - git.fetch
     // - git.fetchAll
     // - git.fetchPrune
@@ -1160,16 +1177,20 @@
     // - git.removeRemote
     // - git.renameBranch
     // - git.restoreCommitTemplate
+    // - git.revealInExplorer
     // - git.revertChange
     // - git.revertSelectedRanges
     // - git.showOutput
     // - git.stage
     // - git.stageAll
+    // - git.stageAllTracked
+    // - git.stageAllUntracked
     // - git.stageChange
     // - git.stageSelectedRanges
     // - git.stash
     // - git.stashApply
     // - git.stashApplyLatest
+    // - git.stashDrop
     // - git.stashIncludeUntracked
     // - git.stashPop
     // - git.stashPopLatest
@@ -1179,6 +1200,8 @@
     // - git.unstage
     // - git.unstageAll
     // - git.unstageSelectedRanges
+    // - imagePreview.zoomIn
+    // - imagePreview.zoomOut
     // - javascript.goToProjectConfig
     // - javascript.reloadProjects
     // - keybindings.editor.copyCommandKeybindingEntry
@@ -1221,6 +1244,7 @@
     // - npm.refresh
     // - npm.runInstall
     // - npm.runScript
+    // - npm.runScriptFromFolder
     // - npm.runSelectedScript
     // - openInTerminal
     // - openWith
@@ -1276,6 +1300,7 @@
     // - typescript.restartTsServer
     // - typescript.selectTypeScriptVersion
     // - update.check
+    // - update.checkForVSCodeUpdate
     // - update.checking
     // - update.downloadNow
     // - update.downloading
@@ -1298,6 +1323,7 @@
     // - workbench.action.closePanel
     // - workbench.action.configureLanguageBasedSettings
     // - workbench.action.configureLocale
+    // - workbench.action.configureRuntimeArguments
     // - workbench.action.debug.configure
     // - workbench.action.debug.disconnect
     // - workbench.action.debug.restartFrame
@@ -1530,6 +1556,7 @@
     // - workbench.extensions.action.installVSIX
     // - workbench.extensions.action.listBuiltInExtensions
     // - workbench.extensions.action.listOutdatedExtensions
+    // - workbench.extensions.action.manageAuthorizedExtensionURIs
     // - workbench.extensions.action.openExtensionsFolder
     // - workbench.extensions.action.reinstall
     // - workbench.extensions.action.saveExtensionHostProfile

@@ -645,6 +645,58 @@
                     "endPoint": "none"
                 }
             },
+            "keyboardLayout": {
+                "currentkeyboardlayout.name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.text": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.model": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.layout": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.variant": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.options": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.rules": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.lang": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.localizedname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "problems.selectDiagnostic": {
                 "source": {
                     "classification": "PublicNonPersonalData",
@@ -1717,58 +1769,6 @@
                     "isMeasurement": true
                 }
             },
-            "keyboardLayout": {
-                "currentkeyboardlayout.name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.text": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.model": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.layout": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.variant": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.options": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.rules": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.lang": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.localizedname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
             "languagePackSuggestion:popup": {
                 "userreaction": {
                     "classification": "SystemMetaData",
@@ -1892,6 +1892,18 @@
             "extensionWorkspaceRecommendations:popup": {
                 "userreaction": {
                     "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "exeExtensionRecommendations:alreadyInstalled": {
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "exename": {
+                    "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
@@ -2099,6 +2111,24 @@
                     "endPoint": "none"
                 }
             },
+            "exthostunresponsive": {
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
+                },
+                "duration": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "data": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
+                }
+            },
             "extension:enable": {
                 "id": {
                     "classification": "SystemMetaData",
@@ -2204,24 +2234,6 @@
                 "querysource": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "exthostunresponsive": {
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none"
-                },
-                "duration": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "data": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 }
             },
@@ -2411,6 +2423,13 @@
                     "endPoint": "none"
                 }
             },
+            "problemMatcherDisabled": {
+                "type": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "taskService.template": {
                 "templateid": {
                     "classification": "SystemMetaData",
@@ -2511,6 +2530,13 @@
                     "endPoint": "none"
                 }
             },
+            "windowsEdition": {
+                "edition": {
+                    "classification": "SystemMetaData",
+                    "purpose": "BusinessInsight",
+                    "endPoint": "none"
+                }
+            },
             "resolveProxy.stats": {
                 "type": {
                     "classification": "SystemMetaData",
@@ -2523,6 +2549,13 @@
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "webviewMissingCsp": {
+                "extension": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
             },
@@ -2570,13 +2603,6 @@
                 },
                 "reasonid": {
                     "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "webviewMissingCsp": {
-                "extension": {
-                    "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
@@ -2849,6 +2875,13 @@
                 }
             },
             "output.channel.creation.error": {},
+            "accessibility": {
+                "enabled": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "settingsRead": {
                 "settingstype": {
                     "classification": "SystemMetaData",
@@ -3388,7 +3421,8 @@
             "common.msftinternal": {
                 "classification": "SystemMetaData",
                 "purpose": "FeatureInsight",
-                "endPoint": "none"
+                "endPoint": "none",
+                "isMeasurement": true
             },
             "common.snap": {
                 "classification": "SystemMetaData",
@@ -3406,6 +3440,11 @@
         "events": {
             "typescript-language-features/tsserver.spawned": {
                 "localtypescriptversion": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "typescriptversionsource": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -3471,6 +3510,28 @@
                     "endPoint": "none"
                 }
             },
+            "typescript-language-features/completions.execute": {
+                "duration": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "type": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "count": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "version": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "typescript-language-features/languageServiceErrorResponse": {
                 "command": {
                     "classification": "SystemMetaData",
@@ -3498,41 +3559,12 @@
                     "endPoint": "none"
                 }
             },
-            "typescript-language-features/completions.execute": {
-                "duration": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "type": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "count": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "version": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
             "typescript-language-features/refactor.execute": {
                 "action": {
                     "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "version": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "typescript-language-features/organizeImports.execute": {
                 "version": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
@@ -3557,6 +3589,13 @@
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
+                "version": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "typescript-language-features/organizeImports.execute": {
                 "version": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",

@@ -2,6 +2,9 @@
 	// Controls whether the diff editor shows changes in leading or trailing whitespace as diffs.
 	"diffEditor.ignoreTrimWhitespace": true,
 
+	// Timeout in milliseconds after which diff computation is cancelled. Use 0 for no timeout.
+	"diffEditor.maxComputationTime": 5000,
+
 	// Controls whether the diff editor shows +/- indicators for added/removed changes.
 	"diffEditor.renderIndicators": true,
 
@@ -80,6 +83,11 @@
 	// Controls the minimal number of visible leading and trailing lines surrounding the cursor. Known as 'scrollOff' or `scrollOffset` in some other editors.
 	"editor.cursorSurroundingLines": 0,
 
+	// Controls when `cursorSurroundingLines` should be enforced
+	//  - default: `cursorSurroundingLines` is enforced only when triggered from keyboard and api
+	//  - all: `cursorSurroundingLines` is enforced always.
+	"editor.cursorSurroundingLinesStyle": "default",
+
 	// Controls the width of the cursor when `editor.cursorStyle` is set to `line`.
 	"editor.cursorWidth": 0,
 
@@ -126,7 +134,10 @@
 	"editor.find.addExtraSpaceOnTop": true,
 
 	// Controls whether the find operation is carried out on selected text or the entire file in the editor.
-	"editor.find.autoFindInSelection": false,
+	//  - never: Never turn on Find in selection automatically (default)
+	//  - always: Always turn on Find in selection automatically
+	//  - multiline: Turn on Find in selection automatically when multiple lines of content are selected.
+	"editor.find.autoFindInSelection": "never",
 
 	// Controls whether the search string in the Find Widget is seeded from the editor selection.
 	"editor.find.seedSearchStringFromSelection": true,
@@ -140,7 +151,7 @@
 	// Controls the font family.
 	"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
-	// Enables/Disables font ligatures.
+	// Configures font ligatures.
 	"editor.fontLigatures": false,
 
 	// Controls the font size in pixels.
@@ -225,7 +236,10 @@
 	// Render the actual characters on a line as opposed to color blocks.
 	"editor.minimap.renderCharacters": true,
 
-	// Controls whether the minimap slider is automatically hidden.
+	// Scale of content drawn in the minimap.
+	"editor.minimap.scale": 1,
+
+	// Controls when the minimap slider is shown.
 	"editor.minimap.showSlider": "mouseover",
 
 	// Controls the side where to render the minimap.
@@ -255,9 +269,6 @@
 
 	// Controls whether a border should be drawn around the overview ruler.
 	"editor.overviewRulerBorder": true,
-
-	// Controls the number of decorations that can show up at the same position in the overview ruler.
-	"editor.overviewRulerLanes": 3,
 
 	// Controls whether the parameter hints menu cycles or closes when reaching the end of the list.
 	"editor.parameterHints.cycle": false,
@@ -335,11 +346,9 @@
 	// Keep peek editors open even when double clicking their content or when hitting `Escape`.
 	"editor.stablePeek": false,
 
-	// Controls whether some suggestion types should be filtered from IntelliSense. A list of suggestion types can be found here: https://code.visualstudio.com/docs/editor/intellisense#_types-of-completions.
-	"editor.suggest.filteredTypes": {
-		"keyword": true,
-		"snippet": true
-	},
+	// This setting is deprecated, please use separate settings like 'editor.suggest.showKeywords' or 'editor.suggest.showSnippets' instead.
+	// 
+	"editor.suggest.filteredTypes": {},
 
 	// Controls whether filtering and sorting suggestions accounts for small typos.
 	"editor.suggest.filterGraceful": true,
@@ -353,8 +362,86 @@
 	// Controls whether remembered suggestion selections are shared between multiple workspaces and windows (needs `editor.suggestSelection`).
 	"editor.suggest.shareSuggestSelections": false,
 
+	// When enabled IntelliSense shows `class`-suggestions.
+	"editor.suggest.showClasses": true,
+
+	// When enabled IntelliSense shows `color`-suggestions.
+	"editor.suggest.showColors": true,
+
+	// When enabled IntelliSense shows `constant`-suggestions.
+	"editor.suggest.showConstants": true,
+
+	// When enabled IntelliSense shows `constructor`-suggestions.
+	"editor.suggest.showConstructors": true,
+
+	// When enabled IntelliSense shows `customcolor`-suggestions.
+	"editor.suggest.showCustomcolors": true,
+
+	// When enabled IntelliSense shows `enumMember`-suggestions.
+	"editor.suggest.showEnumMembers": true,
+
+	// When enabled IntelliSense shows `enum`-suggestions.
+	"editor.suggest.showEnums": true,
+
+	// When enabled IntelliSense shows `event`-suggestions.
+	"editor.suggest.showEvents": true,
+
+	// When enabled IntelliSense shows `field`-suggestions.
+	"editor.suggest.showFields": true,
+
+	// When enabled IntelliSense shows `file`-suggestions.
+	"editor.suggest.showFiles": true,
+
+	// When enabled IntelliSense shows `folder`-suggestions.
+	"editor.suggest.showFolders": true,
+
+	// When enabled IntelliSense shows `function`-suggestions.
+	"editor.suggest.showFunctions": true,
+
 	// Controls whether to show or hide icons in suggestions.
 	"editor.suggest.showIcons": true,
+
+	// When enabled IntelliSense shows `interface`-suggestions.
+	"editor.suggest.showInterfaces": true,
+
+	// When enabled IntelliSense shows `keyword`-suggestions.
+	"editor.suggest.showKeywords": true,
+
+	// When enabled IntelliSense shows `method`-suggestions.
+	"editor.suggest.showMethods": true,
+
+	// When enabled IntelliSense shows `module`-suggestions.
+	"editor.suggest.showModules": true,
+
+	// When enabled IntelliSense shows `operator`-suggestions.
+	"editor.suggest.showOperators": true,
+
+	// When enabled IntelliSense shows `property`-suggestions.
+	"editor.suggest.showProperties": true,
+
+	// When enabled IntelliSense shows `reference`-suggestions.
+	"editor.suggest.showReferences": true,
+
+	// When enabled IntelliSense shows `snippet`-suggestions.
+	"editor.suggest.showSnippets": true,
+
+	// When enabled IntelliSense shows `struct`-suggestions.
+	"editor.suggest.showStructs": true,
+
+	// When enabled IntelliSense shows `typeParameter`-suggestions.
+	"editor.suggest.showTypeParameters": true,
+
+	// When enabled IntelliSense shows `unit`-suggestions.
+	"editor.suggest.showUnits": true,
+
+	// When enabled IntelliSense shows `value`-suggestions.
+	"editor.suggest.showValues": true,
+
+	// When enabled IntelliSense shows `variable`-suggestions.
+	"editor.suggest.showVariables": true,
+
+	// When enabled IntelliSense shows `text`-suggestions.
+	"editor.suggest.showWords": true,
 
 	// Control whether an active snippet prevents quick suggestions.
 	"editor.suggest.snippetsPreventQuickSuggestions": true,
@@ -421,6 +508,9 @@
 	// Controls whether to show the Source Control Provider section even when there's only one Provider registered.
 	"scm.alwaysShowProviders": false,
 
+	// Controls whether the SCM view should automatically reveal and select files when opening them.
+	"scm.autoReveal": true,
+
 	// Controls the Source Control count badge.
 	//  - all: Show the sum of all Source Control Providers count badges.
 	//  - focused: Show the count badge of the focused Source Control Provider.
@@ -434,6 +524,11 @@
 
 	// Controls diff decorations in the editor.
 	"scm.diffDecorations": "all",
+
+	// Controls the visibility of the Source Control diff decorator in the gutter.
+	//  - always: Show the diff decorator in the gutter at all times.
+	//  - hover: Show the diff decorator in the gutter only on hover.
+	"scm.diffDecorationsGutterVisibility": "always",
 
 	// Controls the width(px) of diff decorations in gutter (added & modified).
 	"scm.diffDecorationsGutterWidth": 3,
@@ -504,6 +599,11 @@
 
 	// Controls whether opened editors should show in tabs or not.
 	"workbench.editor.showTabs": true,
+
+	// Controls the sizing of editor groups when splitting them.
+	//  - distribute: Splits all the editor groups to equal parts.
+	//  - split: Splits the active editor group to equal parts.
+	"workbench.editor.splitSizing": "distribute",
 
 	// Controls the position of the editor's tabs close buttons, or disables them when set to 'off'.
 	"workbench.editor.tabCloseButton": "right",
@@ -623,7 +723,7 @@
 	//  - visible: Menu is always visible even in full screen mode.
 	//  - toggle: Menu is hidden but can be displayed via Alt key.
 	//  - hidden: Menu is always hidden.
-	//  - compact: Menu is displayed as a compact button in the sidebar.
+	//  - compact: Menu is displayed as a compact button in the sidebar. This value is ignored when 'window.titleBarStyle' is 'native'.
 	"window.menuBarVisibility": "default",
 
 	// Controls the dimensions of opening a new window when at least one window is already opened. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
@@ -828,6 +928,9 @@
 	// Controls whether a window should restore to zen mode if it was exited in zen mode.
 	"zenMode.restore": false,
 
+	// Controls whether notifications are shown while in zen mode. If true, only error notifications will pop out.
+	"zenMode.silentNotifications": true,
+
 	// Controls whether the explorer should automatically reveal and select files when opening them.
 	"explorer.autoReveal": true,
 
@@ -894,9 +997,6 @@
 	// Whether to include results from a global symbol search in the file results for Quick Open.
 	"search.quickOpen.includeSymbols": false,
 
-	// Whether to run search in the extension host. Requires a restart to take effect.
-	"search.runInExtensionHost": false,
-
 	// Controls whether to show line numbers for search results.
 	"search.showLineNumbers": false,
 
@@ -919,10 +1019,6 @@
 	// Deprecated. Consider "search.usePCRE2" for advanced regex feature support.
 	// This setting is deprecated and now falls back on "search.usePCRE2".
 	"search.useRipgrep": true,
-
-	// Deprecated. Use "search.runInExtensionHost" instead
-	// Whether to run search in the extension host
-	"searchRipgrep.enable": false,
 
 	// The proxy setting to use. If not set, will be inherited from the `http_proxy` and `https_proxy` environment variables.
 	"http.proxy": "",
@@ -1001,6 +1097,9 @@
 	// Automatically open the explorer view at the end of a debug session.
 	"debug.openExplorerOnEnd": false,
 
+	// Controls whether breakpoints should be shown in the overview ruler.
+	"debug.showBreakpointsInOverviewRuler": false,
+
 	// Controls when the debug status bar should be visible.
 	//  - never: Never show debug in status bar
 	//  - always: Always show debug in status bar
@@ -1028,10 +1127,6 @@
 	// 
 	// The file paths are relative to workspace and only workspace folder settings are considered.
 	"html.customData": [],
-
-	// This setting is no longe experimental. Use `html.customData` instead.
-	// A list of JSON file paths that define custom tags, properties and other HTML syntax constructs. Only workspace folder setting will be read.
-	"html.experimental.customData": [],
 
 	// List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.
 	"html.format.contentUnformatted": "pre,code,textarea",
@@ -1240,7 +1335,10 @@
 	// Enabled/disable autocomplete suggestions.
 	"javascript.suggest.enabled": true,
 
-	// Enable/disable including unique names from the file in JavaScript suggestions.
+	// Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
+	"javascript.suggest.includeAutomaticOptionalChainCompletions": true,
+
+	// Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.
 	"javascript.suggest.names": true,
 
 	// Enable/disable suggestions for paths in import statements and require calls.
@@ -1360,6 +1458,9 @@
 	// Enabled/disable autocomplete suggestions.
 	"typescript.suggest.enabled": true,
 
+	// Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
+	"typescript.suggest.includeAutomaticOptionalChainCompletions": true,
+
 	// Enable/disable suggestions for paths in import statements and require calls.
 	"typescript.suggest.paths": true,
 
@@ -1386,6 +1487,9 @@
 
 	// Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 	"typescript.tsserver.log": "off",
+
+	// Set the maximum amount of memory (in MB) to allocate to the TypeScript server process
+	"typescript.tsserver.maxTsServerMemory": 3072,
 
 	// Additional paths to discover TypeScript Language Service plugins. Requires using TypeScript 2.3.0 or newer in the workspace.
 	"typescript.tsserver.pluginPaths": [],
@@ -1417,10 +1521,6 @@
 	// 
 	// The file paths are relative to workspace and only workspace folder settings are considered.
 	"css.customData": [],
-
-	// This setting is no longe experimental. Use `css.customData` instead.
-	// A list of JSON file paths that define custom CSS data that loads custom properties, at directives, pseudo classes / elements.
-	"css.experimental.customData": [],
 
 	// Invalid number of parameters.
 	"css.lint.argumentsInColorFunction": "error",
@@ -1536,6 +1636,9 @@
 	// The universal selector (`*`) is known to be slow.
 	"less.lint.universalSelector": "ignore",
 
+	// Unknown at-rule.
+	"less.lint.unknownAtRules": "warning",
+
 	// Unknown property.
 	"less.lint.unknownProperties": "warning",
 
@@ -1602,6 +1705,9 @@
 	// The universal selector (`*`) is known to be slow.
 	"scss.lint.universalSelector": "ignore",
 
+	// Unknown at-rule.
+	"scss.lint.unknownAtRules": "warning",
+
 	// Unknown property.
 	"scss.lint.unknownProperties": "warning",
 
@@ -1651,6 +1757,9 @@
 
 	// Customizes which terminal to run on Windows.
 	"terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe",
+
+	// Whether or not to allow chord keybindings in the terminal. Note that when this is true and the keystroke results in a chord it will bypass `terminal.integrated.commandsToSkipShell`, setting this to false is particularly useful when you want ctrl+k to go to your shell (not VS Code).
+	"terminal.integrated.allowChords": true,
 
 	// A path that when set will override `terminal.integrated.shell.linux` and ignore `shellArgs` values for automation-related terminal usage like tasks and debug.
 	"terminal.integrated.automationShell.linux": null,
@@ -1714,8 +1823,8 @@
 	// - workbench.action.terminal.deleteToLineStart
 	// - workbench.action.terminal.deleteWordLeft
 	// - workbench.action.terminal.deleteWordRight
-	// - workbench.action.terminal.findNextTerminalFocus
-	// - workbench.action.terminal.findPreviousTerminalFocus
+	// - workbench.action.terminal.findNext
+	// - workbench.action.terminal.findPrevious
 	// - workbench.action.terminal.focus
 	// - workbench.action.terminal.focusAtIndex1
 	// - workbench.action.terminal.focusAtIndex2
@@ -1763,9 +1872,9 @@
 	// - workbench.action.terminal.sendSequence
 	// - workbench.action.terminal.split
 	// - workbench.action.terminal.splitInActiveWorkspace
-	// - workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus
-	// - workbench.action.terminal.toggleFindRegexTerminalFocus
-	// - workbench.action.terminal.toggleFindWholeWordTerminalFocus
+	// - workbench.action.terminal.toggleFindCaseSensitive
+	// - workbench.action.terminal.toggleFindRegex
+	// - workbench.action.terminal.toggleFindWholeWord
 	// - workbench.action.terminal.toggleTerminal
 	// - workbench.action.toggleFullScreen
 	// - workbench.action.toggleMaximizedPanel
@@ -1853,6 +1962,7 @@
 	// Controls how terminal reacts to right click.
 	//  - default: Show the context menu.
 	//  - copyPaste: Copy when there is a selection, otherwise paste.
+	//  - paste: Paste on right click.
 	//  - selectWord: Select the word under the cursor and show the context menu.
 	"terminal.integrated.rightClickBehavior": "default",
 
@@ -1891,6 +2001,24 @@
 	// Whether to use ConPTY for Windows terminal process communication (requires Windows 10 build number 18309+). Winpty will be used if this is false.
 	"terminal.integrated.windowsEnableConpty": true,
 
+	// Controls enablement of `provideTasks` for all task provider extension. If the Tasks: Run Task command is slow, disabling auto detect for task providers may help. Individual extensions my provide settings to disabled auto detection.
+	"task.autoDetect": "on",
+
+	// Configures whether to show the problem matcher prompt when running a task. Set to `true` to never promp, or use a dictionary of task types to turn off prompting only for specific task types.
+	"task.problemMatchers.neverPrompt": false,
+
+	// Controls whether to show the task detail for task that have a detail in the Run Task quick pick.
+	"task.quickOpen.detail": true,
+
+	// Controls the number of recent items tracked in task quick open dialog.
+	"task.quickOpen.history": 30,
+
+	// Controls whether the task quick pick is skipped when there is only one task to pick from.
+	"task.quickOpen.skip": false,
+
+	// Configures whether a warning is shown when a provider is slow
+	"task.slowProviderWarning": true,
+
 	// Controls whether Problems view should automatically reveal files when opening them.
 	"problems.autoReveal": true,
 
@@ -1908,6 +2036,84 @@
 
 	// Render breadcrumb items with icons.
 	"breadcrumbs.icons": true,
+
+	// When enabled breadcrumbs show `array`-symbols.
+	"breadcrumbs.showArrays": true,
+
+	// When enabled breadcrumbs show `boolean`-symbols.
+	"breadcrumbs.showBooleans": true,
+
+	// When enabled breadcrumbs show `class`-symbols.
+	"breadcrumbs.showClasses": true,
+
+	// When enabled breadcrumbs show `constant`-symbols.
+	"breadcrumbs.showConstants": true,
+
+	// When enabled breadcrumbs show `constructor`-symbols.
+	"breadcrumbs.showConstructors": true,
+
+	// When enabled breadcrumbs show `enumMember`-symbols.
+	"breadcrumbs.showEnumMembers": true,
+
+	// When enabled breadcrumbs show `enum`-symbols.
+	"breadcrumbs.showEnums": true,
+
+	// When enabled breadcrumbs show `event`-symbols.
+	"breadcrumbs.showEvents": true,
+
+	// When enabled breadcrumbs show `field`-symbols.
+	"breadcrumbs.showFields": true,
+
+	// When enabled breadcrumbs show `file`-symbols.
+	"breadcrumbs.showFiles": true,
+
+	// When enabled breadcrumbs show `function`-symbols.
+	"breadcrumbs.showFunctions": true,
+
+	// When enabled breadcrumbs show `interface`-symbols.
+	"breadcrumbs.showInterfaces": true,
+
+	// When enabled breadcrumbs show `key`-symbols.
+	"breadcrumbs.showKeys": true,
+
+	// When enabled breadcrumbs show `method`-symbols.
+	"breadcrumbs.showMethods": true,
+
+	// When enabled breadcrumbs show `module`-symbols.
+	"breadcrumbs.showModules": true,
+
+	// When enabled breadcrumbs show `namespace`-symbols.
+	"breadcrumbs.showNamespaces": true,
+
+	// When enabled breadcrumbs show `null`-symbols.
+	"breadcrumbs.showNull": true,
+
+	// When enabled breadcrumbs show `number`-symbols.
+	"breadcrumbs.showNumbers": true,
+
+	// When enabled breadcrumbs show `object`-symbols.
+	"breadcrumbs.showObjects": true,
+
+	// When enabled breadcrumbs show `operator`-symbols.
+	"breadcrumbs.showOperators": true,
+
+	// When enabled breadcrumbs show `package`-symbols.
+	"breadcrumbs.showPackages": true,
+
+	// When enabled breadcrumbs show `property`-symbols.
+	"breadcrumbs.showProperties": true,
+
+	// When enabled breadcrumbs show `string`-symbols.
+	"breadcrumbs.showStrings": true,
+
+	// When enabled breadcrumbs show `struct`-symbols.
+	"breadcrumbs.showStructs": true,
+
+	// When enabled breadcrumbs show `typeParameter`-symbols.
+	"breadcrumbs.showTypeParameters": true,
+
+	// When enabled breadcrumbs show `variable`-symbols.
+	"breadcrumbs.showVariables": true,
 
 	// Controls whether and how symbols are shown in the breadcrumbs view.
 	//  - on: Show all symbols in the breadcrumbs view.
@@ -1939,6 +2145,178 @@
 
 	// Show Errors & Warnings on Outline Elements.
 	"outline.problems.enabled": true,
+
+	// When enabled outline shows `array`-symbols.
+	"outline.showArrays": true,
+
+	// When enabled outline shows `boolean`-symbols.
+	"outline.showBooleans": true,
+
+	// When enabled outline shows `class`-symbols.
+	"outline.showClasses": true,
+
+	// When enabled outline shows `constant`-symbols.
+	"outline.showConstants": true,
+
+	// When enabled outline shows `constructor`-symbols.
+	"outline.showConstructors": true,
+
+	// When enabled outline shows `enumMember`-symbols.
+	"outline.showEnumMembers": true,
+
+	// When enabled outline shows `enum`-symbols.
+	"outline.showEnums": true,
+
+	// When enabled outline shows `event`-symbols.
+	"outline.showEvents": true,
+
+	// When enabled outline shows `field`-symbols.
+	"outline.showFields": true,
+
+	// When enabled outline shows `file`-symbols.
+	"outline.showFiles": true,
+
+	// When enabled outline shows `function`-symbols.
+	"outline.showFunctions": true,
+
+	// When enabled outline shows `interface`-symbols.
+	"outline.showInterfaces": true,
+
+	// When enabled outline shows `key`-symbols.
+	"outline.showKeys": true,
+
+	// When enabled outline shows `method`-symbols.
+	"outline.showMethods": true,
+
+	// When enabled outline shows `module`-symbols.
+	"outline.showModules": true,
+
+	// When enabled outline shows `namespace`-symbols.
+	"outline.showNamespaces": true,
+
+	// When enabled outline shows `null`-symbols.
+	"outline.showNull": true,
+
+	// When enabled outline shows `number`-symbols.
+	"outline.showNumbers": true,
+
+	// When enabled outline shows `object`-symbols.
+	"outline.showObjects": true,
+
+	// When enabled outline shows `operator`-symbols.
+	"outline.showOperators": true,
+
+	// When enabled outline shows `package`-symbols.
+	"outline.showPackages": true,
+
+	// When enabled outline shows `property`-symbols.
+	"outline.showProperties": true,
+
+	// When enabled outline shows `string`-symbols.
+	"outline.showStrings": true,
+
+	// When enabled outline shows `struct`-symbols.
+	"outline.showStructs": true,
+
+	// When enabled outline shows `typeParameter`-symbols.
+	"outline.showTypeParameters": true,
+
+	// When enabled outline shows `variable`-symbols.
+	"outline.showVariables": true,
+
+	// Configure editor settings to be overridden for [git-commit] language.
+	"[git-commit]":  {
+		"editor.rulers": [
+				72
+		]
+	},
+
+	// Configure editor settings to be overridden for [go] language.
+	"[go]":  {
+		"editor.insertSpaces": false
+	},
+
+	// Configure editor settings to be overridden for [json] language.
+	"[json]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		}
+	},
+
+	// Configure editor settings to be overridden for [makefile] language.
+	"[makefile]":  {
+		"editor.insertSpaces": false
+	},
+
+	// Configure editor settings to be overridden for [markdown] language.
+	"[markdown]":  {
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": false
+	},
+
+	// Configure editor settings to be overridden for [shellscript] language.
+	"[shellscript]":  {
+		"files.eol": "\n"
+	},
+
+	// Configure editor settings to be overridden for [yaml] language.
+	"[yaml]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": false
+	},
+
+	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
+	"remote.extensionKind": {
+		"pub.name": "ui"
+	},
+
+	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
+	//  - disabled: Auto attach is disabled and not shown in status bar.
+	//  - on: Auto attach is active.
+	//  - off: Auto attach is inactive.
+	"debug.node.autoAttach": "disabled",
+
+	// Controls whether to show a warning when the 'useWSL' attribute is used.
+	"debug.node.showUseWslIsDeprecatedWarning": true,
+
+	// An array of languages where Emmet abbreviations should not be expanded.
+	"emmet.excludeLanguages": [
+		"markdown"
+	],
+
+	// Path to a folder containing Emmet profiles and snippets.
+	"emmet.extensionsPath": null,
+
+	// Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
+	//  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
+	"emmet.includeLanguages": {},
+
+	// When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
+	"emmet.optimizeStylesheetParsing": true,
+
+	// Preferences used to modify behavior of some actions and resolvers of Emmet.
+	"emmet.preferences": {},
+
+	// Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
+	"emmet.showAbbreviationSuggestions": true,
+
+	// Shows expanded Emmet abbreviations as suggestions.
+	// The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
+	// The option `"always"` applies to all parts of the file regardless of markup/css.
+	"emmet.showExpandedAbbreviation": "always",
+
+	// If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
+	"emmet.showSuggestionsAsSnippets": false,
+
+	// Define profile for specified syntax or use your own profile with specific rules.
+	"emmet.syntaxProfiles": {},
+
+	// When enabled, Emmet abbreviations are expanded when pressing TAB.
+	"emmet.triggerExpansionOnTab": false,
+
+	// Variables to be used in Emmet snippets
+	"emmet.variables": {},
 
 	// Controls whether force push (with or without lease) is enabled.
 	"git.allowForcePush": false,
@@ -1984,7 +2362,7 @@
 	//  - remote: Show only remote branches.
 	"git.checkoutType": "all",
 
-	// Always confirm the creation of empty commits.
+	// Always confirm the creation of empty commits for the 'Git: Commit Empty' command.
 	"git.confirmEmptyCommits": true,
 
 	// Controls whether to ask for confirmation before force-pushing.
@@ -2094,8 +2472,23 @@
 	// Controls whether a notification comes up when running the Sync action, which allows the user to cancel the operation.
 	"git.supportCancellation": false,
 
+	// Controls how untracked changes behave.
+	//  - mixed: All changes, tracked and untracked, appear together and behave equally.
+	//  - separate: Untracked changes appear separately in the Source Control view. They are also excluded from several actions.
+	//  - hidden: Untracked changes are hidden and excluded from several actions.
+	"git.untrackedChanges": "mixed",
+
 	// Controls whether force pushing uses the safer force-with-lease variant.
 	"git.useForcePushWithLease": true,
+
+	// Controls whether auto detection of Grunt tasks is on or off. Default is on.
+	"grunt.autoDetect": "on",
+
+	// Controls whether auto detection of Gulp tasks is on or off. Default is on.
+	"gulp.autoDetect": "on",
+
+	// Controls whether auto detection of Jake tasks is on or off. Default is on.
+	"jake.autoDetect": "on",
 
 	// Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
 	"merge-conflict.autoNavigateNextConflict.enabled": false,
@@ -2112,53 +2505,16 @@
 	//  - Below: Open the diff view below the current editor group.
 	"merge-conflict.diffViewPosition": "Current",
 
-	// Configure editor settings to be overridden for [git-commit] language.
-	"[git-commit]":  {
-		"editor.rulers": [
-				72
-		]
-	},
-
-	// Configure editor settings to be overridden for [go] language.
-	"[go]":  {
-		"editor.insertSpaces": false
-	},
-
-	// Configure editor settings to be overridden for [json] language.
-	"[json]":  {
-		"editor.quickSuggestions": {
-				"strings": true
-		}
-	},
-
-	// Configure editor settings to be overridden for [makefile] language.
-	"[makefile]":  {
-		"editor.insertSpaces": false
-	},
-
-	// Configure editor settings to be overridden for [markdown] language.
-	"[markdown]":  {
-		"editor.wordWrap": "on",
-		"editor.quickSuggestions": false
-	},
-
-	// Configure editor settings to be overridden for [yaml] language.
-	"[yaml]":  {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"editor.autoIndent": false
-	},
-
-	// Controls whether auto detection of Gulp tasks is on or off. Default is on.
-	"gulp.autoDetect": "on",
-
-	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
-	"remote.extensionKind": {
-		"pub.name": "ui"
-	},
+	// Controls whether 'Peek References' or 'Find References' is invoked when selecting code lens references
+	//  - peek: Show references in peek editor.
+	//  - view: Show references in separate view.
+	"references.preferredLocation": "peek",
 
 	// Controls whether npm scripts should be automatically detected.
 	"npm.autoDetect": "on",
+
+	// Enable running NPM scripts contained in a folder from the Explorer context menu.
+	"npm.enableRunFromFolder": false,
 
 	// Enable an explorer view for npm scripts when there is no top-level 'package.json' file.
 	"npm.enableScriptExplorer": false,
@@ -2166,7 +2522,7 @@
 	// Configure glob patterns for folders that should be excluded from automatic script detection.
 	"npm.exclude": "",
 
-	// Fetch data from https://registry.npmjs/org and https://registry.bower.io to provide auto-completion and information on hover features on npm dependencies.
+	// Fetch data from https://registry.npmjs.org and https://registry.bower.io to provide auto-completion and information on hover features on npm dependencies.
 	"npm.fetchOnlinePackageInfo": true,
 
 	// The package manager used to run scripts.
@@ -2175,65 +2531,7 @@
 	// Run npm commands with the `--silent` option.
 	"npm.runSilent": false,
 
-	// The default click action used in the scripts explorer: `open` or `run`, the default is `open`.
+	// The default click action used in the npm scripts explorer: `open` or `run`, the default is `open`.
 	"npm.scriptExplorerAction": "open",
-
-	// Controls whether 'Peek References' or 'Find References' is invoked when selecting code lens references
-	//  - peek: Show references in peek editor.
-	//  - view: Show references in separate view.
-	"references.preferredLocation": "peek",
-
-	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
-	//  - disabled: Auto attach is disabled and not shown in status bar.
-	//  - on: Auto attach is active.
-	//  - off: Auto attach is inactive.
-	"debug.node.autoAttach": "disabled",
-
-	// Controls whether to show a warning when the 'useWSL' attribute is used.
-	"debug.node.showUseWslIsDeprecatedWarning": true,
-
-	// Controls whether auto detection of Grunt tasks is on or off. Default is on.
-	"grunt.autoDetect": "on",
-
-	// An array of languages where Emmet abbreviations should not be expanded.
-	"emmet.excludeLanguages": [
-		"markdown"
-	],
-
-	// Path to a folder containing Emmet profiles and snippets.
-	"emmet.extensionsPath": null,
-
-	// Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
-	//  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
-	"emmet.includeLanguages": {},
-
-	// When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
-	"emmet.optimizeStylesheetParsing": true,
-
-	// Preferences used to modify behavior of some actions and resolvers of Emmet.
-	"emmet.preferences": {},
-
-	// Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
-	"emmet.showAbbreviationSuggestions": true,
-
-	// Shows expanded Emmet abbreviations as suggestions.
-	// The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
-	// The option `"always"` applies to all parts of the file regardless of markup/css.
-	"emmet.showExpandedAbbreviation": "always",
-
-	// If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
-	"emmet.showSuggestionsAsSnippets": false,
-
-	// Define profile for specified syntax or use your own profile with specific rules.
-	"emmet.syntaxProfiles": {},
-
-	// When enabled, Emmet abbreviations are expanded when pressing TAB.
-	"emmet.triggerExpansionOnTab": false,
-
-	// Variables to be used in Emmet snippets
-	"emmet.variables": {},
-
-	// Controls whether auto detection of Jake tasks is on or off. Default is on.
-	"jake.autoDetect": "on",
 
 }
