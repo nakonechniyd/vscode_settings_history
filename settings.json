@@ -112,6 +112,7 @@
 	//  - vscode.extension-editing: Provides linting capabilities for authoring extensions.
 	//  - vscode.git: Git SCM Integration
 	//  - vscode.git-ui: Git SCM UI Integration
+	//  - vscode.github: GitHub
 	//  - vscode.github-authentication: GitHub Authentication Provider
 	//  - vscode.grunt: Extension to add Grunt capabilities to VS Code.
 	//  - vscode.gulp: Extension to add Gulp capabilities to VSCode.
@@ -121,16 +122,18 @@
 	//  - vscode.json-language-features: Provides rich language support for JSON files.
 	//  - vscode.markdown-language-features: Provides rich language support for Markdown.
 	//  - vscode.merge-conflict: Highlighting and commands for inline merge conflicts.
+	//  - vscode.microsoft-authentication: Microsoft authentication provider
+	//  - ms-vscode.js-debug: An extension for debugging Node.js programs and Chrome.
 	//  - ms-vscode.js-debug-companion: Companion extension to js-debug that provides capability for remote debugging
 	//  - ms-vscode.node-debug: Node.js debugging support (versions < 8.0)
 	//  - ms-vscode.node-debug2: Node.js debugging support
 	//  - ms-vscode.references-view: Reference Search results as separate, stable view in the sidebar
+	//  - ms-vscode.vscode-js-profile-table: Text visualizer for profiles taken from the JavaScript debugger
 	//  - vscode.npm: Extension to add task support for npm scripts.
 	//  - vscode.php-language-features: Provides rich language support for PHP files.
 	//  - vscode.python: Provides syntax highlighting, bracket matching and folding in Python files.
 	//  - vscode.search-result: Provides syntax highlighting and language features for tabbed search results.
 	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
-	//  - vscode.vscode-account: Microsoft authentication provider
 	"editor.defaultFormatter": null,
 
 	// Controls whether the Go to Definition mouse gesture always opens the peek widget.
@@ -600,6 +603,12 @@
 	// Controls whether clicking on the empty content after a folded line will unfold the line.
 	"editor.unfoldOnClickAfterEndOfLine": false,
 
+	// Remove unusual line terminators that might cause problems.
+	//  - off: Unusual line terminators are ignored.
+	//  - prompt: Unusual line terminators prompt to be removed.
+	//  - auto: Unusual line terminators are automatically removed.
+	"editor.unusualLineTerminators": "prompt",
+
 	// Inserting and deleting whitespace follows tab stops.
 	"editor.useTabStops": true,
 
@@ -667,6 +676,9 @@
 	// Controls the width(px) of diff decorations in gutter (added & modified).
 	"scm.diffDecorationsGutterWidth": 3,
 
+	// Controls the font for the input message. Use `default` for the workbench user interface font family, `editor` for the `editor.fontFamily`'s value, or a custom font family.
+	"scm.inputFontFamily": "default",
+
 	// Controls how many providers are visible in the Source Control Provider section. Set to `0` to be able to manually resize the view.
 	"scm.providers.visible": 10,
 
@@ -697,10 +709,10 @@
 	// Controls whether editors showing a file that was opened during the session should close automatically when getting deleted or renamed by some other process. Disabling this will keep the editor open  on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
 	"workbench.editor.closeOnFileDelete": false,
 
-	// Controls whether opened editors show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing) and show up with an italic font style.
+	// Controls whether opened editors show as preview. Preview editors are reused until they are explicitly set to be kept open (e.g. via double click or editing) and show up with an italic font style.
 	"workbench.editor.enablePreview": true,
 
-	// Controls whether editors opened from Quick Open show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing).
+	// Controls whether editors opened from Quick Open show as preview. Preview editors are reused until they are explicitly set to be kept open (e.g. via double click or editing).
 	"workbench.editor.enablePreviewFromQuickOpen": true,
 
 	// Controls whether tabs are closed in most recently used order or from left to right.
@@ -740,7 +752,7 @@
 	// Controls whether an editor is revealed in any of the visible groups if opened. If disabled, an editor will prefer to open in the currently active editor group. If enabled, an already opened editor will be revealed instead of opened again in the currently active editor group. Note that there are some cases where this setting is ignored, e.g. when forcing an editor to open in a specific group or to the side of the currently active group.
 	"workbench.editor.revealIfOpen": false,
 
-	// Controls wether scrolling over tabs will open them or not. By default tabs will only reveal upon scrolling, but not open. You can press and hold the Shift-key while scrolling to change this behaviour for that duration.
+	// Controls whether scrolling over tabs will open them or not. By default tabs will only reveal upon scrolling, but not open. You can press and hold the Shift-key while scrolling to change this behaviour for that duration.
 	"workbench.editor.scrollToSwitchTabs": false,
 
 	// Controls whether opened editors should show with an icon or not. This requires a file icon theme to be enabled as well.
@@ -804,6 +816,9 @@
 	// Controls how to open items in trees and lists using the mouse (if supported). For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. 
 	"workbench.list.openMode": "singleClick",
 
+	// Controls whether lists and trees have smooth scrolling.
+	"workbench.list.smoothScrolling": false,
+
 	// Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom, right, or left of the workbench.
 	"workbench.panel.defaultLocation": "bottom",
 
@@ -825,6 +840,9 @@
 
 	// Controls whether the last typed input to Quick Open should be restored when opening it the next time.
 	"workbench.quickOpen.preserveInput": false,
+
+	// Controls the feedback area size in pixels of the dragging area in between views/editors. Set it to a larger value if you feel it's hard to resize views using the mouse.
+	"workbench.sash.size": 4,
 
 	// Determines which settings editor to use by default.
 	//  - ui: Use the settings UI editor.
@@ -1081,6 +1099,9 @@
 		"**/.hg/store/**": true
 	},
 
+	// Controls the font size (in pixels) of the screencast mode keyboard.
+	"screencastMode.fontSize": 56,
+
 	// Only show keyboard shortcuts in Screencast Mode.
 	"screencastMode.onlyKeyboardShortcuts": false,
 
@@ -1112,6 +1133,9 @@
 	"zenMode.silentNotifications": true,
 
 	// Controls whether the explorer should automatically reveal and select files when opening them.
+	//  - true: Files will be revealed and selected.
+	//  - false: Files will not be revealed and selected.
+	//  - focusNoScroll: Files will not be scrolled into view, but will still be focused.
 	"explorer.autoReveal": true,
 
 	// Controls whether the explorer should render folders in a compact form. In such a form, single child folders will be compressed in a combined tree element. Useful for Java package structures, for example.
@@ -1187,11 +1211,17 @@
 	// Whether to include results from a global symbol search in the file results for Quick Open.
 	"search.quickOpen.includeSymbols": false,
 
+	// The default number of surrounding context lines to use when creating new Search Editors with `Search Editor: Open new Search Editor` and `Search Editor: Open new Search Editor to the Side`. If defined, this overrides `search.searchEditor.reusePriorSearchConfiguration`.
+	"search.searchEditor.defaultNumberOfContextLines": null,
+
 	// Configure effect of double clicking a result in a search editor.
 	//  - selectWord: Double clicking selects the word under the cursor.
 	//  - goToLocation: Double clicking opens the result in the active editor group.
 	//  - openLocationToSide: Double clicking opens the result in the editor group to the side, creating one if it does not yet exist.
 	"search.searchEditor.doubleClickBehaviour": "goToLocation",
+
+	// When enabled, new Search Editors will reuse the includes, excludes, and flags of the previously opened Search Editor
+	"search.searchEditor.reusePriorSearchConfiguration": false,
 
 	// Search all files as you type.
 	"search.searchOnType": true,
@@ -1295,9 +1325,6 @@
 
 	// Controls if the lines should wrap in the debug console.
 	"debug.console.wordWrap": true,
-
-	// Controls whether the non-debug hovers should be enabled while debugging. When enabled the hover providers will be called to provide a hover. Regular hovers will not be shown even if this setting is enabled.
-	"debug.enableAllHovers": false,
 
 	// Controls whether the workbench window should be focused when the debugger breaks.
 	"debug.focusWindowOnBreak": true,
@@ -1421,6 +1448,9 @@
 	// The maximum number of outline symbols and folding regions computed (limited for performance reasons).
 	"json.maxItemsComputed": 5000,
 
+	// When enabled, JSON schemas can be fetched from http and https locations.
+	"json.schemaDownload.enable": true,
+
 	// Associate schemas to JSON files in the current project
 	"json.schemas": [],
 
@@ -1432,14 +1462,14 @@
 	//  - beside: Open links beside the active editor.
 	"markdown.links.openLocation": "currentGroup",
 
-	// Sets how line-breaks are rendered in the markdown preview. Setting it to 'true' creates a <br> for every newline.
+	// Sets how line-breaks are rendered in the markdown preview. Setting it to 'true' creates a <br> for newlines inside paragraphs.
 	"markdown.preview.breaks": false,
 
 	// Double click in the markdown preview to switch to the editor.
 	"markdown.preview.doubleClickToSwitchToEditor": true,
 
 	// Controls the font family used in the markdown preview.
-	"markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif",
+	"markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
 
 	// Controls the font size in pixels used in the markdown preview.
 	"markdown.preview.fontSize": 14,
@@ -2052,7 +2082,7 @@
 	// A path that when set will override `terminal.integrated.shell.windows` and ignore `shellArgs` values for automation-related terminal usage like tasks and debug.
 	"terminal.integrated.automationShell.windows": null,
 
-	// A set of command IDs whose keybindings will not be sent to the shell and instead always be handled by Code. This allows the use of keybindings that would normally be consumed by the shell to act the same as when the terminal is not focused, for example ctrl+p to launch Quick Open.
+	// A set of command IDs whose keybindings will not be sent to the shell and instead always be handled by Code. This allows the use of keybindings that would normally be consumed by the shell to act the same as when the terminal is not focused, for example ctrl+p to launch Quick Open. Use the command prefixed with `-` to remove default commands from the list.
 	// Default Skipped Commands:
 	// 
 	// - editor.action.toggleTabFocusMode
@@ -2224,7 +2254,7 @@
 	"terminal.integrated.environmentChangesIndicator": "warnonly",
 
 	// An experimental setting that aims to improve link detection in the terminal by improving when links are detected and by enabling shared link detection with the editor. Currently this only supports web links.
-	"terminal.integrated.experimentalLinkProvider": false,
+	"terminal.integrated.experimentalLinkProvider": true,
 
 	// An experimental setting that will use the terminal title event for the dropdown title. This setting will only apply to new terminals.
 	"terminal.integrated.experimentalUseTitleEvent": false,
@@ -2662,6 +2692,14 @@
 		"editor.autoIndent": "advanced"
 	},
 
+	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
+	"workbench.settings.enableNaturalLanguageSearch": true,
+
+	// Controls the behavior of the settings editor Table of Contents while searching.
+	//  - hide: Hide the Table of Contents while searching.
+	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
+	"workbench.settings.settingsSearchTocBehavior": "filter",
+
 	// When enabled extensions are downloaded locally and installed on remote.
 	"remote.downloadExtensionsLocally": false,
 
@@ -2674,14 +2712,6 @@
 
 	// Restores the ports you forwarded in a workspace.
 	"remote.restoreForwardedPorts": false,
-
-	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
-	"workbench.settings.enableNaturalLanguageSearch": true,
-
-	// Controls the behavior of the settings editor Table of Contents while searching.
-	//  - hide: Hide the Table of Contents while searching.
-	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
-	"workbench.settings.settingsSearchTocBehavior": "filter",
 
 	// [Experimental] Controls whether to delegate "extensionHost"-type launch configs to the js-debug extension.
 	"debug.extensionHost.useV3": false,
@@ -2822,8 +2852,9 @@
 	// When enabled, fetch all branches when pulling. Otherwise, fetch just the current one.
 	"git.fetchOnPull": false,
 
-	// Controls whether to enable automatic GitHub authentication for git commands within VS Code.
-	"git.githubAuthentication": true,
+	// This setting is now deprecated, please use `github.gitAuthentication` instead.
+	// 
+	"git.githubAuthentication": null,
 
 	// List of git repositories to ignore.
 	"git.ignoredRepositories": [],
@@ -2908,6 +2939,9 @@
 	// Controls whether force pushing uses the safer force-with-lease variant.
 	"git.useForcePushWithLease": true,
 
+	// Controls whether to enable automatic GitHub authentication for git commands within VS Code.
+	"github.gitAuthentication": true,
+
 	// Controls whether auto detection of Grunt tasks is on or off. Default is on.
 	"grunt.autoDetect": "on",
 
@@ -2931,6 +2965,33 @@
 	//  - Beside: Open the diff view next to the current editor group.
 	//  - Below: Open the diff view below the current editor group.
 	"merge-conflict.diffViewPosition": "Current",
+
+	// Configures whether property getters will be expanded automatically. If this is false, the getter will appear as `get propertyName` and will only be evaluated when you click on it.
+	"debug.javascript.autoExpandGetters": false,
+
+	// When debugging a remote web app, configures whether to automatically tunnel the remote server to your local machine.
+	"debug.javascript.automaticallyTunnelRemoteServer": true,
+
+	// Where a "Run" and "Debug" code lens should be shown in your npm scripts. It may be on "all", scripts, on "top" of the script section, or "never".
+	"debug.javascript.codelens.npmScripts": "top",
+
+	// Options used when debugging open links clicked from inside the JavaScript Debug Terminal. Can be set to "off" to disable this behavior, or "always" to enable debugging in all terminals.
+	"debug.javascript.debugByLinkOptions": "on",
+
+	// Default options used when debugging a process through the `Debug: Attach to Node.js Process` command
+	"debug.javascript.pickAndAttachOptions": {},
+
+	// Whether to suggest pretty printing JavaScript code that looks minified when you step into it.
+	"debug.javascript.suggestPrettyPrinting": true,
+
+	// Default launch options for the JavaScript debug terminal and npm scripts.
+	"debug.javascript.terminalOptions": {},
+
+	// Use the new in-preview JavaScript debugger for Node.js and Chrome.
+	"debug.javascript.usePreview": false,
+
+	// Whether a loading prompt should be shown if breakpoint prediction takes a while.
+	"debug.javascript.warnOnLongPrediction": true,
 
 	// Controls whether 'Peek References' or 'Find References' is invoked when selecting code lens references
 	//  - peek: Show references in peek editor.
@@ -2960,8 +3021,5 @@
 
 	// The default click action used in the npm scripts explorer: `open` or `run`, the default is `open`.
 	"npm.scriptExplorerAction": "open",
-
-	// 
-	"microsoftAccount.logLevel": "info",
 
 }

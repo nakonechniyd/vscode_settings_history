@@ -18,13 +18,6 @@
                     "endPoint": "none"
                 }
             },
-            "webviews:createWebviewPanel": {
-                "extensionid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
             "suggestWidget": {
                 "wasautomaticallytriggered": {
                     "classification": "SystemMetaData",
@@ -49,6 +42,13 @@
                     "purpose": "FeatureInsight",
                     "endPoint": "none",
                     "isMeasurement": true
+                }
+            },
+            "webviews:createWebviewPanel": {
+                "extensionid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
                 }
             },
             "update:win32SetupTarget": {
@@ -771,6 +771,36 @@
                     "endPoint": "none",
                     "isMeasurement": true
                 },
+                "workspace.npm.playwright": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "workspace.npm.playwright-core": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "workspace.npm.playwright-chromium": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "workspace.npm.playwright-firefox": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "workspace.npm.playwright-webkit": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
                 "workspace.bower": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
@@ -1070,6 +1100,751 @@
                     "isMeasurement": true
                 }
             },
+            "debugSessionStart": {
+                "type": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "breakpointcount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "exceptionbreakpoints": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "watchexpressionscount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "extensionname": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "isbuiltin": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "launchjsonexists": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "debugSessionStop": {
+                "type": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "success": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "sessionlengthinseconds": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "breakpointcount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "watchexpressionscount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "debugAddBreakpoint": {
+                "context": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "hascondition": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "hashitcondition": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "haslogmessage": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "debugProtocolErrorResponse": {
+                "error": {
+                    "classification": "CallstackOrException",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "debug/addLaunchConfiguration": {},
+            "terminalLaunchRecommendation:popup": {
+                "userreaction": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "taskService": {
+                "trigger": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "runner": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "taskkind": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "command": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "success": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "exitcode": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "taskService.customize": {
+                "properties": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "defaultSettings.filter": {
+                "filter": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "durations.nlpresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "counts.nlpresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "durations.filterresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "counts.filterresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "requestcount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "defaultSettings.searchError": {
+                "message": {
+                    "classification": "CallstackOrException",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "defaultSettingsActions.copySetting": {
+                "userconfigurationkeys": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "query": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "nlpindex": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "groupid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "displayidx": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "editableside": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "keybindings.filter": {
+                "filter": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "emptyfilters": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "settingsEditor.settingModified": {
+                "key": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "query": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "groupid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "nlpindex": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "displayindex": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "showconfiguredonly": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "isreset": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "target": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "settingsEditor.filter": {
+                "query": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "durations.nlpresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "counts.nlpresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "counts.filterresult": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "requestcount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "settingsEditor.searchError": {
+                "message": {
+                    "classification": "CallstackOrException",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "disableOtherKeymaps": {
+                "oldkeymaps": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "confirmed": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "newkeymap.id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "newkeymap.uuid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionGallery:openExtension": {
+                "recommendationreason": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "galleryid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publishername": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherdisplayname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "dependencies": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "index": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "searchtext": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "querysource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionEditor:navbarChange": {
+                "navitem": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "galleryid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publishername": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherdisplayname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "dependencies": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "index": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "searchtext": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "querysource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionGallery:install:recommendations": {
+                "recommendationreason": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "galleryid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publishername": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherdisplayname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "dependencies": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "index": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "searchtext": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "querysource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "exthostunresponsive": {
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
+                },
+                "duration": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "data": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
+                }
+            },
+            "extension:enable": {
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "galleryid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publishername": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherdisplayname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "dependencies": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "index": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "searchtext": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "querysource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extension:disable": {
+                "id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "galleryid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publishername": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "publisherdisplayname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "dependencies": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "index": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "searchtext": {
+                    "classification": "CustomerContent",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "querysource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionAllRecommendations:open": {
+                "count": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "recommendations": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionRecommendations:open": {
+                "count": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                },
+                "recommendations": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionWorkspaceRecommendations:open": {
+                "count": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none",
+                    "isMeasurement": true
+                }
+            },
+            "keyboardLayout": {
+                "currentkeyboardlayout.name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.id": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.text": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.model": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.layout": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.variant": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.options": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.rules": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.lang": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "currentkeyboardlayout.localizedname": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "startupTimeVaried": {
                 "version": {
                     "classification": "SystemMetaData",
@@ -1300,365 +2075,27 @@
                     "endPoint": "none"
                 }
             },
-            "disableOtherKeymaps": {
-                "oldkeymaps": {
+            "languagePackSuggestion:popup": {
+                "userreaction": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "confirmed": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "newkeymap.id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "newkeymap.uuid": {
+                "language": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
             },
-            "extension:enable": {
-                "id": {
+            "remoteExtensionRecommendations:popup": {
+                "userreaction": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "name": {
-                    "classification": "SystemMetaData",
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "galleryid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publishername": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherdisplayname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "dependencies": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "searchtext": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "querysource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extension:disable": {
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "galleryid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publishername": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherdisplayname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "dependencies": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "searchtext": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "querysource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionAllRecommendations:open": {
-                "count": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "recommendations": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionRecommendations:open": {
-                "count": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "recommendations": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionWorkspaceRecommendations:open": {
-                "count": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "extensionGallery:openExtension": {
-                "recommendationreason": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "galleryid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publishername": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherdisplayname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "dependencies": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "searchtext": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "querysource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionEditor:navbarChange": {
-                "navitem": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "galleryid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publishername": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherdisplayname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "dependencies": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "searchtext": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "querysource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionGallery:install:recommendations": {
-                "recommendationreason": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "galleryid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publishername": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "publisherdisplayname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "dependencies": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "searchtext": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "querysource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "exthostunresponsive": {
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none"
-                },
-                "duration": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "data": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 }
             },
@@ -1674,349 +2111,6 @@
                     "endPoint": "none"
                 },
                 "cancelled": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "debug/addLaunchConfiguration": {},
-            "debugSessionStart": {
-                "type": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "breakpointcount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "exceptionbreakpoints": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "watchexpressionscount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "extensionname": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "isbuiltin": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "launchjsonexists": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "debugSessionStop": {
-                "type": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "success": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "sessionlengthinseconds": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "breakpointcount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "watchexpressionscount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "debugAddBreakpoint": {
-                "context": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "hascondition": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "hashitcondition": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "haslogmessage": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "debugProtocolErrorResponse": {
-                "error": {
-                    "classification": "CallstackOrException",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "languagePackSuggestion:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "language": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "terminalLaunchRecommendation:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "settingsEditor.settingModified": {
-                "key": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "query": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "groupid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "nlpindex": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "displayindex": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "showconfiguredonly": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "isreset": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "target": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "settingsEditor.filter": {
-                "query": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "durations.nlpresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "counts.nlpresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "counts.filterresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "requestcount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "settingsEditor.searchError": {
-                "message": {
-                    "classification": "CallstackOrException",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "keybindings.filter": {
-                "filter": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "emptyfilters": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "defaultSettings.filter": {
-                "filter": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "durations.nlpresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "counts.nlpresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "durations.filterresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "counts.filterresult": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "requestcount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "defaultSettings.searchError": {
-                "message": {
-                    "classification": "CallstackOrException",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "defaultSettingsActions.copySetting": {
-                "userconfigurationkeys": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "query": {
-                    "classification": "CustomerContent",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "nlpindex": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "groupid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "displayidx": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "editableside": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                }
-            },
-            "taskService.customize": {
-                "properties": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "taskService": {
-                "trigger": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "runner": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "taskkind": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "command": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "success": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none",
-                    "isMeasurement": true
-                },
-                "exitcode": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none",
@@ -2122,70 +2216,6 @@
                     "isMeasurement": true
                 }
             },
-            "keyboardLayout": {
-                "currentkeyboardlayout.name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.text": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.model": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.layout": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.variant": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.options": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.rules": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.lang": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "currentkeyboardlayout.localizedname": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "remoteExtensionRecommendations:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
             "installExtension": {
                 "from": {
                     "classification": "SystemMetaData",
@@ -2280,14 +2310,6 @@
                     "endPoint": "none"
                 }
             },
-            "experiments:optout": {
-                "optout": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
             "walkThroughSnippetInteraction": {
                 "from": {
                     "classification": "SystemMetaData",
@@ -2300,6 +2322,14 @@
                     "endPoint": "none"
                 },
                 "snippet": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "experiments:optout": {
+                "optout": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "isMeasurement": true,
@@ -2344,6 +2374,33 @@
                     "endPoint": "none"
                 },
                 "action": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "viewDescriptorService.moveViews": {
+                "viewcount": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "fromcontainer": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "tocontainer": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "fromlocation": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "tolocation": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -2518,15 +2575,6 @@
                     "endPoint": "none"
                 }
             },
-            "output.channel.creation.error": {},
-            "openKeybindings": {
-                "textual": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
             "activatePlugin": {
                 "id": {
                     "classification": "PublicNonPersonalData",
@@ -2575,6 +2623,23 @@
                     "endPoint": "none"
                 }
             },
+            "sync/turnOffEveryWhere": {},
+            "sync/firstTimeSync": {
+                "action": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "sync.userAccount": {
+                "id": {
+                    "classification": "EndUserPseudonymizedInformation",
+                    "purpose": "BusinessInsight",
+                    "endPoint": "none"
+                }
+            },
+            "output.channel.creation.error": {},
             "resolveProxy": {
                 "count": {
                     "classification": "SystemMetaData",
@@ -2665,179 +2730,11 @@
                     "endPoint": "none"
                 }
             },
-            "textmodelresolveruri": {
-                "query": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "fragment": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "viewDescriptorService.moveViews": {
-                "viewcount": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "fromcontainer": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "tocontainer": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "fromlocation": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "tolocation": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "accessibility": {
-                "enabled": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "problemMatcherDisabled": {
-                "type": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "taskService.template": {
-                "templateid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "autodetect": {
+            "openKeybindings": {
+                "textual": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "webviewMissingCsp": {
-                "extension": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "experiments": {
-                "experiments": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionWorkspaceRecommendations:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "fileExtensionSuggestion:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "fileextension": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionsRecommendations:ignoreRecommendation": {
-                "recommendationreason": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                },
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "extensionRecommendations:popup": {
-                "userreaction": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "exeExtensionRecommendations:alreadyInstalled": {
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "exename": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "exeExtensionRecommendations:notInstalled": {
-                "extensionid": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "exename": {
-                    "classification": "PublicNonPersonalData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "dynamicWorkspaceRecommendations": {
-                "count": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                },
-                "cache": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "windowsEdition": {
-                "edition": {
-                    "classification": "SystemMetaData",
-                    "purpose": "BusinessInsight",
-                    "endPoint": "none"
-                }
-            },
-            "resolveProxy.stats": {
-                "type": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 }
             },
@@ -2998,10 +2895,10 @@
                     "endPoint": "none"
                 }
             },
-            "sync.userAccount": {
-                "id": {
-                    "classification": "EndUserPseudonymizedInformation",
-                    "purpose": "BusinessInsight",
+            "experiments": {
+                "experiments": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
             },
@@ -3033,19 +2930,6 @@
                     "endPoint": "none"
                 }
             },
-            "sync/firstTimeSync": {
-                "action": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync/turnOffEveryWhere": {},
-            "searchEditor/saveSearchResults": {},
-            "searchEditor/openNewSearchEditor": {},
-            "searchEditor/createEditorFromSearchResult": {},
-            "searchEditor/openSavedSearchEditor": {},
             "trustedDomains.dialogAction": {
                 "action": {
                     "classification": "SystemMetaData",
@@ -3057,6 +2941,244 @@
                 "choice": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "accessibility": {
+                "enabled": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "textmodelresolveruri": {
+                "query": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "fragment": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "searchEditor/saveSearchResults": {},
+            "searchEditor/openNewSearchEditor": {},
+            "searchEditor/createEditorFromSearchResult": {},
+            "searchEditor/openSavedSearchEditor": {},
+            "extensionWorkspaceRecommendations:popup": {
+                "userreaction": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "fileExtensionSuggestion:popup": {
+                "userreaction": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "fileextension": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionsRecommendations:ignoreRecommendation": {
+                "recommendationreason": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                },
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "extensionRecommendations:popup": {
+                "userreaction": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "exeExtensionRecommendations:alreadyInstalled": {
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "exename": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "exeExtensionRecommendations:notInstalled": {
+                "extensionid": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "exename": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "dynamicWorkspaceRecommendations": {
+                "count": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                },
+                "cache": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "webviewMissingCsp": {
+                "extension": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "problemMatcherDisabled": {
+                "type": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "taskService.template": {
+                "templateid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "autodetect": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "windowsEdition": {
+                "edition": {
+                    "classification": "SystemMetaData",
+                    "purpose": "BusinessInsight",
+                    "endPoint": "none"
+                }
+            },
+            "resolveProxy.stats": {
+                "type": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
+                }
+            },
+            "issueReporterSubmit": {
+                "issuetype": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                },
+                "numsimilarissuesdisplayed": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "issueReporterViewSimilarIssue": {},
+            "updateConfiguration": {
+                "configurationsource": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "configurationkeys": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "optInStatus": {
+                "optin": {
+                    "classification": "SystemMetaData",
+                    "purpose": "BusinessInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "machineIdFallback": {
+                "usingfallbackguid": {
+                    "classification": "SystemMetaData",
+                    "purpose": "BusinessInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "machineIdDisambiguation": {
+                "correctedmachineid": {
+                    "endPoint": "MacAddressHash",
+                    "classification": "EndUserPseudonymizedInformation",
+                    "purpose": "FeatureInsight"
+                }
+            },
+            "sync/getmanifest": {},
+            "sync.enable": {
+                "enabled": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "sync/triggered": {
+                "sources": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "sync/settingsCorrupted": {},
+            "sync/conflictsDetected": {
+                "source": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "sync/conflictsResolved": {
+                "source": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "sync/incompatible": {
+                "source": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
                     "endPoint": "none"
                 }
             },
@@ -3079,6 +3201,21 @@
                     "endPoint": "none"
                 },
                 "message": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "update:notAvailable": {
+                "explicit": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "isMeasurement": true,
+                    "endPoint": "none"
+                }
+            },
+            "update:downloaded": {
+                "version": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -3153,139 +3290,6 @@
                     "endPoint": "none"
                 }
             },
-            "issueReporterSubmit": {
-                "issuetype": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                },
-                "numsimilarissuesdisplayed": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "issueReporterViewSimilarIssue": {},
-            "update:notAvailable": {
-                "explicit": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "update:downloaded": {
-                "version": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "updateConfiguration": {
-                "configurationsource": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "configurationkeys": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "optInStatus": {
-                "optin": {
-                    "classification": "SystemMetaData",
-                    "purpose": "BusinessInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "machineIdFallback": {
-                "usingfallbackguid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "BusinessInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "machineIdDisambiguation": {
-                "correctedmachineid": {
-                    "endPoint": "MacAddressHash",
-                    "classification": "EndUserPseudonymizedInformation",
-                    "purpose": "FeatureInsight"
-                }
-            },
-            "sync/errorTooLarge": {
-                "source": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync.enable": {
-                "enabled": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync/triggerAutoSync": {
-                "source": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync/conflictsDetected": {
-                "source": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync/conflictsResolved": {
-                "source": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "sync/incompatible": {
-                "source": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "suggestWidget:toggleDetailsFocus": {},
-            "suggestWidget:collapseDetails": {},
-            "suggestWidget:expandDetails": {},
-            "codeAction.applyCodeAction": {
-                "codeactiontitle": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "codeactionkind": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "codeactionispreferred": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
             "api/scm/createSourceControl": {
                 "extensionid": {
                     "classification": "SystemMetaData",
@@ -3304,23 +3308,6 @@
                 "extension": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "badresolvecompletion": {
-                "extensionid": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none"
-                },
-                "kind": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
-                    "endPoint": "none"
-                },
-                "index": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 }
             },
@@ -3408,23 +3395,31 @@
                     "endPoint": "none"
                 }
             },
+            "suggestWidget:toggleDetailsFocus": {},
+            "suggestWidget:collapseDetails": {},
+            "suggestWidget:expandDetails": {},
+            "codeAction.applyCodeAction": {
+                "codeactiontitle": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "codeactionkind": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "codeactionispreferred": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
             "windowerror": {
                 "type": {
                     "classification": "SystemMetaData",
                     "purpose": "PerformanceAndHealth",
                     "isMeasurement": true,
-                    "endPoint": "none"
-                }
-            },
-            "editorActionInvoked": {
-                "name": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "id": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
                     "endPoint": "none"
                 }
             },
@@ -3435,6 +3430,18 @@
                     "endPoint": "none"
                 },
                 "from": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "editorActionInvoked": {
+                "name": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "id": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -3652,27 +3659,25 @@
                     "endPoint": "none"
                 }
             },
-            "typescript-language-features/organizeImports.execute": {
+            "typescript-language-features/languageServiceErrorResponse": {
                 "version": {
                     "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                }
-            },
-            "typescript-language-features/quickFix.execute": {
-                "fixname": {
-                    "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "version": {
+                "command": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
+                },
+                "sanitizedstack": {
+                    "classification": "SystemMetaData",
+                    "purpose": "PerformanceAndHealth",
+                    "endPoint": "none"
                 }
             },
-            "typescript-language-features/quickFixAll.execute": {
-                "fixname": {
+            "typescript-language-features/refactor.execute": {
+                "action": {
                     "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -3710,8 +3715,15 @@
                     "endPoint": "none"
                 }
             },
-            "typescript-language-features/refactor.execute": {
-                "action": {
+            "typescript-language-features/organizeImports.execute": {
+                "version": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                }
+            },
+            "typescript-language-features/quickFix.execute": {
+                "fixname": {
                     "classification": "PublicNonPersonalData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -3722,20 +3734,15 @@
                     "endPoint": "none"
                 }
             },
-            "typescript-language-features/languageServiceErrorResponse": {
+            "typescript-language-features/quickFixAll.execute": {
+                "fixname": {
+                    "classification": "PublicNonPersonalData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
                 "version": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "command": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
-                "sanitizedstack": {
-                    "classification": "SystemMetaData",
-                    "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 }
             },
@@ -3791,7 +3798,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3801,12 +3808,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3833,7 +3840,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3843,12 +3850,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3890,7 +3897,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3900,12 +3907,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3947,7 +3954,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -3957,12 +3964,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4031,7 +4038,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4041,12 +4048,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4110,7 +4117,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4120,12 +4127,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4167,7 +4174,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4177,12 +4184,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4224,7 +4231,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4234,12 +4241,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4281,7 +4288,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4291,12 +4298,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4338,7 +4345,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4348,12 +4355,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4395,7 +4402,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4405,12 +4412,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4452,7 +4459,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4462,12 +4469,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4509,7 +4516,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4519,12 +4526,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4588,7 +4595,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4598,12 +4605,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4645,7 +4652,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4655,12 +4662,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4719,7 +4726,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4729,12 +4736,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4793,7 +4800,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4803,12 +4810,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4867,7 +4874,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4877,12 +4884,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4941,7 +4948,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4951,12 +4958,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -4998,7 +5005,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5008,12 +5015,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5055,7 +5062,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5065,12 +5072,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5129,7 +5136,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5139,12 +5146,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5186,7 +5193,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5196,12 +5203,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5243,7 +5250,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5253,12 +5260,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5300,7 +5307,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5310,12 +5317,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5357,7 +5364,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5367,12 +5374,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5414,7 +5421,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5424,12 +5431,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5471,7 +5478,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5481,12 +5488,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5528,7 +5535,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5538,12 +5545,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5585,7 +5592,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5595,12 +5602,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5642,7 +5649,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5652,12 +5659,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5732,11 +5739,6 @@
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "attach.attachtotargetdebuggerwebsocket": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
                 "attach": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
@@ -5753,6 +5755,11 @@
                     "endPoint": "none"
                 },
                 "attach.configuredebuggingsession.end": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "attach.attachtotargetdebuggerwebsocket": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
@@ -5874,7 +5881,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5884,12 +5891,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5916,7 +5923,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5926,12 +5933,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5963,7 +5970,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -5973,12 +5980,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6010,7 +6017,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6020,12 +6027,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6074,7 +6081,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6084,12 +6091,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6133,7 +6140,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6143,12 +6150,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6180,7 +6187,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6190,12 +6197,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6227,7 +6234,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6237,12 +6244,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6274,7 +6281,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6284,12 +6291,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6321,7 +6328,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6331,12 +6338,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6368,7 +6375,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6378,12 +6385,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6415,7 +6422,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6425,12 +6432,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6462,7 +6469,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6472,12 +6479,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6521,7 +6528,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6531,12 +6538,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6568,7 +6575,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6578,12 +6585,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6622,7 +6629,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6632,12 +6639,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6676,7 +6683,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6686,12 +6693,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6730,7 +6737,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6740,12 +6747,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6784,7 +6791,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6794,12 +6801,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6831,7 +6838,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6841,12 +6848,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6878,7 +6885,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6888,12 +6895,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6932,7 +6939,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6942,12 +6949,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6979,7 +6986,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -6989,12 +6996,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7026,7 +7033,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7036,12 +7043,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7073,7 +7080,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7083,12 +7090,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7120,7 +7127,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7130,12 +7137,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7167,7 +7174,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7177,12 +7184,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7214,7 +7221,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7224,12 +7231,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7261,7 +7268,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7271,12 +7278,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7308,7 +7315,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7318,12 +7325,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7355,7 +7362,7 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionmessage": {
+                "!exceptionmessage": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7365,12 +7372,12 @@
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionstack": {
+                "!exceptionstack": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
                 },
-                "exceptionid": {
+                "!exceptionid": {
                     "classification": "CallstackOrException",
                     "purpose": "PerformanceAndHealth",
                     "endPoint": "none"
@@ -7435,11 +7442,6 @@
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
                 },
-                "attach.attachtotargetdebuggerwebsocket": {
-                    "classification": "SystemMetaData",
-                    "purpose": "FeatureInsight",
-                    "endPoint": "none"
-                },
                 "attach": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
@@ -7456,6 +7458,11 @@
                     "endPoint": "none"
                 },
                 "attach.configuredebuggingsession.end": {
+                    "classification": "SystemMetaData",
+                    "purpose": "FeatureInsight",
+                    "endPoint": "none"
+                },
+                "attach.attachtotargetdebuggerwebsocket": {
                     "classification": "SystemMetaData",
                     "purpose": "FeatureInsight",
                     "endPoint": "none"
