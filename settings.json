@@ -67,14 +67,14 @@
 	// Code action kinds to be run on save.
 	"editor.codeActionsOnSave": {},
 
-	// Timeout in milliseconds after which the code actions that are run on save are cancelled.
-	"editor.codeActionsOnSaveTimeout": 750,
-
 	// Controls whether the editor shows CodeLens.
 	"editor.codeLens": true,
 
 	// Controls whether the editor should render the inline color decorators and color picker.
 	"editor.colorDecorators": true,
+
+	// Controls whether a space character is inserted when commenting.
+	"editor.comments.insertSpace": true,
 
 	// Controls whether syntax highlighting should be copied into the clipboard.
 	"editor.copyWithSyntaxHighlighting": true,
@@ -125,6 +125,7 @@
 	//  - vscode.python: Provides syntax highlighting, bracket matching and folding in Python files.
 	//  - vscode.search-result: Provides syntax highlighting and language features for tabbed search results.
 	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
+	//  - vscode.vscode-account
 	"editor.defaultFormatter": null,
 
 	// Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
@@ -154,6 +155,9 @@
 	// Controls whether the editor has code folding enabled.
 	"editor.folding": true,
 
+	// Controls whether the editor should highlight folded ranges.
+	"editor.foldingHighlight": true,
+
 	// Controls the strategy for computing folding ranges. `auto` uses a language specific folding strategy, if available. `indentation` uses the indentation based folding strategy.
 	"editor.foldingStrategy": "auto",
 
@@ -174,9 +178,6 @@
 
 	// Format a file on save. A formatter must be available, the file must not be saved after delay, and the editor must not be shutting down.
 	"editor.formatOnSave": false,
-
-	// Timeout in milliseconds after which the formatting that is run on file save is cancelled.
-	"editor.formatOnSaveTimeout": 750,
 
 	// Controls whether the editor should automatically format the line after typing.
 	"editor.formatOnType": false,
@@ -328,6 +329,11 @@
 	// Enables a pop-up that shows parameter documentation and type information as you type.
 	"editor.parameterHints.enabled": true,
 
+	// Controls whether to focus the inline editor or the tree in the peek widget.
+	//  - tree: Focus the tree when opening peek
+	//  - editor: Focus the editor when opening peek
+	"editor.peekWidgetDefaultFocus": "tree",
+
 	// Controls whether suggestions should automatically show up while typing.
 	"editor.quickSuggestions": {
 		"other": true,
@@ -337,6 +343,9 @@
 
 	// Controls the delay in milliseconds after which quick suggestions will show up.
 	"editor.quickSuggestionsDelay": 10,
+
+	// Enable/disable the ability to preview changes before renaming
+	"editor.rename.enablePreview": true,
 
 	// Controls whether the editor should render control characters.
 	"editor.renderControlCharacters": false,
@@ -379,6 +388,9 @@
 	// Controls whether the editor should highlight matches similar to the selection.
 	"editor.selectionHighlight": true,
 
+	// Controls whether the semanticHighlighting is shown for the languages that support it.
+	"editor.semanticHighlighting.enabled": false,
+
 	// Controls whether the fold controls on the gutter are automatically hidden.
 	"editor.showFoldingControls": "mouseover",
 
@@ -404,6 +416,9 @@
 
 	// Controls whether filtering and sorting suggestions accounts for small typos.
 	"editor.suggest.filterGraceful": true,
+
+	// Controls the visibility of the status bar at the bottom of the suggest widget.
+	"editor.suggest.hideStatusBar": true,
 
 	// Controls whether unexpected text modifications while accepting completions should be highlighted, e.g `insertMode` is `replace` but the completion only supports `insert`.
 	"editor.suggest.insertHighlight": false,
@@ -565,6 +580,11 @@
 	//  - deepIndent: Wrapped lines get +2 indentation toward the parent.
 	"editor.wrappingIndent": "same",
 
+	// Controls the algorithm that computes wrapping points.
+	//  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
+	//  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
+	"editor.wrappingStrategy": "simple",
+
 	// Controls whether inline actions are always visible in the Source Control view.
 	"scm.alwaysShowActions": false,
 
@@ -603,6 +623,9 @@
 
 	// Controls how many providers are visible in the Source Control Provider section. Set to `0` to be able to manually resize the view.
 	"scm.providers.visible": 10,
+
+	// If set, automatically switch to the preferred color theme based on the OS appearance.
+	"window.autoDetectColorScheme": false,
 
 	// Controls the visibility of the activity bar in the workbench.
 	"workbench.activityBar.visible": true,
@@ -646,6 +669,15 @@
 	//  - medium: Show the name of the file followed by its path relative to the workspace folder.
 	//  - long: Show the name of the file followed by its absolute path.
 	"workbench.editor.labelFormat": "default",
+
+	// Controls if the number of opened editors should be limited or not. When enabled, less recently used editors that are not dirty will close to make space for newly opening editors.
+	"workbench.editor.limit.enabled": false,
+
+	// Controls if the limit of maximum opened editors should apply per editor group or across all editor groups.
+	"workbench.editor.limit.perEditorGroup": false,
+
+	// Controls the maximum number of opened editors. Use the `workbench.editor.limit.perEditorGroup` setting to control this limit per editor group or across all groups.
+	"workbench.editor.limit.value": 10,
 
 	// Navigate between open files using mouse buttons four and five if provided.
 	"workbench.editor.mouseBackForwardToNavigate": true,
@@ -716,6 +748,15 @@
 	// Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom or on the right of the workbench.
 	"workbench.panel.defaultLocation": "bottom",
 
+	// Specifies the preferred color theme for dark OS appearance when 'window.autoDetectColorScheme' is enabled.
+	"workbench.preferredDarkColorTheme": "Default Dark+",
+
+	// Specifies the preferred color theme used in high contrast mode when 'window.autoDetectHighContrast' is enabled.
+	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+
+	// Specifies the preferred color theme for light OS appearance when 'window.autoDetectColorScheme' is enabled.
+	"workbench.preferredLightColorTheme": "Default Light+",
+
 	// Controls whether Quick Open should close automatically once it loses focus.
 	"workbench.quickOpen.closeOnFocusLost": true,
 
@@ -727,19 +768,11 @@
 	//  - json: Use the JSON file editor.
 	"workbench.settings.editor": "ui",
 
-	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
-	"workbench.settings.enableNaturalLanguageSearch": true,
-
 	// Controls whether opening keybinding settings also opens an editor showing all default keybindings.
 	"workbench.settings.openDefaultKeybindings": false,
 
 	// Controls whether opening settings also opens an editor showing all default settings.
 	"workbench.settings.openDefaultSettings": false,
-
-	// Controls the behavior of the settings editor Table of Contents while searching.
-	//  - hide: Hide the Table of Contents while searching.
-	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
-	"workbench.settings.settingsSearchTocBehavior": "filter",
 
 	// Controls whether to use the split JSON editor when editing settings as JSON.
 	"workbench.settings.useSplitJSON": false,
@@ -774,6 +807,9 @@
 	// Controls the visibility of view header actions. View header actions may either be always visible, or only visible when that view is focused or hovered over.
 	"workbench.view.alwaysShowHeaderActions": false,
 
+	// Controls whether specific views will have a context menu entry allowing them to be moved to a new container. Currently, this setting only affects the outline view and views contributed by extensions.
+	"workbench.view.experimental.allowMovingToNewContainer": false,
+
 	// Controls whether closing the last editor should also close the window. This setting only applies for windows that do not show folders.
 	"window.closeWhenEmpty": false,
 
@@ -797,6 +833,7 @@
 	// Controls the dimensions of opening a new window when at least one window is already opened. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
 	//  - default: Open new windows in the center of the screen.
 	//  - inherit: Open new windows with same dimension as last active one.
+	//  - offset: Open new windows with same dimension as last active one with an offset position.
 	//  - maximized: Open new windows maximized.
 	//  - fullscreen: Open new windows in full screen mode.
 	"window.newWindowDimensions": "default",
@@ -829,7 +866,7 @@
 	//  - folders: Reopen all folders. Empty workspaces will not be restored.
 	//  - one: Reopen the last active window.
 	//  - none: Never reopen a window. Always start with an empty one.
-	"window.restoreWindows": "one",
+	"window.restoreWindows": "all",
 
 	// Controls the window title based on the active editor. Variables are substituted based on the context:
 	// - `${activeEditorShort}`: the file name (e.g. myFile.txt).
@@ -860,17 +897,17 @@
 	// When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language.
 	"files.autoGuessEncoding": false,
 
-	// Controls auto save of dirty files. Read more about autosave [here](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save).
-	//  - off: A dirty file is never automatically saved.
-	//  - afterDelay: A dirty file is automatically saved after the configured `files.autoSaveDelay`.
-	//  - onFocusChange: A dirty file is automatically saved when the editor loses focus.
-	//  - onWindowChange: A dirty file is automatically saved when the window loses focus.
+	// Controls auto save of dirty editors. Read more about autosave [here](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save).
+	//  - off: A dirty editor is never automatically saved.
+	//  - afterDelay: A dirty editor is automatically saved after the configured `files.autoSaveDelay`.
+	//  - onFocusChange: A dirty editor is automatically saved when the editor loses focus.
+	//  - onWindowChange: A dirty editor is automatically saved when the window loses focus.
 	"files.autoSave": "off",
 
-	// Controls the delay in ms after which a dirty file is saved automatically. Only applies when `files.autoSave` is set to `afterDelay`.
+	// Controls the delay in ms after which a dirty editor is saved automatically. Only applies when `files.autoSave` is set to `afterDelay`.
 	"files.autoSaveDelay": 1000,
 
-	// The default language mode that is assigned to new files.
+	// The default language mode that is assigned to new files. If configured to `${activeEditorLanguage}`, will use the language mode of the currently active text editor if any.
 	"files.defaultLanguage": "",
 
 	// Moves files/folders to the OS trash (recycle bin on Windows) when deleting. Disabling this will delete files/folders permanently.
@@ -955,6 +992,11 @@
 
 	// Timeout in milliseconds after which file participants for create, rename, and delete are cancelled. Use `0` to disable participants.
 	"files.participants.timeout": 5000,
+
+	// A save conflict can occur when a file is saved to disk that was changed by another program in the meantime. To prevent data loss, the user is asked to compare the changes in the editor with the version on disk. This setting should only be changed if you frequently encounter save conflict errors and may result in data loss if used without caution.
+	//  - askUser: Will refuse to save and ask for resolving the save conflict manually.
+	//  - overwriteFileOnDisk: Will resolve the save conflict by overwriting the file on disk with the changes in the editor.
+	"files.saveConflictResolution": "askUser",
 
 	// Enables the simple file dialog. The simple file dialog replaces the system file dialog when enabled.
 	"files.simpleDialog.enable": false,
@@ -1063,6 +1105,7 @@
 	// Controls whether to follow symlinks while searching.
 	"search.followSymlinks": true,
 
+	// This setting is deprecated. Please use the search view's context menu instead.
 	// Controls whether the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space.
 	"search.location": "sidebar",
 
@@ -1075,6 +1118,14 @@
 	// Whether to include results from a global symbol search in the file results for Quick Open.
 	"search.quickOpen.includeSymbols": false,
 
+	// Configure effect of double clicking a result in a Search Editor.
+	// 
+	//  `search.enableSearchEditorPreview` must be enabled for this setting to have an effect.
+	//  - selectWord: Double clicking selects the word under the cursor.
+	//  - goToLocation: Double clicking opens the result in the active editor group.
+	//  - openLocationToSide: Double clicking opens the result in the editor group to the side, creating one if it does not yet exist.
+	"search.searchEditorPreview.doubleClickBehaviour": "goToLocation",
+
 	// Search all files as you type.
 	"search.searchOnType": true,
 
@@ -1086,6 +1137,15 @@
 
 	// Search case-insensitively if the pattern is all lowercase, otherwise, search case-sensitively.
 	"search.smartCase": false,
+
+	// Controls sorting order of search results.
+	//  - default: Results are sorted by folder and file names, in alphabetical order.
+	//  - fileNames: Results are sorted by file names ignoring folder order, in alphabetical order.
+	//  - type: Results are sorted by file extensions, in alphabetical order.
+	//  - modified: Results are sorted by file last modified date, in descending order.
+	//  - countDescending: Results are sorted by count per file, in descending order.
+	//  - countAscending: Results are sorted by count per file, in ascending order.
+	"search.sortOrder": "default",
 
 	// Controls whether to use global `.gitignore` and `.ignore` files when searching for files.
 	"search.useGlobalIgnoreFiles": false,
@@ -1144,6 +1204,9 @@
 
 	// Allow setting breakpoints in any file.
 	"debug.allowBreakpointsEverywhere": false,
+
+	// Controls if the debug console should be automatically closed when the debug session ends.
+	"debug.console.closeOnEnd": false,
 
 	// Controls the font family in the debug console.
 	"debug.console.fontFamily": "default",
@@ -1256,7 +1319,7 @@
 	"html.format.wrapLineLength": 120,
 
 	// Enable/disable mirroring cursor on matching HTML tag.
-	"html.mirrorCursorOnMatchingTag": true,
+	"html.mirrorCursorOnMatchingTag": false,
 
 	// Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
 	"html.suggest.html5": true,
@@ -1898,14 +1961,24 @@
 	// - workbench.action.navigateLeft
 	// - workbench.action.navigateRight
 	// - workbench.action.navigateUp
+	// - workbench.action.nextEditor
+	// - workbench.action.nextEditorInGroup
 	// - workbench.action.nextPanelView
 	// - workbench.action.nextSideBarView
+	// - workbench.action.openNextRecentlyUsedEditor
 	// - workbench.action.openNextRecentlyUsedEditorInGroup
+	// - workbench.action.openPreviousRecentlyUsedEditor
 	// - workbench.action.openPreviousRecentlyUsedEditorInGroup
+	// - workbench.action.previousEditor
+	// - workbench.action.previousEditorInGroup
 	// - workbench.action.previousPanelView
 	// - workbench.action.previousSideBarView
 	// - workbench.action.quickOpen
+	// - workbench.action.quickOpenLeastRecentlyUsedEditor
+	// - workbench.action.quickOpenLeastRecentlyUsedEditorInGroup
 	// - workbench.action.quickOpenPreviousEditor
+	// - workbench.action.quickOpenPreviousRecentlyUsedEditor
+	// - workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup
 	// - workbench.action.quickOpenView
 	// - workbench.action.showCommands
 	// - workbench.action.tasks.build
@@ -1992,6 +2065,9 @@
 	// Controls the style of terminal cursor.
 	"terminal.integrated.cursorStyle": "block",
 
+	// Controls the width of the cursor when `terminal.integrated.cursorStyle` is set to `line`.
+	"terminal.integrated.cursorWidth": 1,
+
 	// An explicit start path where the terminal will be launched, this is used as the current working directory (cwd) for the shell process. This may be particularly useful in workspace settings if the root directory is not a convenient cwd.
 	"terminal.integrated.cwd": "",
 
@@ -2025,6 +2101,9 @@
 	// An experimental setting that will use the terminal title event for the dropdown title. This setting will only apply to new terminals.
 	"terminal.integrated.experimentalUseTitleEvent": false,
 
+	// Scrolling speed multiplier when pressing `Alt`.
+	"terminal.integrated.fastScrollSensitivity": 5,
+
 	// Controls the font family of the terminal, this defaults to `editor.fontFamily`'s value.
 	"terminal.integrated.fontFamily": "",
 
@@ -2055,10 +2134,13 @@
 	// When set the foreground color of each cell will change to try meet the contrast ratio specified. Example values:
 	// 
 	// - 1: The default, do nothing.
-	// - 4.5: Minimum for [WCAG AA compliance](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html).
-	// - 7: Minimum for [WCAG AAA compliance](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html).
+	// - 4.5: [WCAG AA compliance (minimum)](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html).
+	// - 7: [WCAG AAA compliance (enhanced)](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html).
 	// - 21: White on black or black on white.
 	"terminal.integrated.minimumContrastRatio": 1,
+
+	// A multiplier to be used on the `deltaY` of mouse wheel scroll events.
+	"terminal.integrated.mouseWheelScrollSensitivity": 1,
 
 	// Controls how the terminal is rendered.
 	//  - auto: Let VS Code guess which renderer to use.
@@ -2335,6 +2417,9 @@
 	// When enabled outline shows `variable`-symbols.
 	"outline.showVariables": true,
 
+	// Experimental: When enabled, shows a Timeline view in the Explorer sidebar.
+	"timeline.showView": false,
+
 	// Configure editor settings to be overridden for [css] language.
 	"[css]":  {
 		"editor.suggest.insertMode": "replace"
@@ -2416,6 +2501,14 @@
 		"editor.autoIndent": "advanced"
 	},
 
+	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
+	"workbench.settings.enableNaturalLanguageSearch": true,
+
+	// Controls the behavior of the settings editor Table of Contents while searching.
+	//  - hide: Hide the Table of Contents while searching.
+	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
+	"workbench.settings.settingsSearchTocBehavior": "filter",
+
 	// When enabled extensions are downloaded locally and installed on remote.
 	"remote.downloadExtensionsLocally": false,
 
@@ -2426,6 +2519,9 @@
 		]
 	},
 
+	// Restores the ports you forwarded in a workspace.
+	"remote.restoreForwardedPorts": false,
+
 	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
 	//  - disabled: Auto attach is disabled and not shown in status bar.
 	//  - on: Auto attach is active.
@@ -2434,6 +2530,9 @@
 
 	// Controls whether to show a warning when the 'useWSL' attribute is used.
 	"debug.node.showUseWslIsDeprecatedWarning": true,
+
+	// [Experimental] Controls whether to delegate "node"-type launch configs to the js-debug extension.
+	"debug.node.useV3": false,
 
 	// An array of languages where Emmet abbreviations should not be expanded.
 	"emmet.excludeLanguages": [
@@ -2659,6 +2758,9 @@
 	//  - Beside: Open the diff view next to the current editor group.
 	//  - Below: Open the diff view below the current editor group.
 	"merge-conflict.diffViewPosition": "Current",
+
+	// [Experimental] Controls whether to delegate "extensionHost"-type launch configs to the js-debug extension.
+	"debug.extensionHost.useV3": false,
 
 	// Controls whether 'Peek References' or 'Find References' is invoked when selecting code lens references
 	//  - peek: Show references in peek editor.
