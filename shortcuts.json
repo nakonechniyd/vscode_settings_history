@@ -52,23 +52,11 @@
                                          "when": "editorTextFocus" },
     { "key": "shift+up",              "command": "cursorUpSelect",
                                          "when": "editorTextFocus" },
-    { "key": "ctrl+right",            "command": "cursorWordEndRight",
-                                         "when": "editorTextFocus" },
-    { "key": "ctrl+shift+right",      "command": "cursorWordEndRightSelect",
-                                         "when": "editorTextFocus" },
-    { "key": "ctrl+left",             "command": "cursorWordStartLeft",
-                                         "when": "editorTextFocus" },
-    { "key": "ctrl+shift+left",       "command": "cursorWordStartLeftSelect",
-                                         "when": "editorTextFocus" },
     { "key": "shift+backspace",       "command": "deleteLeft",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "backspace",             "command": "deleteLeft",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "delete",                "command": "deleteRight",
-                                         "when": "editorTextFocus && !editorReadonly" },
-    { "key": "ctrl+backspace",        "command": "deleteWordLeft",
-                                         "when": "editorTextFocus && !editorReadonly" },
-    { "key": "ctrl+delete",           "command": "deleteWordRight",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+a",                "command": "editor.action.selectAll" },
     { "key": "ctrl+i",                "command": "expandLineSelection",
@@ -102,8 +90,18 @@
     { "key": "up",                    "command": "repl.action.historyPrevious",
                                          "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine" },
     { "key": "ctrl+f",                "command": "actions.find" },
-    { "key": "ctrl+f",                "command": "defaultSettings.action.focusSearch",
-                                         "when": "defaultSettingsEditor" },
+    { "key": "ctrl+right",            "command": "cursorWordEndRight",
+                                         "when": "editorTextFocus" },
+    { "key": "ctrl+shift+right",      "command": "cursorWordEndRightSelect",
+                                         "when": "editorTextFocus" },
+    { "key": "ctrl+left",             "command": "cursorWordStartLeft",
+                                         "when": "editorTextFocus" },
+    { "key": "ctrl+shift+left",       "command": "cursorWordStartLeftSelect",
+                                         "when": "editorTextFocus" },
+    { "key": "ctrl+backspace",        "command": "deleteWordLeft",
+                                         "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+delete",           "command": "deleteWordRight",
+                                         "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+k ctrl+c",         "command": "editor.action.addCommentLine",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+d",                "command": "editor.action.addSelectionToNextFindMatch",
@@ -138,7 +136,11 @@
                                          "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor" },
     { "key": "ctrl+shift+.",          "command": "editor.action.inPlaceReplace.down",
                                          "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+[IntlBackslash]", "command": "editor.action.inPlaceReplace.down",
+                                         "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+shift+,",          "command": "editor.action.inPlaceReplace.up",
+                                         "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+[IntlBackslash]",  "command": "editor.action.inPlaceReplace.up",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+]",                "command": "editor.action.indentLines",
                                          "when": "editorTextFocus && !editorReadonly" },
@@ -255,6 +257,8 @@
                                          "when": "config.editor.tabCompletion && editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode" },
     { "key": "enter",                 "command": "repl.action.acceptInput",
                                          "when": "editorTextFocus && inDebugRepl" },
+    { "key": "ctrl+f",                "command": "settings.action.search",
+                                         "when": "inSettingsEditor" },
     { "key": "shift+escape",          "command": "closeFindWidget",
                                          "when": "editorFocus && findWidgetVisible" },
     { "key": "escape",                "command": "closeFindWidget",
@@ -353,6 +357,14 @@
                                          "when": "breakpointsFocused" },
     { "key": "delete",                "command": "debug.removeWatchExpression",
                                          "when": "watchExpressionsFocused" },
+    { "key": "ctrl+c",                "command": "keybindings.editor.copyKeybindingEntry",
+                                         "when": "inKeybindings && keybindingFocus" },
+    { "key": "ctrl+k ctrl+k",         "command": "keybindings.editor.defineKeybinding",
+                                         "when": "inKeybindings && keybindingFocus" },
+    { "key": "delete",                "command": "keybindings.editor.removeKeybinding",
+                                         "when": "inKeybindings && keybindingFocus" },
+    { "key": "ctrl+f",                "command": "keybindings.editor.searchKeybindings",
+                                         "when": "inKeybindings && keybindingFocus" },
     { "key": "escape",                "command": "list.clear",
                                          "when": "listFocus" },
     { "key": "left",                  "command": "list.collapse",
@@ -410,9 +422,9 @@
                                          "when": "inQuickOpen" },
     { "key": "escape",                "command": "workbench.action.closeQuickOpen",
                                          "when": "inQuickOpen" },
+    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "ctrl+w",                "command": "workbench.action.closeWindow",
                                          "when": "!editorIsOpen" },
-    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "f5",                    "command": "workbench.action.debug.continue",
                                          "when": "inDebugMode" },
     { "key": "f6",                    "command": "workbench.action.debug.pause",
@@ -480,10 +492,13 @@
     { "key": "alt+8",                 "command": "workbench.action.openEditorAtIndex8" },
     { "key": "alt+9",                 "command": "workbench.action.openEditorAtIndex9" },
     { "key": "ctrl+k ctrl+s",         "command": "workbench.action.openGlobalKeybindings" },
+    { "key": "ctrl+,",                "command": "workbench.action.openGlobalSettings" },
     { "key": "alt+0",                 "command": "workbench.action.openLastEditorInGroup" },
     { "key": "ctrl+tab",              "command": "workbench.action.openNextRecentlyUsedEditorInGroup" },
     { "key": "ctrl+shift+tab",        "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup" },
     { "key": "ctrl+r",                "command": "workbench.action.openRecent" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
     { "key": "ctrl+k ctrl+h",         "command": "workbench.action.output.toggleOutput" },
     { "key": "ctrl+pageup",           "command": "workbench.action.previousEditor" },
     { "key": "ctrl+e",                "command": "workbench.action.quickOpen" },
@@ -525,8 +540,6 @@
     { "key": "ctrl+j",                "command": "workbench.action.togglePanel" },
     { "key": "ctrl+b",                "command": "workbench.action.toggleSidebarVisibility" },
     { "key": "ctrl+k z",              "command": "workbench.action.toggleZenMode" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "ctrl+numpad_add",       "command": "workbench.action.zoomIn" },
     { "key": "ctrl+shift+=",          "command": "workbench.action.zoomIn" },
     { "key": "ctrl+=",                "command": "workbench.action.zoomIn" },
@@ -540,7 +553,7 @@
     { "key": "ctrl+shift+d",          "command": "workbench.view.debug" },
     { "key": "ctrl+shift+e",          "command": "workbench.view.explorer" },
     { "key": "ctrl+shift+x",          "command": "workbench.view.extensions" },
-    { "key": "ctrl+shift+g",          "command": "workbench.view.git" },
+    { "key": "ctrl+shift+g",          "command": "workbench.view.scm" },
     { "key": "ctrl+shift+f",          "command": "workbench.view.search",
                                          "when": "!searchViewletVisible" },
     { "key": "f11",                   "command": "workbench.action.debug.stepInto",
@@ -579,6 +592,10 @@
                                          "when": "inQuickOpen" },
     { "key": "ctrl+shift+tab",        "command": "workbench.action.quickOpenNavigatePrevious",
                                          "when": "inQuickOpen" },
+    { "key": "ctrl+f4",               "command": "extension.node-debug.pickLoadedScript",
+                                         "when": "debugType == 'node'" },
+    { "key": "ctrl+f4",               "command": "extension.node-debug.pickLoadedScript",
+                                         "when": "debugType == 'node2'" },
     { "key": "ctrl+shift+v",          "command": "markdown.showPreview",
                                          "when": "editorFocus" },
     { "key": "ctrl+k v",              "command": "markdown.showPreviewToSide",
@@ -604,6 +621,8 @@
     // - cursorWordStartRight
     // - cursorWordStartRightSelect
     // - cut
+    // - debug.addConfiguration
+    // - debug.installAdditionalDebuggers
     // - debug.logToDebugConsole
     // - default:compositionEnd
     // - default:compositionStart
@@ -611,13 +630,13 @@
     // - default:paste
     // - default:replacePreviousChar
     // - default:type
-    // - defaultSettingsEditor.action.collapseAllGroups
     // - deleteAllLeft
     // - deleteAllRight
     // - deleteWordEndLeft
     // - deleteWordEndRight
     // - deleteWordStartLeft
     // - deleteWordStartRight
+    // - disablescmpreview
     // - editor.action.addSelectionToPreviousFindMatch
     // - editor.action.clearoutput
     // - editor.action.clipboardCopyWithSyntaxHighlightingAction
@@ -674,19 +693,54 @@
     // - editor.emmet.action.updateImageSize
     // - editor.emmet.action.updateTag
     // - editor.emmet.action.wrapWithAbbreviation
-    // - enablescmpreview
     // - explorer.newFile
     // - explorer.newFolder
     // - filesExplorer.findInFolder
+    // - git.branch
+    // - git.checkout
+    // - git.clean
+    // - git.cleanAll
+    // - git.clone
+    // - git.commit
+    // - git.commitAll
+    // - git.commitAllSigned
+    // - git.commitStaged
+    // - git.commitStagedSigned
+    // - git.commitWithInput
+    // - git.init
+    // - git.openChange
+    // - git.openChangeFromUri
+    // - git.openFile
+    // - git.openFileFromUri
+    // - git.openResource
+    // - git.publish
+    // - git.pull
+    // - git.pullRebase
+    // - git.push
+    // - git.pushTo
+    // - git.refresh
+    // - git.revertSelectedRanges
+    // - git.showOutput
+    // - git.stage
+    // - git.stageAll
+    // - git.stageSelectedRanges
+    // - git.sync
+    // - git.undoCommit
+    // - git.unstage
+    // - git.unstageAll
+    // - git.unstageSelectedRanges
+    // - keybindings.editor.resetKeybinding
     // - lineBreakInsert
     // - paste
     // - replacePreviousChar
+    // - scm.switch
     // - setContext
     // - type
     // - update.showCurrentReleaseNotes
     // - workbench.action.acceptSelectedQuickOpenItem
     // - workbench.action.appPerf
     // - workbench.action.clearEditorHistory
+    // - workbench.action.clearRecentFiles
     // - workbench.action.closeEditorsInOtherGroups
     // - workbench.action.closeEditorsToTheLeft
     // - workbench.action.closeEditorsToTheRight
@@ -699,6 +753,7 @@
     // - workbench.action.debug.configure
     // - workbench.action.debug.disconnect
     // - workbench.action.debug.selectandstart
+    // - workbench.action.decreaseViewSize
     // - workbench.action.editor.changeEOL
     // - workbench.action.editor.changeEncoding
     // - workbench.action.evenEditorWidths
@@ -711,26 +766,18 @@
     // - workbench.action.focusActiveEditorGroup
     // - workbench.action.focusPanel
     // - workbench.action.focusQuickOpen
-    // - workbench.action.git.clone
-    // - workbench.action.git.globalOpenChange
-    // - workbench.action.git.globalOpenFile
-    // - workbench.action.git.input-commit
-    // - workbench.action.git.publish
-    // - workbench.action.git.pull
-    // - workbench.action.git.push
-    // - workbench.action.git.pushToRemote
-    // - workbench.action.git.stage
-    // - workbench.action.git.startGitBranch
-    // - workbench.action.git.startGitCheckout
-    // - workbench.action.git.sync
-    // - workbench.action.git.undoLastCommit
-    // - workbench.action.git.unstage
+    // - workbench.action.increaseViewSize
+    // - workbench.action.inspectKeyMappings
+    // - workbench.action.joinTwoGroups
     // - workbench.action.maximizeEditor
     // - workbench.action.minimizeOtherEditors
+    // - workbench.action.navigateDown
     // - workbench.action.navigateEditorGroups
+    // - workbench.action.navigateLeft
+    // - workbench.action.navigateRight
+    // - workbench.action.navigateUp
     // - workbench.action.nextEditorInGroup
     // - workbench.action.openDocumentationUrl
-    // - workbench.action.openGlobalSettings
     // - workbench.action.openIntroductoryVideosUrl
     // - workbench.action.openPreviousEditorFromHistory
     // - workbench.action.openSnippets
@@ -744,6 +791,7 @@
     // - workbench.action.removeFromEditorHistory
     // - workbench.action.reportIssues
     // - workbench.action.reportPerformanceIssue
+    // - workbench.action.revertAndCloseActiveEditor
     // - workbench.action.selectIconTheme
     // - workbench.action.showEditorsInFirstGroup
     // - workbench.action.showEditorsInSecondGroup
@@ -755,6 +803,7 @@
     // - workbench.action.showWelcomePage
     // - workbench.action.switchWindow
     // - workbench.action.tasks.configureTaskRunner
+    // - workbench.action.tasks.restartTask
     // - workbench.action.tasks.runTask
     // - workbench.action.tasks.showLog
     // - workbench.action.tasks.terminate
@@ -779,6 +828,7 @@
     // - workbench.action.toggleDevTools
     // - workbench.action.toggleMaximizedPanel
     // - workbench.action.toggleMenuBar
+    // - workbench.action.toggleSharedProcess
     // - workbench.action.toggleSidebarPosition
     // - workbench.action.toggleStatusbarVisibility
     // - workbench.customDebugRequest
@@ -812,3 +862,4 @@
     // - workbench.files.action.refreshFilesExplorer
     // - workbench.files.action.showActiveFileInExplorer
     // - workbench.output.action.clearOutput
+    // - workbench.view.git
