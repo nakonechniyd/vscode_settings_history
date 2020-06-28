@@ -1,11 +1,10 @@
-Visual Studio Code 1.5.3
+Visual Studio Code 1.6.1
 
 Usage: code [options] [paths...]
 
 Options:
   -d, --diff                  Open a diff editor. Requires to pass two file
                               paths as arguments.
-  --disable-extensions        Disable all installed extensions.
   -g, --goto                  Open the file at path at the line and column (add
                               :line[:column] to path).
   --locale <locale>           The locale to use (e.g. en-US or zh-TW).
@@ -23,5 +22,6 @@ Options:
   --list-extensions           List the installed extensions.
   --install-extension <ext>   Installs an extension.
   --uninstall-extension <ext> Uninstalls an extension.
+  --disable-extensions        Disable all installed extensions.
   -v, --version               Print version.
   -h, --help                  Print usage.

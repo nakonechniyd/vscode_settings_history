@@ -244,6 +244,10 @@
                                          "when": "editorFocus && findWidgetVisible" },
     { "key": "alt+enter",             "command": "editor.action.selectAllMatches",
                                          "when": "editorFocus && findWidgetVisible" },
+    { "key": "alt+down",              "command": "find.history.showNext",
+                                         "when": "editorFocus && findInputFocussed && findWidgetVisible" },
+    { "key": "alt+up",                "command": "find.history.showPrevious",
+                                         "when": "editorFocus && findInputFocussed && findWidgetVisible" },
     { "key": "alt+c",                 "command": "toggleFindCaseSensitive",
                                          "when": "editorFocus" },
     { "key": "alt+r",                 "command": "toggleFindRegex",
@@ -338,7 +342,21 @@
                                          "when": "accessibilityHelpWidgetVisible && editorFocus" },
     { "key": "ctrl+alt+enter",        "command": "search.action.replaceAll",
                                          "when": "replaceActive && searchViewletVisible && !findWidgetVisible" },
+    { "key": "down",                  "command": "search.focus.nextInputBox",
+                                         "when": "inputBoxFocus && searchViewletVisible" },
+    { "key": "up",                    "command": "search.focus.previousInputBox",
+                                         "when": "inputBoxFocus && searchViewletVisible && !searchInputBoxFocus" },
+    { "key": "alt+down",              "command": "search.history.showNext",
+                                         "when": "searchInputBoxFocus && searchViewletVisible" },
+    { "key": "alt+up",                "command": "search.history.showPrevious",
+                                         "when": "searchInputBoxFocus && searchViewletVisible" },
     { "key": "ctrl+shift+r",          "command": "toggleExperimentalScreenReaderSupport" },
+    { "key": "alt+c",                 "command": "toggleSearchCaseSensitive",
+                                         "when": "searchInputBoxFocus && searchViewletVisible" },
+    { "key": "alt+r",                 "command": "toggleSearchRegex",
+                                         "when": "searchInputBoxFocus && searchViewletVisible" },
+    { "key": "alt+w",                 "command": "toggleSearchWholeWord",
+                                         "when": "searchInputBoxFocus && searchViewletVisible" },
     { "key": "ctrl+w",                "command": "workbench.action.closeActiveEditor" },
     { "key": "ctrl+k ctrl+w",         "command": "workbench.action.closeAllEditors" },
     { "key": "ctrl+k w",              "command": "workbench.action.closeEditorsInGroup" },
@@ -439,7 +457,11 @@
                                          "when": "terminalFocus" },
     { "key": "ctrl+shift+down",       "command": "workbench.action.terminal.scrollDown",
                                          "when": "terminalFocus" },
+    { "key": "shift+pagedown",        "command": "workbench.action.terminal.scrollDownPage",
+                                         "when": "terminalFocus" },
     { "key": "ctrl+shift+up",         "command": "workbench.action.terminal.scrollUp",
+                                         "when": "terminalFocus" },
+    { "key": "shift+pageup",          "command": "workbench.action.terminal.scrollUpPage",
                                          "when": "terminalFocus" },
     { "key": "ctrl+`",                "command": "workbench.action.terminal.toggleTerminal" },
     { "key": "f11",                   "command": "workbench.action.toggleFullScreen" },
@@ -545,12 +567,12 @@
     // - editor.emmet.action.updateImageSize
     // - editor.emmet.action.updateTag
     // - editor.emmet.action.wrapWithAbbreviation
-    // - extensions.update-all
     // - lineBreakInsert
     // - paste
     // - replacePreviousChar
     // - setContext
     // - type
+    // - update.showCurrentReleaseNotes
     // - workbench.action.acceptSelectedQuickOpenItem
     // - workbench.action.appPerf
     // - workbench.action.clearEditorHistory
@@ -574,6 +596,7 @@
     // - workbench.action.files.revert
     // - workbench.action.files.saveAll
     // - workbench.action.files.saveFiles
+    // - workbench.action.focusActiveEditorGroup
     // - workbench.action.focusFirstEditor
     // - workbench.action.focusLeftEditor
     // - workbench.action.focusPanel
@@ -606,17 +629,20 @@
     // - workbench.action.openWorkspaceSettings
     // - workbench.action.reloadWindow
     // - workbench.action.removeFromEditorHistory
+    // - workbench.action.reportIssues
     // - workbench.action.selectIconTheme
     // - workbench.action.selectTheme
     // - workbench.action.showEditorsInCenterGroup
     // - workbench.action.showEditorsInLeftGroup
     // - workbench.action.showEditorsInRightGroup
     // - workbench.action.showErrorsWarnings
+    // - workbench.action.switchWindow
     // - workbench.action.tasks.configureTaskRunner
     // - workbench.action.tasks.runTask
     // - workbench.action.tasks.showLog
     // - workbench.action.tasks.terminate
     // - workbench.action.tasks.test
+    // - workbench.action.terminal.clear
     // - workbench.action.terminal.focus
     // - workbench.action.terminal.focusNext
     // - workbench.action.terminal.focusPrevious
@@ -634,11 +660,15 @@
     // - workbench.debug.viewlet.action.enableAllBreakpoints
     // - workbench.debug.viewlet.action.reapplyBreakpointsAction
     // - workbench.debug.viewlet.action.removeAllBreakpoints
+    // - workbench.extensions.action.configureWorkspaceRecommendedExtensions
     // - workbench.extensions.action.installExtensions
     // - workbench.extensions.action.listOutdatedExtensions
+    // - workbench.extensions.action.openExtensionsFolder
     // - workbench.extensions.action.showInstalledExtensions
     // - workbench.extensions.action.showPopularExtensions
     // - workbench.extensions.action.showRecommendedExtensions
+    // - workbench.extensions.action.showWorkspaceRecommendedExtensions
+    // - workbench.extensions.action.updateAllExtensions
     // - workbench.files.action.addToWorkingFiles
     // - workbench.files.action.closeAllFiles
     // - workbench.files.action.closeFile
