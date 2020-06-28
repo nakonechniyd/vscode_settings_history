@@ -61,6 +61,9 @@
   // Controls whether the editor should render the inline color decorators and color picker.
   "editor.colorDecorators": true,
 
+  // Controls whether syntax highlighting should be copied into the clipboard.
+  "editor.copyWithSyntaxHighlighting": true,
+
   // Control the cursor animation style.
   "editor.cursorBlinking": "blink",
 
@@ -79,7 +82,7 @@
   // Controls whether copying without a selection copies the current line.
   "editor.emptySelectionClipboard": true,
 
-  // Controls whether the find operation is carried on selected text or the entire file in the editor.
+  // Controls whether the find operation is carried out on selected text or the entire file in the editor.
   "editor.find.autoFindInSelection": false,
 
   // Controls whether the search string in the Find Widget is seeded from the editor selection.
@@ -124,7 +127,7 @@
   // Controls whether the editor should highlight the active indent guide.
   "editor.highlightActiveIndentGuide": true,
 
-  // Time delay in milliseconds after which to the hover is shown.
+  // Controls the delay in milliseconds after which the hover is shown.
   "editor.hover.delay": 300,
 
   // Controls whether the hover is shown.
@@ -274,13 +277,16 @@
   // Controls whether filtering and sorting suggestions accounts for small typos.
   "editor.suggest.filterGraceful": true,
 
+  // Controls whether sorting favours words that appear close to the cursor.
+  "editor.suggest.localityBonus": false,
+
   // Control whether an active snippet prevents quick suggestions.
   "editor.suggest.snippetsPreventQuickSuggestions": true,
 
-  // Font size for the suggest widget.
+  // Font size for the suggest widget. When set to `0`, the value of `editor.fontSize` is used.
   "editor.suggestFontSize": 0,
 
-  // Line height for the suggest widget.
+  // Line height for the suggest widget. When set to `0`, the value of `editor.lineHeight` is used.
   "editor.suggestLineHeight": 0,
 
   // Controls whether suggestions should automatically show up when typing trigger characters.
@@ -292,8 +298,11 @@
   //  - recentlyUsedByPrefix: Select suggestions based on previous prefixes that have completed those suggestions, e.g. `co -> console` and `con -> const`.
   "editor.suggestSelection": "recentlyUsed",
 
-  // Insert snippets when their prefix matches. Works best when 'quickSuggestions' aren't enabled.
-  "editor.tabCompletion": false,
+  // Enables tab completions.
+  //  - on: Tab complete will insert the best matching suggestion when pressing tab.
+  //  - off: Disable tab completions.
+  //  - onlySnippets: Tab complete snippets when their prefix match. Works best when 'quickSuggestions' aren't enabled.
+  "editor.tabCompletion": "off",
 
   // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
   "editor.tabSize": 4,
@@ -334,6 +343,9 @@
 ,
 {
 
+
+  // Controls whether inline actions are always visible in the Source Control view.
+  "scm.alwaysShowActions": false,
 
   // Controls whether to always show the Source Control Provider section.
   "scm.alwaysShowProviders": false,
@@ -377,10 +389,10 @@
   "workbench.editor.enablePreviewFromQuickOpen": true,
 
   // Controls the format of the label for an editor.
-  //  - default: Show the name of the file. When tabs are enabled and two files have the same name in one group the distinguinshing sections of each file's path are added. When tabs are disabled, the path relative to the workspace folder is shown if the editor is active.
-  //  - short: Show the name of the file followed by it's directory name.
-  //  - medium: Show the name of the file followed by it's path relative to the workspace folder.
-  //  - long: Show the name of the file followed by it's absolute path.
+  //  - default: Show the name of the file. When tabs are enabled and two files have the same name in one group the distinguishing sections of each file's path are added. When tabs are disabled, the path relative to the workspace folder is shown if the editor is active.
+  //  - short: Show the name of the file followed by its directory name.
+  //  - medium: Show the name of the file followed by its path relative to the workspace folder.
+  //  - long: Show the name of the file followed by its absolute path.
   "workbench.editor.labelFormat": "default",
 
   // Controls where editors open. Select `left` or `right` to open editors to the left or right of the currently active one. Select `first` or `last` to open editors independently from the currently active one.
@@ -388,6 +400,9 @@
 
   // Controls the default direction of editors that are opened side by side (e.g. from the explorer). By default, editors will open on the right hand side of the currently active one. If changed to `down`, the editors will open below the currently active one.
   "workbench.editor.openSideBySideDirection": "right",
+
+  // Restores the last view state (e.g. scroll position) when re-opening files after they have been closed.
+  "workbench.editor.restoreViewState": true,
 
   // Controls whether an editor is revealed in any of the visible groups if opened. If disabled, an editor will prefer to open in the currently active editor group. If enabled, an already opened editor will be revealed instead of opened again in the currently active editor group. Note that there are some cases where this setting is ignored, e.g. when forcing an editor to open in a specific group or to the side of the currently active group.
   "workbench.editor.revealIfOpen": false,
@@ -434,7 +449,7 @@
   //  - json: Use the JSON file editor.
   "workbench.settings.editor": "ui",
 
-  // Controls whether to enable the natural language search mode for settings. The natural language search is provided by an online service.
+  // Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
   "workbench.settings.enableNaturalLanguageSearch": true,
 
   // Controls whether opening keybinding settings also opens an editor showing all default keybindings.
@@ -569,6 +584,9 @@
 
   // The default language mode that is assigned to new files.
   "files.defaultLanguage": "",
+
+  // Moves files/folders to the OS trash (recycle bin on Windows) when deleting. Disabling this will delete files/folders permanently.
+  "files.enableTrash": true,
 
   // The default character set encoding to use when reading and writing files. This setting can also be configured per language.
   //  - utf8: UTF-8
@@ -742,6 +760,9 @@
   // Controls whether the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space.
   "search.location": "sidebar",
 
+  // Whether to include results from recently opened files in the file results for Quick Open.
+  "search.quickOpen.includeHistory": true,
+
   // Whether to include results from a global symbol search in the file results for Quick Open.
   "search.quickOpen.includeSymbols": false,
 
@@ -781,13 +802,13 @@
 {
 
 
-  // Configure whether you receive automatic updates from an update channel. Requires a restart after change. The updates are fetched from an online service.
+  // Configure whether you receive automatic updates from an update channel. Requires a restart after change. The updates are fetched from a Microsoft online service.
   "update.channel": "default",
 
-  // Enables Windows background updates. The updates are fetched from an online service.
+  // Enables Windows background updates. The updates are fetched from a Microsoft online service.
   "update.enableWindowsBackgroundUpdates": true,
 
-  // Show Release Notes after an update. The Release Notes are fetched from an online service.
+  // Show Release Notes after an update. The Release Notes are fetched from a Microsoft online service.
   "update.showReleaseNotes": true
 
 }
@@ -836,7 +857,7 @@
   // Enable/disable autoclosing of HTML tags.
   "html.autoClosingTags": true,
 
-  // List of tags, comma separated, where the content shouldn't be reformatted. 'null' defaults to the 'pre' tag.
+  // List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.
   "html.format.contentUnformatted": "pre,code,textarea",
 
   // Enable/disable default HTML formatter.
@@ -845,22 +866,22 @@
   // End with a newline.
   "html.format.endWithNewline": false,
 
-  // List of tags, comma separated, that should have an extra newline before them. 'null' defaults to "head, body, /html".
+  // List of tags, comma separated, that should have an extra newline before them. `null` defaults to `"head, body, /html"`.
   "html.format.extraLiners": "head, body, /html",
 
-  // Format and indent {{#foo}} and {{/foo}}.
+  // Format and indent `{{#foo}}` and `{{/foo}}`.
   "html.format.indentHandlebars": false,
 
-  // Indent <head> and <body> sections.
+  // Indent `<head>` and `<body>` sections.
   "html.format.indentInnerHtml": false,
 
-  // Maximum number of line breaks to be preserved in one chunk. Use 'null' for unlimited.
+  // Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
   "html.format.maxPreserveNewLines": null,
 
   // Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.
   "html.format.preserveNewLines": true,
 
-  // List of tags, comma separated, that shouldn't be reformatted. 'null' defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.
+  // List of tags, comma separated, that shouldn't be reformatted. `null` defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.
   "html.format.unformatted": "wbr",
 
   // Wrap attributes.
@@ -935,6 +956,11 @@
 
   // Mark the current editor selection in the markdown preview.
   "markdown.preview.markEditorSelection": true,
+
+  // How should clicking on links to markdown files be handled in the preview.
+  //  - inPreview: Try to open links in the the markdown preview
+  //  - inEditor: Try to open links in the editor
+  "markdown.preview.openMarkdownLinks": "inPreview",
 
   // When a markdown preview is scrolled, update the view of the editor.
   "markdown.preview.scrollEditorWithPreview": true,
@@ -1031,6 +1057,7 @@
   // Enable/disable `experimentalDecorators` for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires using TypeScript 2.3.1 or newer in the workspace.
   "javascript.implicitProjectConfig.experimentalDecorators": false,
 
+  // Please use the new `javascript.suggest.names` setting.
   // Enable/disable including unique names from the file in JavaScript suggestion lists.
   "javascript.nameSuggestions": true,
 
@@ -1046,10 +1073,28 @@
   // Enable/disable references CodeLens in JavaScript files.
   "javascript.referencesCodeLens.enabled": false,
 
+  // Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
+  "javascript.suggest.autoImports": true,
+
+  // Complete functions with their parameter signature.
+  "javascript.suggest.completeFunctionCalls": false,
+
+  // Enabled/disable autocomplete suggestions.
+  "javascript.suggest.enabled": true,
+
+  // Enable/disable including unique names from the file in JavaScript suggestions.
+  "javascript.suggest.names": true,
+
+  // Enable/disable suggestions for paths in import statements and require calls.
+  "javascript.suggest.paths": true,
+
   // Enable/disable suggestion diagnostics for JavaScript files in the editor. Requires using TypeScript 2.8 or newer in the workspace.
   "javascript.suggestionActions.enabled": true,
 
   // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Requires using TypeScript 2.9 or newer in the workspace.
+  //  - prompt: Prompt on each rename.
+  //  - always: Always update paths automatically.
+  //  - never: Never rename paths and don't prompt.
   "javascript.updateImportsOnFileMove.enabled": "prompt",
 
   // Enable/disable JavaScript validation.
@@ -1061,6 +1106,7 @@
   // Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in the workspace.
   "typescript.autoClosingTags": true,
 
+  // Please use the new 'typescript.suggest.autoImports' and 'javascript.suggest.autoImports' settings.
   // Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
   "typescript.autoImportSuggestions.enabled": true,
 
@@ -1136,6 +1182,7 @@
   // Preferred quote style to use for quick fixes: `single` quotes, `double` quotes, or `auto` infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.preferences.quoteStyle": "auto",
 
+  // Please use the new `javascript.suggest.paths` and `typescript.suggest.paths` settings to enable/disable path suggestions.
   // Enable/disable quick suggestions when typing out an import path.
   "typescript.quickSuggestionsForPaths": true,
 
@@ -1145,8 +1192,23 @@
   // Report style checks as warnings.
   "typescript.reportStyleChecksAsWarnings": true,
 
+  // Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
+  "typescript.suggest.autoImports": true,
+
+  // Complete functions with their parameter signature.
+  "typescript.suggest.completeFunctionCalls": false,
+
+  // Enabled/disable autocomplete suggestions.
+  "typescript.suggest.enabled": true,
+
+  // Enable/disable suggestions for paths in import statements and require calls.
+  "typescript.suggest.paths": true,
+
   // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires using TypeScript 2.8 or newer in the workspace.
   "typescript.suggestionActions.enabled": true,
+
+  // Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
+  "typescript.surveys.enabled": true,
 
   // Controls auto detection of tsc tasks.
   //  - on: Create both build and watch tasks.
@@ -1173,6 +1235,7 @@
   //  - never: Never rename paths and don't prompt.
   "typescript.updateImportsOnFileMove.enabled": "prompt",
 
+  // Please use the new `javascript.suggest.completeFunctionCalls` and `typescript.suggest.completeFunctionCalls` settings.
   // Complete functions with their parameter signature.
   "typescript.useCodeSnippetsOnMethodSuggest": false,
 
@@ -1388,10 +1451,10 @@
 {
 
 
-  // When enabled, automatically checks extensions for updates. If an extension has an update, it is marked as outdated in the Extensions view. The updates are fetched from an online service.
+  // When enabled, automatically checks extensions for updates. If an extension has an update, it is marked as outdated in the Extensions view. The updates are fetched from a Microsoft online service.
   "extensions.autoCheckUpdates": true,
 
-  // When enabled, automatically installs updates for extensions. The updates are fetched from an online service.
+  // When enabled, automatically installs updates for extensions. The updates are fetched from a Microsoft online service.
   "extensions.autoUpdate": true,
 
   // When enabled, editors with extension details will be automatically closed upon navigating away from the Extensions View.
@@ -1400,7 +1463,7 @@
   // When enabled, the notifications for extension recommendations will not be shown.
   "extensions.ignoreRecommendations": false,
 
-  // When enabled, recommendations will not be fetched or shown unless specifically requested by the user. Some recommendations are fetched from an online service.
+  // When enabled, recommendations will not be fetched or shown unless specifically requested by the user. Some recommendations are fetched from a Microsoft online service.
   "extensions.showRecommendationsOnlyOnDemand": false
 
 }
@@ -1473,6 +1536,8 @@
     "workbench.action.terminal.copySelection",
     "workbench.action.terminal.deleteWordLeft",
     "workbench.action.terminal.deleteWordRight",
+    "workbench.action.terminal.findNextTerminalFocus",
+    "workbench.action.terminal.findPreviousTerminalFocus",
     "workbench.action.terminal.focus",
     "workbench.action.terminal.focusAtIndex1",
     "workbench.action.terminal.focusAtIndex2",
@@ -1516,7 +1581,12 @@
     "workbench.action.terminal.selectToPreviousLine",
     "workbench.action.terminal.split",
     "workbench.action.terminal.splitInActiveWorkspace",
+    "workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
+    "workbench.action.terminal.toggleFindRegexTerminalFocus",
+    "workbench.action.terminal.toggleFindWholeWordTerminalFocus",
     "workbench.action.terminal.toggleTerminal",
+    "workbench.action.toggleFullScreen",
+    "workbench.action.toggleMaximizedPanel",
     "workbench.action.togglePanel"
   ],
 
@@ -1722,56 +1792,22 @@
 {
 
 
-  // An array of languages where Emmet abbreviations should not be expanded.
-  "emmet.excludeLanguages": [
-    "markdown"
-  ],
-
-  // Path to a folder containing Emmet profiles and snippets.
-  "emmet.extensionsPath": null,
-
-  // Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
-  //  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
-  "emmet.includeLanguages": {},
-
-  // When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
-  "emmet.optimizeStylesheetParsing": true,
-
-  // Preferences used to modify behavior of some actions and resolvers of Emmet.
-  "emmet.preferences": {},
-
-  // Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
-  "emmet.showAbbreviationSuggestions": true,
-
-  // Shows expanded Emmet abbreviations as suggestions.
-  // The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
-  // The option `"always"` applies to all parts of the file regardless of markup/css.
-  "emmet.showExpandedAbbreviation": "always",
-
-  // If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
-  "emmet.showSuggestionsAsSnippets": false,
-
-  // Define profile for specified syntax or use your own profile with specific rules.
-  "emmet.syntaxProfiles": {},
-
-  // When enabled, Emmet abbreviations are expanded when pressing TAB.
-  "emmet.triggerExpansionOnTab": false,
-
-  // Variables to be used in Emmet snippets
-  "emmet.variables": {}
+  // Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
+  //  - disabled: Auto attach is disabled and not shown in status bar.
+  //  - on: Auto attach is active.
+  //  - off: Auto attach is inactive.
+  "debug.node.autoAttach": "disabled"
 
 }
 ,
 {
 
 
-  // (Experimental) Enable this experimental search provider extension. When enabled, it takes precedence over vscode's built-in search.
-  "searchRipgrep.enable": false
+  // Controls whether force push (with or without lease) is enabled.
+  "git.allowForcePush": false,
 
-}
-,
-{
-
+  // Always show the Staged Changes resource group.
+  "git.alwaysShowStagedChangesResourceGroup": false,
 
   // Controls the signoff flag for all commits.
   "git.alwaysSignOff": false,
@@ -1789,12 +1825,24 @@
   //  - openEditors: Scan for parent folders of open files.
   "git.autoRepositoryDetection": true,
 
+  // A regular expression to validate new branch names.
+  "git.branchValidationRegex": "",
+
+  // The character to replace whitespace in new branch names.
+  "git.branchWhitespaceChar": "-",
+
   // Controls what type of branches are listed when running `Checkout to...`.
   //  - all: Show all references.
   //  - local: Show only local branches.
   //  - tags: Show only tags.
   //  - remote: Show only remote branches.
   "git.checkoutType": "all",
+
+  // Always confirm the creation of empty commits.
+  "git.confirmEmptyCommits": true,
+
+  // Controls whether to ask for confirmation before force-pushing.
+  "git.confirmForcePush": true,
 
   // Confirm before synchronizing git repositories.
   "git.confirmSync": true,
@@ -1826,6 +1874,9 @@
   // Commit all changes when there are no staged changes.
   "git.enableSmartCommit": false,
 
+  // Fetch all branches when pulling or just the current one.
+  "git.fetchOnPull": false,
+
   // List of git repositories to ignore.
   "git.ignoredRepositories": [],
 
@@ -1841,17 +1892,48 @@
   // Controls when to show commit message input validation.
   "git.inputValidation": "warn",
 
+  // Controls the commit message length threshold for showing a warning.
+  "git.inputValidationLength": 72,
+
   // Path and filename of the git executable, e.g. `C:\Program Files\Git\bin\git.exe` (Windows).
   "git.path": null,
 
   // Controls whether Git should check for unsaved files before committing.
   "git.promptToSaveFilesBeforeCommit": false,
 
+  // Force git to use rebase when running the sync command.
+  "git.rebaseWhenSync": false,
+
+  // List of paths to search for git repositories in.
+  "git.scanRepositories": [],
+
   // Controls whether to show an inline Open File action in the Git changes view.
   "git.showInlineOpenFileAction": true,
 
+  // Controls whether git actions should show progress.
+  "git.showProgress": true,
+
   // Controls whether to show a notification when a push is successful.
-  "git.showPushSuccessNotification": false
+  "git.showPushSuccessNotification": false,
+
+  // Controls whether force pushing uses the safer force-with-lease variant.
+  "git.useForcePushWithLease": true
+
+}
+,
+{
+
+
+  // (Experimental) Enable this experimental search provider extension. When enabled, it takes precedence over vscode's built-in search.
+  "searchRipgrep.enable": false
+
+}
+,
+{
+
+
+  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
+  "grunt.autoDetect": "on"
 
 }
 ,
@@ -1895,19 +1977,51 @@
 {
 
 
-  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
-  "grunt.autoDetect": "on"
+  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
+  "gulp.autoDetect": "on"
 
 }
 ,
 {
 
 
-  // Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
-  //  - disabled: Auto attach is disabled and not shown in status bar.
-  //  - on: Auto attach is active.
-  //  - off: Auto attach is inactive.
-  "debug.node.autoAttach": "disabled"
+  // An array of languages where Emmet abbreviations should not be expanded.
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+
+  // Path to a folder containing Emmet profiles and snippets.
+  "emmet.extensionsPath": null,
+
+  // Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
+  //  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
+  "emmet.includeLanguages": {},
+
+  // When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
+  "emmet.optimizeStylesheetParsing": true,
+
+  // Preferences used to modify behavior of some actions and resolvers of Emmet.
+  "emmet.preferences": {},
+
+  // Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
+  "emmet.showAbbreviationSuggestions": true,
+
+  // Shows expanded Emmet abbreviations as suggestions.
+  // The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
+  // The option `"always"` applies to all parts of the file regardless of markup/css.
+  "emmet.showExpandedAbbreviation": "always",
+
+  // If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
+  "emmet.showSuggestionsAsSnippets": false,
+
+  // Define profile for specified syntax or use your own profile with specific rules.
+  "emmet.syntaxProfiles": {},
+
+  // When enabled, Emmet abbreviations are expanded when pressing TAB.
+  "emmet.triggerExpansionOnTab": false,
+
+  // Variables to be used in Emmet snippets
+  "emmet.variables": {}
 
 }
 ,
@@ -1916,14 +2030,6 @@
 
   // Controls whether auto detection of Jake tasks is on or off. Default is on.
   "jake.autoDetect": "on"
-
-}
-,
-{
-
-
-  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
-  "gulp.autoDetect": "on"
 
 }
 ,

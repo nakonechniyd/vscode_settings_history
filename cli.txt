@@ -1,4 +1,4 @@
-Visual Studio Code 1.27.2
+Visual Studio Code 1.28.2
 
 Usage: code [options] [paths...]
 
@@ -28,10 +28,10 @@ Extensions Management:
       List the installed extensions.
   --show-versions
       Show versions of installed extensions, when using --list-extension.
-  --install-extension (<extension-id> | <extension-vsix-path>)
-      Installs an extension.
   --uninstall-extension (<extension-id> | <extension-vsix-path>)
       Uninstalls an extension.
+  --install-extension (<extension-id> | <extension-vsix-path>)
+      Installs or updates the extension. Use `--force` argument to avoid prompts.
   --enable-proposed-api (<extension-id>)
       Enables proposed API features for extensions. Can receive one or more extension IDs to enable individually.
 
