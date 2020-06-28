@@ -1,4 +1,4 @@
-Visual Studio Code 1.37.1
+Visual Studio Code 1.38.1
 
 Usage: code [options][paths...]
 

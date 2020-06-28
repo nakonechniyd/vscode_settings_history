@@ -30,6 +30,12 @@
 	//  - never
 	"editor.autoClosingBrackets": "languageDefined",
 
+	// Controls whether the editor should type over closing quotes or brackets.
+	//  - always: Always type over closing quotes or brackets.
+	//  - auto: Type over closing quotes or brackets only if they were automatically inserted.
+	//  - never: Never type over closing quotes or brackets.
+	"editor.autoClosingOvertype": "auto",
+
 	// Controls whether the editor should automatically close quotes after the user adds an opening quote.
 	//  - always
 	//  - languageDefined: Use language configurations to determine when to autoclose quotes.
@@ -70,6 +76,9 @@
 
 	// Controls the cursor style.
 	"editor.cursorStyle": "line",
+
+	// Controls the minimal number of visible leading and trailing lines surrounding the cursor. Known as 'scrollOff' or `scrollOffset` in some other editors.
+	"editor.cursorSurroundingLines": 0,
 
 	// Controls the width of the cursor when `editor.cursorStyle` is set to `line`.
 	"editor.cursorWidth": 0,
@@ -403,8 +412,14 @@
 	// Controls whether inline actions are always visible in the Source Control view.
 	"scm.alwaysShowActions": false,
 
-	// Controls whether to always show the Source Control Provider section.
+	// Controls whether to show the Source Control Provider section even when there's only one Provider registered.
 	"scm.alwaysShowProviders": false,
+
+	// Controls the Source Control count badge.
+	//  - all: Show the sum of all Source Control Providers count badges.
+	//  - focused: Show the count badge of the focused Source Control Provider.
+	//  - off: Disable the Source Control count badge.
+	"scm.countBadge": "all",
 
 	// Controls diff decorations in the editor.
 	"scm.diffDecorations": "all",
@@ -516,6 +531,9 @@
 	// Controls how to open items in trees and lists using the mouse (if supported). For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. 
 	"workbench.list.openMode": "singleClick",
 
+	// Controls the visibility of the new Octicons style in the workbench.
+	"workbench.octiconsUpdate.enabled": false,
+
 	// Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom or on the right of the workbench.
 	"workbench.panel.defaultLocation": "bottom",
 
@@ -575,7 +593,7 @@
 	"workbench.tree.renderIndentGuides": "onHover",
 
 	// Enables the grid layout for the workbench. This setting may enable additional layout options for workbench components.
-	"workbench.useExperimentalGridLayout": false,
+	"workbench.useExperimentalGridLayout": true,
 
 	// Controls the visibility of view header actions. View header actions may either be always visible, or only visible when that view is focused or hovered over.
 	"workbench.view.alwaysShowHeaderActions": false,
@@ -636,7 +654,8 @@
 	//  - none: Never reopen a window. Always start with an empty one.
 	"window.restoreWindows": "one",
 
-	// Controls the window title based on the active editor. Variables are substituted based on the context:`${activeEditorShort}`: the file name (e.g. myFile.txt).
+	// Controls the window title based on the active editor. Variables are substituted based on the context:
+	// - `${activeEditorShort}`: the file name (e.g. myFile.txt).
 	// - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
 	// - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
 	// - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
@@ -772,6 +791,12 @@
 		"**/node_modules/**": true
 	},
 
+	// Only show keyboard shortcuts in Screencast Mode.
+	"screencastMode.onlyKeyboardShortcuts": false,
+
+	// Controls the vertical offset of the screencast mode overlay from the bottom as a percentage of the workbench height.
+	"screencastMode.verticalOffset": 20,
+
 	// Controls whether turning on Zen Mode also centers the layout.
 	"zenMode.centerLayout": true,
 
@@ -810,6 +835,11 @@
 
 	// Controls whether the explorer should allow to move files and folders via drag and drop.
 	"explorer.enableDragAndDrop": true,
+
+	// Controls what naming strategy to use when a giving a new name to a duplicated explorer item on paste.
+	//  - simple: Appends the word "copy" at the end of the duplicated name potentially followed by a number
+	//  - smart: Adds a number at the end of the duplicated name. If some number is already part of the name, tries to increase that number
+	"explorer.incrementalNaming": "simple",
 
 	// Number of editors shown in the Open Editors pane.
 	"explorer.openEditors.visible": 9,
@@ -912,6 +942,7 @@
 	// Configure whether you receive automatic updates. Requires a restart after change. The updates are fetched from a Microsoft online service.
 	//  - none: Disable updates.
 	//  - manual: Disable automatic background update checks. Updates will be available if you manually check for updates.
+	//  - start: Check for updates only on startup. Disable automatic background update checks.
 	//  - default: Enable automatic update checks. Code will check for updates automatically and periodically.
 	"update.mode": "default",
 
@@ -938,6 +969,9 @@
 
 	// Controls whether the non-debug hovers should be enabled while debugging. When enabled the hover providers will be called to provide a hover. Regular hovers will not be shown even if this setting is enabled.
 	"debug.enableAllHovers": false,
+
+	// Controls whether the workbench window should be focused when the debugger breaks.
+	"debug.focusWindowOnBreak": true,
 
 	// Show variable values inline in editor while debugging.
 	"debug.inlineValues": false,
@@ -972,6 +1006,14 @@
 	// Enable/disable autoclosing of HTML tags.
 	"html.autoClosingTags": true,
 
+	// A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/Microsoft/vscode-html-languageservice/blob/master/docs/customData.md).
+	// 
+	// VS Code loads custom data on startup to enhance its HTML support for the custom HTML tags, attributes and attribute values you specify in the JSON files.
+	// 
+	// The file paths are relative to workspace and only workspace folder settings are considered.
+	"html.customData": [],
+
+	// This setting is no longe experimental. Use `html.customData` instead.
 	// A list of JSON file paths that define custom tags, properties and other HTML syntax constructs. Only workspace folder setting will be read.
 	"html.experimental.customData": [],
 
@@ -1332,6 +1374,14 @@
 	// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to disable this behavior.
 	"css.completion.triggerPropertyValueCompletion": true,
 
+	// A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/Microsoft/vscode-css-languageservice/blob/master/docs/customData.md).
+	// 
+	// VS Code loads custom data on startup to enhance its CSS support for the custom CSS properties, at directives, pseudo classes and pseudo elements you specify in the JSON files.
+	// 
+	// The file paths are relative to workspace and only workspace folder settings are considered.
+	"css.customData": [],
+
+	// This setting is no longe experimental. Use `css.customData` instead.
 	// A list of JSON file paths that define custom CSS data that loads custom properties, at directives, pseudo classes / elements.
 	"css.experimental.customData": [],
 
@@ -1553,6 +1603,15 @@
 	// Customizes which terminal to run on Windows.
 	"terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe",
 
+	// A path that when set will override `terminal.integrated.shell.linux` and ignore `shellArgs` values for automation-related terminal usage like tasks and debug.
+	"terminal.integrated.automationShell.linux": null,
+
+	// A path that when set will override `terminal.integrated.shell.osx` and ignore `shellArgs` values for automation-related terminal usage like tasks and debug.
+	"terminal.integrated.automationShell.osx": null,
+
+	// A path that when set will override `terminal.integrated.shell.windows` and ignore `shellArgs` values for automation-related terminal usage like tasks and debug.
+	"terminal.integrated.automationShell.windows": null,
+
 	// A set of command IDs whose keybindings will not be sent to the shell and instead always be handled by Code. This allows the use of keybindings that would normally be consumed by the shell to act the same as when the terminal is not focused, for example ctrl+p to launch Quick Open.
 	// Default Skipped Commands:
 	// 
@@ -1697,6 +1756,9 @@
 	// An experimental setting that will refresh the terminal renderer when the system is resumed.
 	"terminal.integrated.experimentalRefreshOnResume": false,
 
+	// An experimental setting that will use the terminal title event for the dropdown title. This setting will only apply to new terminals.
+	"terminal.integrated.experimentalUseTitleEvent": false,
+
 	// Controls the font family of the terminal, this defaults to `editor.fontFamily`'s value.
 	"terminal.integrated.fontFamily": "",
 
@@ -1789,6 +1851,9 @@
 	//  - last: Only show the last element of the file path in the breadcrumbs view.
 	"breadcrumbs.filePath": "on",
 
+	// Render breadcrumb items with icons.
+	"breadcrumbs.icons": true,
+
 	// Controls whether and how symbols are shown in the breadcrumbs view.
 	//  - on: Show all symbols in the breadcrumbs view.
 	//  - off: Do not show symbols in the breadcrumbs view.
@@ -1820,57 +1885,6 @@
 	// Show Errors & Warnings on Outline Elements.
 	"outline.problems.enabled": true,
 
-	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
-	"remote.extensionKind": {
-		"pub.name": "ui"
-	},
-
-	// Configure editor settings to be overridden for [git-commit] language.
-	"[git-commit]":  {
-		"editor.rulers": [
-				72
-		]
-	},
-
-	// Configure editor settings to be overridden for [go] language.
-	"[go]":  {
-		"editor.insertSpaces": false
-	},
-
-	// Configure editor settings to be overridden for [json] language.
-	"[json]":  {
-		"editor.quickSuggestions": {
-				"strings": true
-		}
-	},
-
-	// Configure editor settings to be overridden for [makefile] language.
-	"[makefile]":  {
-		"editor.insertSpaces": false
-	},
-
-	// Configure editor settings to be overridden for [markdown] language.
-	"[markdown]":  {
-		"editor.wordWrap": "on",
-		"editor.quickSuggestions": false
-	},
-
-	// Configure editor settings to be overridden for [yaml] language.
-	"[yaml]":  {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"editor.autoIndent": false
-	},
-
-	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
-	//  - disabled: Auto attach is disabled and not shown in status bar.
-	//  - on: Auto attach is active.
-	//  - off: Auto attach is inactive.
-	"debug.node.autoAttach": "disabled",
-
-	// Controls whether to show a warning when the 'useWSL' attribute is used.
-	"debug.node.showUseWslIsDeprecatedWarning": true,
-
 	// Controls whether force push (with or without lease) is enabled.
 	"git.allowForcePush": false,
 
@@ -1899,6 +1913,9 @@
 	// Stash any changes before pulling and restore them after successful pull.
 	"git.autoStash": false,
 
+	// Controls the sort order for branches.
+	"git.branchSortOrder": "committerdate",
+
 	// A regular expression to validate new branch names.
 	"git.branchValidationRegex": "",
 
@@ -1921,7 +1938,7 @@
 	// Confirm before synchronizing git repositories.
 	"git.confirmSync": true,
 
-	// Controls the git badge counter.
+	// Controls the Git count badge.
 	//  - all: Count all changes.
 	//  - tracked: Count only tracked changes.
 	//  - off: Turn off counter.
@@ -1947,6 +1964,9 @@
 
 	// Commit all changes when there are no staged changes.
 	"git.enableSmartCommit": false,
+
+	// Controls whether the Git Sync command appears in the status bar.
+	"git.enableStatusBarSync": true,
 
 	// Fetch all branches when pulling or just the current one.
 	"git.fetchOnPull": false,
@@ -1985,7 +2005,10 @@
 	"git.postCommitCommand": "none",
 
 	// Controls whether Git should check for unsaved files before committing.
-	"git.promptToSaveFilesBeforeCommit": true,
+	//  - always: Check for any unsaved files.
+	//  - staged: Check only for unsaved staged files.
+	//  - never: Disable this check.
+	"git.promptToSaveFilesBeforeCommit": "always",
 
 	// Fetch all tags when pulling.
 	"git.pullTags": true,
@@ -2005,13 +2028,84 @@
 	// Controls whether to show a notification when a push is successful.
 	"git.showPushSuccessNotification": false,
 
+	// Control which changes are automatically staged by Smart Commit.
+	//  - all: Automatically stage all changes.
+	//  - tracked: Automatically staged tracked changes only.
+	"git.smartCommitChanges": "all",
+
+	// Suggests to enable smart commit (commit all changes when there are no staged changes).
+	"git.suggestSmartCommit": true,
+
+	// Controls whether a notification comes up when running the Sync action, which allows the user to cancel the operation.
+	"git.supportCancellation": false,
+
 	// Controls whether force pushing uses the safer force-with-lease variant.
 	"git.useForcePushWithLease": true,
+
+	// Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
+	"merge-conflict.autoNavigateNextConflict.enabled": false,
+
+	// Create a Code Lens for merge conflict blocks within editor.
+	"merge-conflict.codeLens.enabled": true,
+
+	// Create decorators for merge conflict blocks within editor.
+	"merge-conflict.decorators.enabled": true,
+
+	// Controls where the diff view should be opened when comparing changes in merge conflicts.
+	//  - Current: Open the diff view in the current editor group.
+	//  - Beside: Open the diff view next to the current editor group.
+	//  - Below: Open the diff view below the current editor group.
+	"merge-conflict.diffViewPosition": "Current",
+
+	// Configure editor settings to be overridden for [git-commit] language.
+	"[git-commit]":  {
+		"editor.rulers": [
+				72
+		]
+	},
+
+	// Configure editor settings to be overridden for [go] language.
+	"[go]":  {
+		"editor.insertSpaces": false
+	},
+
+	// Configure editor settings to be overridden for [json] language.
+	"[json]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		}
+	},
+
+	// Configure editor settings to be overridden for [makefile] language.
+	"[makefile]":  {
+		"editor.insertSpaces": false
+	},
+
+	// Configure editor settings to be overridden for [markdown] language.
+	"[markdown]":  {
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": false
+	},
+
+	// Configure editor settings to be overridden for [yaml] language.
+	"[yaml]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": false
+	},
+
+	// Controls whether auto detection of Gulp tasks is on or off. Default is on.
+	"gulp.autoDetect": "on",
+
+	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
+	"remote.extensionKind": {
+		"pub.name": "ui"
+	},
 
 	// Controls whether npm scripts should be automatically detected.
 	"npm.autoDetect": "on",
 
-	// Enable an explorer view for npm scripts.
+	// Enable an explorer view for npm scripts when there is no top-level 'package.json' file.
 	"npm.enableScriptExplorer": false,
 
 	// Configure glob patterns for folders that should be excluded from automatic script detection.
@@ -2034,20 +2128,14 @@
 	//  - view: Show references in separate view.
 	"references.preferredLocation": "peek",
 
-	// Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
-	"merge-conflict.autoNavigateNextConflict.enabled": false,
+	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
+	//  - disabled: Auto attach is disabled and not shown in status bar.
+	//  - on: Auto attach is active.
+	//  - off: Auto attach is inactive.
+	"debug.node.autoAttach": "disabled",
 
-	// Create a Code Lens for merge conflict blocks within editor.
-	"merge-conflict.codeLens.enabled": true,
-
-	// Create decorators for merge conflict blocks within editor.
-	"merge-conflict.decorators.enabled": true,
-
-	// Controls where the diff view should be opened when comparing changes in merge conflicts.
-	//  - Current: Open the diff view in the current editor group.
-	//  - Beside: Open the diff view next to the current editor group.
-	//  - Below: Open the diff view below the current editor group.
-	"merge-conflict.diffViewPosition": "Current",
+	// Controls whether to show a warning when the 'useWSL' attribute is used.
+	"debug.node.showUseWslIsDeprecatedWarning": true,
 
 	// Controls whether auto detection of Grunt tasks is on or off. Default is on.
 	"grunt.autoDetect": "on",
@@ -2092,8 +2180,5 @@
 
 	// Controls whether auto detection of Jake tasks is on or off. Default is on.
 	"jake.autoDetect": "on",
-
-	// Controls whether auto detection of Gulp tasks is on or off. Default is on.
-	"gulp.autoDetect": "on",
 
 }
