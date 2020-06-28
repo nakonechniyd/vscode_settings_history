@@ -1,4 +1,4 @@
-Visual Studio Code 1.6.1
+Visual Studio Code 1.7.2
 
 Usage: code [options] [paths...]
 
@@ -20,8 +20,11 @@ Options:
                               returning.
   --extensionHomePath         Set the root path for extensions.
   --list-extensions           List the installed extensions.
+  --show-versions             Show versions of installed extensions, when using
+                              --list-extension.
   --install-extension <ext>   Installs an extension.
   --uninstall-extension <ext> Uninstalls an extension.
   --disable-extensions        Disable all installed extensions.
+  --disable-gpu               Disable GPU hardware acceleration.
   -v, --version               Print version.
   -h, --help                  Print usage.
