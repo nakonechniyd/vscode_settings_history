@@ -228,7 +228,7 @@
     { "key": "ctrl+k ctrl+x",         "command": "editor.action.trimTrailingWhitespace",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "escape",                "command": "editor.action.webvieweditor.hideFind",
-                                         "when": "webviewEditorFocus" },
+                                         "when": "webviewEditorFocus && webviewFindWidgetVisible" },
     { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
                                          "when": "webviewEditorFocus" },
     { "key": "alt+down",              "command": "editor.action.webvieweditor.showNextFindTerm",
@@ -277,6 +277,12 @@
                                          "when": "config.editor.tabCompletion && editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode" },
     { "key": "enter",                 "command": "repl.action.acceptInput",
                                          "when": "editorTextFocus && inDebugRepl" },
+    { "key": "escape",                "command": "settings.action.clearSearchResults",
+                                         "when": "inSettingsSearch" },
+    { "key": "enter",                 "command": "settings.action.focusNextSetting",
+                                         "when": "inSettingsSearch" },
+    { "key": "shift+enter",           "command": "settings.action.focusPreviousSetting",
+                                         "when": "inSettingsSearch" },
     { "key": "down",                  "command": "settings.action.focusSettingsFile",
                                          "when": "inSettingsSearch" },
     { "key": "ctrl+f",                "command": "settings.action.search",
@@ -381,6 +387,8 @@
                                          "when": "breakpointsFocused" },
     { "key": "delete",                "command": "debug.removeWatchExpression",
                                          "when": "watchExpressionsFocused" },
+    { "key": "escape",                "command": "keybindings.editor.clearSearchResults",
+                                         "when": "inKeybindings && inKeybindingsSearch" },
     { "key": "ctrl+c",                "command": "keybindings.editor.copyKeybindingEntry",
                                          "when": "inKeybindings && keybindingFocus" },
     { "key": "ctrl+k ctrl+k",         "command": "keybindings.editor.defineKeybinding",
@@ -514,6 +522,8 @@
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
     { "key": "up",                    "command": "workbench.action.interactivePlayground.arrowUp",
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
     { "key": "pagedown",              "command": "workbench.action.interactivePlayground.pageDown",
                                          "when": "interactivePlaygroundFocus && !editorTextFocus" },
     { "key": "pageup",                "command": "workbench.action.interactivePlayground.pageUp",
@@ -540,8 +550,6 @@
     { "key": "alt+8",                 "command": "workbench.action.openEditorAtIndex8" },
     { "key": "alt+9",                 "command": "workbench.action.openEditorAtIndex9" },
     { "key": "ctrl+k ctrl+s",         "command": "workbench.action.openGlobalKeybindings" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "ctrl+,",                "command": "workbench.action.openGlobalSettings" },
     { "key": "alt+0",                 "command": "workbench.action.openLastEditorInGroup" },
     { "key": "ctrl+tab",              "command": "workbench.action.openNextRecentlyUsedEditorInGroup" },
@@ -575,7 +583,7 @@
                                          "when": "terminalFindWidgetInputFocused && terminalFindWidgetVisible" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
                                          "when": "terminalFocus" },
-    { "key": "end",                   "command": "workbench.action.terminal.hideFindWidget",
+    { "key": "shift+escape",          "command": "workbench.action.terminal.hideFindWidget",
                                          "when": "terminalFindWidgetVisible && terminalFocus" },
     { "key": "escape",                "command": "workbench.action.terminal.hideFindWidget",
                                          "when": "terminalFindWidgetVisible && terminalFocus" },
@@ -743,38 +751,16 @@
     // - editor.debug.action.selectionToRepl
     // - editor.debug.action.selectionToWatch
     // - editor.debug.action.toggleColumnBreakpointContextMenu
-    // - editor.emmet.action.balanceIn
-    // - editor.emmet.action.balanceOut
-    // - editor.emmet.action.decrementNumberByOne
-    // - editor.emmet.action.decrementNumberByOneTenth
-    // - editor.emmet.action.decrementNumberByTen
-    // - editor.emmet.action.evaluateMathExpression
-    // - editor.emmet.action.incrementNumberByOne
-    // - editor.emmet.action.incrementNumberByOneTenth
-    // - editor.emmet.action.incrementNumberByTen
-    // - editor.emmet.action.matchTag
-    // - editor.emmet.action.mergeLines
-    // - editor.emmet.action.nextEditPoint
-    // - editor.emmet.action.prevEditPoint
-    // - editor.emmet.action.reflectCSSValue
-    // - editor.emmet.action.removeTag
-    // - editor.emmet.action.selectNextItem
-    // - editor.emmet.action.selectPrevItem
-    // - editor.emmet.action.splitJoinTag
-    // - editor.emmet.action.toggleComment
-    // - editor.emmet.action.updateImageSize
-    // - editor.emmet.action.updateTag
-    // - editor.emmet.action.wrapIndividualLinesWithAbbreviation
-    // - editor.emmet.action.wrapWithAbbreviation
-    // - emmet.expandAbbreviation
     // - explorer.newFile
     // - explorer.newFolder
     // - filesExplorer.findInFolder
+    // - git._syncAll
     // - git.branch
     // - git.checkout
     // - git.clean
     // - git.cleanAll
     // - git.clone
+    // - git.close
     // - git.commit
     // - git.commitAll
     // - git.commitAllAmend
@@ -879,6 +865,7 @@
     // - workbench.action.minimizeOtherEditors
     // - workbench.action.navigateDown
     // - workbench.action.navigateEditorGroups
+    // - workbench.action.navigateLast
     // - workbench.action.navigateLeft
     // - workbench.action.navigateRight
     // - workbench.action.navigateUp
@@ -968,6 +955,7 @@
     // - workbench.debug.viewlet.action.reapplyBreakpointsAction
     // - workbench.debug.viewlet.action.removeAllBreakpoints
     // - workbench.extensions.action.checkForUpdates
+    // - workbench.extensions.action.configureWorkspaceFolderRecommendedExtensions
     // - workbench.extensions.action.configureWorkspaceRecommendedExtensions
     // - workbench.extensions.action.disableAll
     // - workbench.extensions.action.disableAllWorkspace
