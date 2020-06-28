@@ -1,9 +1,10 @@
 {
-  // Controls the font size in pixels.
-  "editor.fontSize": 14,
 
   // Controls auto save of dirty files. Accepted values:  'off', 'afterDelay', 'onFocusChange' (editor loses focus), 'onWindowChange' (window loses focus). If set to 'afterDelay', you can configure the delay in 'files.autoSaveDelay'.
   "files.autoSave": "off",
+
+  // Controls the font size in pixels.
+  "editor.fontSize": 14,
 
   // Controls the font family.
   "editor.fontFamily": "'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
@@ -14,17 +15,11 @@
   // Controls how the editor should render whitespace characters, possibilities are 'none', 'boundary', and 'all'. The 'boundary' option does not render single spaces between words.
   "editor.renderWhitespace": "none",
 
-  // Configure glob patterns for excluding files and folders.
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true
-  },
-
   // Controls the cursor style, accepted values are 'block', 'block-outline', 'line', 'line-thin', 'underline' and 'underline-thin'
   "editor.cursorStyle": "line",
+
+  // The modifier to be used to add multiple cursors with the mouse. `ctrlCmd` maps to `Control` on Windows and Linux and to `Command` on OSX. The Go To Definition and Open Link mouse gestures will adapt such that they do not conflict with the multicursor modifier.
+  "editor.multiCursorModifier": "alt",
 
   // Insert spaces when pressing Tab. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
   "editor.insertSpaces": true,
@@ -35,6 +30,15 @@
   //  - 'wordWrapColumn' (wrap at `editor.wordWrapColumn`) or
   //  - 'bounded' (wrap at minimum of viewport and `editor.wordWrapColumn`).
   "editor.wordWrap": "off",
+
+  // Configure glob patterns for excluding files and folders.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true
+  },
 
   // Configure file associations to languages (e.g. "*.extension": "html"). These have precedence over the default associations of the languages installed.
   "files.associations": {}
@@ -58,6 +62,9 @@
 
   // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
   "editor.lineHeight": 0,
+
+  // Controls the letter spacing in pixels.
+  "editor.letterSpacing": 0,
 
   // Controls the display of line numbers. Possible values are 'on', 'off', and 'relative'. 'relative' shows the line count from the current cursor position.
   "editor.lineNumbers": "on",
@@ -84,13 +91,19 @@
   "editor.scrollBeyondLastLine": true,
 
   // Controls if the minimap is shown
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
 
   // Render the actual characters on a line (as opposed to color blocks)
   "editor.minimap.renderCharacters": true,
 
   // Limit the width of the minimap to render at most a certain number of columns
   "editor.minimap.maxColumn": 120,
+
+  // Controls if we seed the search string in Find Widget from editor selection
+  "editor.find.seedSearchStringFromSelection": true,
+
+  // Controls if Find in Selection flag is turned on when multiple characters or lines of text are selected in the editor
+  "editor.find.autoFindInSelection": false,
 
   // Controls how lines should wrap. Can be:
   //  - 'off' (disable wrapping),
@@ -107,6 +120,9 @@
 
   // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events
   "editor.mouseWheelScrollSensitivity": 1,
+
+  // The modifier to be used to add multiple cursors with the mouse. `ctrlCmd` maps to `Control` on Windows and Linux and to `Command` on OSX. The Go To Definition and Open Link mouse gestures will adapt such that they do not conflict with the multicursor modifier.
+  "editor.multiCursorModifier": "alt",
 
   // Controls if suggestions should automatically show up while typing
   "editor.quickSuggestions": {
@@ -133,8 +149,8 @@
   // Controls if suggestions should automatically show up when typing trigger characters
   "editor.suggestOnTriggerCharacters": true,
 
-  // Controls if suggestions should be accepted on 'Enter' - in addition to 'Tab'. Helps to avoid ambiguity between inserting new lines or accepting suggestions.
-  "editor.acceptSuggestionOnEnter": true,
+  // Controls if suggestions should be accepted on 'Enter' - in addition to 'Tab'. Helps to avoid ambiguity between inserting new lines or accepting suggestions. The value 'smart' means only accept a suggestion with Enter when it makes a textual change
+  "editor.acceptSuggestionOnEnter": "on",
 
   // Controls if suggestions should be accepted on commit characters. For instance in JavaScript the semi-colon (';') can be a commit character that accepts a suggestion and types that character.
   "editor.acceptSuggestionOnCommitCharacter": true,
@@ -188,7 +204,7 @@
   "editor.renderControlCharacters": false,
 
   // Controls whether the editor should render indent guides
-  "editor.renderIndentGuides": false,
+  "editor.renderIndentGuides": true,
 
   // Controls how the editor should render the current line highlight, possibilities are 'none', 'gutter', 'line', and 'all'.
   "editor.renderLineHighlight": "line",
@@ -198,6 +214,9 @@
 
   // Controls whether the editor has code folding enabled
   "editor.folding": true,
+
+  // Controls whether the fold controls on the gutter are automatically hidden.
+  "editor.showFoldingControls": "mouseover",
 
   // Highlight matching brackets when one of them is selected.
   "editor.matchBrackets": true,
@@ -215,7 +234,10 @@
   "editor.stablePeek": false,
 
   // Controls if the editor should allow to move selections via drag and drop.
-  "editor.dragAndDrop": false,
+  "editor.dragAndDrop": true,
+
+  // Controls whether the editor should run in a mode where it is optimized for screen readers.
+  "editor.accessibilitySupport": "auto",
 
   // Controls if the diff editor shows the diff side by side or inline
   "diffEditor.renderSideBySide": true,
@@ -249,6 +271,9 @@
 
   // Path to a folder containing emmet profiles, snippets and preferences
   "emmet.extensionsPath": null,
+
+  // Try out the new emmet modules (which will eventually replace the old single emmet library) for all emmet features.
+  "emmet.useNewEmmet": false,
 
 
   // Controls if opened editors should show in tabs or not.
@@ -300,7 +325,7 @@
   "workbench.colorTheme": "Default Dark+",
 
   // Specifies the icon theme used in the workbench.
-  "workbench.iconTheme": null,
+  "workbench.iconTheme": "vs-seti",
 
   // Overrides colors from the currently selected color theme.
   "workbench.colorCustomizations": {},
@@ -311,7 +336,7 @@
   // - on: files will open in a new window
   // - off: files will open in the window with the files' folder open or the last active window
   // Note that there can still be cases where this setting is ignored (e.g. when using the -new-window or -reuse-window command line option).
-  "window.openFilesInNewWindow": "default",
+  "window.openFilesInNewWindow": "off",
 
   // Controls if folders should open in a new window or replace the last active window.
   // - default: folders will open in a new window unless a folder is picked from within the application (e.g. via the File menu)
@@ -340,11 +365,14 @@
   // ${separator}: a conditional separator (" - ") that only shows when surrounded by variables with values
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
 
-  // Controls the dimensions of opening a new window. By default, a new window will open in the center of the screen with small dimensions. When set to  'inherit', the window will get the same dimensions as the last active one. When set to 'maximized', the window will open maximized and fullscreen if configured to 'fullscreen'.
+  // Controls the dimensions of opening a new window when at least one window is already opened. By default, a new window will open in the center of the screen with small dimensions. When set to 'inherit', the window will get the same dimensions as the last window that was active. When set to 'maximized', the window will open maximized and fullscreen if configured to 'fullscreen'. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
   "window.newWindowDimensions": "default",
 
   // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
   "window.menuBarVisibility": "default",
+
+  // If enabled, the main menus can be opened via Alt-key shortcuts. Disabling mnemonics allows to bind these Alt-key shortcuts to editor commands instead.
+  "window.enableMenuBarMnemonics": true,
 
 
   // Configure glob patterns for excluding files and folders.
@@ -365,7 +393,7 @@
   // When enabled, will attempt to guess the character set encoding when opening files
   "files.autoGuessEncoding": false,
 
-  // The default end of line character.
+  // The default end of line character. Use \n for LF and \r\n for CRLF.
   "files.eol": "\n",
 
   // When enabled, will trim trailing whitespace when saving a file.
@@ -383,6 +411,7 @@
   // Configure glob patterns of file paths to exclude from file watching. Changing this setting requires a restart. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
   "files.watcherExclude": {
     "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
     "**/node_modules/**": true
   },
 
@@ -657,6 +686,9 @@
   // Controls if the floating debug action bar should be hidden
   "debug.hideActionBar": false,
 
+  // Controls behavior of the internal debug console.
+  "debug.internalConsoleOptions": "openOnFirstSessionStart",
+
   // Global debug launch configuration. Should be used as an alternative to 'launch.json' that is shared across workspaces
   "launch": {},
 
@@ -782,10 +814,16 @@
   // Check if a global install TypeScript compiler (e.g. tsc) differs from the used TypeScript language service.
   "typescript.check.tscVersion": true,
 
-  // Check if NPM is installed for automatic typings acquisition
+  // Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires TypeScript >= 2.3.4.
+  "typescript.npm": null,
+
+  // Check if NPM is installed for Automatic Type Acquisition.
   "typescript.check.npmIsInstalled": true,
 
-  // Enable/disable references CodeLens. Requires TypeScript >= 2.0.6.
+  // Enable/disable references CodeLens in JavaScript files.
+  "javascript.referencesCodeLens.enabled": false,
+
+  // Enable/disable references CodeLens in TypeScript files. Requires TypeScript >= 2.0.6.
   "typescript.referencesCodeLens.enabled": false,
 
   // Enable/disable implementations CodeLens. Requires TypeScript >= 2.2.0.
@@ -896,9 +934,18 @@
   // Enable/disable semantic checking of JavaScript files. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >=2.3.1.
   "javascript.implicitProjectConfig.checkJs": false,
 
+  // Enable/disable including unique names from the file in JavaScript suggestion lists.
+  "javascript.nameSuggestions": true,
+
+  // Controls whether auto detection of tsc tasks is on or off.
+  "typescript.tsc.autoDetect": "on",
+
 
   // Automatically update extensions
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": true,
+
+  // Ignore extension recommendations
+  "extensions.ignoreRecommendations": false,
 
 
   // Customizes which terminal to run on Windows.
@@ -1025,34 +1072,6 @@
   "telemetry.enableCrashReporter": true,
 
 
-  // Whether git is enabled
-  "git.enabled": true,
-
-  // Path to the git executable
-  "git.path": null,
-
-  // Whether auto refreshing is enabled
-  "git.autorefresh": true,
-
-  // Whether auto fetching is enabled
-  "git.autofetch": true,
-
-  // Confirm before synchronizing git repositories
-  "git.confirmSync": true,
-
-  // Controls the git badge counter. `all` counts all changes. `tracked` counts only the tracked changes. `off` turns it off.
-  "git.countBadge": "all",
-
-  // Controls what type of branches are listed when running `Checkout to...`. `all` shows all refs, `local` shows only the local branchs, `tags` shows only tags and `remote` shows only remote branches.
-  "git.checkoutType": "all",
-
-  // Ignores the legacy Git warning
-  "git.ignoreLegacyWarning": false,
-
-  // Ignores the warning when there are too many changes in a repository
-  "git.ignoreLimitWarning": false,
-
-
   // Configure editor settings to be overridden for [go] language.
   "[go]":  {
     "editor.insertSpaces": false
@@ -1081,6 +1100,62 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2
   },
+
+
+  // Controls whether auto detection of npm scripts is on or off. Default is on.
+  "npm.autoDetect": "on",
+
+
+  // Enable/disable merge conflict block CodeLens within editor
+  "merge-conflict.codeLens.enabled": true,
+
+  // Enable/disable merge conflict decorators within editor
+  "merge-conflict.decorators.enabled": true,
+
+
+  // Shows expanded emmet abbreviations as suggestions
+  "emmet.showExpandedAbbreviation": true,
+
+  // Shows possible emmet abbreviations as suggestions
+  "emmet.showAbbreviationSuggestions": true,
+
+
+  // Whether git is enabled
+  "git.enabled": true,
+
+  // Path to the git executable
+  "git.path": null,
+
+  // Whether auto refreshing is enabled
+  "git.autorefresh": true,
+
+  // Whether auto fetching is enabled
+  "git.autofetch": true,
+
+  // Confirm before synchronizing git repositories
+  "git.confirmSync": true,
+
+  // Controls the git badge counter. `all` counts all changes. `tracked` counts only the tracked changes. `off` turns it off.
+  "git.countBadge": "all",
+
+  // Controls what type of branches are listed when running `Checkout to...`. `all` shows all refs, `local` shows only the local branchs, `tags` shows only tags and `remote` shows only remote branches.
+  "git.checkoutType": "all",
+
+  // Ignores the legacy Git warning
+  "git.ignoreLegacyWarning": false,
+
+  // Ignores the warning when there are too many changes in a repository
+  "git.ignoreLimitWarning": false,
+
+  // The default location where to clone a git repository
+  "git.defaultCloneDirectory": null,
+
+  // Commit all changes when there are not staged changes.
+  "git.enableSmartCommit": false,
+
+
+  // Controls whether auto detection of Jake tasks is on or off. Default is on.
+  "jake.autoDetect": "on",
 
 
   // Controls whether auto detection of Grunt tasks is on or off. Default is on.
