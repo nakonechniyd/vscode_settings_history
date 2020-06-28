@@ -618,9 +618,9 @@
     { "key": "escape",                "command": "workbench.action.closeQuickOpen",
                                          "when": "inQuickOpen" },
     { "key": "ctrl+k u",              "command": "workbench.action.closeUnmodifiedEditors" },
+    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "ctrl+w",                "command": "workbench.action.closeWindow",
                                          "when": "!editorIsOpen && !multipleEditorGroups" },
-    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "alt+f5",                "command": "workbench.action.compareEditor.nextChange",
                                          "when": "textCompareEditorVisible" },
     { "key": "shift+alt+f5",          "command": "workbench.action.compareEditor.previousChange",
@@ -653,6 +653,8 @@
     { "key": "ctrl+k r",              "command": "workbench.action.files.revealActiveFileInWindows" },
     { "key": "ctrl+s",                "command": "workbench.action.files.save" },
     { "key": "ctrl+shift+s",          "command": "workbench.action.files.saveAs" },
+    { "key": "ctrl+shift+s",          "command": "workbench.action.files.saveLocalFile",
+                                         "when": "remoteFileDialogVisible" },
     { "key": "ctrl+k s",              "command": "workbench.action.files.saveWithoutFormatting" },
     { "key": "ctrl+k o",              "command": "workbench.action.files.showOpenedFileInNewWindow" },
     { "key": "ctrl+shift+f",          "command": "workbench.action.findInFiles" },
@@ -786,8 +788,6 @@
                                          "when": "terminalFocus" },
     { "key": "ctrl+shift+5",          "command": "workbench.action.terminal.split",
                                          "when": "terminalFocus" },
-    { "key": "ctrl+\\",               "command": "workbench.action.terminal.split",
-                                         "when": "terminalFocus" },
     { "key": "alt+c",                 "command": "workbench.action.terminal.toggleFindCaseSensitive",
                                          "when": "terminalFindWidgetFocused" },
     { "key": "alt+c",                 "command": "workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
@@ -826,6 +826,10 @@
     { "key": "ctrl+shift+g",          "command": "workbench.view.scm" },
     { "key": "ctrl+shift+f",          "command": "workbench.view.search",
                                          "when": "!searchViewletVisible" },
+    { "key": "ctrl+right",            "command": "breadcrumbs.focusNextWithPicker",
+                                         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus" },
+    { "key": "ctrl+left",             "command": "breadcrumbs.focusPreviousWithPicker",
+                                         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus" },
     { "key": "escape",                "command": "breadcrumbs.selectEditor",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
     { "key": "f2",                    "command": "debug.renameWatchExpression",
@@ -912,6 +916,7 @@
     // - actions.findWithSelection
     // - addRootFolder
     // - breadcrumbs.toggle
+    // - changeEditorIndentation
     // - columnSelect
     // - compareFiles
     // - compareSelected
@@ -945,6 +950,7 @@
     // - debug.copyStackTrace
     // - debug.enableOrDisableBreakpoint
     // - debug.installAdditionalDebuggers
+    // - debug.jumpToCursor
     // - debug.startFromConfig
     // - default:compositionEnd
     // - default:compositionStart
@@ -1043,6 +1049,7 @@
     // - editor.emmet.action.wrapIndividualLinesWithAbbreviation
     // - editor.emmet.action.wrapWithAbbreviation
     // - emmet.expandAbbreviation
+    // - explorer.download
     // - explorer.newFile
     // - explorer.newFolder
     // - extension.node-debug.attachNodeProcess
@@ -1192,6 +1199,7 @@
     // - references-view.refresh
     // - references-view.remove
     // - references-view.tree.focus
+    // - remote.closeRemote
     // - remote.showActions
     // - removeRootFolder
     // - repl.action.copyAll
@@ -1214,6 +1222,7 @@
     // - settings.filterByModified
     // - settings.filterByOnline
     // - settings.switchToJSON
+    // - showEditorScreenReaderNotification
     // - toggle.diff.ignoreTrimWhitespace
     // - toggle.diff.renderSideBySide
     // - toggleEscapeSequenceLogging
@@ -1222,7 +1231,14 @@
     // - typescript.reloadProjects
     // - typescript.restartTsServer
     // - typescript.selectTypeScriptVersion
+    // - update.check
+    // - update.checking
+    // - update.downloadNow
+    // - update.downloading
+    // - update.install
+    // - update.restart
     // - update.showCurrentReleaseNotes
+    // - update.updating
     // - workbench.action.acceptSelectedQuickOpenItem
     // - workbench.action.addComment
     // - workbench.action.addRootFolder
@@ -1258,6 +1274,7 @@
     // - workbench.action.editorLayoutTwoRows
     // - workbench.action.editorLayoutTwoRowsRight
     // - workbench.action.evenEditorWidths
+    // - workbench.action.extensionHostProfilder.stop
     // - workbench.action.files.openFileFolderInNewWindow
     // - workbench.action.files.openFileInNewWindow
     // - workbench.action.files.openFolderInNewWindow
@@ -1276,6 +1293,7 @@
     // - workbench.action.increaseViewSize
     // - workbench.action.inspectContextKeys
     // - workbench.action.inspectKeyMappings
+    // - workbench.action.inspectKeyMappingsJSON
     // - workbench.action.joinAllGroups
     // - workbench.action.joinTwoGroups
     // - workbench.action.logStorage
@@ -1411,6 +1429,7 @@
     // - workbench.action.terminal.scrollToNextCommand
     // - workbench.action.terminal.scrollToPreviousCommand
     // - workbench.action.terminal.selectAll
+    // - workbench.action.terminal.selectDefaultShell
     // - workbench.action.terminal.selectToNextCommand
     // - workbench.action.terminal.selectToNextLine
     // - workbench.action.terminal.selectToPreviousCommand
@@ -1431,6 +1450,7 @@
     // - workbench.action.url.openUrl
     // - workbench.action.webview.openDeveloperTools
     // - workbench.action.webview.reloadWebviewAction
+    // - workbench.actions.view.toggleProblems
     // - workbench.debug.action.focusBreakpointsView
     // - workbench.debug.action.focusCallStackView
     // - workbench.debug.action.focusRepl

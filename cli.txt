@@ -1,4 +1,4 @@
-Visual Studio Code 1.35.1
+Visual Studio Code 1.36.1
 
 Usage: code [options][paths...]
 
@@ -49,9 +49,6 @@ Troubleshooting
                                      'warn', 'info', 'debug', 'trace', 'off'.
   -s --status                        Print process usage and diagnostics
                                      information.
-  -p --prof-modules                  Capture performance markers while loading
-                                     JS modules and print them with 'F1 >
-                                     Developer: Startup Performance
   --prof-startup                     Run CPU profiler during startup
   --disable-extensions               Disable all installed extensions.
   --disable-extension <extension-id> Disable an extension.
@@ -63,7 +60,5 @@ Troubleshooting
                                      paused after start. Check the developer
                                      tools for the connection URI.
   --disable-gpu                      Disable GPU hardware acceleration.
-  --upload-logs                      Uploads logs from current session to a
-                                     secure endpoint.
   --max-memory                       Max memory size for a window (in Mbytes).
 
