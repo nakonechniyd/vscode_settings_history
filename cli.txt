@@ -1,4 +1,4 @@
-Visual Studio Code 1.11.2
+Visual Studio Code 1.12.2
 
 Usage: code [options] [paths...]
 
@@ -25,6 +25,7 @@ Options:
                               --list-extension.
   --install-extension <ext>   Installs an extension.
   --uninstall-extension <ext> Uninstalls an extension.
+  --enable-proposed-api <ext> Enables proposed api features for an extension.
   --disable-extensions        Disable all installed extensions.
   --disable-gpu               Disable GPU hardware acceleration.
   -v, --version               Print version.
