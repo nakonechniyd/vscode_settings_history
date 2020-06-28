@@ -1,6 +1,8 @@
-Visual Studio Code 1.18.1
+Visual Studio Code 1.19.3
 
 Usage: code [options] [paths...]
+
+To read from stdin, append '-' (e.g. 'ps aux | grep code | code -')
 
 Options:
   -d, --diff <file> <file>
@@ -17,10 +19,16 @@ Options:
       Start with the 'Developer: Startup Performance' command enabled.
   --prof-startup
       Run CPU profiler during startup
+  --inspect-extensions
+      Allow debugging and profiling of extensions. Check the developer tools for the connection uri.
+  --inspect-brk-extensions
+      Allow debugging and profiling of extensions with the extension host being paused after start. Check the developer tools for the connection uri.
   -r, --reuse-window
       Force opening a file or folder in the last active window.
   --user-data-dir <dir>
       Specifies the directory that user data is kept in, useful when running as root.
+  --log <level>
+      Log level to use. Default is 'info'. Allowed values are 'critical', 'error', 'warn', 'info', 'debug', 'trace', 'off'.
   --verbose
       Print verbose output (implies --wait).
   -w, --wait
@@ -33,7 +41,7 @@ Options:
       Show versions of installed extensions, when using --list-extension.
   --install-extension (<extension-id> | <extension-vsix-path>)
       Installs an extension.
-  --uninstall-extension <extension-id>
+  --uninstall-extension (<extension-id> | <extension-vsix-path>)
       Uninstalls an extension.
   --enable-proposed-api <extension-id>
       Enables proposed api features for an extension.
@@ -41,6 +49,8 @@ Options:
       Disable all installed extensions.
   --disable-gpu
       Disable GPU hardware acceleration.
+  -s, --status
+      Print process usage and diagnostics information.
   -v, --version
       Print version.
   -h, --help
