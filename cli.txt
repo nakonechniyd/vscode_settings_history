@@ -1,4 +1,4 @@
-Visual Studio Code 1.33.1
+Visual Studio Code 1.34.0
 
 Usage: code [options][paths...]
 
@@ -24,16 +24,23 @@ Options
   --file-uri <uri>                  Opens a window with given file uri(s)
 
 Extensions Management
-  --extensions-dir <dir>               Set the root path for extensions.
-  --list-extensions                    List the installed extensions.
-  --show-versions                      Show versions of installed extensions,
-                                       when using --list-extension.
-  --install-extension <extension-id>   Installs or updates the extension. Use
-                                       `--force` argument to avoid prompts.
-  --uninstall-extension <extension-id> Uninstalls an extension.
-  --enable-proposed-api <extension-id> Enables proposed API features for
-                                       extensions. Can receive one or more
-                                       extension IDs to enable individually.
+  --extensions-dir <dir>                            Set the root path for
+                                                    extensions.
+  --list-extensions                                 List the installed
+                                                    extensions.
+  --show-versions                                   Show versions of installed
+                                                    extensions, when using
+                                                    --list-extension.
+  --install-extension <extension-id | path-to-vsix> Installs or updates the
+                                                    extension. Use `--force`
+                                                    argument to avoid
+                                                    prompts.
+  --uninstall-extension <extension-id>              Uninstalls an extension.
+  --enable-proposed-api <extension-id>              Enables proposed API
+                                                    features for extensions.
+                                                    Can receive one or more
+                                                    extension IDs to enable
+                                                    individually.
 
 Troubleshooting
   --verbose                          Print verbose output (implies --wait).

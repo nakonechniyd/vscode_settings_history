@@ -608,9 +608,9 @@
     { "key": "escape",                "command": "workbench.action.closeQuickOpen",
                                          "when": "inQuickOpen" },
     { "key": "ctrl+k u",              "command": "workbench.action.closeUnmodifiedEditors" },
-    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "ctrl+w",                "command": "workbench.action.closeWindow",
                                          "when": "!editorIsOpen && !multipleEditorGroups" },
+    { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
     { "key": "alt+f5",                "command": "workbench.action.compareEditor.nextChange",
                                          "when": "textCompareEditorVisible" },
     { "key": "shift+alt+f5",          "command": "workbench.action.compareEditor.previousChange",
@@ -738,9 +738,9 @@
     { "key": "shift+f3",              "command": "workbench.action.terminal.findPreviousTerminalFocus",
                                          "when": "terminalFocus" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
-                                         "when": "terminalFocus" },
-    { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
                                          "when": "terminalFindWidgetFocused" },
+    { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
+                                         "when": "terminalFocus" },
     { "key": "alt+down",              "command": "workbench.action.terminal.focusNextPane",
                                          "when": "terminalFocus" },
     { "key": "alt+right",             "command": "workbench.action.terminal.focusNextPane",
@@ -758,13 +758,9 @@
                                          "when": "!terminalFocus" },
     { "key": "ctrl+shift+v",          "command": "workbench.action.terminal.paste",
                                          "when": "terminalFocus" },
-    { "key": "ctrl+shift+down",       "command": "workbench.action.terminal.resizePaneDown",
-                                         "when": "terminalFocus" },
     { "key": "ctrl+shift+left",       "command": "workbench.action.terminal.resizePaneLeft",
                                          "when": "terminalFocus" },
     { "key": "ctrl+shift+right",      "command": "workbench.action.terminal.resizePaneRight",
-                                         "when": "terminalFocus" },
-    { "key": "ctrl+shift+up",         "command": "workbench.action.terminal.resizePaneUp",
                                          "when": "terminalFocus" },
     { "key": "ctrl+shift+down",       "command": "workbench.action.terminal.scrollDown",
                                          "when": "terminalFocus" },
@@ -829,9 +825,9 @@
     { "key": "space",                 "command": "debug.toggleBreakpoint",
                                          "when": "breakpointsFocused && !inputFocus" },
     { "key": "shift+delete",          "command": "deleteFile",
-                                         "when": "config.files.enableTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "delete",                "command": "deleteFile",
-                                         "when": "explorerViewletVisible && filesExplorerFocus && !config.files.enableTrash && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus" },
     { "key": "escape",                "command": "editor.closeCallHierarchy",
                                          "when": "callHierarchyVisible && !config.editor.stablePeek" },
     { "key": "escape",                "command": "filesExplorer.cancelCut",
@@ -843,7 +839,7 @@
     { "key": "ctrl+v",                "command": "filesExplorer.paste",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus" },
     { "key": "delete",                "command": "moveFileToTrash",
-                                         "when": "config.files.enableTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "f2",                    "command": "renameFile",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "f11",                   "command": "workbench.action.debug.stepInto",
@@ -963,6 +959,7 @@
     // - editor.action.clipboardCopyWithSyntaxHighlightingAction
     // - editor.action.detectIndentation
     // - editor.action.findReferences
+    // - editor.action.fixAll
     // - editor.action.fontZoomIn
     // - editor.action.fontZoomOut
     // - editor.action.fontZoomReset
@@ -1000,6 +997,7 @@
     // - editor.action.toggleRenderControlCharacter
     // - editor.action.toggleRenderWhitespace
     // - editor.action.transformToLowercase
+    // - editor.action.transformToTitlecase
     // - editor.action.transformToUppercase
     // - editor.action.transpose
     // - editor.action.transposeLetters
@@ -1046,11 +1044,16 @@
     // - extensions.builtInExtensionsList.focus
     // - extensions.builtInThemesExtensionsList.focus
     // - extensions.disabledExtensionList.focus
+    // - extensions.disabledExtensionList2.focus
     // - extensions.enabledExtensionList.focus
+    // - extensions.enabledExtensionList2.focus
     // - extensions.listView.focus
     // - extensions.otherrecommendedList.focus
     // - extensions.popularExtensionsList.focus
     // - extensions.recommendedList.focus
+    // - extensions.vscode-local.default.focus
+    // - extensions.vscode-local.installed.focus
+    // - extensions.vscode-local.outdated.focus
     // - extensions.workspaceRecommendedList.focus
     // - filesExplorer.findInWorkspace
     // - git._syncAll
@@ -1178,6 +1181,7 @@
     // - references-view.refresh
     // - references-view.remove
     // - references-view.tree.focus
+    // - remote.showActions
     // - removeRootFolder
     // - repl.action.copyAll
     // - replacePreviousChar
@@ -1386,6 +1390,8 @@
     // - workbench.action.terminal.moveToLineStart
     // - workbench.action.terminal.newInActiveWorkspace
     // - workbench.action.terminal.rename
+    // - workbench.action.terminal.resizePaneDown
+    // - workbench.action.terminal.resizePaneUp
     // - workbench.action.terminal.runActiveFile
     // - workbench.action.terminal.runSelectedText
     // - workbench.action.terminal.scrollToNextCommand
