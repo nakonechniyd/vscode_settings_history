@@ -376,17 +376,23 @@
   // Controls whether the last typed input to the command palette should be restored when opening it the next time.
   "workbench.commandPalette.preserveInput": false,
 
+  // Controls if the centered layout should automatically resize to maximum width when more than one group is open. Once only one group is open it will resize back to the original centered width.
+  "workbench.editor.centeredLayoutAutoResize": true,
+
   // Controls the behavior of empty editor groups when the last tab in the group is closed. When enabled, empty groups will automatically close. When disabled, empty groups will remain part of the grid.
   "workbench.editor.closeEmptyGroups": true,
 
   // Controls whether editors showing a file that was opened during the session should close automatically when getting deleted or renamed by some other process. Disabling this will keep the editor open  on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
   "workbench.editor.closeOnFileDelete": false,
 
-  // Controls whether opened editors show as preview. Preview editors are reused until they are kept (e.g. via double click or editing) and show up with an italic font style.
+  // Controls whether opened editors show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing) and show up with an italic font style.
   "workbench.editor.enablePreview": true,
 
-  // Controls whether opened editors from Quick Open show as preview. Preview editors are reused until they are kept (e.g. via double click or editing).
+  // Controls whether opened editors from Quick Open show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing).
   "workbench.editor.enablePreviewFromQuickOpen": true,
+
+  // Controls whether a top border is drawn on modified (dirty) editor tabs or not.
+  "workbench.editor.highlightModifiedTabs": false,
 
   // Controls the format of the label for an editor.
   //  - default: Show the name of the file. When tabs are enabled and two files have the same name in one group the distinguishing sections of each file's path are added. When tabs are disabled, the path relative to the workspace folder is shown if the editor is active.
@@ -424,6 +430,9 @@
   // Fetches experiments to run from a Microsoft online service.
   "workbench.enableExperiments": true,
 
+  // Switches back to the previous storage implementation. Only change this setting if advised to do so. **Disabling legacy storage will drop your storage state.**
+  "workbench.enableLegacyStorage": true,
+
   // Specifies the icon theme used in the workbench or 'null' to not show any file icons.
   //  - null: No file icons
   //  - vs-minimal
@@ -443,6 +452,9 @@
 
   // Controls whether Quick Open should close automatically once it loses focus.
   "workbench.quickOpen.closeOnFocusLost": true,
+
+  // Controls whether the last typed input to Quick Open should be restored when opening it the next time.
+  "workbench.quickOpen.preserveInput": false,
 
   // Determines which settings editor to use by default.
   //  - ui: Use the settings UI editor.
@@ -470,6 +482,7 @@
   //  - none: Start without an editor.
   //  - welcomePage: Open the Welcome page (default).
   //  - newUntitledFile: Open a new untitled file (only applies when opening an empty workspace).
+  //  - welcomePageInEmptyWorkbench: Open the Welcome page when opening an empty workbench.
   "workbench.startupEditor": "welcomePage",
 
   // Controls the visibility of the Twitter feedback (smiley) in the status bar at the bottom of the workbench.
@@ -641,7 +654,8 @@
   // The default end of line character.
   //  - \n: LF
   //  - \r\n: CRLF
-  "files.eol": "\n",
+  //  - auto: Uses operating system specific end of line character.
+  "files.eol": "auto",
 
   // Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
   "files.exclude": {
@@ -766,14 +780,37 @@
   // Whether to include results from a global symbol search in the file results for Quick Open.
   "search.quickOpen.includeSymbols": false,
 
+  // Whether to run search in the extension host. Requires a restart to take effect.
+  "search.runInExtensionHost": false,
+
+  // Controls whether to show line numbers for search results.
+  "search.showLineNumbers": false,
+
   // Search case-insensitively if the pattern is all lowercase, otherwise, search case-sensitively.
   "search.smartCase": false,
+
+  // Controls whether to use global `.gitignore` and `.ignore` files when searching for files.
+  "search.useGlobalIgnoreFiles": false,
 
   // Controls whether to use `.gitignore` and `.ignore` files when searching for files.
   "search.useIgnoreFiles": true,
 
-  // Controls whether to use ripgrep in text and file search.
-  "search.useRipgrep": true
+  // Controls whether to use the deprecated legacy mode for text and file search. It supports some text encodings that are not supported by the standard ripgrep-based search.
+  "search.useLegacySearch": false,
+
+  // Whether to use the PCRE2 regex engine in text search. This enables using some advanced regex features like lookbehind and backreferences. However, not all PCRE2 features are supported - only features that are also supported by JavaScript.
+  "search.usePCRE2": false,
+
+  // Controls whether to open Replace Preview when selecting or replacing a match.
+  "search.useReplacePreview": true,
+
+  // Deprecated. Consider "search.usePCRE2" for advanced regex feature support.
+  // This setting is deprecated and now falls back on "search.usePCRE2".
+  "search.useRipgrep": true,
+
+  // Deprecated. Use "search.runInExtensionHost" instead
+  // Whether to run search in the extension host
+  "searchRipgrep.enable": false
 
 }
 ,
@@ -787,7 +824,13 @@
   "http.proxyAuthorization": null,
 
   // Controls whether the proxy server certificate should be verified against the list of supplied CAs.
-  "http.proxyStrictSSL": true
+  "http.proxyStrictSSL": true,
+
+  // Experimental setting: Use the system proxy configuration.
+  //  - off: Do not use system proxy configuration.
+  //  - on: Use system proxy configuration if not specified in the request options.
+  //  - force: Always use system proxy configuration.
+  "http.systemProxy": "off"
 
 }
 ,
@@ -958,7 +1001,7 @@
   "markdown.preview.markEditorSelection": true,
 
   // How should clicking on links to markdown files be handled in the preview.
-  //  - inPreview: Try to open links in the the markdown preview
+  //  - inPreview: Try to open links in the markdown preview
   //  - inEditor: Try to open links in the editor
   "markdown.preview.openMarkdownLinks": "inPreview",
 
@@ -1057,10 +1100,6 @@
   // Enable/disable `experimentalDecorators` for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires using TypeScript 2.3.1 or newer in the workspace.
   "javascript.implicitProjectConfig.experimentalDecorators": false,
 
-  // Please use the new `javascript.suggest.names` setting.
-  // Enable/disable including unique names from the file in JavaScript suggestion lists.
-  "javascript.nameSuggestions": true,
-
   // Preferred path style for auto imports.
   //  - auto: Infer the shortest path type.
   //  - relative: Relative to the file location.
@@ -1106,14 +1145,10 @@
   // Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in the workspace.
   "typescript.autoClosingTags": true,
 
-  // Please use the new 'typescript.suggest.autoImports' and 'javascript.suggest.autoImports' settings.
-  // Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
-  "typescript.autoImportSuggestions.enabled": true,
-
   // Check if NPM is installed for Automatic Type Acquisition.
   "typescript.check.npmIsInstalled": true,
 
-  // Disables automatic type acquisition.
+  // Disables automatic type acquisition. Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
   "typescript.disableAutomaticTypeAcquisition": false,
 
   // Enable/disable default TypeScript formatter.
@@ -1182,10 +1217,6 @@
   // Preferred quote style to use for quick fixes: `single` quotes, `double` quotes, or `auto` infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.preferences.quoteStyle": "auto",
 
-  // Please use the new `javascript.suggest.paths` and `typescript.suggest.paths` settings to enable/disable path suggestions.
-  // Enable/disable quick suggestions when typing out an import path.
-  "typescript.quickSuggestionsForPaths": true,
-
   // Enable/disable references CodeLens in TypeScript files.
   "typescript.referencesCodeLens.enabled": false,
 
@@ -1234,10 +1265,6 @@
   //  - always: Always update paths automatically.
   //  - never: Never rename paths and don't prompt.
   "typescript.updateImportsOnFileMove.enabled": "prompt",
-
-  // Please use the new `javascript.suggest.completeFunctionCalls` and `typescript.suggest.completeFunctionCalls` settings.
-  // Complete functions with their parameter signature.
-  "typescript.useCodeSnippetsOnMethodSuggest": false,
 
   // Enable/disable TypeScript validation.
   "typescript.validate.enable": true
@@ -1302,6 +1329,9 @@
   // Unknown vendor specific property.
   "css.lint.unknownVendorSpecificProperties": "ignore",
 
+  // A list of properties that are not validated against the `unknownProperties` rule.
+  "css.lint.validProperties": [],
+
   // When using a vendor-specific prefix, also include the standard property.
   "css.lint.vendorPrefix": "warning",
 
@@ -1353,7 +1383,7 @@
   // IE hacks are only necessary when supporting IE7 and older.
   "less.lint.ieHack": "ignore",
 
-  // Avoid using !important. It is an indication that the specificity of the entire CSS has gotten out of control and needs to be refactored.
+  // Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of control and needs to be refactored.
   "less.lint.important": "ignore",
 
   // Import statements do not load in parallel.
@@ -1370,6 +1400,9 @@
 
   // Unknown vendor specific property.
   "less.lint.unknownVendorSpecificProperties": "ignore",
+
+  // A list of properties that are not validated against the `unknownProperties` rule.
+  "less.lint.validProperties": [],
 
   // When using a vendor-specific prefix, also include the standard property.
   "less.lint.vendorPrefix": "warning",
@@ -1419,7 +1452,7 @@
   // IE hacks are only necessary when supporting IE7 and older.
   "scss.lint.ieHack": "ignore",
 
-  // Avoid using !important. It is an indication that the specificity of the entire CSS has gotten out of control and needs to be refactored.
+  // Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of control and needs to be refactored.
   "scss.lint.important": "ignore",
 
   // Import statements do not load in parallel.
@@ -1436,6 +1469,9 @@
 
   // Unknown vendor specific property.
   "scss.lint.unknownVendorSpecificProperties": "ignore",
+
+  // A list of properties that are not validated against the `unknownProperties` rule.
+  "scss.lint.validProperties": [],
 
   // When using a vendor-specific prefix, also include the standard property.
   "scss.lint.vendorPrefix": "warning",
@@ -1534,6 +1570,7 @@
     "workbench.action.terminal.clear",
     "workbench.action.terminal.clearSelection",
     "workbench.action.terminal.copySelection",
+    "workbench.action.terminal.deleteToLineStart",
     "workbench.action.terminal.deleteWordLeft",
     "workbench.action.terminal.deleteWordRight",
     "workbench.action.terminal.findNextTerminalFocus",
@@ -1579,6 +1616,7 @@
     "workbench.action.terminal.selectToNextLine",
     "workbench.action.terminal.selectToPreviousCommand",
     "workbench.action.terminal.selectToPreviousLine",
+    "workbench.action.terminal.sendSequence",
     "workbench.action.terminal.split",
     "workbench.action.terminal.splitInActiveWorkspace",
     "workbench.action.terminal.toggleFindCaseSensitiveTerminalFocus",
@@ -1619,6 +1657,9 @@
 
   // Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows. Set to `null` to delete the environment variable.
   "terminal.integrated.env.windows": {},
+
+  // Controls the terminal's internal buffer implementation. This setting is picked up on terminal creation and will not apply to existing terminals.
+  "terminal.integrated.experimentalBufferImpl": "JsArray",
 
   // Controls the font family of the terminal, this defaults to `editor.fontFamily`'s value.
   "terminal.integrated.fontFamily": "",
@@ -1683,7 +1724,13 @@
   "terminal.integrated.shellArgs.windows": [],
 
   // Controls whether to show the alert "The terminal process terminated with exit code" when exit code is non-zero.
-  "terminal.integrated.showExitAlert": true
+  "terminal.integrated.showExitAlert": true,
+
+  // Controls the working directory a split terminal starts with.
+  //  - workspaceRoot: A new split terminal will use the workspace root as the working directory. In a multi-root workspace a choice for which root folder to use is offered.
+  //  - initial: A new split terminal will use the working directory that the parent terminal started with.
+  //  - inherited: On macOS and Linux, a new split terminal will use the working directory of the parent terminal. On Windows, this behaves the same as initial.
+  "terminal.integrated.splitCwd": "inherited"
 
 }
 ,
@@ -1714,7 +1761,13 @@
   //  - on: Show all symbols in the breadcrumbs view.
   //  - off: Do not show symbols in the breadcrumbs view.
   //  - last: Only show the current symbol in the breadcrumbs view.
-  "breadcrumbs.symbolPath": "on"
+  "breadcrumbs.symbolPath": "on",
+
+  // Controls how symbols are sorted in the breadcrumbs outline view.
+  //  - position: Show symbol outline in file position order.
+  //  - name: Show symbol outline in alphabetical order.
+  //  - type: Show symbol outline in symbol type order.
+  "breadcrumbs.symbolSortOrder": "position"
 
 }
 ,
@@ -1744,6 +1797,49 @@
 
   // Show Errors & Warnings on Outline Elements.
   "outline.problems.enabled": true
+
+}
+,
+{
+
+
+  // An array of languages where Emmet abbreviations should not be expanded.
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+
+  // Path to a folder containing Emmet profiles and snippets.
+  "emmet.extensionsPath": null,
+
+  // Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
+  //  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
+  "emmet.includeLanguages": {},
+
+  // When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
+  "emmet.optimizeStylesheetParsing": true,
+
+  // Preferences used to modify behavior of some actions and resolvers of Emmet.
+  "emmet.preferences": {},
+
+  // Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
+  "emmet.showAbbreviationSuggestions": true,
+
+  // Shows expanded Emmet abbreviations as suggestions.
+  // The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
+  // The option `"always"` applies to all parts of the file regardless of markup/css.
+  "emmet.showExpandedAbbreviation": "always",
+
+  // If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
+  "emmet.showSuggestionsAsSnippets": false,
+
+  // Define profile for specified syntax or use your own profile with specific rules.
+  "emmet.syntaxProfiles": {},
+
+  // When enabled, Emmet abbreviations are expanded when pressing TAB.
+  "emmet.triggerExpansionOnTab": false,
+
+  // Variables to be used in Emmet snippets
+  "emmet.variables": {}
 
 }
 ,
@@ -1812,7 +1908,7 @@
   // Controls the signoff flag for all commits.
   "git.alwaysSignOff": false,
 
-  // Whether auto fetching is enabled.
+  // When enabled, commits will automatically be fetched from the default remote of the current Git repository.
   "git.autofetch": false,
 
   // Whether auto refreshing is enabled.
@@ -1924,22 +2020,6 @@
 {
 
 
-  // (Experimental) Enable this experimental search provider extension. When enabled, it takes precedence over vscode's built-in search.
-  "searchRipgrep.enable": false
-
-}
-,
-{
-
-
-  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
-  "grunt.autoDetect": "on"
-
-}
-,
-{
-
-
   // Controls whether npm scripts should be automatically detected.
   "npm.autoDetect": "on",
 
@@ -1966,6 +2046,9 @@
 {
 
 
+  // Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
+  "merge-conflict.autoNavigateNextConflict.enabled": false,
+
   // Create a Code Lens for merge conflict blocks within editor.
   "merge-conflict.codeLens.enabled": true,
 
@@ -1977,51 +2060,16 @@
 {
 
 
-  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
-  "gulp.autoDetect": "on"
+  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
+  "grunt.autoDetect": "on"
 
 }
 ,
 {
 
 
-  // An array of languages where Emmet abbreviations should not be expanded.
-  "emmet.excludeLanguages": [
-    "markdown"
-  ],
-
-  // Path to a folder containing Emmet profiles and snippets.
-  "emmet.extensionsPath": null,
-
-  // Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
-  //  E.g.: `{"vue-html": "html", "javascript": "javascriptreact"}`
-  "emmet.includeLanguages": {},
-
-  // When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in css/scss/less files is parsed.
-  "emmet.optimizeStylesheetParsing": true,
-
-  // Preferences used to modify behavior of some actions and resolvers of Emmet.
-  "emmet.preferences": {},
-
-  // Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
-  "emmet.showAbbreviationSuggestions": true,
-
-  // Shows expanded Emmet abbreviations as suggestions.
-  // The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
-  // The option `"always"` applies to all parts of the file regardless of markup/css.
-  "emmet.showExpandedAbbreviation": "always",
-
-  // If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
-  "emmet.showSuggestionsAsSnippets": false,
-
-  // Define profile for specified syntax or use your own profile with specific rules.
-  "emmet.syntaxProfiles": {},
-
-  // When enabled, Emmet abbreviations are expanded when pressing TAB.
-  "emmet.triggerExpansionOnTab": false,
-
-  // Variables to be used in Emmet snippets
-  "emmet.variables": {}
+  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
+  "gulp.autoDetect": "on"
 
 }
 ,

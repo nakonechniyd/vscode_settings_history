@@ -1,4 +1,4 @@
-Visual Studio Code 1.28.2
+Visual Studio Code 1.29.1
 
 Usage: code [options] [paths...]
 

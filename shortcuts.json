@@ -146,7 +146,7 @@
     { "key": "ctrl+shift+i",          "command": "editor.action.formatDocument",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+k ctrl+f",         "command": "editor.action.formatSelection",
-                                         "when": "editorHasSelection && editorTextFocus && !editorReadonly" },
+                                         "when": "editorTextFocus && !editorReadonly" },
     { "key": "f12",                   "command": "editor.action.goToDeclaration",
                                          "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor" },
     { "key": "ctrl+f12",              "command": "editor.action.goToImplementation",
@@ -241,9 +241,9 @@
     { "key": "escape",                "command": "editor.action.webvieweditor.hideFind",
                                          "when": "webviewFindWidgetVisible && !editorFocus && activeEditor == 'WebviewEditor'" },
     { "key": "ctrl+a",                "command": "editor.action.webvieweditor.selectAll",
-                                         "when": "!editorFocus && activeEditor == 'WebviewEditor'" },
+                                         "when": "!editorFocus && !inputFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
     { "key": "ctrl+a",                "command": "editor.action.webvieweditor.selectAll",
-                                         "when": "!editorFocus && activeEditor == 'workbench.editor.htmlPreviewPart'" },
+                                         "when": "!editorFocus && !inputFocus && activeEditor == 'WebviewEditor'" },
     { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
                                          "when": "!editorFocus && activeEditor == 'WebviewEditor'" },
     { "key": "ctrl+f",                "command": "editor.action.webvieweditor.showFind",
@@ -488,18 +488,18 @@
                                          "when": "listFocus && listSupportsMultiselect && !inputFocus" },
     { "key": "shift+up",              "command": "list.expandSelectionUp",
                                          "when": "listFocus && listSupportsMultiselect && !inputFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
-    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
-                                         "when": "problemsFilterFocus" },
-    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
-                                         "when": "problemsViewFocus" },
     { "key": "down",                  "command": "list.focusDown",
                                          "when": "listFocus && !inputFocus" },
     { "key": "home",                  "command": "list.focusFirst",
                                          "when": "listFocus && !inputFocus" },
     { "key": "end",                   "command": "list.focusLast",
                                          "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
+                                         "when": "problemsViewFocus" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
+    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
+                                         "when": "problemsFilterFocus" },
     { "key": "pagedown",              "command": "list.focusPageDown",
                                          "when": "listFocus && !inputFocus" },
     { "key": "pageup",                "command": "list.focusPageUp",
@@ -626,10 +626,8 @@
     { "key": "ctrl+k m",              "command": "workbench.action.editor.changeLanguageMode" },
     { "key": "ctrl+k p",              "command": "workbench.action.files.copyPathOfActiveFile" },
     { "key": "ctrl+n",                "command": "workbench.action.files.newUntitledFile" },
-    { "key": "ctrl+o",                "command": "workbench.action.files.openFile",
-                                         "when": "fileDialog == 'local'" },
-    { "key": "ctrl+k ctrl+o",         "command": "workbench.action.files.openFolder",
-                                         "when": "fileDialog == 'local'" },
+    { "key": "ctrl+o",                "command": "workbench.action.files.openFile" },
+    { "key": "ctrl+k ctrl+o",         "command": "workbench.action.files.openFolder" },
     { "key": "ctrl+k r",              "command": "workbench.action.files.revealActiveFileInWindows" },
     { "key": "ctrl+s",                "command": "workbench.action.files.save" },
     { "key": "ctrl+shift+s",          "command": "workbench.action.files.saveAs" },
@@ -727,6 +725,8 @@
                                          "when": "terminalFindWidgetFocused" },
     { "key": "shift+f3",              "command": "workbench.action.terminal.findPreviousTerminalFocus",
                                          "when": "terminalFocus" },
+    { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
+                                         "when": "terminalFindWidgetFocused" },
     { "key": "ctrl+f",                "command": "workbench.action.terminal.focusFindWidget",
                                          "when": "terminalFocus" },
     { "key": "alt+down",              "command": "workbench.action.terminal.focusNextPane",
@@ -866,8 +866,16 @@
                                          "when": "debugType == 'node2'" },
     { "key": "ctrl+shift+v",          "command": "markdown.showPreview",
                                          "when": "editorLangId == 'markdown'" },
+    { "key": "shift+alt+f12",         "command": "references-view.find",
+                                         "when": "editorHasReferenceProvider" },
+    { "key": "f10",                   "command": "extension.node-debug.startWithStopOnEntry",
+                                         "when": "!inDebugMode && debugConfigurationType == 'node'" },
     { "key": "ctrl+k v",              "command": "markdown.showPreviewToSide",
-                                         "when": "editorLangId == 'markdown'" }
+                                         "when": "editorLangId == 'markdown'" },
+    { "key": "f4",                    "command": "references-view.showNextReference",
+                                         "when": "reference-list.hasResult" },
+    { "key": "shift+f4",              "command": "references-view.showPrevReference",
+                                         "when": "reference-list.hasResult" }
     ]
     
     
@@ -1082,6 +1090,8 @@
     // - keybindings.editor.copyCommandKeybindingEntry
     // - keybindings.editor.resetKeybinding
     // - keybindings.editor.showConflicts
+    // - keybindings.editor.showDefaultKeybindings
+    // - keybindings.editor.showUserKeybindings
     // - lastCursorLineSelect
     // - lastCursorLineSelectDrag
     // - lastCursorWordSelect
@@ -1121,6 +1131,10 @@
     // - php.untrustValidationExecutable
     // - problems.action.copyMessage
     // - problems.action.copyRelatedInformationMessage
+    // - references-view.clear
+    // - references-view.refresh
+    // - references-view.remove
+    // - references-view.tree.focus
     // - removeRootFolder
     // - repl.action.copyAll
     // - replacePreviousChar
@@ -1201,6 +1215,7 @@
     // - workbench.action.inspectKeyMappings
     // - workbench.action.joinAllGroups
     // - workbench.action.joinTwoGroups
+    // - workbench.action.logStorage
     // - workbench.action.maximizeEditor
     // - workbench.action.minimizeOtherEditors
     // - workbench.action.moveEditorToAboveGroup
@@ -1218,6 +1233,8 @@
     // - workbench.action.newGroupLeft
     // - workbench.action.newGroupRight
     // - workbench.action.nextEditorInGroup
+    // - workbench.action.nextPanelView
+    // - workbench.action.nextSideBarView
     // - workbench.action.openActiveLogOutputFile
     // - workbench.action.openDefaultKeybindingsFile
     // - workbench.action.openDocumentationUrl
@@ -1248,6 +1265,8 @@
     // - workbench.action.openWorkspaceInNewWindow
     // - workbench.action.openWorkspaceSettings
     // - workbench.action.previousEditorInGroup
+    // - workbench.action.previousPanelView
+    // - workbench.action.previousSideBarView
     // - workbench.action.problems.focus
     // - workbench.action.quickOpenNavigateNext
     // - workbench.action.quickOpenNavigateNextInTerminalPicker
@@ -1298,6 +1317,7 @@
     // - workbench.action.tasks.test
     // - workbench.action.terminal.allowWorkspaceShell
     // - workbench.action.terminal.clear
+    // - workbench.action.terminal.deleteToLineStart
     // - workbench.action.terminal.disallowWorkspaceShell
     // - workbench.action.terminal.focus
     // - workbench.action.terminal.focusAtIndex1
@@ -1347,7 +1367,6 @@
     // - workbench.debug.action.focusVariablesView
     // - workbench.debug.action.focusWatchView
     // - workbench.debug.loadedScriptsView.focus
-    // - workbench.debug.panel.action.clearReplAction
     // - workbench.debug.viewlet.action.addFunctionBreakpointAction
     // - workbench.debug.viewlet.action.disableAllBreakpoints
     // - workbench.debug.viewlet.action.enableAllBreakpoints
@@ -1361,18 +1380,21 @@
     // - workbench.extensions.action.checkForUpdates
     // - workbench.extensions.action.configureWorkspaceFolderRecommendedExtensions
     // - workbench.extensions.action.configureWorkspaceRecommendedExtensions
+    // - workbench.extensions.action.debugExtensionHost
     // - workbench.extensions.action.disableAll
     // - workbench.extensions.action.disableAllWorkspace
     // - workbench.extensions.action.disableAutoUpdate
     // - workbench.extensions.action.enableAll
     // - workbench.extensions.action.enableAllWorkspace
     // - workbench.extensions.action.enableAutoUpdate
+    // - workbench.extensions.action.extensionHostProfile
     // - workbench.extensions.action.installExtensions
     // - workbench.extensions.action.installVSIX
     // - workbench.extensions.action.listBuiltInExtensions
     // - workbench.extensions.action.listOutdatedExtensions
     // - workbench.extensions.action.openExtensionsFolder
     // - workbench.extensions.action.reinstall
+    // - workbench.extensions.action.saveExtensionHostProfile
     // - workbench.extensions.action.showAzureExtensions
     // - workbench.extensions.action.showDisabledExtensions
     // - workbench.extensions.action.showEnabledExtensions
@@ -1382,6 +1404,7 @@
     // - workbench.extensions.action.showLanguageExtensions
     // - workbench.extensions.action.showPopularExtensions
     // - workbench.extensions.action.showRecommendedExtensions
+    // - workbench.extensions.action.stopExtensionHostProfile
     // - workbench.extensions.action.updateAllExtensions
     // - workbench.files.action.acceptLocalChanges
     // - workbench.files.action.collapseExplorerFolders
@@ -1392,4 +1415,5 @@
     // - workbench.files.action.saveAllInGroup
     // - workbench.files.action.showActiveFileInExplorer
     // - workbench.output.action.clearOutput
+    // - workbench.view.extension.references-view
     // - workbench.view.extension.test
