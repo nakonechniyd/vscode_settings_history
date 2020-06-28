@@ -150,7 +150,7 @@
   "editor.formatOnPaste": false,
 
   // Controls if the editor should automatically adjust the indentation when users type, paste or move lines. Indentation rules of the language must be available. 
-  "editor.autoIndent": false,
+  "editor.autoIndent": true,
 
   // Controls if suggestions should automatically show up when typing trigger characters
   "editor.suggestOnTriggerCharacters": true,
@@ -263,45 +263,8 @@
   // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
   "editor.formatOnSave": false,
 
-
-  // When enabled, emmet abbreviations are expanded when pressing TAB. Not applicable when emmet.useNewemmet is set to true.
-  "emmet.triggerExpansionOnTab": true,
-
-  // Preferences used to modify behavior of some actions and resolvers of Emmet. Not applicable when emmet.useNewemmet is set to true.
-  "emmet.preferences": {},
-
-  // Define profile for specified syntax or use your own profile with specific rules.
-  "emmet.syntaxProfiles": {},
-
-  // An array of languages where emmet abbreviations should not be expanded.
-  "emmet.excludeLanguages": [
-    "markdown"
-  ],
-
-  // Path to a folder containing emmet profiles, snippets and preferences. Only profiles are honored from extensions path when emmet.useNewEmmet is set to true.
-  "emmet.extensionsPath": null,
-
-  // Try out the new emmet modules (which will eventually replace the old single emmet library) for all emmet features.
-  "emmet.useNewEmmet": false,
-
-  // Applicable only when emmet.useNewEmmet is set to true.
-  // Shows expanded emmet abbreviations as suggestions.
-  // The option "inMarkupAndStylesheetFilesOnly" applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
-  // The option "always" applies to all parts of the file regardless of markup/css.
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-
-  // Applicable only when emmet.useNewEmmet is set to true.
-  // Shows possible emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to "never".
-  "emmet.showAbbreviationSuggestions": true,
-
-  // Applicable only when emmet.useNewEmmet is set to true.
-  // Enable emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
-  //  Eg: {"vue-html": "html", "javascript": "javascriptreact"}
-  "emmet.includeLanguages": {},
-
-  // Applicable only when emmet.useNewEmmet is set to true.
-  // Variables to be used in emmet snippets
-  "emmet.variables": {},
+  // Overrides editor colors and font style from the currently selected color theme.
+  "editor.tokenColorCustomizations": null,
 
 
   // Controls if opened editors should show in tabs or not.
@@ -352,7 +315,7 @@
   // When enabled, will show the watermark tips when no editor is open.
   "workbench.tips.enabled": true,
 
-  // Controls which editor is shown at startup, if none is restored from the previous session. Select 'none' to start without an editor, 'welcomePage' to open the Welcome page (default), 'newUntitledFile' to open a new untitled file (only when not opening a folder).
+  // Controls which editor is shown at startup, if none is restored from the previous session. Select 'none' to start without an editor, 'welcomePage' to open the Welcome page (default), 'newUntitledFile' to open a new untitled file (only opening an empty workspace).
   "workbench.startupEditor": "welcomePage",
 
   // Specifies the color theme used in the workbench.
@@ -379,7 +342,7 @@
   // Note that there can still be cases where this setting is ignored (e.g. when using the -new-window or -reuse-window command line option).
   "window.openFoldersInNewWindow": "default",
 
-  // Controls how windows are being reopened after a restart. Select 'none' to always start with an empty window, 'one' to reopen the last window you worked on, 'folders' to reopen all folders you had opened or 'all' to reopen all windows of your last session.
+  // Controls how windows are being reopened after a restart. Select 'none' to always start with an empty workspace, 'one' to reopen the last window you worked on, 'folders' to reopen all windows that had folders opened or 'all' to reopen all windows of your last session.
   "window.restoreWindows": "one",
 
   // Controls if a window should restore to full screen mode if it was exited in full screen mode.
@@ -399,10 +362,13 @@
   // ${appName}: e.g. VS Code
   // ${dirty}: a dirty indicator if the active editor is dirty
   // ${separator}: a conditional separator (" - ") that only shows when surrounded by variables with values
-  "window.title": "${dirty}${activeEditorShort}${separator}${folderName}${separator}${appName}",
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
 
   // Controls the dimensions of opening a new window when at least one window is already opened. By default, a new window will open in the center of the screen with small dimensions. When set to 'inherit', the window will get the same dimensions as the last window that was active. When set to 'maximized', the window will open maximized and fullscreen if configured to 'fullscreen'. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
   "window.newWindowDimensions": "default",
+
+  // Controls if closing the last editor should also close the window. This setting only applies for windows that do not show folders.
+  "window.closeWhenEmpty": false,
 
   // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
   "window.menuBarVisibility": "default",
@@ -488,6 +454,9 @@
 
   // Controls if the explorer should allow to move files and folders via drag and drop.
   "explorer.enableDragAndDrop": true,
+
+  // Controls the way of sorting files and directories in the explorer.
+  "explorer.sortOrder": "default",
 
 
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
@@ -806,6 +775,9 @@
   // Sets how line-breaks are rendered in the markdown preview. Setting it to 'true' creates a <br> for every newline.
   "markdown.preview.breaks": false,
 
+  // Enable or disable conversion of URL-like text to links in the markdown preview.
+  "markdown.preview.linkify": true,
+
   // Controls the font family used in the markdown preview.
   "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif",
 
@@ -826,9 +798,6 @@
 
   // Double click in the markdown preview to switch to the editor.
   "markdown.preview.doubleClickToSwitchToEditor": true,
-
-  // [Experimental] Allow extensions to extend the markdown preview.
-  "markdown.enableExperimentalExtensionApi": false,
 
   // Enable debug logging for the markdown extension.
   "markdown.trace": "off",
@@ -852,9 +821,6 @@
 
   // Disables automatic type acquisition. Requires TypeScript >= 2.0.6 and a restart after changing it.
   "typescript.disableAutomaticTypeAcquisition": false,
-
-  // Check if a global install TypeScript compiler (e.g. tsc) differs from the used TypeScript language service.
-  "typescript.check.tscVersion": true,
 
   // Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires TypeScript >= 2.3.4.
   "typescript.npm": null,
@@ -999,6 +965,9 @@
   "extensions.ignoreRecommendations": false,
 
 
+  // Customizes what kind of terminal to launch.
+  "terminal.explorerKind": "integrated",
+
   // Customizes which terminal to run on Windows.
   "terminal.external.windowsExec": "undefined\\System32\\cmd.exe",
 
@@ -1023,7 +992,7 @@
     "-l"
   ],
 
-  // The path of the shell that the terminal uses on Windows. When using shells shipped with Windows (cmd, PowerShell or Bash on Ubuntu), prefer C:\Windows\sysnative over C:\Windows\System32 to use the 64-bit versions.
+  // The path of the shell that the terminal uses on Windows. When using shells shipped with Windows (cmd, PowerShell or Bash on Ubuntu).
   "terminal.integrated.shell.windows": "cmd.exe",
 
   // The command line arguments to use when on the Windows terminal.
@@ -1088,6 +1057,8 @@
     "workbench.action.showCommands",
     "workbench.action.terminal.clear",
     "workbench.action.terminal.copySelection",
+    "workbench.action.terminal.deleteWordLeft",
+    "workbench.action.terminal.deleteWordRight",
     "workbench.action.terminal.focus",
     "workbench.action.terminal.focusAtIndex1",
     "workbench.action.terminal.focusAtIndex2",
@@ -1117,17 +1088,56 @@
     "workbench.action.terminal.toggleTerminal"
   ],
 
+  // Object with environment variables that will be added to the VS Code process to be used by the terminal on OS X
+  "terminal.integrated.env.osx": {},
+
+  // Object with environment variables that will be added to the VS Code process to be used by the terminal on Linux
+  "terminal.integrated.env.linux": {},
+
+  // Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows
+  "terminal.integrated.env.windows": {},
+
 
   // Controls if Problems view should automatically reveal files when opening them
   "problems.autoReveal": true,
 
 
+  // Enable usage data and errors to be sent to Microsoft.
+  "telemetry.enableTelemetry": true,
+
   // Enable crash reports to be sent to Microsoft.
   // This option requires restart to take effect.
   "telemetry.enableCrashReporter": true,
 
-  // Enable usage data and errors to be sent to Microsoft.
-  "telemetry.enableTelemetry": true,
+
+  // Shows expanded emmet abbreviations as suggestions.
+  // The option "inMarkupAndStylesheetFilesOnly" applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
+  // The option "always" applies to all parts of the file regardless of markup/css.
+  "emmet.showExpandedAbbreviation": "always",
+
+  // Shows possible emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to "never".
+  "emmet.showAbbreviationSuggestions": true,
+
+  // Enable emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
+  //  Eg: {"vue-html": "html", "javascript": "javascriptreact"}
+  "emmet.includeLanguages": {},
+
+  // Variables to be used in emmet snippets
+  "emmet.variables": {},
+
+  // Define profile for specified syntax or use your own profile with specific rules.
+  "emmet.syntaxProfiles": {},
+
+  // An array of languages where emmet abbreviations should not be expanded.
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+
+  // Path to a folder containing emmet profiles and snippets.'
+  "emmet.extensionsPath": null,
+
+  // When enabled, emmet abbreviations are expanded when pressing TAB.
+  "emmet.triggerExpansionOnTab": false,
 
 
   // Configure editor settings to be overridden for [go] language.
@@ -1200,6 +1210,9 @@
 
   // Controls whether auto detection of npm scripts is on or off. Default is on.
   "npm.autoDetect": "on",
+
+  // Run npm commands with the `--silent` option
+  "npm.runSilent": false,
 
 
   // Enable/disable merge conflict block CodeLens within editor
