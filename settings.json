@@ -20,6 +20,9 @@
 	//  - off
 	"editor.acceptSuggestionOnEnter": "on",
 
+	// Controls the number of lines in the editor that can be read out by a screen reader. Warning: this has a performance implication for numbers larger than the default.
+	"editor.accessibilityPageSize": 10,
+
 	// Controls whether the editor should run in a mode where it is optimized for screen readers.
 	//  - auto: The editor will use platform APIs to detect when a Screen Reader is attached.
 	//  - on: The editor will be permanently optimized for usage with a Screen Reader.
@@ -46,8 +49,13 @@
 	//  - never
 	"editor.autoClosingQuotes": "languageDefined",
 
-	// Controls whether the editor should automatically adjust the indentation when users type, paste or move lines. Extensions with indentation rules of the language must be available.
-	"editor.autoIndent": true,
+	// Controls whether the editor should automatically adjust the indentation when users type, paste, move or indent lines.
+	//  - none: The editor will not insert indentation automatically.
+	//  - keep: The editor will keep the current line's indentation.
+	//  - brackets: The editor will keep the current line's indentation and honor language defined brackets.
+	//  - advanced: The editor will keep the current line's indentation, honor language defined brackets and invoke special onEnterRules defined by languages.
+	//  - full: The editor will keep the current line's indentation, honor language defined brackets, invoke special onEnterRules defined by languages, and honor indentationRules defined by languages.
+	"editor.autoIndent": "full",
 
 	// Controls whether the editor should automatically surround selections.
 	//  - languageDefined: Use language configurations to determine when to automatically surround selections.
@@ -83,8 +91,8 @@
 	// Controls the minimal number of visible leading and trailing lines surrounding the cursor. Known as 'scrollOff' or `scrollOffset` in some other editors.
 	"editor.cursorSurroundingLines": 0,
 
-	// Controls when `cursorSurroundingLines` should be enforced
-	//  - default: `cursorSurroundingLines` is enforced only when triggered from keyboard and api
+	// Controls when `cursorSurroundingLines` should be enforced.
+	//  - default: `cursorSurroundingLines` is enforced only when triggered via the keyboard or API.
 	//  - all: `cursorSurroundingLines` is enforced always.
 	"editor.cursorSurroundingLinesStyle": "default",
 
@@ -115,6 +123,7 @@
 	//  - vscode.npm: Extension to add task support for npm scripts.
 	//  - vscode.php-language-features: Provides rich language support for PHP files.
 	//  - vscode.python: Provides syntax highlighting, bracket matching and folding in Python files.
+	//  - vscode.search-result: Provides syntax highlighting and language features for tabbed search results.
 	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
 	"editor.defaultFormatter": null,
 
@@ -175,11 +184,54 @@
 	// Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.
 	"editor.glyphMargin": true,
 
-	// Controls the behavior of 'Go To' commands, like Go To Definition, when multiple target locations exist.
+	// Alternative command id that is being executed when the result of 'Go to Declaration' is the current location.
+	"editor.gotoLocation.alternativeDeclarationCommand": "editor.action.goToReferences",
+
+	// Alternative command id that is being executed when the result of 'Go to Definition' is the current location.
+	"editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToReferences",
+
+	// Alternative command id that is being executed when the result of 'Go to Implementation' is the current location.
+	"editor.gotoLocation.alternativeImplementationCommand": "",
+
+	// Alternative command id that is being executed when the result of 'Go to Reference' is the current location.
+	"editor.gotoLocation.alternativeReferenceCommand": "",
+
+	// Alternative command id that is being executed when the result of 'Go to Type Definition' is the current location.
+	"editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.goToReferences",
+
+	// This setting is deprecated, please use separate settings like 'editor.editor.gotoLocation.multipleDefinitions' or 'editor.editor.gotoLocation.multipleImplementations' instead.
+	// 
+	"editor.gotoLocation.multiple": null,
+
+	// Controls the behavior the 'Go to Declaration'-command when multiple target locations exist.
 	//  - peek: Show peek view of the results (default)
 	//  - gotoAndPeek: Go to the primary result and show a peek view
 	//  - goto: Go to the primary result and enable peek-less navigation to others
-	"editor.gotoLocation.multiple": "peek",
+	"editor.gotoLocation.multipleDeclarations": "peek",
+
+	// Controls the behavior the 'Go to Definition'-command when multiple target locations exist.
+	//  - peek: Show peek view of the results (default)
+	//  - gotoAndPeek: Go to the primary result and show a peek view
+	//  - goto: Go to the primary result and enable peek-less navigation to others
+	"editor.gotoLocation.multipleDefinitions": "peek",
+
+	// Controls the behavior the 'Go to Implementations'-command when multiple target locations exist.
+	//  - peek: Show peek view of the results (default)
+	//  - gotoAndPeek: Go to the primary result and show a peek view
+	//  - goto: Go to the primary result and enable peek-less navigation to others
+	"editor.gotoLocation.multipleImplementations": "peek",
+
+	// Controls the behavior the 'Go to References'-command when multiple target locations exist.
+	//  - peek: Show peek view of the results (default)
+	//  - gotoAndPeek: Go to the primary result and show a peek view
+	//  - goto: Go to the primary result and enable peek-less navigation to others
+	"editor.gotoLocation.multipleReferences": "peek",
+
+	// Controls the behavior the 'Go to Type Definition'-command when multiple target locations exist.
+	//  - peek: Show peek view of the results (default)
+	//  - gotoAndPeek: Go to the primary result and show a peek view
+	//  - goto: Go to the primary result and enable peek-less navigation to others
+	"editor.gotoLocation.multipleTypeDefinitions": "peek",
 
 	// Controls whether the cursor should be hidden in the overview ruler.
 	"editor.hideCursorInOverviewRuler": false,
@@ -221,8 +273,8 @@
 	// Controls whether the editor should detect links and make them clickable.
 	"editor.links": true,
 
-	// Highlight matching brackets when one of them is selected.
-	"editor.matchBrackets": true,
+	// Highlight matching brackets.
+	"editor.matchBrackets": "always",
 
 	// Lines above this length will not be tokenized for performance reasons
 	"editor.maxTokenizationLineLength": 20000,
@@ -353,6 +405,14 @@
 	// Controls whether filtering and sorting suggestions accounts for small typos.
 	"editor.suggest.filterGraceful": true,
 
+	// Controls whether unexpected text modifications while accepting completions should be highlighted, e.g `insertMode` is `replace` but the completion only supports `insert`.
+	"editor.suggest.insertHighlight": false,
+
+	// Controls whether words are overwritten when accepting completions. Note that this depends on extensions opting into this feature.
+	//  - insert: Insert suggestion without overwriting text right of the cursor.
+	//  - replace: Insert suggestion and overwrite text right of the cursor.
+	"editor.suggest.insertMode": "insert",
+
 	// Controls whether sorting favours words that appear close to the cursor.
 	"editor.suggest.localityBonus": false,
 
@@ -473,6 +533,9 @@
 	// Overrides editor colors and font style from the currently selected color theme.
 	"editor.tokenColorCustomizations": {},
 
+	// Overrides token color and styles from the currently selected color theme.
+	"editor.tokenColorCustomizationsExperimental": {},
+
 	// Remove trailing auto inserted whitespace.
 	"editor.trimAutoWhitespace": true,
 
@@ -523,6 +586,11 @@
 	"scm.defaultViewMode": "list",
 
 	// Controls diff decorations in the editor.
+	//  - all: Show the diff decorations in all available locations.
+	//  - gutter: Show the diff decorations only in the editor gutter.
+	//  - overview: Show the diff decorations only in the overview ruler.
+	//  - minimap: Show the diff decorations only in the minimap.
+	//  - none: Do not show the diff decorations.
 	"scm.diffDecorations": "all",
 
 	// Controls the visibility of the Source Control diff decorator in the gutter.
@@ -563,7 +631,7 @@
 	// Controls whether opened editors show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing) and show up with an italic font style.
 	"workbench.editor.enablePreview": true,
 
-	// Controls whether opened editors from Quick Open show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing).
+	// Controls whether editors opened from Quick Open show as preview. Preview editors are reused until they are pinned (e.g. via double click or editing).
 	"workbench.editor.enablePreviewFromQuickOpen": true,
 
 	// Controls whether tabs are closed in most recently used order or from left to right.
@@ -885,6 +953,9 @@
 	// Controls the memory available to VS Code after restart when trying to open large files. Same effect as specifying `--max-memory=NEWSIZE` on the command line.
 	"files.maxMemoryForLargeFilesMB": 4096,
 
+	// Timeout in milliseconds after which file participants for create, rename, and delete are cancelled. Use `0` to disable participants.
+	"files.participants.timeout": 5000,
+
 	// Enables the simple file dialog. The simple file dialog replaces the system file dialog when enabled.
 	"files.simpleDialog.enable": false,
 
@@ -934,6 +1005,9 @@
 	// Controls whether the explorer should automatically reveal and select files when opening them.
 	"explorer.autoReveal": true,
 
+	// Controls whether the explorer should render folders in a compact form. In such a form, single child folders will be compressed in a combined tree element. Useful for Java package structures, for example.
+	"explorer.compactFolders": true,
+
 	// Controls whether the explorer should ask for confirmation when deleting a file via the trash.
 	"explorer.confirmDelete": true,
 
@@ -974,12 +1048,16 @@
 	//  - auto: Files with less than 10 results are expanded. Others are collapsed.
 	//  - alwaysCollapse
 	//  - alwaysExpand
-	"search.collapseResults": "auto",
+	"search.collapseResults": "alwaysExpand",
+
+	// Experimental: When enabled, allows opening workspace search results in an editor.
+	"search.enableSearchEditorPreview": false,
 
 	// Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the `files.exclude` setting. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
 	"search.exclude": {
 		"**/node_modules": true,
-		"**/bower_components": true
+		"**/bower_components": true,
+		"**/*.code-search": true
 	},
 
 	// Controls whether to follow symlinks while searching.
@@ -996,6 +1074,12 @@
 
 	// Whether to include results from a global symbol search in the file results for Quick Open.
 	"search.quickOpen.includeSymbols": false,
+
+	// Search all files as you type.
+	"search.searchOnType": true,
+
+	// When `search.searchOnType` is enabled, controls the timeout in milliseconds between a character being typed and the search starting. Has no effect when `search.searchOnType` is disabled.
+	"search.searchOnTypeDebouncePeriod": 300,
 
 	// Controls whether to show line numbers for search results.
 	"search.showLineNumbers": false,
@@ -1100,6 +1184,9 @@
 	// Controls whether breakpoints should be shown in the overview ruler.
 	"debug.showBreakpointsInOverviewRuler": false,
 
+	// Controls whether inline breakpoints candidate decorations should be shown in the editor while debugging.
+	"debug.showInlineBreakpointCandidates": true,
+
 	// Controls when the debug status bar should be visible.
 	//  - never: Never show debug in status bar
 	//  - always: Always show debug in status bar
@@ -1168,6 +1255,9 @@
 	// Maximum amount of characters per line (0 = disable).
 	"html.format.wrapLineLength": 120,
 
+	// Enable/disable mirroring cursor on matching HTML tag.
+	"html.mirrorCursorOnMatchingTag": true,
+
 	// Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
 	"html.suggest.html5": true,
 
@@ -1186,6 +1276,9 @@
 
 	// Enable/disable default JSON formatter
 	"json.format.enable": true,
+
+	// The maximum number of outline symbols and folding regions computed (limited for performance reasons).
+	"json.maxItemsComputed": 5000,
 
 	// Associate schemas to JSON files in the current project
 	"json.schemas": [],
@@ -1297,7 +1390,7 @@
 	"javascript.format.placeOpenBraceOnNewLineForFunctions": false,
 
 	// Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
-	//  - ignore: Don’t insert or remove any semicolons.
+	//  - ignore: Don't insert or remove any semicolons.
 	//  - insert: Insert semicolons at statement ends.
 	//  - remove: Remove unnecessary semicolons.
 	"javascript.format.semicolons": "ignore",
@@ -1322,6 +1415,9 @@
 
 	// Enable/disable references CodeLens in JavaScript files.
 	"javascript.referencesCodeLens.enabled": false,
+
+	// Enable/disable references CodeLens on all functions in JavaScript files.
+	"javascript.referencesCodeLens.showOnAllFunctions": false,
 
 	// Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
 	"javascript.suggest.autoImports": true,
@@ -1359,7 +1455,7 @@
 	// Enable/disable automatic closing of JSX tags. Requires using TypeScript 3.0 or newer in the workspace.
 	"typescript.autoClosingTags": true,
 
-	// Check if NPM is installed for Automatic Type Acquisition.
+	// Check if npm is installed for Automatic Type Acquisition.
 	"typescript.check.npmIsInstalled": true,
 
 	// Disables automatic type acquisition. Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
@@ -1414,7 +1510,7 @@
 	"typescript.format.placeOpenBraceOnNewLineForFunctions": false,
 
 	// Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
-	//  - ignore: Don’t insert or remove any semicolons.
+	//  - ignore: Don't insert or remove any semicolons.
 	//  - insert: Insert semicolons at statement ends.
 	//  - remove: Remove unnecessary semicolons.
 	"typescript.format.semicolons": "ignore",
@@ -1425,7 +1521,7 @@
 	// Sets the locale used to report JavaScript and TypeScript errors. Requires using TypeScript 2.6.0 or newer in the workspace. Default of `null` uses VS Code's locale.
 	"typescript.locale": null,
 
-	// Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires using TypeScript 2.3.4 or newer in the workspace.
+	// Specifies the path to the npm executable used for Automatic Type Acquisition. Requires using TypeScript 2.3.4 or newer in the workspace.
 	"typescript.npm": null,
 
 	// Preferred path style for auto imports.
@@ -1442,6 +1538,9 @@
 
 	// Enable/disable references CodeLens in TypeScript files.
 	"typescript.referencesCodeLens.enabled": false,
+
+	// Enable/disable references CodeLens on all functions in TypeScript files.
+	"typescript.referencesCodeLens.showOnAllFunctions": false,
 
 	// Report style checks as warnings.
 	"typescript.reportStyleChecksAsWarnings": true,
@@ -1953,10 +2052,19 @@
 	// Controls whether to treat the option key as the meta key in the terminal on macOS.
 	"terminal.integrated.macOptionIsMeta": false,
 
+	// When set the foreground color of each cell will change to try meet the contrast ratio specified. Example values:
+	// 
+	// - 1: The default, do nothing.
+	// - 4.5: Minimum for [WCAG AA compliance](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html).
+	// - 7: Minimum for [WCAG AAA compliance](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html).
+	// - 21: White on black or black on white.
+	"terminal.integrated.minimumContrastRatio": 1,
+
 	// Controls how the terminal is rendered.
 	//  - auto: Let VS Code guess which renderer to use.
-	//  - canvas: Use the standard GPU/canvas-based renderer
+	//  - canvas: Use the standard GPU/canvas-based renderer.
 	//  - dom: Use the fallback DOM-based renderer.
+	//  - experimentalWebgl: Use the experimental webgl-based renderer. Note that this has some [known issues](https://github.com/xtermjs/xterm.js/issues?q=is%3Aopen+is%3Aissue+label%3Aarea%2Faddon%2Fwebgl) and this will only be enabled for new terminals (not hot swappable like the other renderers).
 	"terminal.integrated.rendererType": "auto",
 
 	// Controls how terminal reacts to right click.
@@ -2004,7 +2112,7 @@
 	// Controls enablement of `provideTasks` for all task provider extension. If the Tasks: Run Task command is slow, disabling auto detect for task providers may help. Individual extensions my provide settings to disabled auto detection.
 	"task.autoDetect": "on",
 
-	// Configures whether to show the problem matcher prompt when running a task. Set to `true` to never promp, or use a dictionary of task types to turn off prompting only for specific task types.
+	// Configures whether to show the problem matcher prompt when running a task. Set to `true` to never prompt, or use a dictionary of task types to turn off prompting only for specific task types.
 	"task.problemMatchers.neverPrompt": false,
 
 	// Controls whether to show the task detail for task that have a detail in the Run Task quick pick.
@@ -2024,6 +2132,9 @@
 
 	// Show Errors & Warnings on files and folder.
 	"problems.decorations.enabled": true,
+
+	// When enabled shows the current problem in the status bar.
+	"problems.showCurrentInStatus": false,
 
 	// Enable/disable navigation breadcrumbs.
 	"breadcrumbs.enabled": true,
@@ -2224,6 +2335,11 @@
 	// When enabled outline shows `variable`-symbols.
 	"outline.showVariables": true,
 
+	// Configure editor settings to be overridden for [css] language.
+	"[css]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
 	// Configure editor settings to be overridden for [git-commit] language.
 	"[git-commit]":  {
 		"editor.rulers": [
@@ -2236,11 +2352,35 @@
 		"editor.insertSpaces": false
 	},
 
+	// Configure editor settings to be overridden for [handlebars] language.
+	"[handlebars]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure editor settings to be overridden for [html] language.
+	"[html]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
 	// Configure editor settings to be overridden for [json] language.
 	"[json]":  {
 		"editor.quickSuggestions": {
 				"strings": true
-		}
+		},
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure editor settings to be overridden for [jsonc] language.
+	"[jsonc]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		},
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure editor settings to be overridden for [less] language.
+	"[less]":  {
+		"editor.suggest.insertMode": "replace"
 	},
 
 	// Configure editor settings to be overridden for [makefile] language.
@@ -2254,6 +2394,16 @@
 		"editor.quickSuggestions": false
 	},
 
+	// Configure editor settings to be overridden for [scss] language.
+	"[scss]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure editor settings to be overridden for [search-result] language.
+	"[search-result]":  {
+		"editor.lineNumbers": "off"
+	},
+
 	// Configure editor settings to be overridden for [shellscript] language.
 	"[shellscript]":  {
 		"files.eol": "\n"
@@ -2263,12 +2413,17 @@
 	"[yaml]":  {
 		"editor.insertSpaces": true,
 		"editor.tabSize": 2,
-		"editor.autoIndent": false
+		"editor.autoIndent": "advanced"
 	},
+
+	// When enabled extensions are downloaded locally and installed on remote.
+	"remote.downloadExtensionsLocally": false,
 
 	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
 	"remote.extensionKind": {
-		"pub.name": "ui"
+		"pub.name": [
+			"ui"
+		]
 	},
 
 	// Automatically attach node debugger when node.js was launched in debug mode from integrated terminal.
@@ -2513,7 +2668,7 @@
 	// Controls whether npm scripts should be automatically detected.
 	"npm.autoDetect": "on",
 
-	// Enable running NPM scripts contained in a folder from the Explorer context menu.
+	// Enable running npm scripts contained in a folder from the Explorer context menu.
 	"npm.enableRunFromFolder": false,
 
 	// Enable an explorer view for npm scripts when there is no top-level 'package.json' file.

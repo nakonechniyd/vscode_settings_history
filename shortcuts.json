@@ -107,9 +107,9 @@
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+d",                "command": "editor.action.addSelectionToNextFindMatch",
                                          "when": "editorFocus" },
-    { "key": "shift+alt+.",           "command": "editor.action.autoFix",
-                                         "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/" },
     { "key": "shift+alt+[IntlBackslash]", "command": "editor.action.autoFix",
+                                         "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/" },
+    { "key": "shift+alt+.",           "command": "editor.action.autoFix",
                                          "when": "editorTextFocus && !editorReadonly && supportedCodeAction =~ /(\\s|^)quickfix\\b/" },
     { "key": "ctrl+shift+a",          "command": "editor.action.blockComment",
                                          "when": "editorTextFocus && !editorReadonly" },
@@ -127,6 +127,12 @@
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+shift+alt+up",     "command": "editor.action.copyLinesUpAction",
                                          "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+z",          "command": "editor.action.customEditor.redo",
+                                         "when": "focusedCustomEditorIsEditable && !inputFocus" },
+    { "key": "ctrl+y",                "command": "editor.action.customEditor.redo",
+                                         "when": "focusedCustomEditorIsEditable && !inputFocus" },
+    { "key": "ctrl+z",                "command": "editor.action.customEditor.undo",
+                                         "when": "focusedCustomEditorIsEditable && !inputFocus" },
     { "key": "ctrl+k ctrl+k",         "command": "editor.action.defineKeybinding",
                                          "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'" },
     { "key": "ctrl+shift+k",          "command": "editor.action.deleteLines",
@@ -153,13 +159,15 @@
                                          "when": "editorHasDocumentSelectionFormattingProvider && editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly" },
     { "key": "ctrl+f12",              "command": "editor.action.goToImplementation",
                                          "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor" },
-    { "key": "ctrl+shift+.",          "command": "editor.action.inPlaceReplace.down",
-                                         "when": "editorTextFocus && !editorReadonly" },
+    { "key": "shift+f12",             "command": "editor.action.goToReferences",
+                                         "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor" },
     { "key": "ctrl+shift+[IntlBackslash]", "command": "editor.action.inPlaceReplace.down",
                                          "when": "editorTextFocus && !editorReadonly" },
-    { "key": "ctrl+shift+,",          "command": "editor.action.inPlaceReplace.up",
+    { "key": "ctrl+shift+.",          "command": "editor.action.inPlaceReplace.down",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+[IntlBackslash]",  "command": "editor.action.inPlaceReplace.up",
+                                         "when": "editorTextFocus && !editorReadonly" },
+    { "key": "ctrl+shift+,",          "command": "editor.action.inPlaceReplace.up",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+]",                "command": "editor.action.indentLines",
                                          "when": "editorTextFocus && !editorReadonly" },
@@ -206,7 +214,7 @@
     { "key": "ctrl+shift+f10",        "command": "editor.action.peekDefinition",
                                          "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor" },
     { "key": "ctrl+shift+f12",        "command": "editor.action.peekImplementation",
-                                         "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor" },
+                                         "when": "editorHasImplementationProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor" },
     { "key": "shift+f3",              "command": "editor.action.previousMatchFindAction",
                                          "when": "editorFocus" },
     { "key": "shift+enter",           "command": "editor.action.previousMatchFindAction",
@@ -217,8 +225,6 @@
                                          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly" },
     { "key": "ctrl+shift+r",          "command": "editor.action.refactor",
                                          "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly" },
-    { "key": "shift+f12",             "command": "editor.action.referenceSearch.trigger",
-                                         "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor" },
     { "key": "ctrl+k ctrl+u",         "command": "editor.action.removeCommentLine",
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "f2",                    "command": "editor.action.rename",
@@ -295,7 +301,7 @@
     { "key": "ctrl+k ctrl+[",         "command": "editor.foldRecursively",
                                          "when": "editorTextFocus && foldingEnabled" },
     { "key": "f12",                   "command": "editor.gotoNextSymbolFromResult",
-                                         "when": "hasSymbols && config.editor.gotoLocation.multiple == 'goto'" },
+                                         "when": "hasSymbols" },
     { "key": "escape",                "command": "editor.gotoNextSymbolFromResult.cancel",
                                          "when": "hasSymbols" },
     { "key": "ctrl+k ctrl+l",         "command": "editor.toggleFold",
@@ -311,7 +317,7 @@
     { "key": "tab",                   "command": "insertSnippet",
                                          "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode" },
     { "key": "ctrl+enter",            "command": "openReferenceToSide",
-                                         "when": "referenceSearchTreeFocused && referenceSearchVisible" },
+                                         "when": "listFocus && referenceSearchVisible && !inputFocus" },
     { "key": "enter",                 "command": "repl.action.acceptInput",
                                          "when": "inDebugRepl && textInputFocus" },
     { "key": "ctrl+f",                "command": "repl.action.filter",
@@ -386,7 +392,11 @@
                                          "when": "editorFocus && markersNavigationVisible" },
     { "key": "escape",                "command": "closeMarkersNavigation",
                                          "when": "editorFocus && markersNavigationVisible" },
+    { "key": "f12",                   "command": "goToNextReferenceFromEmbeddedEditor",
+                                         "when": "inReferenceSearchEditor" },
     { "key": "f4",                    "command": "goToNextReferenceFromEmbeddedEditor",
+                                         "when": "inReferenceSearchEditor" },
+    { "key": "shift+f12",             "command": "goToPreviousReferenceFromEmbeddedEditor",
                                          "when": "inReferenceSearchEditor" },
     { "key": "shift+f4",              "command": "goToPreviousReferenceFromEmbeddedEditor",
                                          "when": "inReferenceSearchEditor" },
@@ -402,10 +412,14 @@
                                          "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible" },
     { "key": "up",                    "command": "showPrevParameterHint",
                                          "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible" },
+    { "key": "shift+enter",           "command": "acceptSelectedSuggestion",
+                                         "when": "suggestWidgetVisible && textInputFocus" },
     { "key": "tab",                   "command": "acceptSelectedSuggestion",
                                          "when": "suggestWidgetVisible && textInputFocus" },
     { "key": "enter",                 "command": "acceptSelectedSuggestion",
                                          "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus" },
+    { "key": "shift+tab",             "command": "acceptSelectedSuggestion",
+                                         "when": "suggestWidgetVisible && textInputFocus" },
     { "key": "shift+escape",          "command": "hideSuggestWidget",
                                          "when": "suggestWidgetVisible && textInputFocus" },
     { "key": "escape",                "command": "hideSuggestWidget",
@@ -442,11 +456,13 @@
                                          "when": "editorFocus && renameInputVisible" },
     { "key": "escape",                "command": "cancelRenameInput",
                                          "when": "editorFocus && renameInputVisible" },
+    { "key": "ctrl+shift+l",          "command": "addCursorsAtSearchResults",
+                                         "when": "fileMatchOrMatchFocus && searchViewletVisible" },
     { "key": "ctrl+shift+;",          "command": "breadcrumbs.focus",
                                          "when": "breadcrumbsPossible" },
-    { "key": "ctrl+shift+.",          "command": "breadcrumbs.focusAndSelect",
-                                         "when": "breadcrumbsPossible" },
     { "key": "ctrl+shift+[IntlBackslash]", "command": "breadcrumbs.focusAndSelect",
+                                         "when": "breadcrumbsPossible" },
+    { "key": "ctrl+shift+.",          "command": "breadcrumbs.focusAndSelect",
                                          "when": "breadcrumbsPossible" },
     { "key": "ctrl+right",            "command": "breadcrumbs.focusNext",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
@@ -466,9 +482,9 @@
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
     { "key": "enter",                 "command": "breadcrumbs.selectFocused",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
-    { "key": "ctrl+shift+.",          "command": "breadcrumbs.toggleToOn",
-                                         "when": "!config.breadcrumbs.enabled" },
     { "key": "ctrl+shift+[IntlBackslash]", "command": "breadcrumbs.toggleToOn",
+                                         "when": "!config.breadcrumbs.enabled" },
+    { "key": "ctrl+shift+.",          "command": "breadcrumbs.toggleToOn",
                                          "when": "!config.breadcrumbs.enabled" },
     { "key": "shift+escape",          "command": "closeAccessibilityHelp",
                                          "when": "accessibilityHelpWidgetVisible && editorFocus" },
@@ -493,7 +509,7 @@
     { "key": "shift+enter",           "command": "editor.refocusCallHierarchy",
                                          "when": "callHierarchyVisible" },
     { "key": "shift+alt+h",           "command": "editor.showCallHierarchy",
-                                         "when": "editorHasCallHierarchyProvider && editorTextFocus && !callHierarchyVisible && !inReferenceSearchEditor" },
+                                         "when": "editorHasCallHierarchyProvider && editorTextFocus && !inReferenceSearchEditor" },
     { "key": "shift+alt+h",           "command": "editor.toggleCallHierarchy",
                                          "when": "callHierarchyVisible" },
     { "key": "ctrl+enter",            "command": "explorer.openToSide",
@@ -551,10 +567,6 @@
     { "key": "up",                    "command": "list.focusUp",
                                          "when": "listFocus && !inputFocus" },
     { "key": "ctrl+down",             "command": "list.scrollDown",
-                                         "when": "listFocus && !inputFocus" },
-    { "key": "ctrl+left",             "command": "list.scrollLeft",
-                                         "when": "listFocus && !inputFocus" },
-    { "key": "ctrl+right",            "command": "list.scrollRight",
                                          "when": "listFocus && !inputFocus" },
     { "key": "ctrl+up",               "command": "list.scrollUp",
                                          "when": "listFocus && !inputFocus" },
@@ -628,6 +640,8 @@
                                          "when": "folderMatchFocus && replaceActive && searchViewletVisible" },
     { "key": "ctrl+shift+1",          "command": "search.action.replaceAllInFolder",
                                          "when": "folderMatchFocus && replaceActive && searchViewletVisible" },
+    { "key": "ctrl+shift+r",          "command": "search.action.rerunEditorSearch",
+                                         "when": "editorLangId == 'search-result' && editorLangId == 'search-result'" },
     { "key": "ctrl+down",             "command": "search.focus.nextInputBox",
                                          "when": "inputBoxFocus && searchViewletVisible" },
     { "key": "ctrl+up",               "command": "search.focus.previousInputBox",
@@ -890,9 +904,9 @@
     { "key": "space",                 "command": "debug.toggleBreakpoint",
                                          "when": "breakpointsFocused && !inputFocus" },
     { "key": "shift+delete",          "command": "deleteFile",
-                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus" },
     { "key": "delete",                "command": "deleteFile",
-                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus" },
     { "key": "escape",                "command": "editor.closeCallHierarchy",
                                          "when": "callHierarchyVisible && !config.editor.stablePeek" },
     { "key": "escape",                "command": "filesExplorer.cancelCut",
@@ -905,17 +919,29 @@
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsFolder && !inputFocus" },
     { "key": "ctrl+v",                "command": "filesExplorer.paste",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus" },
+    { "key": "home",                  "command": "firstCompressedFolder",
+                                         "when": "explorerViewletCompressedFocus && explorerViewletVisible && filesExplorerFocus && !explorerViewletCompressedFirstFocus && !inputFocus" },
+    { "key": "end",                   "command": "lastCompressedFolder",
+                                         "when": "explorerViewletCompressedFocus && explorerViewletVisible && filesExplorerFocus && !explorerViewletCompressedLastFocus && !inputFocus" },
     { "key": "delete",                "command": "moveFileToTrash",
-                                         "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+                                         "when": "explorerResourceMoveableToTrash && explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus" },
+    { "key": "right",                 "command": "nextCompressedFolder",
+                                         "when": "explorerViewletCompressedFocus && explorerViewletVisible && filesExplorerFocus && !explorerViewletCompressedLastFocus && !inputFocus" },
+    { "key": "left",                  "command": "previousCompressedFolder",
+                                         "when": "explorerViewletCompressedFocus && explorerViewletVisible && filesExplorerFocus && !explorerViewletCompressedFirstFocus && !inputFocus" },
     { "key": "f2",                    "command": "renameFile",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
     { "key": "f11",                   "command": "workbench.action.debug.stepInto",
-                                         "when": "inDebugMode" },
+                                         "when": "debugState == 'stopped'" },
     { "key": "shift+escape",          "command": "closeReferenceSearch",
                                          "when": "referenceSearchVisible && !config.editor.stablePeek" },
     { "key": "escape",                "command": "closeReferenceSearch",
                                          "when": "referenceSearchVisible && !config.editor.stablePeek" },
+    { "key": "f12",                   "command": "goToNextReference",
+                                         "when": "referenceSearchVisible" },
     { "key": "f4",                    "command": "goToNextReference",
+                                         "when": "referenceSearchVisible" },
+    { "key": "shift+f12",             "command": "goToPreviousReference",
                                          "when": "referenceSearchVisible" },
     { "key": "shift+f4",              "command": "goToPreviousReference",
                                          "when": "referenceSearchVisible" },
@@ -960,11 +986,14 @@
     { "key": "f4",                    "command": "references-view.next",
                                          "when": "reference-list.hasResult" },
     { "key": "shift+f4",              "command": "references-view.prev",
-                                         "when": "reference-list.hasResult" }
+                                         "when": "reference-list.hasResult" },
+    { "key": "shift+alt+h",           "command": "references-view.showCallHierarchy",
+                                         "when": "editorHasCallHierarchyProvider" }
     ]
     
     
     // Here are other available commands: 
+    // - 84256
     // - acceptSelectedSuggestionOnEnter
     // - acceptSnippet
     // - actions.findWithSelection
@@ -1057,10 +1086,12 @@
     // - editor.action.peekDeclaration
     // - editor.action.peekTypeDefinition
     // - editor.action.previewDeclaration
+    // - editor.action.referenceSearch.trigger
     // - editor.action.reindentlines
     // - editor.action.reindentselectedlines
     // - editor.action.revealDeclaration
     // - editor.action.showDefinitionPreviewHover
+    // - editor.action.showReferences
     // - editor.action.showSnippets
     // - editor.action.smartSelect.grow
     // - editor.action.sortLinesAscending
@@ -1217,6 +1248,7 @@
     // - list.focusFirstChild
     // - list.focusLastChild
     // - list.focusParent
+    // - list.scrollRight
     // - list.toggleFilterOnType
     // - list.toggleKeyboardNavigation
     // - markdown.preview.refresh
@@ -1262,11 +1294,19 @@
     // - references-view.copy
     // - references-view.copyAll
     // - references-view.copyPath
+    // - references-view.findImplementations
     // - references-view.pickFromHistory
     // - references-view.refind
     // - references-view.refresh
     // - references-view.remove
+    // - references-view.showIncomingCalls
+    // - references-view.showOutgoingCalls
     // - references-view.tree.focus
+    // - remote.tunnel.close
+    // - remote.tunnel.copyAddress
+    // - remote.tunnel.forward
+    // - remote.tunnel.name
+    // - remote.tunnel.open
     // - removeRootFolder
     // - repl.action.copyAll
     // - replacePreviousChar
@@ -1277,9 +1317,13 @@
     // - search.action.collapseSearchResults
     // - search.action.copyAll
     // - search.action.focusSearchList
+    // - search.action.openInEditor
     // - search.action.refreshSearchResults
+    // - search.action.rerunEditorSearchWithContext
     // - search.action.revealInSideBar
     // - search.action.toggleSearchViewPosition
+    // - searchResult.rerunSearch
+    // - searchResult.rerunSearchWithContext
     // - selectAll
     // - selectFirstSuggestion
     // - selectForCompare
@@ -1290,7 +1334,6 @@
     // - settings.filterByOnline
     // - settings.switchToJSON
     // - showEditorScreenReaderNotification
-    // - sync.resolveConflicts
     // - toggle.diff.ignoreTrimWhitespace
     // - toggle.diff.renderSideBySide
     // - toggleEscapeSequenceLogging
@@ -1516,6 +1559,7 @@
     // - workbench.action.toggleMultiCursorModifier
     // - workbench.action.togglePanelPosition
     // - workbench.action.toggleScreencastMode
+    // - workbench.action.toggleSearchOnType
     // - workbench.action.toggleSharedProcess
     // - workbench.action.toggleSidebarPosition
     // - workbench.action.toggleStatusbarVisibility
@@ -1530,6 +1574,7 @@
     // - workbench.debug.action.focusWatchView
     // - workbench.debug.loadedScriptsView.focus
     // - workbench.debug.panel.action.clearReplAction
+    // - workbench.debug.startView.focus
     // - workbench.debug.viewlet.action.addFunctionBreakpointAction
     // - workbench.debug.viewlet.action.disableAllBreakpoints
     // - workbench.debug.viewlet.action.enableAllBreakpoints
@@ -1571,7 +1616,7 @@
     // - workbench.extensions.action.showRecommendedExtensions
     // - workbench.extensions.action.stopExtensionHostProfile
     // - workbench.extensions.action.updateAllExtensions
-    // - workbench.extensions.installMissingDepenencies
+    // - workbench.extensions.installMissingDependencies
     // - workbench.files.action.acceptLocalChanges
     // - workbench.files.action.collapseExplorerFolders
     // - workbench.files.action.compareFileWith
@@ -1581,11 +1626,6 @@
     // - workbench.files.action.saveAllInGroup
     // - workbench.files.action.showActiveFileInExplorer
     // - workbench.output.action.clearOutput
-    // - workbench.userData.actions.continueSync
-    // - workbench.userData.actions.login
-    // - workbench.userData.actions.logout
-    // - workbench.userData.actions.stopSync
-    // - workbench.userData.actions.syncStart
     // - workbench.view.extension.references-view
     // - workbench.view.extension.test
     // - workbench.view.remote
