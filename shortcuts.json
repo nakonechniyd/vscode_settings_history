@@ -180,9 +180,9 @@
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+shift+\\",         "command": "editor.action.jumpToBracket",
                                          "when": "editorTextFocus" },
-    { "key": "f8",                    "command": "editor.action.marker.next",
+    { "key": "f8",                    "command": "editor.action.marker.nextInFiles",
                                          "when": "editorFocus && !editorReadonly" },
-    { "key": "shift+f8",              "command": "editor.action.marker.prev",
+    { "key": "shift+f8",              "command": "editor.action.marker.prevInFiles",
                                          "when": "editorFocus && !editorReadonly" },
     { "key": "alt+down",              "command": "editor.action.moveLinesDownAction",
                                          "when": "editorTextFocus && !editorReadonly" },
@@ -408,7 +408,7 @@
     { "key": "escape",                "command": "closeReplaceInFilesWidget",
                                          "when": "replaceInputBoxFocus && searchViewletVisible" },
     { "key": "ctrl+alt+c",            "command": "copyFilePath",
-                                         "when": "!editorTextFocus" },
+                                         "when": "!editorFocus" },
     { "key": "alt+enter",             "command": "debug.openBreakpointToSide",
                                          "when": "breakpointsFocused" },
     { "key": "ctrl+enter",            "command": "debug.openBreakpointToSide",
@@ -417,7 +417,7 @@
                                          "when": "breakpointsFocused && !breakpointSelected" },
     { "key": "delete",                "command": "debug.removeWatchExpression",
                                          "when": "watchExpressionsFocused && !expressionSelected" },
-    { "key": "shift+f9",              "command": "editor.debug.action.toggleColumnBreakpoint",
+    { "key": "shift+f9",              "command": "editor.debug.action.toggleInlineBreakpoint",
                                          "when": "editorTextFocus" },
     { "key": "ctrl+enter",            "command": "explorer.openToSide",
                                          "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus" },
@@ -437,10 +437,10 @@
                                          "when": "listFocus && !inputFocus" },
     { "key": "left",                  "command": "list.collapse",
                                          "when": "listFocus && !inputFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "right",                 "command": "list.expand",
                                          "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
     { "key": "shift+down",            "command": "list.expandSelectionDown",
                                          "when": "listFocus && !inputFocus" },
     { "key": "shift+up",              "command": "list.expandSelectionUp",
@@ -488,7 +488,7 @@
     { "key": "ctrl+enter",            "command": "problems.action.openToSide",
                                          "when": "problemFocus" },
     { "key": "ctrl+alt+r",            "command": "revealFileInOS",
-                                         "when": "!editorTextFocus" },
+                                         "when": "!editorFocus" },
     { "key": "escape",                "command": "search.action.cancel",
                                          "when": "listFocus && searchViewletVisible && !inputFocus" },
     { "key": "ctrl+c",                "command": "search.action.copyMatch",
@@ -535,6 +535,10 @@
                                          "when": "patternExcludesInputBoxFocus && searchViewletVisible" },
     { "key": "alt+up",                "command": "search.history.showPreviousIncludePattern",
                                          "when": "patternIncludesInputBoxFocus && searchViewletVisible" },
+    { "key": "alt+down",              "command": "search.replaceHistory.showNext",
+                                         "when": "replaceInputBoxFocus && searchViewletVisible" },
+    { "key": "alt+up",                "command": "search.replaceHistory.showPrevious",
+                                         "when": "replaceInputBoxFocus && searchViewletVisible" },
     { "key": "alt+c",                 "command": "toggleSearchCaseSensitive",
                                          "when": "searchInputBoxFocus && searchViewletVisible" },
     { "key": "alt+r",                 "command": "toggleSearchRegex",
@@ -646,7 +650,7 @@
     { "key": "ctrl+\\",               "command": "workbench.action.splitEditor" },
     { "key": "ctrl+shift+b",          "command": "workbench.action.tasks.build" },
     { "key": "escape",                "command": "workbench.action.terminal.clearSelection",
-                                         "when": "terminalTextSelected && !terminalFindWidgetVisible" },
+                                         "when": "terminalFocus && terminalTextSelected && !terminalFindWidgetVisible" },
     { "key": "ctrl+shift+c",          "command": "workbench.action.terminal.copySelection",
                                          "when": "terminalFocus && terminalTextSelected" },
     { "key": "ctrl+backspace",        "command": "workbench.action.terminal.deleteWordLeft",
@@ -810,6 +814,7 @@
     // - cursorWordStartRightSelect
     // - cut
     // - debug.addConfiguration
+    // - debug.enableOrDisableBreakpoint
     // - debug.installAdditionalDebuggers
     // - default:compositionEnd
     // - default:compositionStart
@@ -832,6 +837,9 @@
     // - editor.action.codeAction
     // - editor.action.detectIndentation
     // - editor.action.findReferences
+    // - editor.action.fontZoomIn
+    // - editor.action.fontZoomOut
+    // - editor.action.fontZoomReset
     // - editor.action.format
     // - editor.action.goToTypeDefinition
     // - editor.action.indentUsingSpaces
@@ -841,12 +849,15 @@
     // - editor.action.insertSnippet
     // - editor.action.inspectTMScopes
     // - editor.action.joinLines
+    // - editor.action.marker.next
+    // - editor.action.marker.prev
     // - editor.action.moveCarretLeftAction
     // - editor.action.moveCarretRightAction
     // - editor.action.moveSelectionToPreviousFindMatch
     // - editor.action.openLink
     // - editor.action.peekTypeDefinition
     // - editor.action.reindentlines
+    // - editor.action.reindentselectedlines
     // - editor.action.selectToBracket
     // - editor.action.showSnippets
     // - editor.action.sortLinesAscending
@@ -860,9 +871,12 @@
     // - editor.action.transpose
     // - editor.action.transposeLetters
     // - editor.debug.action.conditionalBreakpoint
+    // - editor.debug.action.goToNextBreakpoint
+    // - editor.debug.action.goToPreviousBreakpoint
     // - editor.debug.action.runToCursor
     // - editor.debug.action.selectionToRepl
     // - editor.debug.action.selectionToWatch
+    // - editor.debug.action.toggleColumnBreakpoint
     // - editor.debug.action.toggleLogPoint
     // - editor.emmet.action.balanceIn
     // - editor.emmet.action.balanceOut
@@ -968,6 +982,7 @@
     // - notifications.showList
     // - notifications.toggleList
     // - openInTerminal
+    // - outline.focus
     // - paste
     // - problems.action.copyMessage
     // - problems.action.copyRelatedInformationMessage
@@ -1010,6 +1025,7 @@
     // - workbench.action.debug.selectandstart
     // - workbench.action.debug.terminateThread
     // - workbench.action.decreaseViewSize
+    // - workbench.action.duplicateWorkspaceInNewWindow
     // - workbench.action.editor.changeEOL
     // - workbench.action.editor.changeEncoding
     // - workbench.action.evenEditorWidths
@@ -1052,6 +1068,7 @@
     // - workbench.action.openPreviousRecentlyUsedEditor
     // - workbench.action.openProcessExplorer
     // - workbench.action.openRawDefaultSettings
+    // - workbench.action.openSettings2
     // - workbench.action.openSnippets
     // - workbench.action.openTipsAndTricksUrl
     // - workbench.action.openView
@@ -1073,6 +1090,7 @@
     // - workbench.action.quickOpenSelectPrevious
     // - workbench.action.quickOpenTerm
     // - workbench.action.quickOpenView
+    // - workbench.action.quickPickManyToggle
     // - workbench.action.quickSwitchWindow
     // - workbench.action.reloadWindow
     // - workbench.action.reloadWindowWithExtensionsDisabled
@@ -1131,7 +1149,9 @@
     // - workbench.action.terminal.scrollToPreviousCommand
     // - workbench.action.terminal.selectAll
     // - workbench.action.terminal.selectToNextCommand
+    // - workbench.action.terminal.selectToNextLine
     // - workbench.action.terminal.selectToPreviousCommand
+    // - workbench.action.terminal.selectToPreviousLine
     // - workbench.action.terminal.splitInActiveWorkspace
     // - workbench.action.toggleActivityBarVisibility
     // - workbench.action.toggleCenteredLayout

@@ -188,6 +188,9 @@
   // Render vertical rulers after a certain number of monospace characters. Use multiple values for multiple rulers. No rulers are drawn if array is empty
   "editor.rulers": [],
 
+  // Controls the number of extra characters beyond which the editor will scroll horizontally
+  "editor.scrollBeyondLastColumn": 5,
+
   // Controls if the editor will scroll beyond the last line
   "editor.scrollBeyondLastLine": true,
 
@@ -252,7 +255,7 @@
   // Controls the wrapping column of the editor when `editor.wordWrap` is 'wordWrapColumn' or 'bounded'.
   "editor.wordWrapColumn": 80,
 
-  // Controls the indentation of wrapped lines. Can be one of 'none', 'same' or 'indent'.
+  // Controls the indentation of wrapped lines. Can be one of 'none', 'same', 'indent' or 'deepIndent'.
   "editor.wrappingIndent": "same"
 
 }
@@ -550,7 +553,7 @@
   // Controls whether to follow symlinks while searching.
   "search.followSymlinks": true,
 
-  // Controls if the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space. Next release search in panel will have improved horizontal layout and this will no longer be a preview.
+  // Controls if the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space.
   "search.location": "sidebar",
 
   // Configure to include results from a global symbol search in the file results for Quick Open.
@@ -609,9 +612,6 @@
   // Controls if the non debug hovers should be enabled while debugging. If true the hover providers will be called to provide a hover. Regular hovers will not be shown even if this setting is true.
   "debug.enableAllHovers": false,
 
-  // Controls if the floating debug action bar should be hidden
-  "debug.hideActionBar": false,
-
   // Show variable values inline in editor while debugging
   "debug.inlineValues": false,
 
@@ -626,6 +626,9 @@
 
   // Controls when the debug status bar should be visible
   "debug.showInStatusBar": "onFirstSessionStart",
+
+  // Controls the location of the debug toolbar. Either "floating" in all views, "docked" in the debug view, or "hidden"
+  "debug.toolBarLocation": "floating",
 
   // Global debug launch configuration. Should be used as an alternative to 'launch.json' that is shared across workspaces
   "launch": {
@@ -814,20 +817,36 @@
   // Defines whether an open brace is put onto a new line for functions or not.
   "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
 
-  // Enable/disable semantic checking of JavaScript files. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >=2.3.1.
+  // Enable/disable semantic checking of JavaScript files. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >= 2.3.1.
   "javascript.implicitProjectConfig.checkJs": false,
 
-  // Enable/disable 'experimentalDecorators' for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >=2.3.1.
+  // Enable/disable 'experimentalDecorators' for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >= 2.3.1.
   "javascript.implicitProjectConfig.experimentalDecorators": false,
 
   // Enable/disable including unique names from the file in JavaScript suggestion lists.
   "javascript.nameSuggestions": true,
 
+  // Preferred path style for auto imports:
+  // - "relative" to the file location.
+  // - "non-relative" based on the 'baseUrl' configured in your 'jsconfig.json' / 'tsconfig.json'.
+  // - "auto" infer the shortest path type.
+  // Requires TypeScript >= 2.9
+  "javascript.preferences.importModuleSpecifier": "auto",
+
+  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires TypeScript >= 2.9
+  "javascript.preferences.quoteStyle": "auto",
+
   // Enable/disable references CodeLens in JavaScript files.
   "javascript.referencesCodeLens.enabled": false,
 
+  // Enable/disable highlighting of unused variables in code. Requires TypeScript >= 2.9
+  "javascript.showUnused": true,
+
   // Enable/disable suggestion diagnostics for JavaScript files in the editor. Requires TypeScript >= 2.8
   "javascript.suggestionActions.enabled": true,
+
+  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires TypeScript >= 2.9
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
 
   // Enable/disable JavaScript validation.
   "javascript.validate.enable": true,
@@ -835,7 +854,7 @@
   // Enable/disable auto JSDoc comments
   "jsDocCompletion.enabled": true,
 
-  // Enable/disable auto import suggestions. Requires TypeScript >=2.6.1
+  // Enable/disable auto import suggestions. Requires TypeScript >= 2.6.1
   "typescript.autoImportSuggestions.enabled": true,
 
   // Check if NPM is installed for Automatic Type Acquisition.
@@ -845,7 +864,7 @@
   "typescript.disableAutomaticTypeAcquisition": false,
 
   // Enables/disables syntax aware folding markers.
-  "typescript.experimental.syntaxFolding": false,
+  "typescript.experimental.syntaxFolding": true,
 
   // Enable/disable default TypeScript formatter.
   "typescript.format.enable": true,
@@ -898,11 +917,21 @@
   // Enable/disable implementations CodeLens. Requires TypeScript >= 2.2.0.
   "typescript.implementationsCodeLens.enabled": false,
 
-  // Sets the locale used to report TypeScript errors. Requires TypeScript >= 2.6.0. Default of 'null' uses VS Code's locale for TypeScript errors.
+  // Sets the locale used to report JavaScript and TypeScript errors. Requires TypeScript >= 2.6.0. Default of 'null' uses VS Code's locale.
   "typescript.locale": null,
 
   // Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires TypeScript >= 2.3.4.
   "typescript.npm": null,
+
+  // Preferred path style for auto imports:
+  // - "relative" to the file location.
+  // - "non-relative" based on the 'baseUrl' configured in your 'jsconfig.json' / 'tsconfig.json'.
+  // - "auto" infer the shortest path type.
+  // Requires TypeScript >= 2.9
+  "typescript.preferences.importModuleSpecifier": "auto",
+
+  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires TypeScript >= 2.9
+  "typescript.preferences.quoteStyle": "auto",
 
   // Enable/disable quick suggestions when typing out an import path.
   "typescript.quickSuggestionsForPaths": true,
@@ -913,7 +942,10 @@
   // Report style checks as warnings
   "typescript.reportStyleChecksAsWarnings": true,
 
-  // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires TypeScript >= 2.8.
+  // Enable/disable highlighting of unused variables in code. Requires TypeScript >= 2.9
+  "typescript.showUnused": true,
+
+  // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires TypeScript >= 2.8
   "typescript.suggestionActions.enabled": true,
 
   // Controls auto detection of tsc tasks. 'off' disables this feature. 'build' only creates single run compile tasks. 'watch' only creates compile and watch tasks. 'on' creates both build and watch tasks. Default is 'on'.
@@ -930,6 +962,9 @@
 
   // Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
   "typescript.tsserver.trace": "off",
+
+  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires TypeScript >= 2.9
+  "typescript.updateImportsOnFileMove.enabled": "prompt",
 
   // Complete functions with their parameter signature.
   "typescript.useCodeSnippetsOnMethodSuggest": false,
@@ -1240,7 +1275,9 @@
     "workbench.action.terminal.scrollUpPage",
     "workbench.action.terminal.selectAll",
     "workbench.action.terminal.selectToNextCommand",
+    "workbench.action.terminal.selectToNextLine",
     "workbench.action.terminal.selectToPreviousCommand",
+    "workbench.action.terminal.selectToPreviousLine",
     "workbench.action.terminal.split",
     "workbench.action.terminal.splitInActiveWorkspace",
     "workbench.action.terminal.toggleTerminal",
@@ -1289,13 +1326,19 @@
   // The font weight to use within the terminal for bold text.
   "terminal.integrated.fontWeightBold": "bold",
 
+  // Controls the letter spacing of the terminal, this is an integer value which represents the amount of additional pixels to add between characters.
+  "terminal.integrated.letterSpacing": 0,
+
   // Controls the line height of the terminal, this number is multiplied by the terminal font size to get the actual line-height in pixels.
   "terminal.integrated.lineHeight": 1,
 
   // Treat the option key as the meta key in the terminal on macOS.
   "terminal.integrated.macOptionIsMeta": false,
 
-  // Controls how terminal reacts to right click, possibilities are 'default', 'copyPaste', and 'selectWord'. 'default' will show the context menu, 'copyPaste' will copy when there is a selection otherwise paste, 'selectWord' will select the word under the cursor and show the context menu.
+  // Controls how the terminal is rendered, the options are "canvas" for the standard (fast) canvas renderer, "dom" for the fallback DOM-based renderer or "auto" which lets VS Code guess which will be best. This setting needs VS Code to reload in order to take effect.
+  "terminal.integrated.rendererType": "auto",
+
+  // Controls how terminal reacts to right click, possibilities are "default", "copyPaste", and "selectWord". "default" will show the context menu, "copyPaste" will copy when there is a selection otherwise paste, "selectWord" will select the word under the cursor and show the context menu.
   "terminal.integrated.rightClickBehavior": "default",
 
   // Controls the maximum amount of lines the terminal keeps in its buffer.
@@ -1448,6 +1491,14 @@
 {
 
 
+  // 
+  "searchrg.enable": false
+
+}
+,
+{
+
+
   // Controls whether auto detection of Gulp tasks is on or off. Default is on.
   "gulp.autoDetect": "on"
 
@@ -1469,7 +1520,10 @@
   "npm.packageManager": "npm",
 
   // Run npm commands with the `--silent` option.
-  "npm.runSilent": false
+  "npm.runSilent": false,
+
+  // The default click action used in the scripts explorer: 'open' or 'run', the default is 'open'.
+  "npm.scriptExplorerAction": "open"
 
 }
 ,
@@ -1481,14 +1535,6 @@
 
   // Enable/disable merge conflict decorators within editor
   "merge-conflict.decorators.enabled": true
-
-}
-,
-{
-
-
-  // Controls whether auto detection of Jake tasks is on or off. Default is on.
-  "jake.autoDetect": "on"
 
 }
 ,
@@ -1554,6 +1600,14 @@
 
   // Controls whether to show an inline Open File action in the Git changes view.
   "git.showInlineOpenFileAction": true
+
+}
+,
+{
+
+
+  // Controls whether auto detection of Jake tasks is on or off. Default is on.
+  "jake.autoDetect": "on"
 
 }
 ,
