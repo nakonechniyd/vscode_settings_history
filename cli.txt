@@ -1,56 +1,57 @@
-Visual Studio Code 1.30.2
+Visual Studio Code 1.31.1
 
-Usage: code [options] [paths...]
+Usage: code [options][paths...]
 
 To read from stdin, append '-' (e.g. 'ps aux | grep code | code -')
 
-Options:
-  -d, --diff <file> <file>           Compare two files with each other.
-  -a, --add <dir>                    Add folder(s) to the last active window.
-  -g, --goto <file:line[:character]> Open a file at the path on the specified
-                                     line and character position.
-  -n, --new-window                   Force to open a new window.
-  -r, --reuse-window                 Force to open a file or folder in an
-                                     already opened window.
-  -w, --wait                         Wait for the files to be closed before
-                                     returning.
-  --locale <locale>                  The locale to use (e.g. en-US or zh-TW).
-  --user-data-dir <dir>              Specifies the directory that user data is
-                                     kept in. Can be used to open multiple
-                                     distinct instances of Code.
-  -v, --version                      Print version.
-  -h, --help                         Print usage.
+Options
+  -d --diff <file> <file>           Compare two files with each other.
+  -a --add <folder>                 Add folder(s) to the last active window.
+  -g --goto <file:line[:character]> Open a file at the path on the specified
+                                    line and character position.
+  -n --new-window                   Force to open a new window.
+  -r --reuse-window                 Force to open a file or folder in an
+                                    already opened window.
+  -w --wait                         Wait for the files to be closed before
+                                    returning.
+  --locale <locale>                 The locale to use (e.g. en-US or zh-TW).
+  --user-data-dir <dir>             Specifies the directory that user data is
+                                    kept in. Can be used to open multiple
+                                    distinct instances of Code.
+  -v --version                      Print version.
+  -h --help                         Print usage.
+  --folder-uri <uri>                Opens a window with given folder uri(s)
+  --file-uri <uri>                  Opens a window with given file uri(s)
 
-Extensions Management:
-  --extensions-dir <dir>
-      Set the root path for extensions.
-  --list-extensions
-      List the installed extensions.
-  --show-versions
-      Show versions of installed extensions, when using --list-extension.
-  --uninstall-extension (<extension-id> | <extension-vsix-path>)
-      Uninstalls an extension.
-  --install-extension (<extension-id> | <extension-vsix-path>)
-      Installs or updates the extension. Use `--force` argument to avoid prompts.
-  --enable-proposed-api (<extension-id>)
-      Enables proposed API features for extensions. Can receive one or more extension IDs to enable individually.
+Extensions Management
+  --extensions-dir <dir>               Set the root path for extensions.
+  --list-extensions                    List the installed extensions.
+  --show-versions                      Show versions of installed extensions,
+                                       when using --list-extension.
+  --install-extension <extension-id>   Installs or updates the extension. Use
+                                       `--force` argument to avoid prompts.
+  --uninstall-extension <extension-id> Uninstalls an extension.
+  --enable-proposed-api <extension-id> Enables proposed API features for
+                                       extensions. Can receive one or more
+                                       extension IDs to enable individually.
 
-Troubleshooting:
+Troubleshooting
   --verbose                          Print verbose output (implies --wait).
   --log <level>                      Log level to use. Default is 'info'.
                                      Allowed values are 'critical', 'error',
                                      'warn', 'info', 'debug', 'trace', 'off'.
-  -s, --status                       Print process usage and diagnostics
+  -s --status                        Print process usage and diagnostics
                                      information.
-  -p, --performance                  Start with the 'Developer: Startup
-                                     Performance' command enabled.
+  -p --prof-modules                  Capture performance markers while loading
+                                     JS modules and print them with 'F1 >
+                                     Developer: Startup Performance
   --prof-startup                     Run CPU profiler during startup
   --disable-extensions               Disable all installed extensions.
   --disable-extension <extension-id> Disable an extension.
-  --inspect-extensions               Allow debugging and profiling of
+  --inspect-extensions <port>        Allow debugging and profiling of
                                      extensions. Check the developer tools for
                                      the connection URI.
-  --inspect-brk-extensions           Allow debugging and profiling of
+  --inspect-brk-search <port>        Allow debugging and profiling of
                                      extensions with the extension host being
                                      paused after start. Check the developer
                                      tools for the connection URI.
@@ -58,3 +59,4 @@ Troubleshooting:
   --upload-logs                      Uploads logs from current session to a
                                      secure endpoint.
   --max-memory                       Max memory size for a window (in Mbytes).
+
