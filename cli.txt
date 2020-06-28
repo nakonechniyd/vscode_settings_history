@@ -1,4 +1,4 @@
-Visual Studio Code 1.43.2
+Visual Studio Code 1.44.2
 
 Usage: code [options][paths...]
 
@@ -12,18 +12,15 @@ Options
   -n --new-window                   Force to open a new window.
   -r --reuse-window                 Force to open a file or folder in an
                                     already opened window.
+  --folder-uri <uri>                Opens a window with given folder uri(s)
+  --file-uri <uri>                  Opens a window with given file uri(s)
   -w --wait                         Wait for the files to be closed before
                                     returning.
   --locale <locale>                 The locale to use (e.g. en-US or zh-TW).
   --user-data-dir <dir>             Specifies the directory that user data is
                                     kept in. Can be used to open multiple
                                     distinct instances of Code.
-  -v --version                      Print version.
   -h --help                         Print usage.
-  --telemetry                       Shows all telemetry events which VS code
-                                    collects.
-  --folder-uri <uri>                Opens a window with given folder uri(s)
-  --file-uri <uri>                  Opens a window with given file uri(s)
 
 Extensions Management
   --extensions-dir <dir>                            Set the root path for
@@ -49,6 +46,7 @@ Extensions Management
                                                     individually.
 
 Troubleshooting
+  -v --version                       Print version.
   --verbose                          Print verbose output (implies --wait).
   --log <level>                      Log level to use. Default is 'info'.
                                      Allowed values are 'critical', 'error',
@@ -58,6 +56,7 @@ Troubleshooting
   --prof-startup                     Run CPU profiler during startup
   --disable-extensions               Disable all installed extensions.
   --disable-extension <extension-id> Disable an extension.
+  --sync <on> <off>                  Turn sync on or off
   --inspect-extensions <port>        Allow debugging and profiling of
                                      extensions. Check the developer tools for
                                      the connection URI.
@@ -67,4 +66,6 @@ Troubleshooting
                                      tools for the connection URI.
   --disable-gpu                      Disable GPU hardware acceleration.
   --max-memory                       Max memory size for a window (in Mbytes).
+  --telemetry                        Shows all telemetry events which VS code
+                                     collects.
 
