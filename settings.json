@@ -97,6 +97,18 @@
   // Controls if the cursor should be hidden in the overview ruler.
   "editor.hideCursorInOverviewRuler": false,
 
+  // Controls whether the editor should highlight the active indent guide
+  "editor.highlightActiveIndentGuide": true,
+
+  // Controls the delay after which to show the hover
+  "editor.hover.delay": 300,
+
+  // Controls if the hover is shown
+  "editor.hover.enabled": true,
+
+  // Controls if the hover should remain visible when mouse is moved over it
+  "editor.hover.sticky": true,
+
   // Insert spaces when pressing Tab. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
   "editor.insertSpaces": true,
 
@@ -203,6 +215,9 @@
   // Controls whether the fold controls on the gutter are automatically hidden.
   "editor.showFoldingControls": "mouseover",
 
+  // Controls fading out of unused code.
+  "editor.showUnused": true,
+
   // Controls if the editor will scroll using an animation
   "editor.smoothScrolling": false,
 
@@ -292,6 +307,9 @@
   // Controls if the last typed input to the command palette should be restored when opening it the next time.
   "workbench.commandPalette.preserveInput": false,
 
+  // Controls the behavior of empty editor groups when the last tab in the group is closed. When enabled, empty groups will automatically close. When disabled, empty groups will remain part of the grid.
+  "workbench.editor.closeEmptyGroups": true,
+
   // Controls if editors showing a file should close automatically when the file is deleted or renamed by some other process. Disabling this will keep the editor open as dirty on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
   "workbench.editor.closeOnFileDelete": true,
 
@@ -310,6 +328,9 @@
 
   // Controls where editors open. Select 'left' or 'right' to open editors to the left or right of the currently active one. Select 'first' or 'last' to open editors independently from the currently active one.
   "workbench.editor.openPositioning": "right",
+
+  // Controls the default direction of editors that are opened side by side (e.g. from the explorer). By default, editors will open on the right hand side of the currently active one. If changed to open down, the editors will open below the currently active one.
+  "workbench.editor.openSideBySideDirection": "right",
 
   // Controls if an editor is revealed in any of the visible groups if opened. If disabled, an editor will prefer to open in the currently active editor group. If enabled, an already opened editor will be revealed instead of opened again in the currently active editor group. Note that there are some cases where this setting is ignored, e.g. when forcing an editor to open in a specific group or to the side of the currently active group.
   "workbench.editor.revealIfOpen": false,
@@ -335,7 +356,7 @@
   // Controls how to open items in trees and lists using the mouse (if supported). Set to `singleClick` to open items with a single mouse click and `doubleClick` to only open via mouse double click. For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. 
   "workbench.list.openMode": "singleClick",
 
-  // Controls the default location of the panel. It can either show at the bottom or on the right of the workbench.
+  // Controls the default location of the panel (terminal, debug console, output, problems). It can either show at the bottom or on the right of the workbench.
   "workbench.panel.defaultLocation": "bottom",
 
   // Controls if Quick Open should close automatically once it loses focus.
@@ -346,6 +367,12 @@
 
   // Controls if opening settings also opens an editor showing all default settings.
   "workbench.settings.openDefaultSettings": true,
+
+  // Controls the behavior of the settings editor Table of Contents while searching.
+  "workbench.settings.settingsSearchTocBehavior": "hide",
+
+  // Controls whether the settings editor Table of Contents is visible.
+  "workbench.settings.tocVisible": true,
 
   // Controls the location of the sidebar. It can either show on the left or right of the workbench.
   "workbench.sideBar.location": "left",
@@ -424,6 +451,9 @@
   // ${separator}: a conditional separator (" - ") that only shows when surrounded by variables with values or static text
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
 
+  // Adjust the appearance of the window title bar. Changes require a full restart to apply.
+  "window.titleBarStyle": "native",
+
   // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
   "window.zoomLevel": 0
 
@@ -468,7 +498,7 @@
   // When enabled, insert a final new line at the end of the file when saving it.
   "files.insertFinalNewline": false,
 
-  // Controls the memory available to VS Code after restart when trying to open large files. Same affect as specifying --max-memory=NEWSIZE on the command line.
+  // Controls the memory available to VS Code after restart when trying to open large files. Same effect as specifying --max-memory=NEWSIZE on the command line.
   "files.maxMemoryForLargeFilesMB": 4096,
 
   // When enabled, will trim all new lines after the final new line at the end of the file when saving it.
@@ -599,7 +629,10 @@
   "update.channel": "default",
 
   // Enables Windows background updates.
-  "update.enableWindowsBackgroundUpdates": true
+  "update.enableWindowsBackgroundUpdates": true,
+
+  // Show Release Notes after an update.
+  "update.showReleaseNotes": true
 
 }
 ,
@@ -778,7 +811,7 @@
   // Defines space handling after a comma delimiter.
   "javascript.format.insertSpaceAfterCommaDelimiter": true,
 
-  // Defines space handling after the constructor keyword. Requires TypeScript >= 2.3.0.
+  // Defines space handling after the constructor keyword. Requires using TypeScript 2.3.0 or newer in the workspace.
   "javascript.format.insertSpaceAfterConstructor": false,
 
   // Defines space handling after function keyword for anonymous functions.
@@ -787,10 +820,10 @@
   // Defines space handling after keywords in a control flow statement.
   "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
 
-  // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
+  // Defines space handling after opening and before closing JSX expression braces.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
 
-  // Defines space handling after opening and before closing non-empty braces. Requires TypeScript >= 2.3.0.
+  // Defines space handling after opening and before closing non-empty braces. Requires using TypeScript 2.3.0 or newer in the workspace.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
   // Defines space handling after opening and before closing non-empty brackets.
@@ -799,7 +832,7 @@
   // Defines space handling after opening and before closing non-empty parenthesis.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
 
-  // Defines space handling after opening and before closing template string braces. Requires TypeScript >= 2.0.6.
+  // Defines space handling after opening and before closing template string braces.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
 
   //  Defines space handling after a semicolon in a for statement.
@@ -808,7 +841,7 @@
   // Defines space handling after a binary operator.
   "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
 
-  // Defines space handling before function argument parentheses. Requires TypeScript >= 2.1.5.
+  // Defines space handling before function argument parentheses.
   "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
 
   // Defines whether an open brace is put onto a new line for control blocks or not.
@@ -817,10 +850,10 @@
   // Defines whether an open brace is put onto a new line for functions or not.
   "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
 
-  // Enable/disable semantic checking of JavaScript files. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >= 2.3.1.
+  // Enable/disable semantic checking of JavaScript files. Existing jsconfig.json or tsconfig.json files override this setting. Requires using TypeScript 2.3.1 or newer in the workspace.
   "javascript.implicitProjectConfig.checkJs": false,
 
-  // Enable/disable 'experimentalDecorators' for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires TypeScript >= 2.3.1.
+  // Enable/disable 'experimentalDecorators' for JavaScript files that are not part of a project. Existing jsconfig.json or tsconfig.json files override this setting. Requires using TypeScript 2.3.1 or newer in the workspace.
   "javascript.implicitProjectConfig.experimentalDecorators": false,
 
   // Enable/disable including unique names from the file in JavaScript suggestion lists.
@@ -830,22 +863,22 @@
   // - "relative" to the file location.
   // - "non-relative" based on the 'baseUrl' configured in your 'jsconfig.json' / 'tsconfig.json'.
   // - "auto" infer the shortest path type.
-  // Requires TypeScript >= 2.9
+  // Requires using TypeScript 2.9 or newer in the workspace.
   "javascript.preferences.importModuleSpecifier": "auto",
 
-  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires TypeScript >= 2.9
+  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
   "javascript.preferences.quoteStyle": "auto",
 
   // Enable/disable references CodeLens in JavaScript files.
   "javascript.referencesCodeLens.enabled": false,
 
-  // Enable/disable highlighting of unused variables in code. Requires TypeScript >= 2.9
+  // Enable/disable highlighting of unused variables in code. Requires using TypeScript 2.9 or newer in the workspace.
   "javascript.showUnused": true,
 
-  // Enable/disable suggestion diagnostics for JavaScript files in the editor. Requires TypeScript >= 2.8
+  // Enable/disable suggestion diagnostics for JavaScript files in the editor. Requires using TypeScript 2.8 or newer in the workspace.
   "javascript.suggestionActions.enabled": true,
 
-  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires TypeScript >= 2.9
+  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires using TypeScript 2.9 or newer in the workspace.
   "javascript.updateImportsOnFileMove.enabled": "prompt",
 
   // Enable/disable JavaScript validation.
@@ -854,17 +887,14 @@
   // Enable/disable auto JSDoc comments
   "jsDocCompletion.enabled": true,
 
-  // Enable/disable auto import suggestions. Requires TypeScript >= 2.6.1
+  // Enable/disable auto import suggestions. Requires using TypeScript 2.6.1 or newer in the workspace.
   "typescript.autoImportSuggestions.enabled": true,
 
   // Check if NPM is installed for Automatic Type Acquisition.
   "typescript.check.npmIsInstalled": true,
 
-  // Disables automatic type acquisition. Requires TypeScript >= 2.0.6.
+  // Disables automatic type acquisition.
   "typescript.disableAutomaticTypeAcquisition": false,
-
-  // Enables/disables syntax aware folding markers.
-  "typescript.experimental.syntaxFolding": true,
 
   // Enable/disable default TypeScript formatter.
   "typescript.format.enable": true,
@@ -872,7 +902,7 @@
   // Defines space handling after a comma delimiter.
   "typescript.format.insertSpaceAfterCommaDelimiter": true,
 
-  // Defines space handling after the constructor keyword. Requires TypeScript >= 2.3.0.
+  // Defines space handling after the constructor keyword. Requires using TypeScript 2.3.0 or newer in the workspace.
   "typescript.format.insertSpaceAfterConstructor": false,
 
   // Defines space handling after function keyword for anonymous functions.
@@ -881,10 +911,10 @@
   // Defines space handling after keywords in a control flow statement.
   "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
 
-  // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
+  // Defines space handling after opening and before closing JSX expression braces.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
 
-  // Defines space handling after opening and before closing non-empty braces. Requires TypeScript >= 2.3.0.
+  // Defines space handling after opening and before closing non-empty braces. Requires using TypeScript 2.3.0 or newer in the workspace.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
   // Defines space handling after opening and before closing non-empty brackets.
@@ -893,19 +923,19 @@
   // Defines space handling after opening and before closing non-empty parenthesis.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
 
-  // Defines space handling after opening and before closing template string braces. Requires TypeScript >= 2.0.6.
+  // Defines space handling after opening and before closing template string braces.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
 
   //  Defines space handling after a semicolon in a for statement.
   "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
 
-  // Defines space handling after type assertions in TypeScript. Requires TypeScript >= 2.4.
+  // Defines space handling after type assertions in TypeScript. Requires using TypeScript 2.4 or newer in the workspace.
   "typescript.format.insertSpaceAfterTypeAssertion": false,
 
   // Defines space handling after a binary operator.
   "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
 
-  // Defines space handling before function argument parentheses. Requires TypeScript >= 2.1.5.
+  // Defines space handling before function argument parentheses.
   "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
 
   // Defines whether an open brace is put onto a new line for control blocks or not.
@@ -914,38 +944,38 @@
   // Defines whether an open brace is put onto a new line for functions or not.
   "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
 
-  // Enable/disable implementations CodeLens. Requires TypeScript >= 2.2.0.
+  // Enable/disable implementations CodeLens.
   "typescript.implementationsCodeLens.enabled": false,
 
-  // Sets the locale used to report JavaScript and TypeScript errors. Requires TypeScript >= 2.6.0. Default of 'null' uses VS Code's locale.
+  // Sets the locale used to report JavaScript and TypeScript errors. Requires using TypeScript 2.6.0 or newer in the workspace. Default of 'null' uses VS Code's locale.
   "typescript.locale": null,
 
-  // Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires TypeScript >= 2.3.4.
+  // Specifies the path to the NPM executable used for Automatic Type Acquisition. Requires using TypeScript 2.3.4 or newer in the workspace.
   "typescript.npm": null,
 
   // Preferred path style for auto imports:
   // - "relative" to the file location.
   // - "non-relative" based on the 'baseUrl' configured in your 'jsconfig.json' / 'tsconfig.json'.
   // - "auto" infer the shortest path type.
-  // Requires TypeScript >= 2.9
+  // Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.preferences.importModuleSpecifier": "auto",
 
-  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires TypeScript >= 2.9
+  // Preferred quote style to use for quick fixes: 'single' quotes, 'double' quotes, or 'auto' infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.preferences.quoteStyle": "auto",
 
   // Enable/disable quick suggestions when typing out an import path.
   "typescript.quickSuggestionsForPaths": true,
 
-  // Enable/disable references CodeLens in TypeScript files. Requires TypeScript >= 2.0.6.
+  // Enable/disable references CodeLens in TypeScript files.
   "typescript.referencesCodeLens.enabled": false,
 
   // Report style checks as warnings
   "typescript.reportStyleChecksAsWarnings": true,
 
-  // Enable/disable highlighting of unused variables in code. Requires TypeScript >= 2.9
+  // Enable/disable highlighting of unused variables in code. Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.showUnused": true,
 
-  // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires TypeScript >= 2.8
+  // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires using TypeScript 2.8 or newer in the workspace.
   "typescript.suggestionActions.enabled": true,
 
   // Controls auto detection of tsc tasks. 'off' disables this feature. 'build' only creates single run compile tasks. 'watch' only creates compile and watch tasks. 'on' creates both build and watch tasks. Default is 'on'.
@@ -957,13 +987,13 @@
   // Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
   "typescript.tsserver.log": "off",
 
-  // Additional paths to discover Typescript Language Service plugins. Requires TypeScript >= 2.3.0.
+  // Additional paths to discover Typescript Language Service plugins. Requires using TypeScript 2.3.0 or newer in the workspace.
   "typescript.tsserver.pluginPaths": [],
 
   // Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
   "typescript.tsserver.trace": "off",
 
-  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires TypeScript >= 2.9
+  // Enable/disable automatic updating of import paths when you rename or move a file in VS Code. Possible values are: 'prompt' on each rename, 'always' update paths automatically, and 'never' rename paths and don't prompt me. Requires using TypeScript 2.9 or newer in the workspace.
   "typescript.updateImportsOnFileMove.enabled": "prompt",
 
   // Complete functions with their parameter signature.
@@ -1018,6 +1048,9 @@
 
   // The universal selector (*) is known to be slow
   "css.lint.universalSelector": "ignore",
+
+  // Unknown at-rule.
+  "css.lint.unknownAtRules": "warning",
 
   // Unknown property.
   "css.lint.unknownProperties": "warning",
@@ -1169,6 +1202,9 @@
   // Automatically update extensions
   "extensions.autoUpdate": true,
 
+  // If set to true, editors with extension details will be automatically closed upon navigating away from the Extensions View.
+  "extensions.closeExtensionDetailsOnViewChange": false,
+
   // If set to true, the notifications for extension recommendations will stop showing up.
   "extensions.ignoreRecommendations": false,
 
@@ -1209,10 +1245,18 @@
     "workbench.action.debug.stepOut",
     "workbench.action.debug.stepOver",
     "workbench.action.debug.stop",
+    "workbench.action.firstEditorInGroup",
     "workbench.action.focusActiveEditorGroup",
+    "workbench.action.focusEighthEditorGroup",
+    "workbench.action.focusFifthEditorGroup",
     "workbench.action.focusFirstEditorGroup",
+    "workbench.action.focusFourthEditorGroup",
+    "workbench.action.focusLastEditorGroup",
     "workbench.action.focusSecondEditorGroup",
+    "workbench.action.focusSeventhEditorGroup",
+    "workbench.action.focusSixthEditorGroup",
     "workbench.action.focusThirdEditorGroup",
+    "workbench.action.lastEditorInGroup",
     "workbench.action.navigateDown",
     "workbench.action.navigateLeft",
     "workbench.action.navigateRight",
@@ -1235,8 +1279,6 @@
     "workbench.action.terminal.copySelection",
     "workbench.action.terminal.deleteWordLeft",
     "workbench.action.terminal.deleteWordRight",
-    "workbench.action.terminal.findWidget.history.showNext",
-    "workbench.action.terminal.findWidget.history.showPrevious",
     "workbench.action.terminal.focus",
     "workbench.action.terminal.focusAtIndex1",
     "workbench.action.terminal.focusAtIndex2",
@@ -1299,6 +1341,9 @@
   // An explicit start path where the terminal will be launched, this is used as the current working directory (cwd) for the shell process. This may be particularly useful in workspace settings if the root directory is not a convenient cwd.
   "terminal.integrated.cwd": "",
 
+  // When set, bold text in the terminal will always use the "bright" ANSI color variant.
+  "terminal.integrated.drawBoldTextInBrightColors": true,
+
   // Whether the terminal bell is enabled or not.
   "terminal.integrated.enableBell": false,
 
@@ -1313,6 +1358,9 @@
 
   // Whether to restore terminal sessions for the workspace automatically when launching VS Code. This is an experimental setting; it may be buggy and could change in the future.
   "terminal.integrated.experimentalRestore": false,
+
+  // Controls how the terminal stores glyph textures. `static` is the default and uses a fixed texture to draw the characters from. `dynamic` will draw the characters to the texture as they are needed, this should boost overall performance at the cost of slightly increased draw time the first time a character is drawn. `dynamic` will eventually become the default and this setting will be removed. Changes to this setting will only apply to new terminals.
+  "terminal.integrated.experimentalTextureCachingStrategy": "static",
 
   // Controls the font family of the terminal, this defaults to editor.fontFamily's value.
   "terminal.integrated.fontFamily": "",
@@ -1392,6 +1440,23 @@
 
   // Enable usage data and errors to be sent to Microsoft.
   "telemetry.enableTelemetry": true
+
+}
+,
+{
+
+
+  // Render Outline Elements with Icons.
+  "outline.icons": true,
+
+  // Use badges for Errors & Warnings.
+  "outline.problems.badges": true,
+
+  // Use colors for Errors & Warnings.
+  "outline.problems.colors": true,
+
+  // Show Errors & Warnings on Outline Elements.
+  "outline.problems.enabled": true
 
 }
 ,
@@ -1483,58 +1548,8 @@
 {
 
 
-  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
-  "grunt.autoDetect": "on"
-
-}
-,
-{
-
-
-  // 
-  "searchrg.enable": false
-
-}
-,
-{
-
-
-  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
-  "gulp.autoDetect": "on"
-
-}
-,
-{
-
-
-  // Controls whether auto detection of npm scripts is on or off. Default is on.
-  "npm.autoDetect": "on",
-
-  // Enable an explorer view for npm scripts.
-  "npm.enableScriptExplorer": false,
-
-  // Configure glob patterns for folders that should be excluded from automatic script detection.
-  "npm.exclude": "",
-
-  // The package manager used to run scripts.
-  "npm.packageManager": "npm",
-
-  // Run npm commands with the `--silent` option.
-  "npm.runSilent": false,
-
-  // The default click action used in the scripts explorer: 'open' or 'run', the default is 'open'.
-  "npm.scriptExplorerAction": "open"
-
-}
-,
-{
-
-
-  // Enable/disable merge conflict block CodeLens within editor
-  "merge-conflict.codeLens.enabled": true,
-
-  // Enable/disable merge conflict decorators within editor
-  "merge-conflict.decorators.enabled": true
+  // (Experimental) Enable this experimental search provider extension. When enabled, it takes precedence over vscode's built-in search.
+  "searchRipgrep.enable": false
 
 }
 ,
@@ -1600,6 +1615,56 @@
 
   // Controls whether to show an inline Open File action in the Git changes view.
   "git.showInlineOpenFileAction": true
+
+}
+,
+{
+
+
+  // Controls whether auto detection of npm scripts is on or off. Default is on.
+  "npm.autoDetect": "on",
+
+  // Enable an explorer view for npm scripts.
+  "npm.enableScriptExplorer": false,
+
+  // Configure glob patterns for folders that should be excluded from automatic script detection.
+  "npm.exclude": "",
+
+  // The package manager used to run scripts.
+  "npm.packageManager": "npm",
+
+  // Run npm commands with the `--silent` option.
+  "npm.runSilent": false,
+
+  // The default click action used in the scripts explorer: 'open' or 'run', the default is 'open'.
+  "npm.scriptExplorerAction": "open"
+
+}
+,
+{
+
+
+  // Enable/disable merge conflict block CodeLens within editor
+  "merge-conflict.codeLens.enabled": true,
+
+  // Enable/disable merge conflict decorators within editor
+  "merge-conflict.decorators.enabled": true
+
+}
+,
+{
+
+
+  // Controls whether auto detection of Grunt tasks is on or off. Default is on.
+  "grunt.autoDetect": "on"
+
+}
+,
+{
+
+
+  // Controls whether auto detection of Gulp tasks is on or off. Default is on.
+  "gulp.autoDetect": "on"
 
 }
 ,
