@@ -157,6 +157,9 @@
 	//  - multiline: Turn on Find in selection automatically when multiple lines of content are selected.
 	"editor.find.autoFindInSelection": "never",
 
+	// Controls whether the search automatically restarts from the beginning (or the end) when no further matches can be found.
+	"editor.find.loop": true,
+
 	// Controls whether the search string in the Find Widget is seeded from the editor selection.
 	"editor.find.seedSearchStringFromSelection": true,
 
@@ -422,6 +425,9 @@
 	// Controls whether the semanticHighlighting is shown for the languages that support it.
 	"editor.semanticHighlighting.enabled": true,
 
+	// Overrides editor semantic token color and styles from the currently selected color theme.
+	"editor.semanticTokenColorCustomizations": {},
+
 	// Controls when the folding controls on the gutter are shown.
 	//  - always: Always show the folding controls.
 	//  - mouseover: Only show the folding controls when the mouse is over the gutter.
@@ -581,10 +587,11 @@
 	// The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
 	"editor.tabSize": 4,
 
-	// Overrides editor colors and font style from the currently selected color theme.
+	// Overrides editor syntax colors and font style from the currently selected color theme.
 	"editor.tokenColorCustomizations": {},
 
-	// Overrides token color and styles from the currently selected color theme.
+	// Use `editor.semanticTokenColorCustomizations` instead.
+	// 
 	"editor.tokenColorCustomizationsExperimental": {},
 
 	// Remove trailing auto inserted whitespace.
@@ -733,7 +740,10 @@
 	// Controls whether an editor is revealed in any of the visible groups if opened. If disabled, an editor will prefer to open in the currently active editor group. If enabled, an already opened editor will be revealed instead of opened again in the currently active editor group. Note that there are some cases where this setting is ignored, e.g. when forcing an editor to open in a specific group or to the side of the currently active group.
 	"workbench.editor.revealIfOpen": false,
 
-	// Controls whether opened editors should show with an icon or not. This requires an icon theme to be enabled as well.
+	// Controls wether scrolling over tabs will open them or not. By default tabs will only reveal upon scrolling, but not open. You can press and hold the Shift-key while scrolling to change this behaviour for that duration.
+	"workbench.editor.scrollToSwitchTabs": false,
+
+	// Controls whether opened editors should show with an icon or not. This requires a file icon theme to be enabled as well.
 	"workbench.editor.showIcons": true,
 
 	// Controls whether opened editors should show in tabs or not.
@@ -806,7 +816,7 @@
 	// Specifies the preferred color theme for light OS appearance when 'window.autoDetectColorScheme' is enabled.
 	"workbench.preferredLightColorTheme": "Default Light+",
 
-	// Specifies the workbench icon theme used.
+	// Specifies the product icon theme used.
 	//  - Default: Default
 	"workbench.productIconTheme": "Default",
 
@@ -938,6 +948,9 @@
 	// Adjust the appearance of the window title bar. On Linux and Windows, this setting also affects the application and context menu appearances. Changes require a full restart to apply.
 	"window.titleBarStyle": "native",
 
+	// Separator used by `window.title`.
+	"window.titleSeparator": " - ",
+
 	// Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
 	"window.zoomLevel": 0,
 
@@ -1019,7 +1032,7 @@
 	//  - auto: Uses operating system specific end of line character.
 	"files.eol": "auto",
 
-	// Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+	// Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
 	"files.exclude": {
 		"**/.git": true,
 		"**/.svn": true,
@@ -1042,6 +1055,9 @@
 
 	// Timeout in milliseconds after which file participants for create, rename, and delete are cancelled. Use `0` to disable participants.
 	"files.participants.timeout": 5000,
+
+	// Restore the undo stack when a file is reopened.
+	"files.restoreUndoStack": true,
 
 	// A save conflict can occur when a file is saved to disk that was changed by another program in the meantime. To prevent data loss, the user is asked to compare the changes in the editor with the version on disk. This setting should only be changed if you frequently encounter save conflict errors and may result in data loss if used without caution.
 	//  - askUser: Will refuse to save and ask for resolving the save conflict manually.
@@ -1182,6 +1198,12 @@
 
 	// When `search.searchOnType` is enabled, controls the timeout in milliseconds between a character being typed and the search starting. Has no effect when `search.searchOnType` is disabled.
 	"search.searchOnTypeDebouncePeriod": 300,
+
+	// Update workspace search query to the editor's selected text when focusing the search view. This happens either on click or when triggering the `workbench.views.search.focus` command.
+	"search.seedOnFocus": false,
+
+	// Enable seeding search from the word nearest the cursor when the active editor has no selection.
+	"search.seedWithNearestWord": false,
 
 	// Controls whether to show line numbers for search results.
 	"search.showLineNumbers": false,
@@ -1536,8 +1558,12 @@
 	// Preferred quote style to use for quick fixes: `single` quotes, `double` quotes, or `auto` infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
 	"javascript.preferences.quoteStyle": "auto",
 
+	// The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'
 	// Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 	"javascript.preferences.renameShorthandProperties": true,
+
+	// Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+	"javascript.preferences.useAliasesForRenames": true,
 
 	// Enable/disable references CodeLens in JavaScript files.
 	"javascript.referencesCodeLens.enabled": false,
@@ -1586,6 +1612,9 @@
 
 	// Disables automatic type acquisition. Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 	"typescript.disableAutomaticTypeAcquisition": false,
+
+	// Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
+	"typescript.enablePromptUseWorkspaceTsdk": false,
 
 	// Enable/disable default TypeScript formatter.
 	"typescript.format.enable": true,
@@ -1666,8 +1695,12 @@
 	// Preferred quote style to use for quick fixes: `single` quotes, `double` quotes, or `auto` infer quote type from existing imports. Requires using TypeScript 2.9 or newer in the workspace.
 	"typescript.preferences.quoteStyle": "auto",
 
+	// The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'
 	// Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 	"typescript.preferences.renameShorthandProperties": true,
+
+	// Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+	"typescript.preferences.useAliasesForRenames": true,
 
 	// Enable/disable references CodeLens in TypeScript files.
 	"typescript.referencesCodeLens.enabled": false,
@@ -1746,6 +1779,11 @@
 
 	// Enable/disable TypeScript validation.
 	"typescript.validate.enable": true,
+
+	// Controls which files are searched by [go to symbol in workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
+	//  - allOpenProjects: Search all open JavaScript or TypeScript projects for symbols. Requires using TypeScript 3.9 or newer in the workspace.
+	//  - currentProject: Only search for symbols in the current JavaScript or TypeScript project.
+	"typescript.workspaceSymbols.scope": "allOpenProjects",
 
 	// Insert semicolon at end of line when completing CSS properties
 	"css.completion.completePropertyWithSemicolon": true,
@@ -2034,6 +2072,8 @@
 	// - workbench.action.focusFirstEditorGroup
 	// - workbench.action.focusFourthEditorGroup
 	// - workbench.action.focusLastEditorGroup
+	// - workbench.action.focusNextPart
+	// - workbench.action.focusPreviousPart
 	// - workbench.action.focusSecondEditorGroup
 	// - workbench.action.focusSeventhEditorGroup
 	// - workbench.action.focusSixthEditorGroup
@@ -2089,12 +2129,12 @@
 	// - workbench.action.terminal.focusAtIndex7
 	// - workbench.action.terminal.focusAtIndex8
 	// - workbench.action.terminal.focusAtIndex9
-	// - workbench.action.terminal.focusFindWidget
+	// - workbench.action.terminal.focusFind
 	// - workbench.action.terminal.focusNext
 	// - workbench.action.terminal.focusNextPane
 	// - workbench.action.terminal.focusPrevious
 	// - workbench.action.terminal.focusPreviousPane
-	// - workbench.action.terminal.hideFindWidget
+	// - workbench.action.terminal.hideFind
 	// - workbench.action.terminal.kill
 	// - workbench.action.terminal.moveToLineEnd
 	// - workbench.action.terminal.moveToLineStart
@@ -2165,7 +2205,7 @@
 	// Controls whether the terminal bell is enabled.
 	"terminal.integrated.enableBell": false,
 
-	// Whether to enable file links in the terminal. Links can be slow when working on a network drive in particular because each file link is verified against the file system.
+	// Whether to enable file links in the terminal. Links can be slow when working on a network drive in particular because each file link is verified against the file system. Changing this will take effect only in new terminals.
 	"terminal.integrated.enableFileLinks": true,
 
 	// Object with environment variables that will be added to the VS Code process to be used by the terminal on Linux. Set to `null` to delete the environment variable.
@@ -2176,6 +2216,15 @@
 
 	// Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows. Set to `null` to delete the environment variable.
 	"terminal.integrated.env.windows": {},
+
+	// Whether to display the environment changes indicator on each terminal which explains whether extensions have made, or want to make changes to the terminal's environment.
+	//  - off: Disable the indicator.
+	//  - on: Enable the indicator.
+	//  - warnonly: Only show the warning indicator when a terminal's environment is 'stale', not the information indicator that shows a terminal has had its environment modified by an extension.
+	"terminal.integrated.environmentChangesIndicator": "warnonly",
+
+	// An experimental setting that aims to improve link detection in the terminal by improving when links are detected and by enabling shared link detection with the editor. Currently this only supports web links.
+	"terminal.integrated.experimentalLinkProvider": false,
 
 	// An experimental setting that will use the terminal title event for the dropdown title. This setting will only apply to new terminals.
 	"terminal.integrated.experimentalUseTitleEvent": false,
@@ -2275,6 +2324,9 @@
 	// Whether to use ConPTY for Windows terminal process communication (requires Windows 10 build number 18309+). Winpty will be used if this is false.
 	"terminal.integrated.windowsEnableConpty": true,
 
+	// A string containing all characters to be considered word separators by the double click to select word feature.
+	"terminal.integrated.wordSeparators": " ()[]{}',\"`─",
+
 	// Priority list for output mime types
 	"notebook.displayOrder": [],
 
@@ -2290,8 +2342,17 @@
 	// Controls the number of recent items tracked in task quick open dialog.
 	"task.quickOpen.history": 30,
 
+	// Causes the Tasks: Run Task command to use the slower "show all" behavior instead of the faster two level picker where tasks are grouped by provider.
+	"task.quickOpen.showAll": false,
+
 	// Controls whether the task quick pick is skipped when there is only one task to pick from.
 	"task.quickOpen.skip": false,
+
+	// Save all dirty editors before running a task.
+	//  - always: Always saves all editors before running.
+	//  - never: Never saves editors before running.
+	//  - prompt: Prompts whether to save editors before running.
+	"task.saveBeforeRun": "always",
 
 	// Configures whether a warning is shown when a provider is slow
 	"task.slowProviderWarning": true,
@@ -2504,12 +2565,25 @@
 	// When enabled outline shows `variable`-symbols.
 	"outline.showVariables": true,
 
-	// Experimental: An array of Timeline sources that should be excluded from the Timeline view
+	// An array of Timeline sources that should be excluded from the Timeline view
 	"timeline.excludeSources": null,
+
+	// Experimental. Controls whether the Timeline view will load the next page of items when you scroll to the end of the list
+	"timeline.pageOnScroll": false,
+
+	// The number of items to show in the Timeline view by default and when loading more items. Setting to `null` (the default) will automatically choose a page size based on the visible area of the Timeline view
+	"timeline.pageSize": null,
 
 	// Configure editor settings to be overridden for [css] language.
 	"[css]":  {
 		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure editor settings to be overridden for [dockerfile] language.
+	"[dockerfile]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		}
 	},
 
 	// Configure editor settings to be overridden for [git-commit] language.
@@ -2748,6 +2822,9 @@
 	// When enabled, fetch all branches when pulling. Otherwise, fetch just the current one.
 	"git.fetchOnPull": false,
 
+	// Controls whether to enable automatic GitHub authentication for git commands within VS Code.
+	"git.githubAuthentication": true,
+
 	// List of git repositories to ignore.
 	"git.ignoredRepositories": [],
 
@@ -2796,6 +2873,9 @@
 	// List of paths to search for git repositories in.
 	"git.scanRepositories": [],
 
+	// Controls whether to show the commit input in the Git source control panel.
+	"git.showCommitInput": true,
+
 	// Controls whether to show an inline Open File action in the Git changes view.
 	"git.showInlineOpenFileAction": true,
 
@@ -2807,7 +2887,7 @@
 
 	// Control which changes are automatically staged by Smart Commit.
 	//  - all: Automatically stage all changes.
-	//  - tracked: Automatically staged tracked changes only.
+	//  - tracked: Automatically stage tracked changes only.
 	"git.smartCommitChanges": "all",
 
 	// Suggests to enable smart commit (commit all changes when there are no staged changes).
@@ -2815,6 +2895,9 @@
 
 	// Controls whether a notification comes up when running the Sync action, which allows the user to cancel the operation.
 	"git.supportCancellation": false,
+
+	// Controls whether to enable VS Code to be the authentication handler for git processes spawned in the integrated terminal. Note: terminals need to be restarted to pick up a change in this setting.
+	"git.terminalAuthentication": true,
 
 	// Controls how untracked changes behave.
 	//  - mixed: All changes, tracked and untracked, appear together and behave equally.
@@ -2837,7 +2920,7 @@
 	// Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
 	"merge-conflict.autoNavigateNextConflict.enabled": false,
 
-	// Create a Code Lens for merge conflict blocks within editor.
+	// Create a CodeLens for merge conflict blocks within editor.
 	"merge-conflict.codeLens.enabled": true,
 
 	// Create decorators for merge conflict blocks within editor.
