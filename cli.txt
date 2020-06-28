@@ -1,4 +1,4 @@
-Visual Studio Code 1.20.1
+Visual Studio Code 1.21.1
 
 Usage: code [options] [paths...]
 
@@ -53,3 +53,4 @@ Troubleshooting:
   --disable-gpu            Disable GPU hardware acceleration.
   --upload-logs            Uploads logs from current session to a secure
                            endpoint.
+  --max-memory             Max memory size for a window (in Mbytes).

@@ -246,7 +246,10 @@
   "scm.alwaysShowProviders": false,
 
   // Controls diff decorations in the editor.
-  "scm.diffDecorations": "all"
+  "scm.diffDecorations": "all",
+
+  // Controls the width(px) of diff decorations in gutter (added & modified).
+  "scm.diffDecorationsGutterWidth": 3
 
 }
 ,
@@ -336,15 +339,15 @@
   "workbench.statusBar.visible": true,
 
   // When enabled, will show the watermark tips when no editor is open.
-  "workbench.tips.enabled": true
+  "workbench.tips.enabled": true,
+
+  // Controls the visibility of view header actions. View header actions may either be always visible, or only visible when that view is focused or hovered over.
+  "workbench.view.alwaysShowHeaderActions": false
 
 }
 ,
 {
 
-
-  // If enabled, will automatically change to high contrast theme if Windows is using a high contrast theme, and to dark theme when switching away from a Windows high contrast theme.
-  "window.autoDetectHighContrast": true,
 
   // Controls if closing the last editor should also close the window. This setting only applies for windows that do not show folders.
   "window.closeWhenEmpty": false,
@@ -456,6 +459,9 @@
 {
 
 
+  // Controls if turning on Zen Mode also centers the layout.
+  "zenMode.centerLayout": true,
+
   // Controls if turning on Zen Mode also puts the workbench into full screen mode.
   "zenMode.fullScreen": true,
 
@@ -513,6 +519,9 @@
 
   // Controls whether to follow symlinks while searching.
   "search.followSymlinks": true,
+
+  // Preview: controls if the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space. Next release search in panel will have improved horizontal layout and this will no longer be a preview.
+  "search.location": "sidebar",
 
   // Configure to include results from a global symbol search in the file results for Quick Open.
   "search.quickOpen.includeSymbols": false,
@@ -576,7 +585,7 @@
   // Controls behavior of the internal debug console.
   "debug.internalConsoleOptions": "openOnFirstSessionStart",
 
-  // Controls whether debug viewlet should be open on debugging session start.
+  // Controls whether debug view should be open on debugging session start.
   "debug.openDebug": "openOnFirstSessionStart",
 
   // Automatically open explorer view on the end of a debug session
@@ -586,7 +595,10 @@
   "debug.showInStatusBar": "onFirstSessionStart",
 
   // Global debug launch configuration. Should be used as an alternative to 'launch.json' that is shared across workspaces
-  "launch": {}
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  }
 
 }
 ,
@@ -595,6 +607,9 @@
 
   // Enable/disable autoclosing of HTML tags.
   "html.autoClosingTags": true,
+
+  // Enables/disables syntax aware folding markers.
+  "html.experimental.syntaxFolding": false,
 
   // List of tags, comma separated, where the content shouldn't be reformatted. 'null' defaults to the 'pre' tag.
   "html.format.contentUnformatted": "pre,code,textarea",
@@ -652,6 +667,9 @@
 {
 
 
+  // Enables/disables syntax aware folding markers.
+  "json.experimental.syntaxFolding": false,
+
   // Enable/disable default JSON formatter (requires restart)
   "json.format.enable": true,
 
@@ -687,11 +705,11 @@
   // Mark the current editor selection in the markdown preview.
   "markdown.preview.markEditorSelection": true,
 
-  // When the markdown preview is scrolled, update the view of the editor.
+  // When a markdown preview is scrolled, update the view of the editor.
   "markdown.preview.scrollEditorWithPreview": true,
 
-  // Scrolls the markdown preview to reveal the currently selected line from the editor.
-  "markdown.preview.scrollPreviewWithEditorSelection": true,
+  // When a markdown editor is scrolled, update the view of the preview.
+  "markdown.preview.scrollPreviewWithEditor": true,
 
   // Sets how YAML front matter should be rendered in the markdown preview. 'hide' removes the front matter. Otherwise, the front matter is treated as markdown content.
   "markdown.previewFrontMatter": "hide",
@@ -795,6 +813,9 @@
 
   // Disables automatic type acquisition. Requires TypeScript >= 2.0.6.
   "typescript.disableAutomaticTypeAcquisition": false,
+
+  // Enables/disables syntax aware folding markers.
+  "typescript.experimental.syntaxFolding": false,
 
   // Enable/disable default TypeScript formatter.
   "typescript.format.enable": true,
@@ -1078,7 +1099,10 @@
   "extensions.autoUpdate": true,
 
   // If set to true, the notifications for extension recommendations will stop showing up.
-  "extensions.ignoreRecommendations": false
+  "extensions.ignoreRecommendations": false,
+
+  // If set to true, recommendations will not be fetched or shown unless specifically requested by the user.
+  "extensions.showRecommendationsOnlyOnDemand": false
 
 }
 ,
@@ -1153,12 +1177,20 @@
     "workbench.action.terminal.focusAtIndex9",
     "workbench.action.terminal.focusFindWidget",
     "workbench.action.terminal.focusNext",
+    "workbench.action.terminal.focusNextPane",
     "workbench.action.terminal.focusPrevious",
+    "workbench.action.terminal.focusPreviousPane",
     "workbench.action.terminal.hideFindWidget",
     "workbench.action.terminal.kill",
+    "workbench.action.terminal.moveToLineEnd",
+    "workbench.action.terminal.moveToLineStart",
     "workbench.action.terminal.new",
     "workbench.action.terminal.newInActiveWorkspace",
     "workbench.action.terminal.paste",
+    "workbench.action.terminal.resizePaneDown",
+    "workbench.action.terminal.resizePaneLeft",
+    "workbench.action.terminal.resizePaneRight",
+    "workbench.action.terminal.resizePaneUp",
     "workbench.action.terminal.runActiveFile",
     "workbench.action.terminal.runSelectedText",
     "workbench.action.terminal.scrollDown",
@@ -1168,6 +1200,7 @@
     "workbench.action.terminal.scrollUp",
     "workbench.action.terminal.scrollUpPage",
     "workbench.action.terminal.selectAll",
+    "workbench.action.terminal.split",
     "workbench.action.terminal.toggleTerminal",
     "workbench.action.togglePanel"
   ],
@@ -1199,16 +1232,19 @@
   // Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows
   "terminal.integrated.env.windows": {},
 
+  // Whether to restore terminal sessions for the workspace automatically when launching VS Code. This is an experimental setting; it may be buggy and could change in the future.
+  "terminal.integrated.experimentalRestore": false,
+
   // Controls the font family of the terminal, this defaults to editor.fontFamily's value.
   "terminal.integrated.fontFamily": "",
 
   // Controls the font size in pixels of the terminal.
   "terminal.integrated.fontSize": 14,
 
-  // The font weight to use within the termianl for non-bold text.
+  // The font weight to use within the terminal for non-bold text.
   "terminal.integrated.fontWeight": "normal",
 
-  // The font weight to use within the termianl for bold text.
+  // The font weight to use within the terminal for bold text.
   "terminal.integrated.fontWeightBold": "bold",
 
   // Controls the line height of the terminal, this number is multiplied by the terminal font size to get the actual line-height in pixels.
@@ -1217,8 +1253,8 @@
   // Treat the option key as the meta key in the terminal on macOS.
   "terminal.integrated.macOptionIsMeta": false,
 
-  // When set, this will prevent the context menu from appearing when right clicking within the terminal, instead it will copy when there is a selection and paste when there is no selection.
-  "terminal.integrated.rightClickCopyPaste": false,
+  // Controls how terminal reacts to right click, possibilities are 'default', 'copyPaste', and 'selectWord'. 'default' will show the context menu, 'copyPaste' will copy when there is a selection otherwise paste, 'selectWord' will select the word under the cursor and show the context menu.
+  "terminal.integrated.rightClickBehavior": "default",
 
   // Controls the maximum amount of lines the terminal keeps in its buffer.
   "terminal.integrated.scrollback": 1000,
@@ -1378,6 +1414,9 @@
   // Controls whether auto detection of npm scripts is on or off. Default is on.
   "npm.autoDetect": "on",
 
+  // Configure glob patterns for folders that should be excluded from automatic script detection.
+  "npm.exclude": "",
+
   // The package manager used to run scripts.
   "npm.packageManager": "npm",
 
@@ -1453,7 +1492,7 @@
   // Ignores the warning when Git is missing
   "git.ignoreMissingGitWarning": false,
 
-  // Controls when to show input validation.
+  // Controls when to show commit message input validation.
   "git.inputValidation": "warn",
 
   // Path to the git executable
