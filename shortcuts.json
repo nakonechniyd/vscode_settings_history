@@ -62,12 +62,6 @@
                                          "when": "textInputFocus" },
     { "key": "shift+tab",             "command": "outdent",
                                          "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
-    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
-                                         "when": "problemsViewFocus" },
-    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
-                                         "when": "problemsFilterFocus" },
     { "key": "ctrl+shift+z",          "command": "redo",
                                          "when": "textInputFocus && !editorReadonly" },
     { "key": "ctrl+y",                "command": "redo",
@@ -199,10 +193,10 @@
                                          "when": "editorTextFocus && !editorReadonly" },
     { "key": "ctrl+k ctrl+d",         "command": "editor.action.moveSelectionToNextFindMatch",
                                          "when": "editorFocus" },
-    { "key": "enter",                 "command": "editor.action.nextMatchFindAction",
-                                         "when": "editorFocus && findInputFocussed" },
     { "key": "f3",                    "command": "editor.action.nextMatchFindAction",
                                          "when": "editorFocus" },
+    { "key": "enter",                 "command": "editor.action.nextMatchFindAction",
+                                         "when": "editorFocus && findInputFocussed" },
     { "key": "ctrl+f3",               "command": "editor.action.nextSelectionMatchFindAction",
                                          "when": "editorFocus" },
     { "key": "shift+alt+o",           "command": "editor.action.organizeImports",
@@ -304,6 +298,8 @@
                                          "when": "hasSymbols && config.editor.gotoLocation.multiple == 'goto'" },
     { "key": "escape",                "command": "editor.gotoNextSymbolFromResult.cancel",
                                          "when": "hasSymbols" },
+    { "key": "ctrl+k ctrl+l",         "command": "editor.toggleFold",
+                                         "when": "editorTextFocus && foldingEnabled" },
     { "key": "ctrl+shift+]",          "command": "editor.unfold",
                                          "when": "editorTextFocus && foldingEnabled" },
     { "key": "ctrl+k ctrl+j",         "command": "editor.unfoldAll",
@@ -578,6 +574,12 @@
                                          "when": "notificationFocus && notificationToastsVisible" },
     { "key": "up",                    "command": "notifications.focusPreviousToast",
                                          "when": "notificationFocus && notificationToastsVisible" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
+    { "key": "ctrl+f",                "command": "problems.action.focusFilter",
+                                         "when": "problemsViewFocus" },
+    { "key": "ctrl+down",             "command": "problems.action.focusProblemsFromFilter",
+                                         "when": "problemsFilterFocus" },
     { "key": "ctrl+enter",            "command": "problems.action.openToSide",
                                          "when": "problemFocus" },
     { "key": "ctrl+.",                "command": "problems.action.showQuickFixes",
@@ -591,7 +593,7 @@
     { "key": "ctrl+c",                "command": "search.action.copyMatch",
                                          "when": "fileMatchOrMatchFocus" },
     { "key": "ctrl+alt+c",            "command": "search.action.copyPath",
-                                         "when": "fileMatchOrFolderMatchFocus" },
+                                         "when": "fileMatchOrFolderMatchWithResourceFocus" },
     { "key": "f4",                    "command": "search.action.focusNextSearchResult",
                                          "when": "hasSearchResult" },
     { "key": "shift+f4",              "command": "search.action.focusPreviousSearchResult",
@@ -634,7 +636,8 @@
     { "key": "ctrl+k ctrl+w",         "command": "workbench.action.closeAllEditors" },
     { "key": "ctrl+k ctrl+shift+w",   "command": "workbench.action.closeAllGroups" },
     { "key": "ctrl+k w",              "command": "workbench.action.closeEditorsInGroup" },
-    { "key": "ctrl+k f",              "command": "workbench.action.closeFolder" },
+    { "key": "ctrl+k f",              "command": "workbench.action.closeFolder",
+                                         "when": "supportsWorkspaces" },
     { "key": "ctrl+w",                "command": "workbench.action.closeGroup",
                                          "when": "activeEditorGroupEmpty && multipleEditorGroups" },
     { "key": "shift+escape",          "command": "workbench.action.closeQuickOpen",
@@ -655,8 +658,7 @@
                                          "when": "debugState == 'running'" },
     { "key": "ctrl+shift+f5",         "command": "workbench.action.debug.restart",
                                          "when": "inDebugMode" },
-    { "key": "ctrl+f5",               "command": "workbench.action.debug.run",
-                                         "when": "!inDebugMode" },
+    { "key": "ctrl+f5",               "command": "workbench.action.debug.run" },
     { "key": "f5",                    "command": "workbench.action.debug.start",
                                          "when": "!inDebugMode" },
     { "key": "shift+f11",             "command": "workbench.action.debug.stepOut",
@@ -796,13 +798,13 @@
     { "key": "escape",                "command": "workbench.action.terminal.navigationModeExit",
                                          "when": "accessibilityModeEnabled && terminalA11yTreeFocus" },
     { "key": "ctrl+down",             "command": "workbench.action.terminal.navigationModeFocusNext",
-                                         "when": "accessibilityModeEnabled && terminalA11yTreeFocus" },
+                                         "when": "accessibilityModeEnabled && terminalFocus" },
     { "key": "ctrl+down",             "command": "workbench.action.terminal.navigationModeFocusNext",
-                                         "when": "accessibilityModeEnabled && terminalFocus" },
-    { "key": "ctrl+up",               "command": "workbench.action.terminal.navigationModeFocusPrevious",
                                          "when": "accessibilityModeEnabled && terminalA11yTreeFocus" },
     { "key": "ctrl+up",               "command": "workbench.action.terminal.navigationModeFocusPrevious",
                                          "when": "accessibilityModeEnabled && terminalFocus" },
+    { "key": "ctrl+up",               "command": "workbench.action.terminal.navigationModeFocusPrevious",
+                                         "when": "accessibilityModeEnabled && terminalA11yTreeFocus" },
     { "key": "ctrl+shift+`",          "command": "workbench.action.terminal.new" },
     { "key": "ctrl+shift+c",          "command": "workbench.action.terminal.openNativeConsole",
                                          "when": "!terminalFocus" },
@@ -876,10 +878,10 @@
                                          "when": "variablesFocused" },
     { "key": "space",                 "command": "debug.toggleBreakpoint",
                                          "when": "breakpointsFocused && !inputFocus" },
-    { "key": "delete",                "command": "deleteFile",
-                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus" },
     { "key": "shift+delete",          "command": "deleteFile",
                                          "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus" },
+    { "key": "delete",                "command": "deleteFile",
+                                         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus" },
     { "key": "escape",                "command": "editor.closeCallHierarchy",
                                          "when": "callHierarchyVisible && !config.editor.stablePeek" },
     { "key": "escape",                "command": "filesExplorer.cancelCut",
@@ -1221,6 +1223,7 @@
     // - npm.runScript
     // - npm.runSelectedScript
     // - openInTerminal
+    // - openWith
     // - outline.focus
     // - paste
     // - perfview.show
@@ -1229,6 +1232,7 @@
     // - problems.action.copyRelatedInformationMessage
     // - problems.action.showMultilineMessage
     // - problems.action.showSinglelineMessage
+    // - reOpenWith
     // - references-view.clear
     // - references-view.clearHistory
     // - references-view.copy
@@ -1239,8 +1243,6 @@
     // - references-view.refresh
     // - references-view.remove
     // - references-view.tree.focus
-    // - remote.closeRemote
-    // - remote.showActions
     // - removeRootFolder
     // - repl.action.copyAll
     // - replacePreviousChar
@@ -1264,6 +1266,7 @@
     // - settings.filterByOnline
     // - settings.switchToJSON
     // - showEditorScreenReaderNotification
+    // - sync.resolveConflicts
     // - toggle.diff.ignoreTrimWhitespace
     // - toggle.diff.renderSideBySide
     // - toggleEscapeSequenceLogging
@@ -1338,6 +1341,7 @@
     // - workbench.action.joinAllGroups
     // - workbench.action.joinTwoGroups
     // - workbench.action.logStorage
+    // - workbench.action.manageTrustedDomain
     // - workbench.action.maximizeEditor
     // - workbench.action.minimizeOtherEditors
     // - workbench.action.moveEditorToAboveGroup
@@ -1407,6 +1411,7 @@
     // - workbench.action.quickPickManyToggle
     // - workbench.action.quickSwitchWindow
     // - workbench.action.reloadWindowWithExtensionsDisabled
+    // - workbench.action.remote.showMenu
     // - workbench.action.removeFromEditorHistory
     // - workbench.action.removeRootFolder
     // - workbench.action.reportPerformanceIssueUsingReporter
@@ -1432,6 +1437,7 @@
     // - workbench.action.tasks.configureDefaultBuildTask
     // - workbench.action.tasks.configureDefaultTestTask
     // - workbench.action.tasks.configureTaskRunner
+    // - workbench.action.tasks.configureUserTask
     // - workbench.action.tasks.manageAutomaticRunning
     // - workbench.action.tasks.reRunTask
     // - workbench.action.tasks.restartTask
@@ -1548,6 +1554,11 @@
     // - workbench.files.action.saveAllInGroup
     // - workbench.files.action.showActiveFileInExplorer
     // - workbench.output.action.clearOutput
+    // - workbench.userData.actions.continueSync
+    // - workbench.userData.actions.login
+    // - workbench.userData.actions.logout
+    // - workbench.userData.actions.stopSync
+    // - workbench.userData.actions.syncStart
     // - workbench.view.extension.references-view
     // - workbench.view.extension.test
     // - workbench.view.remote
