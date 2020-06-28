@@ -25,13 +25,19 @@
   // Controls if the editor should automatically adjust the indentation when users type, paste or move lines. Indentation rules of the language must be available.
   "editor.autoIndent": true,
 
-  // Controls if the editor shows code lenses
+  // Code action kinds to be run on save.
+  "editor.codeActionsOnSave": {},
+
+  // Timeout for code actions run on save.
+  "editor.codeActionsOnSaveTimeout": 750,
+
+  // Controls if the editor shows CodeLens
   "editor.codeLens": true,
 
   // Controls whether the editor should render the inline color decorators and color picker.
   "editor.colorDecorators": true,
 
-  // Control the cursor animation style, possible values are 'blink', 'smooth', 'phase', 'expand' and 'solid'
+  // Control the cursor animation style.
   "editor.cursorBlinking": "blink",
 
   // Controls the cursor style, accepted values are 'block', 'block-outline', 'line', 'line-thin', 'underline' and 'underline-thin'
@@ -94,6 +100,9 @@
   // Insert spaces when pressing Tab. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
   "editor.insertSpaces": true,
 
+  // Special handling for large files to disable certain memory intensive features.
+  "editor.largeFileOptimizations": true,
+
   // Controls the letter spacing in pixels.
   "editor.letterSpacing": 0,
 
@@ -103,7 +112,7 @@
   // Controls the line height. Use 0 to compute the lineHeight from the fontSize.
   "editor.lineHeight": 0,
 
-  // Controls the display of line numbers. Possible values are 'on', 'off', 'relative' and 'interval'.
+  // Controls the display of line numbers.
   "editor.lineNumbers": "on",
 
   // Controls whether the editor should detect links and make them clickable
@@ -121,10 +130,10 @@
   // Render the actual characters on a line (as opposed to color blocks)
   "editor.minimap.renderCharacters": true,
 
-  // Controls whether the minimap slider is automatically hidden. Possible values are 'always' and 'mouseover'
+  // Controls whether the minimap slider is automatically hidden.
   "editor.minimap.showSlider": "mouseover",
 
-  // Controls the side where to render the minimap. Possible values are 'right' and 'left'
+  // Controls the side where to render the minimap.
   "editor.minimap.side": "right",
 
   // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events
@@ -132,6 +141,9 @@
 
   // Zoom the font of the editor when using mouse wheel and holding Ctrl
   "editor.mouseWheelZoom": false,
+
+  // Merge multiple cursors when they are overlapping.
+  "editor.multiCursorMergeOverlapping": true,
 
   // The modifier to be used to add multiple cursors with the mouse. `ctrlCmd` maps to `Control` on Windows and Linux and to `Command` on macOS. The Go To Definition and Open Link mouse gestures will adapt such that they do not conflict with the multicursor modifier.
   "editor.multiCursorModifier": "alt",
@@ -538,7 +550,7 @@
   // Controls whether to follow symlinks while searching.
   "search.followSymlinks": true,
 
-  // Preview: controls if the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space. Next release search in panel will have improved horizontal layout and this will no longer be a preview.
+  // Controls if the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space. Next release search in panel will have improved horizontal layout and this will no longer be a preview.
   "search.location": "sidebar",
 
   // Configure to include results from a global symbol search in the file results for Quick Open.
@@ -593,6 +605,9 @@
 
   // Allows setting breakpoint in any file
   "debug.allowBreakpointsEverywhere": false,
+
+  // Controls if the non debug hovers should be enabled while debugging. If true the hover providers will be called to provide a hover. Regular hovers will not be shown even if this setting is true.
+  "debug.enableAllHovers": false,
 
   // Controls if the floating debug action bar should be hidden
   "debug.hideActionBar": false,
@@ -772,13 +787,13 @@
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
 
-  // Defines space handling after opening and before closing non empty braces. Requires TypeScript >= 2.3.0.
+  // Defines space handling after opening and before closing non-empty braces. Requires TypeScript >= 2.3.0.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
-  // Defines space handling after opening and before closing non empty brackets.
+  // Defines space handling after opening and before closing non-empty brackets.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
 
-  // Defines space handling after opening and before closing non empty parenthesis.
+  // Defines space handling after opening and before closing non-empty parenthesis.
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
 
   // Defines space handling after opening and before closing template string braces. Requires TypeScript >= 2.0.6.
@@ -850,13 +865,13 @@
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
 
-  // Defines space handling after opening and before closing non empty braces. Requires TypeScript >= 2.3.0.
+  // Defines space handling after opening and before closing non-empty braces. Requires TypeScript >= 2.3.0.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 
-  // Defines space handling after opening and before closing non empty brackets.
+  // Defines space handling after opening and before closing non-empty brackets.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
 
-  // Defines space handling after opening and before closing non empty parenthesis.
+  // Defines space handling after opening and before closing non-empty parenthesis.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
 
   // Defines space handling after opening and before closing template string braces. Requires TypeScript >= 2.0.6.
@@ -1140,7 +1155,7 @@
   "terminal.external.osxExec": "Terminal.app",
 
   // Customizes which terminal to run on Windows.
-  "terminal.external.windowsExec": "C:\\System32\\cmd.exe"
+  "terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe"
 
 }
 ,
@@ -1181,6 +1196,7 @@
     "workbench.action.tasks.terminate",
     "workbench.action.tasks.test",
     "workbench.action.terminal.clear",
+    "workbench.action.terminal.clearSelection",
     "workbench.action.terminal.copySelection",
     "workbench.action.terminal.deleteWordLeft",
     "workbench.action.terminal.deleteWordRight",
@@ -1226,6 +1242,7 @@
     "workbench.action.terminal.selectToNextCommand",
     "workbench.action.terminal.selectToPreviousCommand",
     "workbench.action.terminal.split",
+    "workbench.action.terminal.splitInActiveWorkspace",
     "workbench.action.terminal.toggleTerminal",
     "workbench.action.togglePanel"
   ],
@@ -1389,7 +1406,7 @@
   "emmet.extensionsPath": null,
 
   // Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and emmet supported language.
-  //  Eg: {"vue-html": "html", "javascript": "javascriptreact"}
+  //  E.g.: {"vue-html": "html", "javascript": "javascriptreact"}
   "emmet.includeLanguages": {},
 
   // When set to false, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to true, only the content around the current position in css/scss/less files is parsed.
@@ -1441,6 +1458,9 @@
 
   // Controls whether auto detection of npm scripts is on or off. Default is on.
   "npm.autoDetect": "on",
+
+  // Enable an explorer view for npm scripts.
+  "npm.enableScriptExplorer": false,
 
   // Configure glob patterns for folders that should be excluded from automatic script detection.
   "npm.exclude": "",

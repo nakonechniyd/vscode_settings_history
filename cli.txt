@@ -1,4 +1,4 @@
-Visual Studio Code 1.22.2
+Visual Studio Code 1.23.1
 
 Usage: code [options] [paths...]
 
@@ -33,7 +33,7 @@ Extensions Management:
   --uninstall-extension (<extension-id> | <extension-vsix-path>)
       Uninstalls an extension.
   --enable-proposed-api <extension-id>
-      Enables proposed api features for an extension.
+      Enables proposed API features for an extension.
 
 Troubleshooting:
   --verbose                Print verbose output (implies --wait).
@@ -46,10 +46,10 @@ Troubleshooting:
   --prof-startup           Run CPU profiler during startup
   --disable-extensions     Disable all installed extensions.
   --inspect-extensions     Allow debugging and profiling of extensions. Check
-                           the developer tools for the connection uri.
+                           the developer tools for the connection URI.
   --inspect-brk-extensions Allow debugging and profiling of extensions with the
                            extension host being paused after start. Check the
-                           developer tools for the connection uri.
+                           developer tools for the connection URI.
   --disable-gpu            Disable GPU hardware acceleration.
   --upload-logs            Uploads logs from current session to a secure
                            endpoint.
