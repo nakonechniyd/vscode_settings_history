@@ -1,12 +1,12 @@
-Visual Studio Code 1.8.1
+Visual Studio Code 1.9.1
 
 Usage: code [options] [paths...]
 
 Options:
   -d, --diff                  Open a diff editor. Requires to pass two file
                               paths as arguments.
-  -g, --goto                  Open the file at path at the line and column (add
-                              :line[:column] to path).
+  -g, --goto                  Open the file at path at the line and character
+                              (add :line[:character] to path).
   --locale <locale>           The locale to use (e.g. en-US or zh-TW).
   -n, --new-window            Force a new instance of Code.
   -p, --performance           Start with the 'Developer: Startup Performance'
