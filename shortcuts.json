@@ -299,7 +299,7 @@
     { "key": "shift+enter",           "command": "settings.action.focusPreviousSetting",
                                          "when": "inSettingsSearch" },
     { "key": "down",                  "command": "settings.action.focusSettingsFile",
-                                         "when": "inSettingsSearch" },
+                                         "when": "inSettingsSearch && !suggestWidgetVisible" },
     { "key": "ctrl+f",                "command": "settings.action.search",
                                          "when": "inSettingsEditor" },
     { "key": "alt+f5",                "command": "workbench.action.editor.nextChange",
@@ -392,12 +392,9 @@
                                          "when": "editorFocus && renameInputVisible" },
     { "key": "escape",                "command": "cancelRenameInput",
                                          "when": "editorFocus && renameInputVisible" },
-    { "key": "ctrl+shift+;",          "command": "breadcrumbs.focus",
-                                         "when": "breadcrumbsVisible" },
-    { "key": "ctrl+shift+.",          "command": "breadcrumbs.focusAndSelect",
-                                         "when": "breadcrumbsVisible" },
-    { "key": "ctrl+shift+[IntlBackslash]", "command": "breadcrumbs.focusAndSelect",
-                                         "when": "breadcrumbsVisible" },
+    { "key": "ctrl+shift+;",          "command": "breadcrumbs.focus" },
+    { "key": "ctrl+shift+.",          "command": "breadcrumbs.focusAndSelect" },
+    { "key": "ctrl+shift+[IntlBackslash]", "command": "breadcrumbs.focusAndSelect" },
     { "key": "ctrl+right",            "command": "breadcrumbs.focusNext",
                                          "when": "breadcrumbsActive && breadcrumbsVisible" },
     { "key": "right",                 "command": "breadcrumbs.focusNext",
@@ -460,10 +457,10 @@
                                          "when": "inKeybindings && keybindingFocus" },
     { "key": "escape",                "command": "list.clear",
                                          "when": "listFocus && listHasSelectionOrFocus && !inputFocus" },
-    { "key": "ctrl+c",                "command": "problems.action.copy",
-                                         "when": "problemFocus" },
     { "key": "left",                  "command": "list.collapse",
                                          "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+c",                "command": "problems.action.copy",
+                                         "when": "problemFocus" },
     { "key": "right",                 "command": "list.expand",
                                          "when": "listFocus && !inputFocus" },
     { "key": "shift+down",            "command": "list.expandSelectionDown",
@@ -550,14 +547,12 @@
                                          "when": "inputBoxFocus && searchViewletVisible" },
     { "key": "ctrl+up",               "command": "search.focus.previousInputBox",
                                          "when": "inputBoxFocus && searchViewletVisible && !searchInputBoxFocus" },
-    { "key": "enter",                 "command": "settings.action.editFocusedSetting",
-                                         "when": "inSettingsEditor && settingRowFocused" },
-    { "key": "up",                    "command": "settings.action.focusSearchFromSettings",
-                                         "when": "firstSettingRowFocused && inSettingsEditor" },
     { "key": "down",                  "command": "settings.action.focusSettingsFromSearch",
-                                         "when": "inSettingsSearch" },
+                                         "when": "inSettingsSearch && !suggestWidgetVisible" },
     { "key": "enter",                 "command": "settings.action.focusSettingsList",
                                          "when": "inSettingsEditor && settingsTocRowFocus" },
+    { "key": "shift+f9",              "command": "settings.action.showContextMenu",
+                                         "when": "inSettingsEditor" },
     { "key": "alt+c",                 "command": "toggleSearchCaseSensitive",
                                          "when": "searchInputBoxFocus && searchViewletVisible" },
     { "key": "alt+r",                 "command": "toggleSearchRegex",
@@ -579,6 +574,10 @@
     { "key": "ctrl+w",                "command": "workbench.action.closeWindow",
                                          "when": "!editorIsOpen && !multipleEditorGroups" },
     { "key": "ctrl+shift+w",          "command": "workbench.action.closeWindow" },
+    { "key": "alt+f5",                "command": "workbench.action.compareEditor.nextChange",
+                                         "when": "textCompareEditorVisible" },
+    { "key": "shift+alt+f5",          "command": "workbench.action.compareEditor.previousChange",
+                                         "when": "textCompareEditorVisible" },
     { "key": "f5",                    "command": "workbench.action.debug.continue",
                                          "when": "inDebugMode" },
     { "key": "f6",                    "command": "workbench.action.debug.pause",
@@ -1069,8 +1068,6 @@
     // - workbench.action.closeEditorsToTheRight
     // - workbench.action.closeOtherEditors
     // - workbench.action.closePanel
-    // - workbench.action.compareEditor.nextChange
-    // - workbench.action.compareEditor.previousChange
     // - workbench.action.configureLanguageBasedSettings
     // - workbench.action.configureLocale
     // - workbench.action.debug.configure
@@ -1129,6 +1126,7 @@
     // - workbench.action.openActiveLogOutputFile
     // - workbench.action.openDefaultKeybindingsFile
     // - workbench.action.openDocumentationUrl
+    // - workbench.action.openEditorAtIndex
     // - workbench.action.openFolderSettings
     // - workbench.action.openGlobalKeybindingsFile
     // - workbench.action.openGlobalSettings
@@ -1146,6 +1144,7 @@
     // - workbench.action.openRawDefaultSettings
     // - workbench.action.openRequestFeatureUrl
     // - workbench.action.openSettings2
+    // - workbench.action.openSettingsJson
     // - workbench.action.openSnippets
     // - workbench.action.openTipsAndTricksUrl
     // - workbench.action.openTwitterUrl

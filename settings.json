@@ -26,10 +26,28 @@
   "editor.accessibilitySupport": "auto",
 
   // Controls whether the editor should automatically close brackets after the user adds an opening bracket.
-  "editor.autoClosingBrackets": true,
+  //  - always
+  //  - languageDefined: Use language configurations to determine when to autoclose brackets.
+  //  - beforeWhitespace: Autoclose brackets only when the cursor is to the left of whitespace.
+  //  - never
+  "editor.autoClosingBrackets": "languageDefined",
+
+  // Controls whether the editor should automatically close quotes after the user adds an opening quote.
+  //  - always
+  //  - languageDefined: Use language configurations to determine when to autoclose quotes.
+  //  - beforeWhitespace: Autoclose quotes only when the cursor is to the left of whitespace.
+  //  - never
+  "editor.autoClosingQuotes": "languageDefined",
 
   // Controls whether the editor should automatically adjust the indentation when users type, paste or move lines. Extensions with indentation rules of the language must be available.
   "editor.autoIndent": true,
+
+  // Controls whether the editor should automatically surround selections.
+  //  - languageDefined: Use language configurations to determine when to automatically surround selections.
+  //  - brackets: Surround with brackets but not quotes.
+  //  - quotes: Surround with quotes but not brackets.
+  //  - never
+  "editor.autoSurround": "languageDefined",
 
   // Code action kinds to be run on save.
   "editor.codeActionsOnSave": {},
@@ -181,8 +199,11 @@
   // Controls the number of decorations that can show up at the same position in the overview ruler.
   "editor.overviewRulerLanes": 3,
 
+  // Controls whether the parameter hints menu cycles or closes when reaching the end of the list.
+  "editor.parameterHints.cycle": false,
+
   // Enables a pop-up that shows parameter documentation and type information as you type.
-  "editor.parameterHints": true,
+  "editor.parameterHints.enabled": true,
 
   // Controls whether suggestions should automatically show up while typing.
   "editor.quickSuggestions": {
@@ -346,8 +367,8 @@
   // Controls the behavior of empty editor groups when the last tab in the group is closed. When enabled, empty groups will automatically close. When disabled, empty groups will remain part of the grid.
   "workbench.editor.closeEmptyGroups": true,
 
-  // Controls whether editors showing a file should close automatically when the file is deleted or renamed by some other process. Disabling this will keep the editor open as dirty on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
-  "workbench.editor.closeOnFileDelete": true,
+  // Controls whether editors showing a file that was opened during the session should close automatically when getting deleted or renamed by some other process. Disabling this will keep the editor open  on such an event. Note that deleting from within the application will always close the editor and that dirty files will never close to preserve your data.
+  "workbench.editor.closeOnFileDelete": false,
 
   // Controls whether opened editors show as preview. Preview editors are reused until they are kept (e.g. via double click or editing) and show up with an italic font style.
   "workbench.editor.enablePreview": true,
@@ -408,6 +429,11 @@
   // Controls whether Quick Open should close automatically once it loses focus.
   "workbench.quickOpen.closeOnFocusLost": true,
 
+  // Determines which settings editor to use by default.
+  //  - ui: Use the settings UI editor.
+  //  - json: Use the JSON file editor.
+  "workbench.settings.editor": "ui",
+
   // Controls whether to enable the natural language search mode for settings. The natural language search is provided by an online service.
   "workbench.settings.enableNaturalLanguageSearch": true,
 
@@ -418,10 +444,9 @@
   "workbench.settings.openDefaultSettings": true,
 
   // Controls the behavior of the settings editor Table of Contents while searching.
+  //  - hide: Hide the Table of Contents while searching.
+  //  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking a category will filter the results to that category.
   "workbench.settings.settingsSearchTocBehavior": "filter",
-
-  // Controls whether the settings editor Table of Contents is visible.
-  "workbench.settings.tocVisible": true,
 
   // Controls the location of the sidebar. It can either show on the left or right of the workbench.
   "workbench.sideBar.location": "left",
@@ -473,21 +498,21 @@
   "window.newWindowDimensions": "default",
 
   // Controls whether files should open in a new window.
-  // Note that there can still be cases where this setting is ignored (e.g. when using the -new-window or -reuse-window command line option).
+  // Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
   //  - on: Files will open in a new window.
   //  - off: Files will open in the window with the files' folder open or the last active window.
   //  - default: Files will open in a new window unless picked from within the application (e.g. via the File menu).
   "window.openFilesInNewWindow": "off",
 
   // Controls whether folders should open in a new window or replace the last active window.
-  // Note that there can still be cases where this setting is ignored (e.g. when using the -new-window or -reuse-window command line option).
+  // Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
   //  - on: Folders will open in a new window.
   //  - off: Folders will replace the last active window.
   //  - default: Folders will open in a new window unless a folder is picked from within the application (e.g. via the File menu).
   "window.openFoldersInNewWindow": "default",
 
   // Controls whether a new empty window should open when starting a second instance without arguments or if the last running instance should get focus.
-  // Note that there can still be cases where this setting is ignored (e.g. when using the -new-window or -reuse-window command line option).
+  // Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
   //  - on: Open a new empty window.
   //  - off: Focus the last active running instance.
   "window.openWithoutArgumentsInNewWindow": "on",
@@ -611,8 +636,8 @@
 
   // Controls whether unsaved files are remembered between sessions, allowing the save prompt when exiting the editor to be skipped.
   //  - off: Disable hot exit.
-  //  - onExit: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit command` is triggered (command palette, keybinding, menu). All windows with backups will be restored upon next launch.
-  //  - onExitAndWindowClose: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit command` is triggered (command palette, keybinding, menu), and also for any window with a folder opened regardless of whether it's the last window. All windows without folders opened will be restored upon next launch. To restore folder windows as they were before shutdown set `window.restoreWindows` to `all`.
+  //  - onExit: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu). All windows with backups will be restored upon next launch.
+  //  - onExitAndWindowClose: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu), and also for any window with a folder opened regardless of whether it's the last window. All windows without folders opened will be restored upon next launch. To restore folder windows as they were before shutdown set `window.restoreWindows` to `all`.
   "files.hotExit": "onExit",
 
   // When enabled, insert a final new line at the end of the file when saving it.
@@ -699,6 +724,12 @@
 {
 
 
+  // Controls whether the search results will be collapsed or expanded.
+  //  - auto: Files with less than 10 results are expanded. Others are collapsed.
+  //  - alwaysCollapse
+  //  - alwaysExpand
+  "search.collapseResults": "auto",
+
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the `files.exclude` setting. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
   "search.exclude": {
     "**/node_modules": true,
@@ -777,7 +808,7 @@
   "debug.internalConsoleOptions": "openOnFirstSessionStart",
 
   // Controls when the debug view should open.
-  "debug.openDebug": "openOnFirstSessionStart",
+  "debug.openDebug": "openOnSessionStart",
 
   // Automatically open the explorer view at the end of a debug session
   "debug.openExplorerOnEnd": false,
@@ -837,6 +868,7 @@
   //  - force: Wrap each attribute except first.
   //  - force-aligned: Wrap each attribute except first and keep aligned.
   //  - force-expand-multiline: Wrap each attribute.
+  //  - aligned-multiple: Wrap when line length is exceeded, align attributes vertically.
   "html.format.wrapAttributes": "auto",
 
   // Maximum amount of characters per line (0 = disable).
@@ -864,6 +896,10 @@
 ,
 {
 
+
+  // The setting `json.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
+  // Enables or disables color decorators
+  "json.colorDecorators.enable": true,
 
   // Enable/disable default JSON formatter
   "json.format.enable": true,
@@ -905,6 +941,10 @@
 
   // When a markdown editor is scrolled, update the view of the preview.
   "markdown.preview.scrollPreviewWithEditor": true,
+
+  // This setting has been replaced by 'markdown.preview.scrollPreviewWithEditor' and no longer has any effect.
+  // [Deprecated] Scrolls the markdown preview to reveal the currently selected line from the editor.
+  "markdown.preview.scrollPreviewWithEditorSelection": true,
 
   // Sets how YAML front matter should be rendered in the markdown preview. 'hide' removes the front matter. Otherwise, the front matter is treated as markdown content.
   "markdown.previewFrontMatter": "hide",
@@ -1144,6 +1184,10 @@
 {
 
 
+  // The setting `css.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
+  // Enables or disables color decorators.
+  "css.colorDecorators.enable": true,
+
   // Invalid number of parameters.
   "css.lint.argumentsInColorFunction": "error",
 
@@ -1212,6 +1256,10 @@
 {
 
 
+  // The setting `less.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
+  // Enables or disables color decorators.
+  "less.colorDecorators.enable": true,
+
   // Invalid number of parameters.
   "less.lint.argumentsInColorFunction": "error",
 
@@ -1273,6 +1321,10 @@
 ,
 {
 
+
+  // The setting `scss.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
+  // Enables or disables color decorators.
+  "scss.colorDecorators.enable": true,
 
   // Invalid number of parameters.
   "scss.lint.argumentsInColorFunction": "error",
@@ -1497,12 +1549,6 @@
 
   // Object with environment variables that will be added to the VS Code process to be used by the terminal on Windows. Set to `null` to delete the environment variable.
   "terminal.integrated.env.windows": {},
-
-  // Controls whether to restore terminal sessions for the workspace automatically when launching VS Code. This is an experimental setting; it may be buggy and could change or be removed in the future.
-  "terminal.integrated.experimentalRestore": false,
-
-  // Controls how the terminal stores glyph textures. `static` is the default and uses a fixed texture to draw the characters from. `dynamic` will draw the characters to the texture as they are needed, this should boost overall performance at the cost of slightly increased draw time the first time a character is drawn. `dynamic` will eventually become the default and this setting will be removed. Changes to this setting will only apply to new terminals.
-  "terminal.integrated.experimentalTextureCachingStrategy": "dynamic",
 
   // Controls the font family of the terminal, this defaults to `editor.fontFamily`'s value.
   "terminal.integrated.fontFamily": "",
@@ -1737,6 +1783,10 @@
   "git.autorefresh": true,
 
   // Configures when repositories should be automatically detected.
+  //  - true: Scan for both subfolders of the current opened folder and parent folders of open files.
+  //  - false: Disable automatic repository scanning.
+  //  - subFolders: Scan for subfolders of the currently opened folder.
+  //  - openEditors: Scan for parent folders of open files.
   "git.autoRepositoryDetection": true,
 
   // Controls what type of branches are listed when running `Checkout to...`.
@@ -1791,7 +1841,7 @@
   // Controls when to show commit message input validation.
   "git.inputValidation": "warn",
 
-  // Path to the git executable.
+  // Path and filename of the git executable, e.g. `C:\Program Files\Git\bin\git.exe` (Windows).
   "git.path": null,
 
   // Controls whether Git should check for unsaved files before committing.
