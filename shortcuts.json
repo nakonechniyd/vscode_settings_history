@@ -256,6 +256,8 @@
                                          "when": "editorTextFocus && hasWordHighlights" },
     { "key": "shift+f7",              "command": "editor.action.wordHighlight.prev",
                                          "when": "editorTextFocus && hasWordHighlights" },
+    { "key": "escape",                "command": "editor.cancelOperation",
+                                         "when": "cancellableOperation" },
     { "key": "ctrl+k ctrl+i",         "command": "editor.debug.action.showDebugHover",
                                          "when": "editorTextFocus && inDebugMode" },
     { "key": "f9",                    "command": "editor.debug.action.toggleBreakpoint",
@@ -286,6 +288,10 @@
                                          "when": "editorTextFocus" },
     { "key": "ctrl+k ctrl+[",         "command": "editor.foldRecursively",
                                          "when": "editorTextFocus" },
+    { "key": "f12",                   "command": "editor.gotoNextSymbolFromResult",
+                                         "when": "hasSymbols && config.editor.gotoLocation.multiple == 'goto'" },
+    { "key": "escape",                "command": "editor.gotoNextSymbolFromResult.cancel",
+                                         "when": "hasSymbols" },
     { "key": "ctrl+shift+]",          "command": "editor.unfold",
                                          "when": "editorTextFocus" },
     { "key": "ctrl+k ctrl+j",         "command": "editor.unfoldAll",
@@ -299,6 +305,8 @@
     { "key": "ctrl+enter",            "command": "openReferenceToSide",
                                          "when": "referenceSearchTreeFocused && referenceSearchVisible" },
     { "key": "enter",                 "command": "repl.action.acceptInput",
+                                         "when": "inDebugRepl && textInputFocus" },
+    { "key": "ctrl+f",                "command": "repl.action.filter",
                                          "when": "inDebugRepl && textInputFocus" },
     { "key": "escape",                "command": "settings.action.clearSearchResults",
                                          "when": "inSettingsSearch" },
@@ -498,6 +506,8 @@
                                          "when": "listFocus && listHasSelectionOrFocus && !inputFocus" },
     { "key": "left",                  "command": "list.collapse",
                                          "when": "listFocus && !inputFocus" },
+    { "key": "ctrl+left",             "command": "list.collapseAll",
+                                         "when": "listFocus && !inputFocus" },
     { "key": "right",                 "command": "list.expand",
                                          "when": "listFocus && !inputFocus" },
     { "key": "shift+down",            "command": "list.expandSelectionDown",
@@ -637,9 +647,9 @@
     { "key": "ctrl+o",                "command": "workbench.action.files.openFile" },
     { "key": "ctrl+k ctrl+o",         "command": "workbench.action.files.openFolder" },
     { "key": "ctrl+o",                "command": "workbench.action.files.openLocalFile",
-                                         "when": "remoteFileDialogVisible && remoteFileDialogVisible" },
+                                         "when": "remoteFileDialogVisible" },
     { "key": "ctrl+k ctrl+o",         "command": "workbench.action.files.openLocalFolder",
-                                         "when": "remoteFileDialogVisible && remoteFileDialogVisible" },
+                                         "when": "remoteFileDialogVisible" },
     { "key": "ctrl+k r",              "command": "workbench.action.files.revealActiveFileInWindows" },
     { "key": "ctrl+s",                "command": "workbench.action.files.save" },
     { "key": "ctrl+shift+s",          "command": "workbench.action.files.saveAs" },
@@ -1173,6 +1183,7 @@
     // - problems.action.showMultilineMessage
     // - problems.action.showSinglelineMessage
     // - references-view.clear
+    // - references-view.clearHistory
     // - references-view.copy
     // - references-view.copyAll
     // - references-view.copyPath
@@ -1255,6 +1266,7 @@
     // - workbench.action.files.saveFiles
     // - workbench.action.firstEditorInGroup
     // - workbench.action.focusActiveEditorGroup
+    // - workbench.action.focusCommentsPanel
     // - workbench.action.focusLastEditorGroup
     // - workbench.action.focusNextGroup
     // - workbench.action.focusPanel
@@ -1298,6 +1310,7 @@
     // - workbench.action.openLicenseUrl
     // - workbench.action.openLogFile
     // - workbench.action.openLogsFolder
+    // - workbench.action.openNewsletterSignupUrl
     // - workbench.action.openNextRecentlyUsedEditor
     // - workbench.action.openPreviousEditorFromHistory
     // - workbench.action.openPreviousRecentlyUsedEditor
@@ -1369,6 +1382,7 @@
     // - workbench.action.tasks.showTasks
     // - workbench.action.tasks.terminate
     // - workbench.action.tasks.test
+    // - workbench.action.tasks.toggleProblems
     // - workbench.action.terminal.allowWorkspaceShell
     // - workbench.action.terminal.clear
     // - workbench.action.terminal.deleteToLineStart

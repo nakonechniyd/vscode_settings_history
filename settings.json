@@ -156,7 +156,7 @@
 	// Controls the behavior of 'Go To' commands, like Go To Definition, when multiple target locations exist.
 	//  - peek: Show peek view of the results (default)
 	//  - gotoAndPeek: Go to the primary result and show a peek view
-	//  - goto: Go to the primary result and ignore others
+	//  - goto: Go to the primary result and enable peek-less navigation to others
 	"editor.gotoLocation.multiple": "peek",
 
 	// Controls whether the cursor should be hidden in the overview ruler.
@@ -747,6 +747,9 @@
 	// Controls the memory available to VS Code after restart when trying to open large files. Same effect as specifying `--max-memory=NEWSIZE` on the command line.
 	"files.maxMemoryForLargeFilesMB": 4096,
 
+	// Enables the simple file dialog. The simple file dialog replaces the system file dialog when enabled.
+	"files.simpleDialog.enable": false,
+
 	// When enabled, will trim all new lines after the final new line at the end of the file when saving it.
 	"files.trimFinalNewlines": false,
 
@@ -1136,7 +1139,7 @@
 	"javascript.implicitProjectConfig.experimentalDecorators": false,
 
 	// Preferred path style for auto imports.
-	//  - auto: Infer the shortest path type.
+	//  - auto: Automatically select import path style. Prefers using a relative import if `baseUrl` is configured and the relative path has fewer segments than the non-relative import.
 	//  - relative: Relative to the file location.
 	//  - non-relative: Based on the `baseUrl` configured in your `jsconfig.json` / `tsconfig.json`.
 	"javascript.preferences.importModuleSpecifier": "auto",
@@ -1247,7 +1250,7 @@
 	"typescript.npm": null,
 
 	// Preferred path style for auto imports.
-	//  - auto: Infer the shortest path type.
+	//  - auto: Automatically select import path style. Prefers using a relative import if `baseUrl` is configured and the relative path has fewer segments than the non-relative import.
 	//  - relative: Relative to the file location.
 	//  - non-relative: Based on the `baseUrl` configured in your `jsconfig.json` / `tsconfig.json`.
 	"typescript.preferences.importModuleSpecifier": "auto",
@@ -1720,14 +1723,14 @@
 	// Controls whether locale variables are set at startup of the terminal.
 	"terminal.integrated.setLocaleVariables": true,
 
-	// The path of the shell that the terminal uses on Linux. [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
-	"terminal.integrated.shell.linux": "/bin/bash",
+	// The path of the shell that the terminal uses on Linux (default: /bin/bash). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
+	"terminal.integrated.shell.linux": null,
 
-	// The path of the shell that the terminal uses on macOS. [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
-	"terminal.integrated.shell.osx": "/bin/bash",
+	// The path of the shell that the terminal uses on macOS (default: /bin/bash). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
+	"terminal.integrated.shell.osx": null,
 
-	// The path of the shell that the terminal uses on Windows. [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
-	"terminal.integrated.shell.windows": "cmd.exe",
+	// The path of the shell that the terminal uses on Windows (default: cmd.exe). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
+	"terminal.integrated.shell.windows": null,
 
 	// The command line arguments to use when on the Linux terminal. [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
 	"terminal.integrated.shellArgs.linux": [],
@@ -1749,9 +1752,6 @@
 	//  - inherited: On macOS and Linux, a new split terminal will use the working directory of the parent terminal. On Windows, this behaves the same as initial.
 	"terminal.integrated.splitCwd": "inherited",
 
-	// Works in conjunction with the `terminal.integrated.windowsEnableConpty` setting. Both must be enabled for tasks to use conpty. Defaults to `false`.
-	"terminal.integrated.windowsAllowConptyTasks": false,
-
 	// Whether to use ConPTY for Windows terminal process communication. Winpty will be used if this is false. Note that ConPTY will be disabled regardless of this setting when the Windows 10 build number is lower than 18309 or when you're running the 32-bit VS Code client under 64-bit Windows.
 	"terminal.integrated.windowsEnableConpty": true,
 
@@ -1762,7 +1762,7 @@
 	"problems.decorations.enabled": true,
 
 	// Enable/disable navigation breadcrumbs.
-	"breadcrumbs.enabled": false,
+	"breadcrumbs.enabled": true,
 
 	// Controls whether and how file paths are shown in the breadcrumbs view.
 	//  - on: Show the file path in the breadcrumbs view.
@@ -1925,6 +1925,12 @@
 	// Create decorators for merge conflict blocks within editor.
 	"merge-conflict.decorators.enabled": true,
 
+	// Controls where the diff view should be opened when comparing changes in merge conflicts.
+	//  - Current: Open the diff view in the current editor group.
+	//  - Beside: Open the diff view next to the current editor group.
+	//  - Below: Open the diff view below the current editor group.
+	"merge-conflict.diffViewPosition": "Current",
+
 	// Controls whether auto detection of Gulp tasks is on or off. Default is on.
 	"gulp.autoDetect": "on",
 
@@ -2046,6 +2052,9 @@
 
 	// Controls whether Git should check for unsaved files before committing.
 	"git.promptToSaveFilesBeforeCommit": true,
+
+	// Fetch all tags when pulling.
+	"git.pullTags": true,
 
 	// Force git to use rebase when running the sync command.
 	"git.rebaseWhenSync": false,
